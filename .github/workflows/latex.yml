@@ -15,11 +15,13 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v4
 
-      - name: Install TeX Live
-        uses: dante-ev/texlive-action@v2
+      - name: Build PDF
+        uses: xu-cheng/latex-action@v3
         with:
-          profile: scheme-small
-          packages: |
+          root_file: main.tex
+          latexmk_shell_escape: false
+          latexmk_args: -interaction=nonstopmode -halt-on-error -outdir=build
+          extra_texlive_packages: >-
             latexmk
             babel-italian
             csquotes
@@ -34,11 +36,6 @@ jobs:
             pgf
             pgfplots
             tikz
-
-      - name: Build PDF
-        run: |
-          mkdir -p build
-          latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
