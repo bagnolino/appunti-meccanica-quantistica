@@ -12,5 +12,3 @@ clean:
 	latexmk -C
 	rm -rf build
 
-open:
-	xdg-open $(PDF) || open $(PDF)
