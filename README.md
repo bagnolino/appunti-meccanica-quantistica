@@ -7,7 +7,7 @@
 Questa repository contiene gli **appunti in LaTeX** del modulo di meccanica quantisitca del corso universitario di *Istituzioni di Fisica Teorica*.  
 L'obiettivo è raccogliere, organizzare e condividere in modo chiaro e strutturato tutte le lezioni, dimostrazioni, formule e concetti fondamentali affrontati durante il corso.
 
----
+
 
 ## 📂 Struttura del progetto
 
@@ -29,7 +29,7 @@ appunti-meccanica-quantistica/
 └─ .github/workflows/  # Compilazione automatica PDF (GitHub Actions)
 ```
 
----
+
 
 ## 🧪 Come compilare il PDF localmente
 
@@ -51,14 +51,14 @@ Per compilare il documento sul tuo computer:
    ```
 Il file PDF finale sarà disponibile nella cartella build/ con il nome main.pdf.
 
----
+
 
 ## ⚙️ Compilazione automatica (GitHub Actions)
 
 Ogni volta che effettui un push sul branch main, GitHub Actions compilerà automaticamente il progetto LaTeX e caricherà il PDF come artifact nella sezione Actions della repository.
 In questo modo potrai sempre scaricare l’ultima versione aggiornata degli appunti direttamente da GitHub.
 
----
+
 
 ## ✏️ Convenzioni e buone pratiche
 
@@ -69,7 +69,7 @@ Per mantenere il progetto chiaro e coerente, segui queste regole:
 -	📚 Aggiungi riferimenti bibliografici nel file biblio/references.bib
 -	🧹 Non includere file compilati (.pdf, .aux, .log, ecc.) nel repository
 
----
+
 
 ## 📜 Workflow Git consigliato
 
@@ -88,7 +88,7 @@ git commit -m "Add lecture 05 on Heisenberg's uncertainty principle"
 git push origin feature/lezione-05
 ```
 
----
+
 
 ## 🤝 Contribuire
 
@@ -105,7 +105,7 @@ Se vuoi contribuire agli appunti:
 Tutti i testi e gli articoli utilizzati come riferimento sono raccolti in biblio/references.bib.
 Per aggiungere nuovi riferimenti, segui lo standard BibTeX.
 
----
+
 
 ## 📜 Licenza
 
