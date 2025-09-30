@@ -13,22 +13,8 @@ jobs:
       - name: Setup TeX Live
         uses: xu-cheng/latex-action@v3
         with:
-          profile: scheme-small
-          packages: |
-            latexmk
-            babel-italian
-            csquotes
-            biblatex
-            biber
-            amsmath
-            amsfonts
-            amssymb
-            mathtools
-            siunitx
-            cleveref
-            pgf
-            pgfplots
-            tikz
+          root_file: main.tex
+          
       - name: Build PDF
         run: |
           mkdir -p build
