@@ -1,17 +1,104 @@
-\section{Introduzione}
-Breve descrizione del corso, obiettivi, riferimenti principali .
+% 1 Lezione del 29/09/2025
 
-\subsection{Struttura}
-Useremo \cref{sec:teoria-base} per la teoria di base.
 
-\section{Teoria di base}\label{sec:teoria-base}
+\chapter{Introduzione}
+
+
+Iniziamo trattando alcune caratteristiche della meccanica quantistica, 
+che la differenziano dalla meccanica classica: \textbf{linearità}, presenza di \textbf{numeri complessi} e \textbf{perdita del determinismo}.
+
+
+\subsection*{1 Linearità}
+
+Descriviamo sistemi fisici attraverso variabili dinamiche \(u(t,\dots)\) che soddisfano le equazioni del moto.
 \begin{definition}
-Una definizione chiara.
+    Abbiamo una \textit{teoria lineare} se le equazioni del moto hanno forma \(L u=0\), con \(L \) \textit{operatore lineare}, 
+    cioè se vale:
+    \begin{itemize}
+        \item \(L(u_1+u_2)= L(u_1)+L(u_2)\)
+        \item \(L(\alpha u)= \alpha L (u)\)
+    \end{itemize}
 \end{definition}
 
-\begin{theorem}[Importante]\label{thm:importante}
-Enunciato del teorema.
-\end{theorem}
-\begin{proof}
-Dimostrazione sintetica.
-\end{proof}
+\begin{remark}
+    La sovrapposizione lineare di soluzioni è ancora soluzione, infatti
+    se \(u_1,u_2\) sono soluzioni, cioè \(L(u_1)=0\) e \(L(u_2)=0\), allora \(\alpha u_1+\beta u_2\) è soluzione dato che vale:
+    \[L(\alpha u_1+\beta u_2)= \alpha L(u_1)+ \beta L(u_2)=0
+    \] 
+\end{remark}
+\begin{remark}
+    Se la teoria è lineare, le soluzioni formano uno spazio vettoriale.
+\end{remark}    
+
+\begin{example}
+    Sono equazioni lineari:
+    \begin{itemize}
+        \item Equazione di Schrödinger: \(i\hbar \dv{t}\Psi= H \Psi\)
+        \item Equazioni di Maxwell.
+        \item Equazioni delle onde.
+    \end{itemize}
+\end{example}
+\begin{example}
+    Non sono equazioni lineari:
+    \begin{itemize}
+        \item Le equazioni di Eisntein in relatività generale.
+        \item Le equazioni della dinamica di Newton.
+    \end{itemize}
+\end{example}
+
+
+\subsection*{2 Numeri complessi}
+
+In meccanica classica, i numeri complessi possono essere utili formalmente, ma non sono indispensabili;
+tutte le variabili dinamiche e le osservabili sono numeri reali.\\
+In meccanica quantistica, le soluzioni \(\Psi(x,t)\) all'equazione di Schrödinger sono necessariamente complesse. 
+Tuttavia, le osservabili devono essere reali e dipenderanno dunque indirettamente dalla funzione d'onda, ad esempio \(\abs{\Psi(x,t)}^2\).
+
+\begin{remark}
+    In linea di principio è possibile formulare la meccanica quantistica senza l'utilizzo di numeri complessi,
+    ma sarebbe tremendamente complicato e alcune proprietà come la linearità non sarebbero più evidenti.
+\end{remark}
+
+
+\subsection*{3 Assenza di determinismo}
+A differenza della meccanica classica, la meccanica quantistica non è deterministica, ma fornisce soltanto una descrizione probabilistica.
+\begin{example}
+    Consideriamo un fascio di luce, polarizzata linearmente a un angolo \(\alpha\) rispetto a un arbitrario asse \(x\),
+    che attraversa un filtro polarizzatore lungo x.
+    \begin{figure}[htbp]
+        \centering
+        % Figura TikZ: filtro polarizzatore lungo x e campo E inclinato di alpha
+        \begin{tikzpicture}[scale=1.05]
+            % parametro: angolo alpha (in gradi)
+            \def\ang{35}
+
+            % Assi
+            \draw[->] (-3.8,0) -- (4.2,0) node[below right] {$x$};
+            \draw[->] (0,-0.6) -- (0,3.2) node[left] {$y$};
+
+            % Filtro polarizzatore orientato lungo l'asse x (capsula simmetrica)
+            \draw[rounded corners=2pt, line width=0.9pt, color = blue]
+                (-3.0,-0.2) rectangle (3.0,0.2);
+
+            % Vettore del campo elettrico incidente a angolo alpha
+            \draw[->, thick]
+                (0,0) -- ({2.8*cos(\ang)},{2.8*sin(\ang)})
+                node[above right] {$\vec{E}_{\mathrm{in}}$};
+
+            % Arco che indica l'angolo alpha rispetto a x
+            \draw[thick,->] (1.0,0) arc (0:\ang:1.0);
+            \node at ({1.15*cos(0.5*\ang)},{1.15*sin(0.5*\ang)}) {$\alpha$};
+        \end{tikzpicture}
+        \caption{Filtro polarizzatore e onda incidente.}
+        \label{fig:polarizzatore}
+    \end{figure}
+
+    Sappiamo che il rapporto tra l'intensità luminosa in uscita dal filtro e quella in ingresso è 
+    data dalla \textbf{Legge di Malus}: 
+    \[
+    \frac{I_{out}}{I_{in}}=\cos[2](\alpha)
+    \]
+    Inoltre, la frequenza del fascio rimane invariata; dunque, sapendo che l'energia di ogni fotone è
+    \(\varepsilon= h \nu\), possiamo interpretare \(\cos[2](\alpha)\) come la probabilità che un singolo fotone
+    attraversi il filtro.
+\end{example}

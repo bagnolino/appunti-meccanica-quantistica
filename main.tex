@@ -1,9 +1,9 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[12pt,a4paper,parskip=half,DIV=12,oneside,chapterprefix=true]{scrreprt}
 
-\input{preamble} % pacchetti e comandi
+\input{preamble.tex} % pacchetti e comandi
 
-\title{Appunti di \textit{Nome del Corso}}
-\author{Tuo Nome}
+\title{Appunti di Meccanica Quantistica}
+\author{Davide Bagnoli}
 \date{\today}
 
 \begin{document}
@@ -11,7 +11,10 @@
 \tableofcontents
 \newpage
 
-\input{chapters/introduzione}
+% Rendi il primo capitolo numerato come 0
+\setcounter{chapter}{-1}
+
+\input{chapters/introduzione.tex}
 % \input{chapters/...}
 
 %\printbibliography

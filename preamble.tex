@@ -4,9 +4,35 @@
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 
+\usepackage{setspace}
+\onehalfspacing
+
+% Paragrafi con spazio ridotto rispetto a parskip=half
+\AtBeginDocument{%
+  \setlength{\parskip}{0.35\baselineskip}%
+}
+
+
+% Layout con intestazioni KOMA
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+% Header: mostra solo il titolo del capitolo (senza "Capitolo" e numero)
+\automark{chapter}
+\renewcommand*{\chaptermarkformat}{}
+\clearpairofpagestyles
+\ihead{\headmark}
+\ohead{\pagemark}
+\pagestyle{scrheadings}
+
+% Titoli più leggibili (KOMA)
+\RedeclareSectionCommand[beforeskip=1.5em plus .2em minus .1em,afterskip=.8em plus .1em minus .1em]{section}
+\RedeclareSectionCommand[beforeskip=1em plus .2em minus .1em,afterskip=.5em plus .1em minus .1em]{subsection}
+
+% Stile capitolo grande, bold, allineato a sinistra
+\setkomafont{chapter}{\Huge\bfseries}
+
 % Matematica
 \usepackage{amsmath, amssymb, amsthm, mathtools}
-\usepackage{siunitx}
+\usepackage{physics}
 
 % Grafica
 \usepackage{graphicx}
@@ -33,9 +59,9 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definizione}
 \theoremstyle{remark}
-\newtheorem{remark}[theorem]{Osservazione}
+\newtheorem*{remark}{Osservazione}
+\newtheorem{example}{Esempio}[section]
 
 % Comandi utili
-\newcommand{\R}{\mathbb{R}}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
