@@ -1,6 +1,6 @@
 # 📘Appunti di Meccanica Quantistica
 
-[![Scarica PDF](https://img.shields.io/badge/PDF-Scarica%20ultima%20versione-blue?logo=adobeacrobatreader)](https://github.com/tuoutente/appunti-meccanica-quantistica/releases/latest/download/appunti-meccanica-quantistica.pdf)
+[![Scarica PDF](https://img.shields.io/badge/PDF-Scarica%20ultima%20versione-blue?logo=adobeacrobatreader)](https://github.com/bagnolino/appunti-meccanica-quantistica/releases/latest/download/appunti-meccanica-quantistica.pdf)
 [![Licenza: CC BY-NC-SA 4.0](https://img.shields.io/badge/Licenza-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 
