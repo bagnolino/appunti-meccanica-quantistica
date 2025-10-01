@@ -19,8 +19,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          latexmk_output_directory: build
-          extra_texlive_packages: |
+          extra_system_packages: |
             latexmk
             babel-italian
             csquotes
@@ -35,9 +34,8 @@ jobs:
             pgf
             pgfplots
             tikz
-
-      - name: Rename PDF
-        run: mv build/main.pdf build/appunti-meccanica-quantistica.pdf
+          post_compile: |
+            mv build/main.pdf build/appunti-meccanica-quantistica.pdf
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
