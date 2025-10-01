@@ -19,9 +19,8 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          latexmk_shell_escape: false
-          latexmk_args: -interaction=nonstopmode -halt-on-error -outdir=build
-          extra_texlive_packages: >-
+          latexmk_output_directory: build
+          extra_texlive_packages: |
             latexmk
             babel-italian
             csquotes
@@ -37,8 +36,11 @@ jobs:
             pgfplots
             tikz
 
+      - name: Rename PDF
+        run: mv build/main.pdf build/appunti-meccanica-quantistica.pdf
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: appunti-pdf
-          path: build/main.pdf
+          name: appunti-meccanica-quantistica-pdf
+          path: build/appunti-meccanica-quantistica.pdf
