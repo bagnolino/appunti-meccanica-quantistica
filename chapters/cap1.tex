@@ -1,0 +1,32 @@
+% 2 Lezione del 30/09/2025
+
+
+\chapter{Postulati della Meccanica Quantistica}
+
+
+\section{Stati in MQ}
+
+\subsection{Stati classici}
+Iniziamo considerando gli stati in meccanica classica.
+Nel formalismo hamiltoniano, uno stato all'istante \(t\) 
+è determinato da: \(\left\{ q_i(t), p_i(t) \right\}\quad i = 1,\dots, N\).\\
+Dati \(\left\{ q_i(t_0),p_i(t_0) \right\}\), l'evoluzione temporale \(\left\{ q_i(t), p_i(t)\right\}\) è determinata dalle equazioni di Hamilton:
+\begin{equation}
+    \dot{q}_i= \pdv{H}{p_i } \quad \dot{p}_i = -\pdv{H}{q_i }
+\end{equation}
+
+Le osservabili sono descritte da funzioni \(f(q_i(t),p_i(t),t)\) la cui dipendenza del tempo è data:
+\[
+\dv{t} f = \sum_{i=1}^{N} \left( \pdv{f}{q_i}\dot{q}_i+ \pdv{f}{p_i}\dot{p}_i  \right)  +\pdv{f}{t}
+= \sum_{i=1}^{N} \left( \pdv{f}{q_i}\pdv{H}{p_i}-\pdv{f}{p_i}\pdv{H}{q_i} \right)+\pdv{f}{t}
+= \left\{ f, H \right\} +\pdv{f}{t}
+\]
+
+Dove nell'ultimo passaggio abbiamo definito le \textit{parentesi di Poisson}:
+\begin{equation}
+    \left\{ f,g \right\}:= \sum_{i=1}^{N}\left( \pdv{f}{q_i}\pdv{g}{p_i}-\pdv{f}{p_i}\pdv{g}{q_i} \right)    
+\end{equation}
+
+
+\subsection{Stati quantistici}
+
