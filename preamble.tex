@@ -56,13 +56,22 @@
 % Teoremi (sposta in sty/ambiente-teoremi.sty se vuoi)
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+
+%teoremi unici
+\newtheorem*{postulato1}{Postulato degli stati}
+\newtheorem*{postulato2}{Postulato delle osservabili}
+
 \theoremstyle{definition}
 \newtheorem{example}{Esempio}
 \newtheorem{definition}{Definizione}
+\newtheorem*{attention}{Attenzione!}
 \theoremstyle{remark}
 \newtheorem*{remark}{Osservazione}
+
 
 
 % Comandi utili
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
+
+\renewcommand{\ip}[2]{\langle #1, #2 \rangle}

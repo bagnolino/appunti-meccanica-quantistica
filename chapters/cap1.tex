@@ -9,7 +9,7 @@
 \subsection{Stati classici}
 Iniziamo considerando gli stati in meccanica classica.
 Nel formalismo hamiltoniano, uno stato all'istante \(t\) 
-è determinato da: \(\left\{ q_i(t), p_i(t) \right\}\quad i = 1,\dots, N\).\\
+è determinato da: \(\left\{ q_i(t), p_i(t) \right\}\quad i = 1,\dots, N\) .\\
 Dati \(\left\{ q_i(t_0),p_i(t_0) \right\}\), l'evoluzione temporale \(\left\{ q_i(t), p_i(t)\right\}\) è determinata dalle equazioni di Hamilton:
 \begin{equation}
     \dot{q}_i= \pdv{H}{p_i } \quad \dot{p}_i = -\pdv{H}{q_i }
@@ -27,6 +27,344 @@ Dove nell'ultimo passaggio abbiamo definito le \textit{parentesi di Poisson}:
     \left\{ f,g \right\}:= \sum_{i=1}^{N}\left( \pdv{f}{q_i}\pdv{g}{p_i}-\pdv{f}{p_i}\pdv{g}{q_i} \right)    
 \end{equation}
 
+\begin{remark}
+    Dato \(q(t), p(t)\) le osservabili $f$ sono ben definite.
+\end{remark}
+
 
 \subsection{Stati quantistici}
+In meccanica quantistica, lo stato \(\Sigma\) da solo informazione sulla distribuzione di probabilità.
+
+\begin{definition}
+    Definiamo \textit{stato puro}, lo stato che contiene tutta l'informazione disponibile su un sistema.
+    Altrimenti si parla di \textit{stati misti}.
+\end{definition}
+Per ora ci limiteremo agli stati puri.
+
+\begin{example}
+    \textbf{Particella senza spin in 1-dim inifinita}\\
+    Come stato \(\Sigma\) in questo caso consideriamo la funzione d'onda \(\Psi(x)\) . \\
+    La probabilità di trovare la particella tra  \(x\)  e  \(x+\dd{x}\)  è  \(\dd{P_\Sigma}(x)= \rho_\Sigma(x)\dd{x}\,\), 
+    per la quale vale la \textbf{legge di Born}: \(\rho_\Sigma\propto \abs{\Psi(x)}^2\) .
+
+    Essendo \(\rho_\Sigma\) una densità di probabilità deve valere: \(\rho_\Sigma \geq 0 \) e \(\int_\mathbb{R} \rho_\Sigma(x) \dd{x}= 1\), otteniamo dunque:
+    \begin{equation}
+        \rho_\Sigma(x) = \frac{\abs{\Psi(x)}^2}{\norm{\Psi}^2} 
+    \end{equation}
+    dove abbiamo definito \(\norm{\Psi}^2 = \int_\mathbb{R}\abs{\Psi}^2 \dd{x}\) .
+
+    Questa condizione pone dei limiti rilevanti al tipo di funzioni a cui può appartenere \(\Psi(x)\):
+    \begin{enumerate}
+        \item Non può essere identicamente nulla: \(\Psi(x)= 0 \;\forall \, x\) .
+        \item Deve essere integrabile: \(\int_\mathbb{R} \abs{\Psi(x)}^2 \dd{x} < + \infty \implies \Psi(x) \in L_2(\mathbb{R}, \dd{x})\)
+        \item Funzioni d'onda che differiscono per uno scalare rappresentano la stessa densità di probabilità.
+    \end{enumerate}
+    
+    \begin{remark}
+        \(\Psi(x)\) è un vettore in uno spazio di Hilbert.
+    \end{remark}
+\end{example}
+
+
+\subsection{Richiami su spazi di Hilbert}
+Si dice \textit{spazio di Hilbert} \(\mathcal{H}\), uno spazio vettoriale su \(\mathbb{C}\) dotato di prodotto scalare e completo, 
+che ha le seguenti proprietà \(\forall \,\psi,\chi\):
+\begin{itemize}
+    \item \( \ip{\psi}{\chi} \in \mathbb{C}\)
+    \item \(\ip{\psi}{a\chi_1+c\chi_2}= a\ip{\psi}{\chi_1}+b\ip{\psi}{\chi_2}\)
+    \item \(\ip{\psi}{\chi}= \overline{\ip{\chi}{\psi}}\)
+    \item \(\ip{\psi}\geq 0\quad \forall \,\psi\)
+\end{itemize}
+
+Definiamo inoltre la \textit{norma} \(\norm{\psi}: = \sqrt{\ip{\psi}{\psi} }\)
+
+\begin{example}
+    Sono spazi di Hilbert:
+    \begin{itemize}
+        \item \(\mathcal{H}= L_2(\mathbb{R},\dd{x})\) con prodotto scalare \(\ip{\psi}{\chi}= \int_{\mathbb{R}} \overline{\psi(x)}\chi(x)\dd{x}\)
+        \item \(\mathcal{H}= \mathbb{C}^n\) con prodotto scalare \(\ip{u}{v}= \sum_{k=1}^{n} u_k^* v_k\)
+    \end{itemize}
+\end{example}
+
+Per un qualsiasi spazio di Hilbert \(\mathcal{H}\) vale la \textbf{disuguaglianza di Schwarz}:
+\begin{equation}
+    \abs{\ip{\psi}{\chi}}\leq \norm{\psi}\norm{\chi}
+\end{equation}
+
+Inoltre definiamo:
+\begin{definition}
+    Uno spazio di Hilbert \(\mathcal{H}\) si dice \textit{separabile} se e solo se \(\exists \, S \subseteq \mathcal{H}\) numerabile e \(\overline{S}= \mathcal{H}\).
+\end{definition}
+\begin{definition}
+    Per ogni spazio di Hilbert \(\mathcal{H}\) si definisce lo \textit{spazio duale} \(\mathcal{H}^* \):
+    \[
+    \mathcal{H}^*= \left\{ \text{funzionali lineari }\phi: D_\phi = \mathcal{H}\to \mathbb{C} \text{ continui}\right\}
+    \]
+\end{definition}
+\begin{definition}
+    Un funzionale lineare \(\phi\) è \textit{continuo} se data una successione \(\psi_n \overset{\mathcal{H}}{\to} \psi\) si ha \(\phi(\psi_n)\to \phi(\psi)\) .
+    Un funzionale è continuo se e solo se è \textit{limitato}, cioè se \(\exists\, M> 0 : \abs{\phi(\psi)} \leq M \norm{\psi}\) .
+\end{definition}
+
+
+\begin{example}
+    Fissato \(\psi\in \mathcal{H}\) esiste un \(\phi_\psi \in \mathcal{H}^*\) dato da:
+    \begin{equation}
+        \xi\mapsto \phi_\psi(\chi):= \ip{\psi}{\chi}
+    \end{equation}
+    Si dimostra per il \textbf{teorema di rappresentazione di Riesz} che tutti i \(\phi \in \mathcal{H}^*\) si ottengono in questo modo.
+
+    \begin{remark}
+        Anche \(\mathcal{H}^*\) è spazio di Hilbert con prodotto scalare:
+        \[
+        \ip{\phi_\psi}{\phi_\chi}_{\mathcal{H}^*}:= \overline{\ip{\psi}{\chi}_\mathcal{H}}= \ip{\chi}{\psi}_\mathcal{H}
+        \]
+    \end{remark}
+\end{example}
+
+
+\subsubsection{Notazione di Dirac}
+Rappresentiamo i vettori \(\psi \in \mathcal{H}\) come \textit{ket} \(\ket{\psi}\) , 
+invece i funzionali \(\phi\in \mathcal{H}^*\) come \textit{bra} \(\bra{\phi}\) .
+C'è una corrispondenza biunivoca di dualità tra il ket \(\ket{\psi}\in \mathcal{H}\) e il bra \(\bra{\psi} \in \mathcal{H}^*\).
+Con \(\braket{\psi}{\chi}\) indichiamo il funzionale \(\bra{\psi}\) appliicato al vettore \(\ket{\chi}\)
+che equivale al prodotto scalare tra i vettori \(\ket{\psi}\) e \(\ket{\chi}\) .
+\begin{attention}
+    I ket si scompongono linearmente, invece i bra antilinearmente:
+    \[
+    \ket{a\psi_1+b\psi_2}= a\ket{\psi_1}+ b\ket{\psi_2} \iff \bra{a\psi_1+b\psi_2}= a^*\bra{\psi_1}+ b^* \bra{\psi_2}
+    \]
+\end{attention}
+
+\begin{example}
+    \[
+    \mathcal{H}= \mathbb{C}^n   \quad \ket{u}= \begin{pmatrix}
+        u_1\\\vdots \\ u_n  
+    \end{pmatrix}
+    \quad \bra{u}= \begin{pmatrix}
+        u_1 & \dots & u_n
+    \end{pmatrix}
+    \]
+\end{example}
+
+
+
+\begin{theorem}
+    \(\mathcal{H} \) spazio di Hilbert separabile \(\implies  \;\exists\,\) base ortonormale
+    \(\left\{ \ket{n} \right\}_{n \in \mathbb{N}}\)
+\end{theorem}
+Inoltre per \(\forall \ket{\psi} \in \mathcal{H}\) è possibile la scomposizione:
+\(\ket{\psi}= \sum_{n=1}^{\infty}c_n\ket{n}\) con \(c_n = \braket{n}{\psi}\) .
+Da cui notiamo \(\ket{\psi}= \sum_{n=1}^{\infty}\ket{n}\braket{n}{\psi} \implies \mathbb{I}_n= \sum_{i=1}^{\infty} \dyad{n}{n}\)
+detta \textbf{relazione di completezza}.
+
+\begin{example}
+    \[
+    \braket{\psi}{\chi}= \matrixel{\psi}{\mathbb{I}}{\chi}=
+    \sum_{n=1}^{\infty} \braket{\psi}{n}\braket{n}{\chi}  = \sum_{n=1}^{\infty} a^*_n b_n
+    \]
+    dove si è considerato \(\ket{\psi}= \sum_{n=1}^{\infty}a_n \ket{n} \,, 
+    \, \ket{\chi}= \sum_{n=1}^{\infty}b_n \ket{n}\)
+\end{example}
+
+\begin{example}
+    \[
+    \norm{\psi}^2= \braket{\psi}= \sum_{n=1}^{\infty} \braket{\psi}{n}\braket{n}{\psi}=
+    \sum_{n=1}^{\infty}c^*_n c_n    = \sum_{n=1}^{\infty} \abs{c_n}^2   
+    \]
+\end{example}
+
+
+\subsection{Rappresentazione x e p}
+Consideriamo una funzione d'onda \(\psi(x) \in L_2(\mathbb{R}, \dd{x})\),
+la decompongo in onde monocromatiche \(e^{ikx}\) e considero la \textbf{legge di Broglie}: \(\frac{2\pi}{\lambda}= k = \frac{p}{\hbar}\), otteniamo:
+\[
+\psi(x)= \frac{1}{\sqrt{2\pi\hbar}}\int_{\mathbb{R}} \dd{p} e^{i\frac{px}{\hbar}} \tilde{\psi}(p) = \mathcal{F}^{-1}[\tilde{\psi}(p)](x)
+\]
+\[
+\tilde{\psi}(p)= \frac{1}{\sqrt{2\pi\hbar}}\int_{\mathbb{R}} \dd{x} e^{-i\frac{px}{\hbar}} \psi(x)= \mathcal{F}[\psi(x)](p)
+\]
+La densità di probabilità tra \(p\) e \(p +\dd{p}\) è \(\rho_\Sigma= \frac{\abs{\tilde{\psi}(p)}^2}{\norm{\tilde{psi}}^2}\).
+\begin{theorem}
+    \textbf{Plancherel}
+    \[
+    \norm{\tilde{\psi}}^2= \int_{\mathbb{R}} \dd{p} \abs{\tilde{\psi}(p)}^2= \int_{\mathbb{R}} \dd{x} \abs{\psi(x)}^2 = \norm{\psi}^2 <\infty
+    \]
+\end{theorem}
+Dunque, \(\tilde{\psi}(p)\) appartiene a \(L_2(\mathbb{R},\dd{p})\) .
+
+\begin{definition}
+    \(\psi(x)\) si dice \textit{rappresentazione} \(x\) dello stato, mentre
+    \(\tilde{\psi}(p)\) si dice \textit{rappresentazione} \(p\) dello stato.
+\end{definition}
+
+\begin{theorem}
+    Tutti gli spazi di Hilbert della stessa dimensione sono isomorfi tra di loro.
+\end{theorem}
+
+\begin{example}
+    Se \(\operatorname{dim} \mathcal{H} < \infty \implies \mathcal{H}\simeq \mathbb{C}^n\),invece
+    se \(\operatorname{dim} \mathcal{H} = \infty \implies \mathcal{H} \simeq \ell_2\) .\\
+    Dato l'isomorfismo \(L_2(\mathbb{R},\dd{x})\simeq \ell_2\) posso rappresentare una funzione \(\psi(x)\) come un vettore \(\ket{\psi}\in \ell_2\) .
+\end{example}
+
+\begin{definition}
+    Definisco il \textit{raggio vettore} \([\Psi]\) come l'insieme dei vettori che rappresentano lo stesso stato:
+    \[
+    [\Psi ]= \big\{ \alpha\ket{\Psi}, \alpha \in \mathbb{C} \setminus \left\{ 0 \right\} \big\}
+    \]
+\end{definition}
+
+\begin{postulato1}
+    Ogni sistema quantistico \(S\) può essere associato a uno spazio di Hilbert \(\mathcal{H}\), 
+    mentre ogni stato puro \(\Sigma \in S\) è associato a un raggio vettore \([\Psi ]\in \mathcal{H}\) .
+\end{postulato1}
+
+%3 Lezione del 02/10/2025
+
+\begin{example}
+    \(\mathcal{H}= \mathbb{C}^3 \quad e_1= \begin{pmatrix}
+        1   & 0 & 0
+    \end{pmatrix}\quad  \Psi_1= (e_2-e_1)\,,\; \Psi_2= \frac{1}{\sqrt{2}}\left( e_1-e_2 \right)\,,\; \Psi_3 = i(e_1+e_2)\)
+    tra queste tre funzioni d'onda \(\Psi_1 \) e \( \Psi_2 \) rappresentano lo stesso stato.
+\end{example}
+
+
+\subsection{Basi generalizzate}
+
+Consideriamo il nostro spazio di Hilbert \(\mathcal{H} = L_2(\mathbb{R}, \dd{x})\), 
+possiamo quindi rappresentare le nostra funzione d'onda \(\Psi(x)\) come vettore \(\ket{\Psi}\); 
+vogliamo trovare una base ortonormale \(\left\{ \ket{n} \right\}_{n \in \mathbb{N}} \equiv \left\{ e_n(x) \right\}_{n \in \mathbb{N}}\) 
+per la quale valga:
+\[
+    \ket{\Psi}= \sum_{n= 1}^{\infty} \ket{n}\braket{n}{\Psi} \quad \Psi(x)= \sum_{n=1}^{\infty}c_n e_n(x)
+    \quad c_n = \braket{n}{\Psi}= \int_{\mathbb{R}} \overline{e_n}(x)\Psi(x)\dd{x}
+\]
+
+La scomposizione in onde monocromatiche è una generalizzazione di questo concetto,
+possiamo infatti considerare la \textit{base generalizzata} \(\left\{ \ket{p} \right\}_{p \in \mathbb{R}}\equiv \left\{ e_p(x) = \frac{1}{\sqrt{2\pi\hbar}} e^{i\frac{px}{\hbar}} \right\}_{p \in \mathbb{R}}\) ,
+per la quale vale:
+\begin{equation*}
+    \Psi(x)= \int_{\mathbb{R}} \dd{p} \frac{1}{\sqrt{2\pi\hbar}} e^{i\frac{p}{\hbar}x}\tilde{\Psi}(p) \quad 
+    \tilde{\Psi}(p)= \braket{p}{\Psi} = \int_\mathbb{R} \dd{x} \frac{1}{\sqrt{2\pi\hbar}} e^{-i\frac{p}{\hbar}x}\Psi(x)
+\end{equation*}
+\begin{equation}
+    \implies \ket{\Psi}= \int_\mathbb{R} \ket{p} \braket{p}{\Psi}
+\end{equation}
+
+\begin{attention}
+    \(\ket{p} \notin L_2(\mathbb{R},\dd{x})\), i \(\ket{p}\) non possono rappresentare stati fisici del sistema.
+\end{attention}
+
+Si chiede, però,  che \(\ket{p} \in S^*(\mathbb{R})\).\\
+Se invece di basi a momento fissato, scelgo una base a posizione fissa del tipo 
+\(\left\{ \ket{x_0} \right\}_{x_0 \in\mathbb{R}}\equiv \left\{\delta_{x_0}(x)= \delta(x-x_0)\right\}_{x_0 \in \mathbb{R}}\):
+
+\begin{equation*}
+    \ket{\Psi}= \int_\mathbb{R}\dd{x_0} \ket{x_0}\braket{x_0}{\Psi} \quad   
+    \braket{x_0}{\Psi} = \int_\mathbb{R} \overline{\delta_{x_0}}(x) \Psi(x)= \Psi(x_0)
+\end{equation*}
+\begin{equation}
+    \implies \Psi(x)= \int_\mathbb{R} \dd{x_0} \delta_{x_0}(x)\Psi(x_0)
+\end{equation}
+
+Vale, inoltre, la \textit{relazione di completezza generalizzata}: 
+\begin{equation}
+    \int \dd{x_0} \dyad{x_0}{x_0}= \mathbf{1}_\mathcal{H} = \int \dd{p} \dyad{p}{p}
+\end{equation}
+
+Le funzioni d'onda sono i coefficienti di \(\ket{\Psi}\) rispetto a una particolare base:
+\begin{equation}
+    \Psi(x)= \braket{x}{\Psi} \qquad \tilde{\Psi}(p) = \braket{p}{\Psi}
+\end{equation}
+
+
+\subsubsection{Nota agli spazi delle funzioni}
+Consideriamo \(S(\mathbb{R})\) spazio di Schwarz e \(S^*(\mathbb{R})\) spazio delle distribuzioni temperate,
+vale \(S(\mathbb{R})\subseteq L_2(\mathbb{R})\subseteq S^*(\mathbb{R})\) .
+Consideriamo una funzione di test \(\psi(x) \in S(\mathbb{R})\) e una distribuzione \(F(x) \in S^*(\mathbb{R})\):
+\[
+    F(x)(\psi) = \int_\mathbb{R} F(x) \psi(x) \dd{x} \quad \braket{F(x)}{\psi} = \int_\mathbb{R}\overline{F(x)} \psi(x) \dd{x} = \overline{F(x)} (\psi)
+\]
+\begin{attention}
+    L'integrazione è puramente formale se \(F(x)\) è una distribuzione non regolare.
+\end{attention}
+In fisica, possiamo usare anche i ket che appartengono a \(S^*(\mathbb{R})\), per i quali vale:
+\[
+    \braket{\psi}{F(x)}= \overline{\braket{F(x)}{\psi}} 0 \int_\mathbb{R} F(x) \psi (x) \dd{x} = F(x) (\overline{\psi})
+\]
+
+Se \(\Psi(x) \in L_2(\mathbb{R}, \dd{x})\), \(\exists \, \Psi_n \in S(\mathbb{R})\) tale che \(\norm{\Psi-\Psi_n}_{L_2}\overset{n \to \infty}{\longrightarrow} 0\); 
+si dimostra che \(\tilde{\Psi}(p)= \braket{p}{\Psi} : = \lim_{n\to \infty}\braket{p}{\Psi_n}\) converfe per quasi \(\forall p \in \mathbb{R}\)
+
+
+\section{Osservabili}
+\begin{definition}
+    Un \textit{osservabile} \(\mathcal{A}\) è una quantità fisica \textbf{misurabile } con operazioni eseguibili nel sistema quantistico \(S\) .
+\end{definition}
+Il risultato della misura di un osservabile deve essere sempre \textbf{reale}.
+
+\begin{definition}
+    Definiamo lo \textit{spettro di } \(\mathcal{A}\): \(\sigma(\mathcal{A})\) come l'insieme dei valori ottenibili da una
+    misura di \(\mathcal{A}\) al variare di tutti gli stati possibili di \(S\) .
+\end{definition}
+
+Lo spettro \(\sigma(\mathcal{A})\) può essere discreto, continuo o misto.
+
+\begin{definition}
+    Disponendo di \(N >> 1 \) copie del sistema \(S\) nello stesso stato \(\Sigma\), posso effettuare \(N\) misure di \(\mathcal{A}\) 
+    ottenendo risultati \(a_1,a_2,\dots, a_N \in \sigma(\mathcal{A})\). Definisco:
+    \begin{itemize}
+        \item Il \textit{valor medio } di \(\mathcal{A}\) nello stato \(\Sigma\) come: \[
+            \expval{\mathcal{A}}_\Sigma := \lim_{N\to \infty} \frac{a_1+\dots+a_N}{N}
+        \]
+        \item La \textit{fluttuazione quadratica media} di \(\mathcal{A}\) nello stato \(\Sigma\) attorno a \(\hat{a} \in \mathbb{R}\) come: \[
+            \left( \Delta \mathcal{A} \right)_{\hat{a}, \Sigma}:= \sqrt{\expval{\mathcal{A}- \hat{a}}_\Sigma}= \sqrt{\lim_{N \to \infty} \frac{(a_1-\hat{a})^2+ \dots+ (a_N-\hat{a})^2}{N}} 
+        \] Di solito si considera \(\hat{a}= \expval{\mathcal{A}}_\Sigma\); \(\left( \Delta\mathcal{A} \right)_{\expval{\mathcal{A}, \Sigma}}\) rappresenta l'incertezza della misura di \(\mathcal{A}\) nello stato \(\Sigma\) .
+    \end{itemize}
+\end{definition}
+
+E' importante notare che nel caso discreto: \[
+    \expval{\mathcal{A}}_\Sigma = \lim_{N\to \infty} \sum_{a \in \sigma(\mathcal{A})} a \frac{m(a)}{N} = \sum_{a \in \sigma(\mathcal{A})} a P_\Sigma(a)
+\]
+che si generalizza nel caso di uno spettro misto come:
+\[
+    \expval{A}_\Sigma = \sum_{a \in \sigma_d(\mathcal{A})} a P_\Sigma(a) + \int_{a \in \sigma_c(\mathcal{A}) } \dd{a} a \rho_\Sigma(a)
+\]
+
+\begin{example}
+    In meccanica classica, dato un osservabile \(f(q_i,p_i)\) per uno stato puro \(\Sigma\): 
+    \(\expval{f}= f(q_i, p_i)\) e \(\left( \Delta f \right)_{(q_i,p_i) \expval{f}}=0\) .
+\end{example}
+
+\begin{example}
+    In meccanica quantistica, consideriamo una particella senza spin 1-dim, il suo stato è descritto da una funzione d'onda \(\Psi(x) \in L_2(\mathbb{R}, \dd{x})\).
+    Vogliamo misurare l'osservabile posizione \(\mathcal{X}\), il cui spettro \(\sigma(\mathcal{X}) = \mathbb{R}\) :
+    \[
+        \expval{\mathcal{X}}_{\Sigma= [\Psi]} = \int_{\sigma(\mathcal{X})= \mathbb{R}} x\rho_\Sigma(x) \dd{x} = \int_{\mathbb{R}} x \frac{\abs{\Psi(x)}^2}{\norm{\Psi}^2} \dd{x}= 
+        \frac{1}{\norm{\Psi}^2}= \int_{\mathbb{R}} \Psi^*(x) x \Psi(x) \dd{x}
+    \]
+    Possiamo definire l'operatore posizione \(X: (X\Psi)(x)= x\Psi(x)\) e ottenere:
+    \begin{equation}
+        \implies \expval{\mathcal{X}}_{\Sigma= [\Psi]} = \frac{\expval{\mathcal{X}}{\Psi}}{\norm{\Psi}^2}
+    \end{equation}
+    Alla stessa maniera per l'osservabile momento \(\mathcal{P}\), il cui spettro \(\sigma(\mathcal{P})= \mathbb{R}\),
+    possiamo definire l'operatore momento \(P: (P\Psi)(p)= p\Psi(p)\) e ottenere:
+    \begin{equation}
+        \expval{\mathcal{P}}_{\Sigma} = \int_{\mathbb{R}} \dd{p} \frac{\abs{\tilde{\Psi}(p)}^2}{\norm{\Psi}^2}= \frac{\expval{\mathcal{P}}{\Psi}}{\norm{\Psi}^2}
+    \end{equation}
+
+\end{example}
+
+\begin{postulato2}
+    Ad ogni osservabile \(\mathcal{A}\) di un sistema quantistico \(S\) è associato un operatore \(A: D(A) \subseteq \mathcal{H} \to \mathcal{H}\) tale che sia:
+    \textbf{lineare}, \textbf{densamente definito} e \textbf{autoaggiunto}. \\
+    Il valore medio di \(\mathcal{A}\) nello stato \(\Sigma = [\Psi]\) è:
+    \begin{equation}
+        \expval{\mathcal{A}}_\Sigma = \frac{\expval{A}{\Psi}}{\norm{\Psi}^2}
+    \end{equation}
+\end{postulato2}
+
+
+
 
