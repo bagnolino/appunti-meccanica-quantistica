@@ -184,7 +184,7 @@ la decompongo in onde monocromatiche \(e^{ikx}\) e considero la \textbf{legge di
 \[
 \tilde{\psi}(p)= \frac{1}{\sqrt{2\pi\hbar}}\int_{\mathbb{R}} \dd{x} e^{-i\frac{px}{\hbar}} \psi(x)= \mathcal{F}[\psi(x)](p)
 \]
-La densità di probabilità tra \(p\) e \(p +\dd{p}\) è \(\rho_\Sigma= \frac{\abs{\tilde{\psi}(p)}^2}{\norm{\tilde{psi}}^2}\).
+La densità di probabilità tra \(p\) e \(p +\dd{p}\) è \(\rho_\Sigma= \frac{\abs{\tilde{\psi}(p)}^2}{\norm{\tilde{\psi}}^2}\).
 \begin{theorem}
     \textbf{Plancherel}
     \[
@@ -300,9 +300,9 @@ si dimostra che \(\tilde{\Psi}(p)= \braket{p}{\Psi} : = \lim_{n\to \infty}\brake
 
 \section{Osservabili}
 \begin{definition}
-    Un \textit{osservabile} \(\mathcal{A}\) è una quantità fisica \textbf{misurabile } con operazioni eseguibili nel sistema quantistico \(S\) .
+    Un'\textit{osservabile} \(\mathcal{A}\) è una quantità fisica \textbf{misurabile } con operazioni eseguibili nel sistema quantistico \(S\) .
 \end{definition}
-Il risultato della misura di un osservabile deve essere sempre \textbf{reale}.
+Il risultato della misura di un'osservabile deve essere sempre \textbf{reale}.
 
 \begin{definition}
     Definiamo lo \textit{spettro di } \(\mathcal{A}\): \(\sigma(\mathcal{A})\) come l'insieme dei valori ottenibili da una
@@ -333,7 +333,7 @@ che si generalizza nel caso di uno spettro misto come:
 \]
 
 \begin{example}
-    In meccanica classica, dato un osservabile \(f(q_i,p_i)\) per uno stato puro \(\Sigma\): 
+    In meccanica classica, dato un'osservabile \(f(q_i,p_i)\) per uno stato puro \(\Sigma\): 
     \(\expval{f}= f(q_i, p_i)\) e \(\left( \Delta f \right)_{(q_i,p_i) \expval{f}}=0\) .
 \end{example}
 
@@ -361,10 +361,206 @@ che si generalizza nel caso di uno spettro misto come:
     \textbf{lineare}, \textbf{densamente definito} e \textbf{autoaggiunto}. \\
     Il valore medio di \(\mathcal{A}\) nello stato \(\Sigma = [\Psi]\) è:
     \begin{equation}
-        \expval{\mathcal{A}}_\Sigma = \frac{\expval{A}{\Psi}}{\norm{\Psi}^2}
+        \expval{\mathcal{A}}_\Sigma = \frac{\expval{A}{\Psi}}{\norm{\Psi}^2} =: \expval{A}_\Psi
     \end{equation}
 \end{postulato2}
 
 
+%4 Lezione del 06/10/2025
+
+\begin{example}
+    \textbf{Operatore momento P}\\
+    Associa al ket \(\ket{\Psi}\mapsto P\ket{\Psi}\), in rappresentazione \(p\) 
+    abbiamo \(\braket{p}{\Psi}= \tilde{\Psi}(p)\mapsto \matrixel{p}{P}{\Psi}= p\tilde{\Psi}(p)\).
+    Invece in rappresentazione \(x \), otteniamo:
+    \[
+        \Psi(x) = \braket{x}{\Psi} = \int_\mathbb{R} \dd{p} \braket{x}{p} \braket{p}{\Psi}= 
+        \int_\mathbb{R} \dd{p} \frac{1}{\sqrt{2\pi \hbar}} e^{i\frac{p}{\hbar}x} \tilde{\Psi}(p)= 
+        \mathcal{F}^{-1}[\tilde{\Psi}(p)](x)
+    \]
+    \[
+        (P\Psi)(x)= \matrixel{x}{P}{\Psi}=\int_\mathbb{R} \dd{p} \braket{x}{p} \bra{p}P\ket{\Psi}= 
+        \int_\mathbb{R} \dd{p} \frac{1}{\sqrt{2\pi \hbar}} e^{i\frac{p}{\hbar}x}p \tilde{\Psi}(p)= 
+    \]
+    \[
+        =\mathcal{F}^{-1}[p\tilde{\Psi}(p)](x)= -i\hbar \dv{x} \Psi(x) \implies P = -i\hbar \dv{x}
+    \]
+    Euivalentemente si dimostra che l'operatore \(X\) in rappresentazione \(p\): \(X = i\hbar \dv{p}\)
+\end{example}
+
+
+\subsection[Operatori lineari]{Operatori lineari su \(\mathcal{H}\)}
+
+Data una coppia \((A, D_A)\), dove \(A: D_A \subseteq \mathcal{H}\to \mathcal{H}\) è un operatore lineare e \(D_A\) il suo dominio, 
+vale la linearità: \(A(a\ket{\Psi_1}+ b\ket{\Psi_2})= aA\ket{\Psi_1}+bA\ket{\Psi_2}\) .
+Si dice, inoltre, che è \textit{densamente definito} se \(\overline{D_A}= \mathcal{H}\) .
+
+\begin{example}
+    \(\mathcal{H}= L_2(\mathbb{R},\dd{x})\), per l'operatore posizione \((X\Psi)(x)= x\Psi(x)\) 
+    non posso prendere come dominio tutto \(\mathcal{H}\), perché anche se \(\Psi(x) \in L_2(\mathbb{R},\dd{x})\) 
+    non è detto che \(x\Psi(x) \in L_2(\mathbb{R}, \dd{x})\). 
+    Ad esempio \(\Psi(x)= \frac{1}{\sqrt{x^2+1}} \in L_2(\mathbb{R},\dd{x})\), ma \(x\Psi(x) \notin  L_2(\mathbb{R}, \dd{x})\) .\\
+    Di conseguenza scelgo come dominio \(D_x=  \left\{\Psi(x) \in L_2(\mathbb{R}, \dd{x}) : x \Psi(x) \in L_2(\mathbb{R}, \dd{x})  \right\}\) .
+\end{example}
+
+Un operatore è limitato se \(\exists M >0 \) t.c. \(\norm{A\Psi} \leq M \norm{\Psi}\quad \forall\, \Psi \in D_A\)
+ed è limitato se e solo se è anche continuo, cioè se \(\forall\, \Psi_n \in D_A\to \Psi \in D_A, \ A\Psi_n \to A \Psi\) .
+
+Se \(A\) è continuo e densamente definito allora posso estendere il dominio a tutto \(\mathcal{H}\) ed è continuo: \(A : \mathcal{H}\to \mathcal{H}\) . \\
+Un operatore limitato corrispone a uno spettro di un'osservabile limitato.
+Se \(\operatorname{dim}\mathcal{H} < \infty\), tutti gli operatori sono limitati. 
+
+\begin{definition}
+    Definiamo l'\textit{aggiunto} di un operatore \(A: \mathcal{H}\to \mathcal{H}\) limitato, l'operatore:
+    \begin{equation}
+        A^\dagger: \mathcal{H}\to \mathcal{H} \text{ limitato t.c. } 
+        \forall \,\Psi, \chi \in \mathcal{H}\ \braket{\Psi}{A\chi} = \braket{A^\dagger\Psi}{\chi}
+    \end{equation}
+    Dato un operatore limitato, il suo aggiunto esiste ed è unico.
+\end{definition}
+
+\textbf{Proprietà aggiunto}:
+\begin{itemize}
+    \item \((aA+ bB)^\dagger= a^*A^\dagger + b^*B^\dagger \)
+    \item \((AB)^\dagger= B^\dagger A^\dagger\)
+    \item \((A^\dagger)^\dagger\)
+\end{itemize}
+
+
+\subsection{Rappresentazione matriciale}
+E' possibile e comodo rappresentare gli operatori lineari come matrici:
+data una base ortonormale \(\left\{ \ket{n}_{n \in \mathbb{N}} \right\}\),
+ogni ket è possibile rappresentarlo come \(\ket{\Psi}= \sum_n \ket{n}\braket{n}{\Psi}= \sum_n c_n \ket{n}\), con l'operatore:
+\[
+    A\ket{\Psi}= \sum_n \ket{n} \bra{n}A\ket{\Psi}= \sum_n d_n \ket{n}
+\]
+\[
+    d_n= \bra{n}A\ket{\Psi} = \sum_m \bra{n} A \ket{m}\bra{m}\ket{\Psi}= \sum_m A_{nm}c_m 
+\]
+\[
+    \begin{pmatrix}
+        d_1\\d_2\\ \vdots\\d_n
+    \end{pmatrix}= 
+    \begin{pmatrix}
+        A_{11} & A_{12} & \dots & A_{1n} \\
+        A_{21} & \ddots & &\vdots\\
+        \vdots& &\ddots & \vdots \\
+        A_{n1} & \dots & \dots & A_{nn}
+    \end{pmatrix}
+    \begin{pmatrix}
+        c_1 \\
+        c_2\\
+        \vdots\\
+        c_n 
+    \end{pmatrix}
+\]
+
+Similmente, la si può rappresentare come :
+\begin{equation}
+    A = \sum_{n,m} \ket{n} \bra{n}A \ket{m} \bra{m} = \sum_{n,m} \ket{n}  A_{nm} \bra{m}    
+\end{equation}
+
+\begin{example}
+    \textbf{Operatore identità}
+    \[
+        \mathbb{I}= \sum_{n,m} \ket{n}\bra{n} \mathbb{I} \ket{m}\bra{m}= \sum_{n,m} \ket{n}\delta_{nm}\bra{m}= \sum_n \ket{n}\bra{n}
+    \]
+\end{example}
+
+\begin{example}
+    \textbf{Operatori aggiunti}
+    \[
+        (A^\dagger)_{nm}= \braket{n}{A^\dagger m}= \overline{\braket{A^\dagger m}{n}}= \overline{\braket{m}{A n}}= A_{mn}^*
+    \]
+    L'aggiunto di un operatore euqivale a trasporre la matrice e cogniugare i suoi elementi.
+\end{example}
+
+\begin{definition}
+    Dato \(A: D_A \to \mathcal{H}\) densamente definito illimitato, 
+    esiste ed è unico l'operatore aggiunto \((A^\dagger, D_{A^\dagger})\):
+    \begin{equation*}
+        D_{A^\dagger} = \left\{ \chi \in \mathcal{H} :\sup_{\Psi \neq 0  \in D_A} \frac{\abs{\braket{\chi}{A\Psi}}}{\norm{\Psi}}<+\infty\right\}
+    \end{equation*} 
+    \begin{equation}
+        \braket{\chi}{A\Psi} = \braket{A^\dagger \chi}{\Psi} \ \forall\, \Psi \in D_A, \chi \in D_{A^\dagger}
+    \end{equation}
+    La condizione sul dominio serve a garantirci che il funzionale lineare \(\Phi_{A,\chi}(\Psi):= \braket{\chi}{A\Psi}\) sia limitato.
+\end{definition}
+
+
+\subsection{Proprietà degli operatori per essere osservabili}
+Ricordiamoci le tre caratteristiche che deve avere un operatore \(A\) per rappresentare un'osservabile \(\mathcal{A}\): 
+\textbf{linearità}, \textbf{densamente definito} e \textbf{autoaggiunto}. Vediamole una per una:
+
+\subsubsection{Linearità}
+Data dalla necessita che \(\expval{A}_{\Psi}= \frac{\expval{A}{\Psi}}{\norm{\Psi}^2}\) 
+deve essere invariante per trasformazioni \(\Psi\to \alpha \Psi\ (\alpha\neq 0)\) e deve sempre valere il principio di sovrapposizione per funzioni d'onda.
+
+\subsection{Densamente definito}
+
+Se abbiamo uno spettro \(\sigma(\mathcal{A})\) illimitato, non possiamo richiedere che \(D_A = \mathcal{H}\)\\
+Può essere che il mio stato \(\ket{\Psi} \notin D_A\) e dunque \(\expval{A}_{\Psi}\) e \(\expval{\Delta A}_{\Psi}\) non essere definiti; 
+è perfettamente ammissibile che ogni misura effettuata restituisca un risultato limitato, ma il cui valore medio non converga a nessun numero,
+anche per distribuzioni di probabilità ben definite.\\
+Che un operatore restituisca distribuzioni di probabilità ben definite è l'unica proprietà che ci interessa e questa è garantita da \(\overline{D_A}= \mathcal{H}\) .
+
+\subsection{Autoaggiuntezza}
+\begin{definition}
+    Un operatore \((A, D_A)\), \(\overline{D_A}= \mathcal{H}\) è \textit{hermitiano} o \textit{simmetrico} sse:
+    \begin{equation}
+        \braket{\chi}{A\Psi}   = \braket{A\chi}{\Psi} \quad \forall\, \Psi, \chi \in D_A
+    \end{equation}  
+    o equivalentemente: \(A^\dagger\chi = A\chi \quad   \forall\,\chi   \in D_A\subseteq D_{A^\dagger}\)
+\end{definition}
+\begin{definition}
+    Un operatore \((A, D_A)\), \(\overline{D_A}= \mathcal{H}\) è \textit{autoaggiunto} sse: \((A, D_A)= (A^\dagger, D_{A^\dagger})\) 
+    o equivalentemente sse è hermitiano e \(D_A= D_{A^\dagger}\)
+\end{definition}
+
+\begin{remark}
+    Se \(A \) è limitato allora \(D_A = \mathcal{H}= D_{A^\dagger}\) e quindi le definizioni di hermitiano e autoaggiunto equivalgono.
+    Spesso in testi inglesi non si fa distinzione tra i due termini.
+\end{remark}
+\begin{remark}
+    In rappresentazione matriciale un operatore è hermitiano sse \(A_{nm}= A_{mn}^*\) .
+\end{remark}
+
+Perché richiediamo che gli operatori siano hermitiani?
+\begin{theorem}
+    \begin{equation}
+        \expval{A}_{\Psi}= \frac{\expval{A}{\Psi}}{\norm{\Psi}^2} \in \mathbb{R} \ \forall\, \Psi \in D_A \iff A \text{ è hermitiano.}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Solo (\(\impliedby\)) Se \(A\) è hermitiano qualunque valor medio è reale:
+    \[
+        \braket{\Psi}{A\Psi}= \braket{A\Psi}{\Psi}= \overline{\braket{\Psi}{A\Psi}} \implies \braket{\Psi}{A\Psi} \in \mathbb{R}
+    \]
+\end{proof}
+
+Data un'osservabile \(\mathcal{A}\), consideriamo una funzione di questa osservabile \(f: \sigma(\mathcal{A})\to\mathcal{H}\rightsquigarrow f(\mathcal{A})\) . 
+Nel senso che se misuro \(\mathcal{A}\) ho ottenuto una misura anche di \(f(\mathcal{A})\), ad esempio misurando il momento ottengo una misura indiretta dell'energia cinetica.\\
+Come facciamo a essere certi che questa \(f(\mathcal{A})\) a cui è associata \(f(A)\) sia ben definita?
+\begin{example}\(\mathcal{A} = \mathcal{P}\)
+    \[
+        f(P) = P^2 = -\hbar^2\dv[2]{}{x} \ \text{ ok } \qquad f(P) = \sin(P) \ \text{ ? }
+    \]
+    Vedremo più avanti come comportarci in questi casi.
+\end{example}
+
+\begin{remark}
+    Dato uno stato \(\Sigma\to [\Psi]\) e un'osservabile \(\mathcal{A} \to A \):
+    \[
+        (\Delta A )_{\hat{a}, \Sigma} = \sqrt{\expval{(\mathcal{A}-\hat{a})^2}_\Sigma}   = \sqrt{\expval{(A-\hat{a}\mathbb{I})^2}_{\Psi}}
+    \]
+\end{remark}
+
+
+Vediamo ora come sono collegati gli osservabili agli operatori autoaggiunti,
+ad esempio, le informazioni sullo spettro di un'osservabile devono essere contenute all'interno dell'operatore \(A\).
+\begin{definition}
+    \(\Sigma\) è \textit{autostato} di \(\mathcal{A}\) relativo ad \(\hat{a}\in \mathbb{R}\) sse una misura di \(\mathcal{A}\) nello stato
+    \(\Sigma\) da con certezza il valore \(\hat{a} \in \sigma(\mathcal{A})\), cioè \(\expval{\mathcal{A}}_\Sigma = \hat{a}, \ (\Delta \mathcal{A})_{\hat{a}, \Sigma} = 0 , \ P_\Sigma(\hat{a})=1\) .
+\end{definition}
 
 
