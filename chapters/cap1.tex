@@ -496,7 +496,7 @@ Ricordiamoci le tre caratteristiche che deve avere un operatore \(A\) per rappre
 Data dalla necessita che \(\expval{A}_{\Psi}= \frac{\expval{A}{\Psi}}{\norm{\Psi}^2}\) 
 deve essere invariante per trasformazioni \(\Psi\to \alpha \Psi\ (\alpha\neq 0)\) e deve sempre valere il principio di sovrapposizione per funzioni d'onda.
 
-\subsection{Densamente definito}
+\subsubsection{Densamente definito}
 
 Se abbiamo uno spettro \(\sigma(\mathcal{A})\) illimitato, non possiamo richiedere che \(D_A = \mathcal{H}\)\\
 Può essere che il mio stato \(\ket{\Psi} \notin D_A\) e dunque \(\expval{A}_{\Psi}\) e \(\expval{\Delta A}_{\Psi}\) non essere definiti; 
@@ -504,7 +504,7 @@ Può essere che il mio stato \(\ket{\Psi} \notin D_A\) e dunque \(\expval{A}_{\P
 anche per distribuzioni di probabilità ben definite.\\
 Che un operatore restituisca distribuzioni di probabilità ben definite è l'unica proprietà che ci interessa e questa è garantita da \(\overline{D_A}= \mathcal{H}\) .
 
-\subsection{Autoaggiuntezza}
+\subsubsection{Autoaggiuntezza}
 \begin{definition}
     Un operatore \((A, D_A)\), \(\overline{D_A}= \mathcal{H}\) è \textit{hermitiano} o \textit{simmetrico} sse:
     \begin{equation}
@@ -555,12 +555,252 @@ Come facciamo a essere certi che questa \(f(\mathcal{A})\) a cui è associata \(
     \]
 \end{remark}
 
+\subsection{Spettri discreti}
 
 Vediamo ora come sono collegati gli osservabili agli operatori autoaggiunti,
 ad esempio, le informazioni sullo spettro di un'osservabile devono essere contenute all'interno dell'operatore \(A\).
 \begin{definition}
     \(\Sigma\) è \textit{autostato} di \(\mathcal{A}\) relativo ad \(\hat{a}\in \mathbb{R}\) sse una misura di \(\mathcal{A}\) nello stato
-    \(\Sigma\) da con certezza il valore \(\hat{a} \in \sigma(\mathcal{A})\), cioè \(\expval{\mathcal{A}}_\Sigma = \hat{a}, \ (\Delta \mathcal{A})_{\hat{a}, \Sigma} = 0 , \ P_\Sigma(\hat{a})=1\) .
+    \(\Sigma\) da con certezza il valore \(P_\Sigma(\hat{a})=1\) .
 \end{definition}
 
+% 5 Lezione del 08/10/2025
+
+\begin{theorem}
+    \(\Sigma\) è autostato di \(\mathcal{A}\) relativo ad \(\hat{a} \in \mathbb{R}\)   \(\iff (\Delta \mathcal{A})_{\hat{a},\Sigma}=0\)
+\end{theorem}
+\begin{proof}
+    \((\Delta \mathcal{A})_{\hat{a}, \Sigma} = \sum_{a \in \Sigma(\mathcal{A})}(a-\hat{a})^2 P_{\Sigma}(a)\) è una somma di numeri non negativi.
+    \[
+        (\Delta\mathcal{A}) = 0 \iff (a- \hat{a})^2 P_\Sigma(a)= 0 \quad \forall \, a \in \sigma(\mathcal{A})
+    \] 
+    \[
+        \iff P_\Sigma(a)= 0 \ \forall \, a \neq \hat{a}  \iff P_\Sigma(\hat{a})=1
+    \]
+\end{proof}
+
+\begin{definition}  
+    \textbf{Spettro discreto}
+    \begin{equation}
+        \sigma_d(\mathcal{A}):= \left\{ \hat{a} \in \mathbb{R} : \exists \text{ autostato } \Sigma \text{ di }\mathcal{A} \text{ relativo ad } \hat{a}\right\}
+    \end{equation}
+    
+\end{definition}
+
+Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \([\Psi]\):
+\begin{definition}
+    \(\hat{a} \in \mathbb{R}\) è \textit{autovalore} di \(A\) autoaggiunto sse \(\exists \,\Psi \neq 0 \in D_A\) tale che \((A-\hat{a})\Psi=0\). \\
+    In tal caso si dice che \(\Psi\) è autovettore di \(A\) relativo ad \(\hat{a}\) .
+    Lo spettro discreto si definisce come:
+    \[
+        \sigma_d(A)  = \left\{ \hat{a} \in \mathbb{R} : \exists\, \Psi \in D_A, \Psi \neq 0 , (A-\hat{a})\Psi =0\right\}
+    \]
+\end{definition}
+
+\begin{theorem}
+    \(\Sigma\) autostato di \(\mathcal{A}\) relativo ad \(\hat{a} \in \mathbb{R}\) sse \(\Psi\) autovettore di \(A\) relativo ad \(\hat{a} \in \mathbb{R}\) .
+\end{theorem}
+\begin{proof}
+    \[
+        (\Delta \mathcal{A})^2_{\hat{a},\Sigma}= \frac{\expval{(A-\hat{a}\mathbb{I})^2}{\Psi}}{\norm{\Psi}^2}= 
+        \frac{\braket{(A-\hat{a}\mathbb{I})\Psi}{(A-\hat{a}\mathbb{I})\Psi}}{\norm{\Psi}^2} = \frac{\norm{(A-\hat{a}\mathbb{I})\Psi}^2}{\norm{\Psi}^2}
+    \]
+    \[
+        (\Delta\mathcal{A})_{\hat{a},\Sigma} = \iff (A-\hat{a}\mathbb{I})\Psi=0 
+    \]    
+\end{proof}
+
+\begin{remark}
+    Vale dunque : \(\sigma_d(\mathcal{A})= \sigma_d(A)\) .
+\end{remark}
+
+\begin{remark}
+    Se \(\Psi_1\) e \(\Psi_2\) sono autovettori relativi ad \(\hat{a} \in \sigma_d(A)\), allora \(\alpha\Psi_1+ \beta\Psi_2\) è autovettore relativo ad \(\hat{a}\) .
+\end{remark}
+\begin{definition}
+    Per \(\forall a \in \sigma_d(A) , \; \exists\) autospazio \(\mathcal{H}_a\subseteq\mathcal{H}\) di autovettori, 
+    la cui dimensione \(d(a):= \operatorname{dim}\mathcal{A}_a\) è detta \textit{degenerazione} di \(a in \sigma_d(A)\) .\\
+    Se \(d(a)=1,\; a \) è detto \textit{non-degenere} e \(\Psi\in \mathcal{H}_a\) è unico a meno riscalamenti. Se \(d(a)>1, \; a\) è detto \textit{degenere}.
+\end{definition}
+
+\begin{theorem}
+    Se \(A\) è hermitiano, dati due autovalori \(a_1, a_2 \in \sigma_d(A)\) con \(a_1\neq a_2\) e i rispettivi autovettori 
+    \(\Psi_1 \in \mathcal{H}_{a_1}, \Psi_2 \in \mathcal{H}_{a_2}\), allora \(\braket{\Psi_1}{\Psi_2}=0\).\\
+    Cioè, autovettori relativi ad autovalori diversi sono ortogonali tra loro.
+\end{theorem}
+\begin{proof}
+    Poiché \(A\) è hermitiano, vale \(\braket{\Psi_1}{A\Psi_2}= \braket{A\Psi_1}{\Psi_2}\). Essendo 
+    \(A\Psi_1=a_1\Psi_1\) e \(A\Psi_2=a_2\Psi_2\), otteniamo
+    \[
+        \braket{\Psi_1}{A\Psi_2}= a_2\braket{\Psi_1}{\Psi_2} \qquad \text{e} \qquad
+        \braket{A\Psi_1}{\Psi_2}= a_1\braket{\Psi_1}{\Psi_2}.
+    \]
+    Sottraendo membro a membro segue \((a_2-a_1)\braket{\Psi_1}{\Psi_2}=0\). Poiché \(a_1\neq a_2\), 
+    necessariamente \(\braket{\Psi_1}{\Psi_2}=0\).
+\end{proof}
+
+\begin{remark}
+    Se \(\dim \mathcal{H} < +\infty\), il numero di autovalori distinti di \(A\) è finito e al più uguale a \(\dim \mathcal{H}\).
+    Se \(\mathcal{H}\) è separabile, allora \(\sigma_d(A)\) è al più numerabile.\\
+    Ne segue che lo spettro discreto è sempre un insieme finito oppure, se infinito, comunque numerabile.
+\end{remark}
+
+\begin{theorem}
+    {\normalfont\textbf{Decomposizione spettrale.}}
+    Se \(A\) è operatore autoaggiunto, allora \(\mathcal{H}\) ammette base ortonormale di autovettori:
+    \begin{equation}
+        \left\{ \ket{a, r} \right\}_{\substack{a \in \sigma_d(A)\\ r = 1,\dots,d(a)}}
+        \qquad
+        \mathcal{H} = \bigoplus_{a \in \sigma_d(A)} \mathcal{H}_a.
+    \end{equation}
+\end{theorem}
+
+Possiamo quindi scomporre ogni vettore nella forma:
+\[
+    \ket{\Psi} = \sum_{a \in \sigma_d(A)}  \sum_{r=1}^{d(a)} \ket{a,r}\braket{a,r}{\Psi}= \sum_{a \in \sigma_d(A)}\sum_{r=1}^{d(a)}    C_{a,r} \ket{a,r}    
+\]
+e ottenere:
+\[
+    \expval{\mathcal{A}}_{\Sigma}= \sum_{a \in \sigma(\mathcal{A})} a P_{\Sigma}(a) \quad \expval{A}_{\Psi} = \frac{\expval{A}{\Psi}}{\norm{\Psi}^2} =
+    \sum_{a \in \sigma_d(A)}\sum_{r=1}^{d(a)}\frac{\bra{\Psi}A \ket{a,r}\bra{a,r}\ket{\Psi}}{\norm{\Psi}^2} = 
+\]
+\[
+    = \sum_{a \in \sigma_d(A)} \sum_{r=1}^{d(a)}\frac{a \braket{\Psi}{a,r}\braket{a,r}{\Psi}}{\norm{\Psi}^2}=
+    \sum_{a \in \sigma_d(A)} a \sum_{r=1}^{d(a)} \frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}
+    =\sum_{a \in \sigma_d(A)} a \sum_{r=1}^{d(a)} \frac{\abs{C_{a,r}}^2}{\norm{\Psi}^2}
+\]
+\[
+    \expval{\mathcal{A}}_\Sigma = \expval{A}_\Psi \ \forall\,\Sigma  \implies P_\Sigma(a)   = \sum_{r=1}^{d(a)} \frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}=
+    \sum_{r=1}^{d(a)} \frac{\abs{C_{a,r}}^2}{\norm{\Psi}^2}
+\]
+Nel caso non degenere (\(d(a)=1\))  questa equazione si riconduce alle legge di Born: 
+\[
+    P_\Sigma(a)= \frac{\abs{\braket{a}{\Psi}}^2}{\norm{\Psi}^2}
+\]
+
+Rispetto a questa base, la rappresentazione matriciale è diagonale:
+\[
+A =
+\begin{pmatrix}
+\begin{matrix}
+    a_1& & \\
+    & \ddots &\\
+    & & a_1
+\end{matrix} &\mathbb{O}\\
+\mathbb{O} & \begin{matrix}
+    a_2& & \\
+    & \ddots &\\
+    & & \ddots
+\end{matrix} 
+\end{pmatrix},
+\qquad
+\matrixel{a',r'}{A}{a,r} = a\,\delta_{a'a}\,\delta_{r'r}.
+\]
+
+\subsection{Spettri continui}
+
+Nel caso di \(\dim \mathcal{H}= \infty\) non è detto che esista base ortonormale di autovettori per \(A\),
+se esiste allora abbiamo ancora uno spettro discreto e vale quanto detto prima, in caso contrario abbiamo uno spettro continuo.
+
+\begin{example}
+    Consideriamo, come al solito, una particella senza spin in 1 dim infinita. Esiste uno stato \(\Sigma\) con una posizione ben definita?\\
+    \(\forall\, x_0 \in \mathbb{R}, \ (\Delta \mathcal{X})_{x_0, \Sigma}\) può essere arbitrariamente piccolo, ma non potrà mai essere uguale a \(0\).
+\end{example}
+
+Cerchiamo le autovettore dell'operatore posizione \(X\) relativi a un possibile autovalore \(x_0\):
+\[
+    (X-x_0)\Psi(x)= 0 \iff (x-x_0)\Psi(x)= 0 \ \forall x \implies \Psi(x) = 0 \ \forall x \neq x_0
+\]
+Ma \(\Psi= 0\) non è autovettore , quindi nessun \(x_0 \in \mathbb{R}\) è autovalore e nessuna \(\Psi \in D_X\subseteq L_2(\mathbb{R},\dd{x})\) è autofunzione.
+
+Lo stesso vale per l'operatore momento \(P\):
+\[
+    (P-p)\Psi(x)=0 \iff ( -i\hbar\dv{x} - p ) \Psi(x) = \iff \Psi(x)= (cost)e^{i\frac{p}{\hbar}x} \notin L_2(\mathbb{R})
+\]
+
+Per trovare soluzioni dobbiamo estendere il dominio da \(L_2(\mathbb{R},\dd{x})\) allo spazio delle ditribuzioni \(S^*(\mathbb{R})\), 
+dunque l'operatore posizione ora sarà: 
+\[
+    X: S^*(\mathbb{R})\to S^*(\mathbb{R}) \ \ \phi(x)\mapsto x\phi(x)
+\]
+Risolviamo ora l'equazioni agli autovalori per \(\Psi(x) \in S^*(\mathbb{R}), \Psi\neq 0 \):
+\begin{equation}
+    (X-x_0)\Psi(x)= 0 \iff \Psi(x)= \delta(x-x_0) = : \ket{x_0} \in S^*(\mathbb{R})
+\end{equation}
+
+La soluzione esiste \(\forall\, x_0 \in \mathbb{R}\) ed è unica a meno di riscalamenti dunque \(x_0\) è non degenere.
+Chiamiamo gli \(x_0 \in \mathbb{R}\) \textit{autovalori generalizzati} di \(X\) e  i \(\ket{x_0}\)  \textit{autovettori generalizzati}. 
+L'insieme degli autovettori \(\left\{ \ket{x_0} \right\}_{x_0 \in \mathbb{R}}\) è una \textit{base generalizzata}. Dunque posso scomporre ogni stato come:
+\[
+    \ket{\Psi}= \int_{\mathbb{R}}\dd{x_0} \ket{x_0} \braket{x_0}{\Psi} = \int_\mathbb{R} \dd{x_0} \Psi(x_0) \ket{x_0} 
+    \quad \rho_\Sigma(x_0) = \frac{\abs{\Psi(x_0)}^2}{\norm{\Psi}^2}
+\]
+Stessa cosa vale per il momento:
+\[
+    P: S^*(\mathbb{R})\to S^*(\mathbb{R}),\ \  \Psi(x) \mapsto -i\hbar \dv{x}\Psi(x)
+\]
+\[
+    \ket{p}:= \frac{1}{\sqrt{2\pi \hbar}}e ^{i\frac{p}{\hbar}x} \text{ è soluzione di }  (P-p)\ket{p}=0
+\]
+\[
+    \ket{\Psi} = \int_\mathbb{R} \dd{p} \ket{p} \braket{p}{\Psi}= \int_\mathbb{R} \dd{p} \tilde{\Psi}(p)\ket{p} \quad 
+    \rho_\Sigma(p)= \frac{\abs{\tilde{\Psi}(p)}^2}{\norm{\Psi}^2}
+\]
+
+\begin{remark}
+    La normalizzazione di \(\ket{x}\) e \(\ket{p}\) è fissata dalla condizione:
+    \begin{equation}
+        \int \dd{x} \ket{x}\bra{x} = \mathbb{I} = \int \dd{p} \ket{p}\bra{p}
+    \end{equation}
+
+\end{remark}
+
+In generale dato uno spazio di Hilbert di dimensione infinita \(\mathcal{H}= L_2(\mathbb{R}^n)\) e un operatore autoaggiunto \(A: D_A \subseteq L_2(\mathbb{R}^n)\to L_2(\mathbb{R}^n)\)
+si estende a:
+\begin{equation}
+    A: S^*(\mathbb{R}^n)\to S^*(\mathbb{R}^n) ; \ \phi \mapsto A\phi
+\end{equation}
+\(A\phi \in S^*(\mathbb{R}^n)\) è definito da:
+\[
+    \braket{A\phi}{\psi}:=\braket{\phi}{A\psi} \quad \forall\, \psi \in S(\mathbb{R}^n)
+\]
+\begin{attention}
+    L'estensione è sensata se \(S(\mathbb{R}^n)\subseteq D_A\), se \(\mathcal{H}= L_2(X, \dd{\mu}), \, X \subseteq \mathbb{R}^n \) non è ovvio 
+    quale sia il corretto spazio \(S^*\) di distribuzioni.
+\end{attention}
+\begin{definition}
+    \(a \in \mathbb{R}\) è \textit{autovalore generalizzato} di \(A\) sse:
+    \[
+        \exists\Psi \in S^*(\mathbb{R}^n), \,\Psi\neq 0 : \ (A-a)\Psi= 0
+    \]
+    In tal caso, \(\Psi\) è \textit{autovettore generalizzato}.
+\end{definition}
+
+Si dimostra che \(\sigma(A) = \left\{ \text{ autovalori generalizzati } \right\}\) .
+\begin{definition}
+    \(a \in \sigma(a)\) è \textit{autovalore proprio} se il suo autovettore \(\Psi \in D_a\subseteq L_2(\mathbb{R}^n)\)
+\end{definition}
+
+Si dimostra che \(\sigma_d(A)= \left\{ \text{ autovalori propri } \right\} \subseteq \sigma(A)\)
+
+\begin{theorem}
+    {\normalfont \textbf{Decomposizione spettrale generalizzato.}}\\
+    Dato un operatore \(A\) densamente definito e autoaggiunto, allora esiste un base di autovettori di \(A\) (propri o generalizzati):
+    \(
+        \left\{ \ket{a, r} \right\}_{\substack{a \in \sigma(A)\\ r = 1,\dots,d(a)}}
+    \) tale che \(\forall \ket{\Psi} \in \mathcal{H}\) vale:
+    \begin{equation}
+        \ket{\Psi}= \sum_{a \in \sigma_d(A)} \sum_{r=1}^{d(a)} \ket{a,r}\overset{C_{a,r}}{\braket{a,r}{\Psi}} +
+        \int_{\sigma_c(A)}\sum_{r=1}^{d(A)}\ket{a,r}\overset{\Psi_r(a)}{\braket{a,r}{\Psi}}\dd{a}
+    \end{equation}
+    \begin{equation}
+        \norm{\Psi}^2=\sum_{a \in \sigma_d(A)} \sum_{r=1}^{d(a)} \abs{\braket{a,r}{\Psi}}^2 +
+        \int_{\sigma_c(A)}\sum_{r=1}^{d(A)}\abs{\braket{a,r}{\Psi}}^2\dd{a}
+    \end{equation}
+
+\end{theorem}
+
+\begin{attention}
+    Il teorema non vale se \(A\) è hermitiano, ma non autoaggiunto.
+\end{attention}
 

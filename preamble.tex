@@ -63,8 +63,18 @@
 \newtheorem*{postulato2}{Postulato delle osservabili}
 
 \theoremstyle{definition}
-\newtheorem{example}{Esempio}
-\newtheorem{definition}{Definizione}
+\newtheorem{example}{Esempio}[section]
+\newtheorem{definition}{Definizione}[section]
+\newtheoremstyle{attentionstyle}%
+  {3pt}{3pt}%
+  {\normalfont}%
+  {}%
+  {\bfseries}%
+  { }%
+  {0pt}%
+  {#1#3}
+
+\theoremstyle{attentionstyle}
 \newtheorem*{attention}{Attenzione!}
 \theoremstyle{remark}
 \newtheorem*{remark}{Osservazione}
