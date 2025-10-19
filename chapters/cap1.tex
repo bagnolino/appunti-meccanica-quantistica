@@ -66,6 +66,7 @@ Per ora ci limiteremo agli stati puri.
 \end{example}
 
 
+
 \subsection{Richiami su spazi di Hilbert}
 Si dice \textit{spazio di Hilbert} \(\mathcal{H}\), uno spazio vettoriale su \(\mathbb{C}\) dotato di prodotto scalare e completo, 
 che ha le seguenti proprietà \(\forall \,\psi,\chi\):
@@ -73,7 +74,7 @@ che ha le seguenti proprietà \(\forall \,\psi,\chi\):
     \item \( \ip{\psi}{\chi} \in \mathbb{C}\)
     \item \(\ip{\psi}{a\chi_1+c\chi_2}= a\ip{\psi}{\chi_1}+b\ip{\psi}{\chi_2}\)
     \item \(\ip{\psi}{\chi}= \overline{\ip{\chi}{\psi}}\)
-    \item \(\ip{\psi}\geq 0\quad \forall \,\psi\)
+    \item \(\ip{\psi}{\psi}\geq 0\quad \forall \,\psi\)
 \end{itemize}
 
 Definiamo inoltre la \textit{norma} \(\norm{\psi}: = \sqrt{\ip{\psi}{\psi} }\)
@@ -291,7 +292,7 @@ Consideriamo una funzione di test \(\psi(x) \in S(\mathbb{R})\) e una distribuzi
 \end{attention}
 In fisica, possiamo usare anche i ket che appartengono a \(S^*(\mathbb{R})\), per i quali vale:
 \[
-    \braket{\psi}{F(x)}= \overline{\braket{F(x)}{\psi}} 0 \int_\mathbb{R} F(x) \psi (x) \dd{x} = F(x) (\overline{\psi})
+    \braket{\psi}{F(x)}= \overline{\braket{F(x)}{\psi}} = \int_\mathbb{R} F(x) \psi (x) \dd{x} = F(x) (\overline{\psi})
 \]
 
 Se \(\Psi(x) \in L_2(\mathbb{R}, \dd{x})\), \(\exists \, \Psi_n \in S(\mathbb{R})\) tale che \(\norm{\Psi-\Psi_n}_{L_2}\overset{n \to \infty}{\longrightarrow} 0\); 
@@ -707,7 +708,7 @@ se esiste allora abbiamo ancora uno spettro discreto e vale quanto detto prima, 
     \(\forall\, x_0 \in \mathbb{R}, \ (\Delta \mathcal{X})_{x_0, \Sigma}\) può essere arbitrariamente piccolo, ma non potrà mai essere uguale a \(0\).
 \end{example}
 
-Cerchiamo le autovettore dell'operatore posizione \(X\) relativi a un possibile autovalore \(x_0\):
+Cerchiamo gli autovettori dell'operatore posizione \(X\) relativi a un possibile autovalore \(x_0\):
 \[
     (X-x_0)\Psi(x)= 0 \iff (x-x_0)\Psi(x)= 0 \ \forall x \implies \Psi(x) = 0 \ \forall x \neq x_0
 \]
@@ -804,3 +805,259 @@ Si dimostra che \(\sigma_d(A)= \left\{ \text{ autovalori propri } \right\} \subs
     Il teorema non vale se \(A\) è hermitiano, ma non autoaggiunto.
 \end{attention}
 
+% 6 Lezione del 13/10/2025
+
+\begin{postulato3}
+    Gli unici risultati possibili di una misura di \(\mathcal{A}\) sono gli autovalori propri o generalizzati di \(A\).
+\end{postulato3}
+
+\begin{postulato4}
+    Dati un'osservabile \(\mathcal{A}\) associata all'operatore autoaggiunto \(A\),
+    uno stato \(\Sigma\) associato al raggio vettore \([\Psi]\) e la base ortonormale di autovettori \(\left\{ \ket{a,r} \right\}\):
+    \begin{itemize}
+        \item Se \(a \in \sigma_d(A)\) allora \[
+            P_\Sigma(a)= \sum_{r=1}^{d(a)}\frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}
+        \]
+        \item Se \(a \in \sigma_c(A)\) allora la probabilità che \(a' \in [a,a + \dd{a}]\) è \(\rho_\Sigma \dd{a}\) con \[
+            \rho_\Sigma (a) = \sum_{r=1}^{d(a)}\frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}
+        \]
+    \end{itemize}
+\end{postulato4}
+
+
+\subsection{Funzioni di osservabili}
+
+Vogliamo capire se è sempre possibile definire funzioni di osservabili \(f(\mathcal{A})\) del tipo \(f : \sigma(\mathcal{A})\to \mathbb{R}\).\\
+Dobbiamo considerare l'operatore autoaggiunto \((A, D_A)\) e la base ortonormale associata \(\left\{ \ket{a,r} \right\}\).
+
+\begin{definition}
+    \((f(A), D_{f(A)})\) è definito da:
+    \begin{equation}
+        f(A)\ket{\Psi}:= \sum_{a \in \sigma_d(A)} \sum_{r=1}^{d(a)} f(A)\ket{a,r}\braket{a,r}{\Psi} + 
+        \int_{a \in \sigma_c(A)} \sum_{r=1}^{d(A)} f(a)\ket{a,r}\braket{a,r}{\Psi} \dd{a}
+    \end{equation}
+    \[
+      D_{f(A)} = \left\{ \ket{\Psi} \in \mathcal{H} : f(A)\ket{\Psi} \in \mathcal{H} \right\}  
+    \]
+\end{definition}
+
+
+\subsubsection{Operatore momento}
+Studiamo l'operatore momento \(P = -i\hbar \dv{x}\) su \(\mathcal{H} = L_2 ( a, b)\) con \(a,b \in \mathbb{R}\cup \pm \infty\), 
+ci chiediamo come facciamo a sapere dove il dominio per cui l'operatore è autoaggiunto?
+
+\begin{definition}
+    \(f(x)\) è \textit{assolutamente continua} sse è derivabile quasi ovunque e \[
+        f(x) = f(c)+ \int_{c}^{x}f'(y) \dd{y}
+    \]
+\end{definition}
+
+\begin{remark}
+    E' condizione necessaria affinché si possa integrare per parti negli integrali di Lebesgue.
+\end{remark}
+
+Dunque:
+\[
+    D_P= \left\{ \Psi \text{ ass. continua } ;\, \Psi, \Psi' \in L_2([a,b],\dd{x}); \text{ condizioni al contorno }\right\}
+\]
+Invece per \(P^2 = -\hbar^2 \dv[2]{}{x}\) abbiamo:
+\[
+    D_{P^2} = \left\{ \Psi, \Psi' \text{ ass. continue } ; \, \Psi,\Psi',\Psi'' \in L_2([a,b],\dd{x}); \text{ condizioni al contorno }\right\}
+\]
+
+Verifichiamo che \(P\) sia hermitiano \(\forall\, \chi, \Psi \in D_P\):
+\[
+    0 = \braket{\chi}{P\Psi} - \braket{P\chi}{\Psi} =   \int_{a}^{b} \overline{\chi(x)}(-i\hbar \Psi'(x))\dd{x} - \int_{a}^{b}(-i\hbar \chi'(x))^* \Psi(x) \dd{x}
+\]
+\[
+    = -i\hbar \int_{a}^{b}\dd{x} ( \overline{\chi}\Psi' + \overline{\chi'}\Psi)= -i\hbar\int_{a}^{b}( \overline{\chi}\Psi)' \dd{x}   = -i\hbar\left[ \overline{\chi}(b)\Psi(b)- \overline{\chi}(a)\Psi(a) \right]
+\]
+
+\begin{itemize}
+    \item Se \(b = +\infty\) dato che \(\Psi\) è ass. continua e \(\Psi, \Psi' \in L_2([a, +\infty])\) allora \(\lim_{x\to +\infty} \Psi= 0\).
+    \item Se \(a = -\infty\), similmente abbiamo \(\lim_{x \to - \infty} \Psi=0\)
+\end{itemize}
+Dunque, per \(\mathcal{H}= L_2(\mathbb{R}, \dd{x})\) abbiamo che \(D_{P^\dagger}= D_{P}^{NAT}\) e quindi \((P, D_P)\) è autoaggiunto.
+
+Se invece abbiamo \(\mathcal{H} = L_2([0,1], \dd{x})\), possiamo provare con:
+\[
+    D_P = D_P^{NAT} \cap \big\{ \Psi(0)=\Psi(1)=0 \big\}
+\]
+
+Allora si dimostra che l'aggiunto ha dominio
+\[
+    D_{P^\dagger}= D_P^{NAT} \qquad (\Rightarrow \ D_P \subsetneq D_{P^\dagger} \text{ e quindi non è autoaggiunto})
+\]
+poiché, integrando per parti,
+\[
+    \braket{\chi}{P\Psi}-\braket{P^\dagger\chi}{\Psi}
+    = -i\hbar\big[\overline{\chi(1)}\Psi(1)-\overline{\chi(0)}\Psi(0)\big]
+\]
+e con \(\Psi(0)=\Psi(1)=0\) il termine al bordo si annulla per ogni \(\chi\) assolutamente continua con \(\chi,\chi'\in L_2\).
+
+Se invece cambio la condizione al contorno con la periodicità
+\[
+    D_P = D_P^{NAT} \cap \big\{ \Psi(1)=\Psi(0) \big\}
+\]
+allora il termine al bordo diventa
+\[
+    -i\hbar\,\Psi(0)\big[\overline{\chi(1)}-\overline{\chi(0)}\big]
+\]
+che si annulla \(\forall\,\Psi\in D_P\) se e solo se \(\chi(1)=\chi(0)\). Dunque
+\[
+    D_{P^\dagger}= D_P^{NAT} \cap \big\{ \chi(1)=\chi(0) \big\}= D_P
+\]
+e quindi \((P,D_P)\) è autoaggiunto.
+
+
+% 7 Lezione del 17/10/2025
+
+\subsection{Relazioni di indeterminazione}
+
+\begin{theorem}
+    Dati \(A, B\) operatori autoaggiunti, \(\forall \, a,b \in \mathbb{ R}\) e \(\forall\, \Psi\neq 0 \) :
+    \begin{equation}
+        (\Delta A )_{a,\Psi} (\Delta B )_{b, \Psi}\geq \frac{1}{2}\abs{\expval{[A,B]}_\Psi}
+    \end{equation}
+\end{theorem}
+\begin{remark}
+    \([A,B]= AB-BA \) si chiama \textit{commutatore}, \(\left\{ A, B \right\} = AB+BA \) si dice \textit{anticommutatore}.
+\end{remark}
+
+\begin{proof}
+    Definiamo per comodità : \(\hat{A} = A- a \mathbb{I}\) e \(\hat{B} = B - b\mathbb{I}\) autoaggiunti.
+    \[
+        (\Delta A)_{a,\Psi}^2 = \frac{\expval{(A-a\mathbb{I})^2}{\Psi}}{\norm{\Psi}^2} = \frac{\expval{\hat{A}^2}{\Psi}}{\norm{\Psi}^2} = \frac{\braket*{\hat{A}\Psi}{\hat{A}\Psi}}{\norm{\Psi}} = \frac{\norm{\hat{A}\Psi}^2}{\norm{\Psi}^2}
+    \]
+    \[
+        (\Delta B)_{b,\Psi}^2 =\frac{\norm{\hat{B}\Psi}^2}{\norm{\Psi}^2} \implies  (\Delta A)_{a,\Psi}^2(\Delta B)_{b,\Psi}^2 = \frac{\norm{\hat{A}\Psi}^2}{\norm{\Psi}^2}\frac{\norm{\hat{B}\Psi}^2}{\norm{\Psi}^2} 
+    \]
+    L'anticommutatore di operatori autoaggiunti è autoaggiunto, il commutatore non è autoaggiunto ma \(-i[A,B]\) è autoaggiunto. Riscriviamo \(\hat{A}\hat{B}\) come:
+    \[
+        \hat{A}\hat{B}= \frac{\left\{ \hat{A},\hat{B} \right\}}{2} + \frac{[\hat{A},\hat{B}]}{2} = \frac{\{ \hat{A},\hat{B} \}}{2} + i \frac{-i[\hat{A},\hat{B}]}{2}=\frac{\{ \hat{A},\hat{B} \}}{2} + i \frac{-i[A,B]}{2}
+    \]
+    Dove nell'ultimo passaggio si è usato \([\hat{A},\hat{B}]= [A,B]\).
+    Usando Schwarz e la proprietà degli operatori autoaggiunti otteniamo:
+    \[
+        \norm{\hat{A}\Psi}^2\norm{\hat{B}\Psi}^2 \geq \abs{\braket*{\hat{A}\Psi}{\hat{B}\Psi}}^2 = \abs{\bra{\Psi}\hat{A}\hat{B}\ket{\Psi}}^2=
+    \]
+    \[
+        = \abs{\bra{\Psi}\frac{\{\hat{A},\hat{B}\}}{2}\ket{\Psi} + i \bra{\Psi}\frac{-i[A,B]}{2}\ket{\Psi}}^2
+        = \frac{1}{4}\abs{\expval*{\{\hat{A},\hat{B}\}}{\Psi}}^2 + \frac{1}{4}\abs{\expval{-i[A,B]}{\Psi}}^2 
+    \]
+    \[
+        \geq \frac{1}{4}\abs{\expval{[A,B]}{\Psi}}^2
+    \]
+\end{proof}
+
+\begin{example}
+    Consideriamo gli operarori posizione \(X\) e momento \(P\) in rappresentazione \(x\):
+    \[
+        (XP\Psi)(x)= x\,\big(-i\hbar\,\dv{\Psi}{x}\big)\,,\qquad (PX\Psi)(x)= -i\hbar\,\dv{}{x}\big(x\Psi(x)\big)
+    \]
+    per cui
+    \[
+        [X,P]\,\Psi(x)= (XP-PX)\Psi(x)= i\hbar\,\Psi(x) \quad \Rightarrow \quad [X,P]= i\hbar\,\mathbb{I}
+    \]
+    Il commutatore non è hermitiano, mentre \(-i[X,P]= \hbar\,\mathbb{I}\) è autoaggiunto. Applicando il teorema otteniamo
+    \[
+        (\Delta X)_{x_0,\Psi}\,(\Delta P)_{p_0,\Psi} \geq \frac{1}{2}\abs{\expval{[X,P]}_\Psi}
+        = \frac{\hbar}{2} \abs{\expval{\mathbb{I}}_\Psi}= \frac{\hbar}{2}
+    \]
+\end{example}
+
+\begin{example}
+    \textbf{Particella su una circonferenza di raggio \(R\).}\\
+    \(\mathcal{H}= L_2([0,2\pi R],\dd{x})\), \(P= -i\hbar\,\dv{x}\) con dominio
+    \[
+        D_P= D_P^{NAT} \cap \big\{ \Psi(2\pi R)= \Psi(0) \big\}
+    \]
+    Vogliamo lo spettro di \((P,D_P)\). Cerchiamo \(\Psi_p\in D_P\), \(\Psi_p\neq 0\), tali che
+    \[
+        -i\hbar\,\dv{\Psi_p}{x}= p\,\Psi_p \quad \Rightarrow \quad \Psi_p(x)= C\, e^{\,i\frac{p}{\hbar}x},\quad p\in \mathbb{R}
+    \]
+    La condizione di periodicità impone
+    \[
+        \Psi_p(2\pi R)= \Psi_p(0) \ \Rightarrow\ e^{\,i\frac{p}{\hbar}2\pi R}=1
+        \ \Rightarrow\ p= n\,\frac{\hbar}{R},\ \ n\in \mathbb{Z}
+    \]
+    In questo caso abbiamo autovalori propri anche per l'operatore momento, i cui autovettori sono
+    \[
+        \Psi_n(x)= \frac{1}{\sqrt{2\pi R}}\, e^{\,i\frac{n}{R}x},\qquad n\in \mathbb{Z}
+    \]
+    e formano una base ortonormale di \(L_2([0,2\pi R])\) (base di Fourier). Dunque
+    \[
+        \sigma(P)= \sigma_d(P)= \Big\{ n\,\frac{\hbar}{R}\ :\ n\in \mathbb{Z} \Big\}
+    \]
+    
+    \begin{attention}
+        Per gli autostati \(\Psi_n(x)= \frac{1}{\sqrt{2\pi R}} e^{i\frac{n}{R}x}\) si ha
+    \[
+        (\Delta P)_{\Psi_n}=0, \qquad (\Delta X)_{\Psi_n} \lesssim 2\pi R
+    \]
+    Sembrerebbe violare \((\Delta X)(\Delta P)\ge \hbar/2\). In realtà, nella dimostrazione dell'ineguaglianza abbiamo usato i vettori
+    \(A\ket{\Psi}\) e \(B\ket{\Psi}\) ed è necessario che siano definiti entrambi i prodotti \(AB\ket{\Psi}\) e \(BA\ket{\Psi}\).\\
+    Qui \(B=P\) e \(A=X\) con \(D_P= D_P^{NAT}\cap\{\Psi(2\pi R)=\Psi(0)\}\). Vale \(\Psi_n\in D_P\), ma
+    \[
+        (X\Psi_n)(x)= x\,\frac{e^{i\frac{n}{R}x}}{\sqrt{2\pi R}} \notin D_P
+    \]
+    poiché \(X\Psi_n\) non è periodica: \((X\Psi_n)(2\pi R)\neq (X\Psi_n)(0)\). Quindi \(PX\ket{\Psi_n}\) non è definito e le ipotesi del teorema non si applicano.
+    Nessuna contraddizione con il principio di indeterminazione.
+    \end{attention}
+    
+\end{example}
+
+
+
+\subsection{Proiettori}
+
+\begin{definition}
+    Consideriamo un sottospazio \(\tilde{\mathcal{H}}\subseteq \mathcal{H}\) per cui possiamo scrivere 
+    \(\mathcal{H} = \tilde{\mathcal{H}} \oplus \tilde{\mathcal{H}}^\perp\) e \(\ket{\Psi} = \ket{\Psi_\parallel} \oplus \ket{\Psi_\perp}\) 
+    dove \(\ket{\Psi} \in \mathcal{H},\,\ket{\Psi_\parallel} \in\tilde{\mathcal{H}},\, \ket{\Psi_\perp}\in\tilde{\mathcal{H}}^\perp\) si definisce
+    \textit{proiettore} su \(\tilde{\mathcal{H}}\):
+    \begin{equation}
+        \mathcal{P}_{\tilde{\mathcal{H}}}\ket{\Psi}= \ket{\Psi_\parallel} \qquad 
+    \begin{cases}
+        \mathcal{P}_{\tilde{\mathcal{H}}} \ket{\Psi}= \ket{\Psi}   \ \text{ se } \ket{\Psi} \in  \tilde{\mathcal{H}}\\
+        \mathcal{P}_{\tilde{\mathcal{H}}} \ket{\Psi}= 0   \quad \, \ \text{ se } \ket{\Psi} \in  \tilde{\mathcal{H}}^\perp
+    \end{cases}
+    \end{equation}
+\end{definition}
+
+\begin{theorem}
+    Se e solo se un operatore \(\mathcal{P}\) è limitato, autoaggiunto e \(\mathcal{P}^2=\mathcal{P}\) allora \(\mathcal{P}\) è un proiettore.
+\end{theorem}
+
+Scelgo basi ortonormali \(\{\ket{n_\parallel}\}\) di \(\tilde{\mathcal{H}}\) e \(\{\ket{n_\perp}\}\) di \(\tilde{\mathcal{H}}^{\perp}\).
+Allora questi sono autovettori del proiettore \(\mathcal{P}_{\tilde{\mathcal{H}}}\):
+\[
+    \mathcal{P}_{\tilde{\mathcal{H}}}\ket{n_\parallel}= \ket{n_\parallel}\,,\qquad
+    \mathcal{P}_{\tilde{\mathcal{H}}}\ket{n_\perp}= 0
+\]
+quindi lo spettro è \(\sigma(\mathcal{P}_{\tilde{\mathcal{H}}})= \{0,1\}\), in generale degenere.
+
+\begin{remark}
+    Se \(\mathcal{P}_{\tilde{\mathcal{H}}} \) è un proiettore, lo è anche \(\mathbb{I}- \mathcal{P}_{\tilde{\mathcal{H}}}\).
+\end{remark}
+\begin{remark}
+    In notazione matriciale \(\mathcal{P}_{\tilde{\mathcal{H}}}= \sum \ket{n_\parallel}\bra{n_\parallel}\) .
+\end{remark}
+
+
+Sia \(A\) autoaggiunto e \(a\in \sigma_d(A)\). Indichiamo con \(\mathcal{H}_a\) l'autospazio relativo ad \(a\) e con \(d(a)= \dim \mathcal{H}_a\) la degenerazione. 
+Fissata una base ON \(\{\ket{a,r}\}_{r=1}^{d(a)}\) di \(\mathcal{H}_a\), il proiettore su \(\mathcal{H}_a\) è
+\[
+    \mathcal{P}_a \equiv \mathcal{P}_{\mathcal{H}_a}= \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}.
+\]
+
+Se lo spettro è puramente discreto, \(\sigma(A)= \sigma_d(A)\), ed esiste una base ON di autovettori di \(A\), allora valgono:
+\[
+    \mathbb{I}= \sum_{a\in \sigma(A)} \mathcal{P}_a\,,\qquad
+    A= \sum_{a\in \sigma(A)} a\,\mathcal{P}_a.
+\]
+
+Se \(\dim \mathcal{H} < \infty\), per ogni \(a\in \sigma(A)\) il proiettore si può esprimere come:
+\[
+    \mathcal{P}_a= \prod_{\substack{a'\in \sigma(A)\\ a'\neq a}} \frac{a'\,\mathbb{I}- A}{a'-a}.
+\]
