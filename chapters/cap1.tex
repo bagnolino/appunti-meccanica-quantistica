@@ -1273,7 +1273,7 @@ tutte le osservabili dell’insieme e conoscere con certezza lo stato allora ass
 \end{example}
 
 
-\subsection{Quantizzazione Canonica}
+\subsection{Quantizzazione canonica}
 
 In meccanica classica, un sistema è definito dalle coordinate \(q_i\) e \(p_i \) per \(i = 1, \dots, n\) e le osservabili sono funzioni di queste variabili \(f(q_i,p_i)\),
 la cui evoluzione temporale è descritta grazie alle parentesi di Poisson \(\dot{f}= \left\{ f, \mathcal{H}_{CL} \right\}\).
@@ -1312,7 +1312,7 @@ ovvero:
 
 
 
-\section{Evoluzione Temporale}
+\section{Evoluzione temporale}
 Consideriamo ora l'evoluzioni causale, non consideriamo i processi di misura.
 
 \begin{postulato7}
@@ -1370,4 +1370,183 @@ Valgono le seguenti proprietà:
     \end{equation}
 \end{example}
 
+
+
+% 10 Lezione del 23/10/2025
+
+\subsection{Operatori unitari}
+
+\begin{definition}
+    Un operatore \((U, D_U)\) si dice \textit{isometrico} se preserva la norma:
+    \begin{equation}
+        \norm{U\Psi}= \norm{\Psi} \ \ \forall\,\Psi \in D_U \iff \braket{U\Psi}{U\chi}= \braket{\Psi}{\chi} \ \ \forall\, \Psi, \chi \in D_U
+    \end{equation}
+\end{definition}
+\begin{remark}
+    Un operatore isometrico è sempre limitato.
+\end{remark}
+
+\begin{definition}
+    Un operatore \((U, D_U)\) si dice \textit{unitario} se è isometrico, \(D_U = \mathcal{H}\)e \(U(\mathcal{H})= \mathcal{H}\).
+    Equivalentemente, questo vale sse:
+    \begin{equation}
+        U^\dagger U = \mathbb{I} = UU^\dagger \iff U^\dagger = U^{-1}
+    \end{equation}
+\end{definition}
+
+\begin{remark}
+    Se \(\dim \mathcal{H}< +\infty\) allora \(U\) unitario \(\iff \ U\) isometrico.
+\end{remark}
+
+\begin{remark}
+    Data una base ON \(\left\{ \ket{n} \right\}\), se \(U\) è unitario, allora \(\left\{ U\ket{n} \right\}\) è ancora una base ON, 
+    se \(U\) è isometrico allora \(\left\{ U\ket{n} \right\}\) è un sistema ON non completo.
+\end{remark}
+
+E' possibile quindi definire l'evoluzione temporale come un operatore
+\[
+    \ket{\Psi(t_0)}\mapsto \ket{\Psi(t)}= U(t, t_0)\ket{\Psi(t_0)}
+\] che ha le seguenti proprietà:
+\begin{itemize}
+    \item Eq. di Schrödinger \(\implies U(t, t_0)\) lineare.
+    \item \(\norm{\Psi(t_0)}= \norm{\Psi(t)} \ \forall\,t \implies U(t,t_0)\) è isometrico.
+    \item Essendo isometrico è limitato e \(\overline{D_U}= \mathcal{H}\).
+    \item \(U(t,t) = \mathbb{I} \ \forall\,t\) .
+    \item \(U(t_2,t_1)U(t_1,t_0)\ket{\Psi(t_0)}= U(t_2,t_0)\ket{\Psi(t_0)} \implies  U (t_0,t)U(t,t_0)= \mathbb{I}\) .
+    \item Quindi \(U\) è suriettivo \(\implies \ U \) è unitario.
+    \item \( U(t,t_0)^\dagger= U(t,t_0)^{-1}= U(t_0,t)\) .
+\end{itemize}
+
+Dall'equazione di Schrödinger per \(U(t,t_0)\ket{\Psi(t_0)}\) ricaviamo inoltre:
+\[
+i\hbar \dv{t} U(t,t_0)\ket{\Psi(t_0)} = H(t)U(t,t_0)\ket{\Psi(t_0)}
+\]
+Poiché questa relazione vale per ogni \(\ket{\Psi(t_0)}\), possiamo scrivere:
+\[
+i\hbar \dv{t} U(t,t_0) = H(t)U(t,t_0)
+\]
+Integrando tra \(t_0\) e \(t\):
+\[
+\int_{t_0}^{t} \dv{t'} U(t',t_0)\dd{t'} = -\frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
+\]
+\[
+\Rightarrow \quad U(t,t_0) = \mathbb{I} - \frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
+\]
+
+\begin{attention}
+    I processi di misura ideali di 1° specie \(\ket{\Psi}\mapsto \mathcal{P}_a\ket{\Psi}\) non sono unitari.
+\end{attention}
+
+
+\subsubsection{Sistemi conservativi}
+
+Consideriamo ora sistemi conservativi, cioè invarianti per traslazioni temporali in cui \(H(t)\equiv H\), per cui vale:
+\[
+    U(t,t_0)= U(t-t_0)\,;\ U(\tau_1)U(\tau_2)= U(\tau_1+\tau_2)\,;\ U(\tau)^{-1}= U(-\tau)
+\]
+Dalle relazioni precedenti otteniamo inoltre:
+\begin{equation}
+    i\hbar \dv{t} U(\tau) = HU(\tau) \implies U(\tau)= \exp{-\frac{i}{\hbar}H \tau}
+\end{equation}
+e quindi:
+\begin{equation}
+    \ket{\Psi(t)}= e^{-\frac{i}{\hbar}H (t-t_0)}\ket{\Psi(t_0)}
+\end{equation}
+
+Come si calcola? Consideriamo la base ON di autostati di \(H\):
+\[
+    \left\{ \ket{E,r} \right\}_{\substack{E \in \sigma(H)\\ r = 1,\dots, d(E)}}  \quad \text{ t.c. }  \ H\ket{E,r}= E\ket{E,r}
+\]
+detta equazione di Schrödinger stazionaria.
+\[
+\ket{\Psi(t_0)} = \int_{\sigma(H)} \sum_r \ket{E,r}\braket{E,r}{\Psi(t_0)}\,\dd{E}
+\qquad
+\text{con} \quad C_{E,r}(t_0) = \braket{E,r}{\Psi(t_0)}
+\]
+\[
+\ket{\Psi(t)} = e^{-\frac{i}{\hbar}H(t-t_0)}\ket{\Psi(t_0)}
+\]
+\[
+= \int_{\sigma(H)} \sum_r e^{-\frac{i}{\hbar}E(t-t_0)}\ket{E,r}\braket{E,r}{\Psi(t_0)}\,\dd{E}
+\]
+\[
+\implies \quad C_{E,r}(t) = e^{-\frac{i}{\hbar}E(t-t_0)}\,C_{E,r}(t_0)
+\]
+
+\begin{definition}
+    Gli stati \(\ket{\Psi_E}\equiv\ket{E}\), tali che \(H\ket{\Psi_e}= E\Psi_E\), si dicono \textit{stati stazionari}.\\
+    Per questi vale:
+    \[
+        \Psi_E(t) = e^{-\frac{i}{\hbar}E(t-t_0)}\Psi_E(t_0) \implies \left[ \Psi_E(t) \right] = \left[ \Psi_E(t_0) \right] 
+        \implies \dv{t}\expval{A}_{\Psi_E}= 0 \ \forall A  
+    \]
+\end{definition}
+
+\begin{remark}
+    La trattazione svolta segue la descrizione di Schrödinger, ne esiste una alternativa, detta di Heisenberg, con conclusioni analoghe.
+\end{remark}
+
+\subsection{Simmetrie}
+
+\begin{definition}
+    Una \textit{trasformazione di simmetria} è una trasformazione:
+    \[
+        [\Psi] \mapsto [\Psi']  \,;\quad A \text{ a.a. } \mapsto A' \text{ a.a. }
+    \]
+    tale che \(\expval{A'}_{\Psi'}= \expval{A}_{\Psi}\) e preservi le relazioni algebriche:
+    \[
+        \alpha A +\beta B \mapsto \alpha A' + \beta B'  \,; \quad AB \mapsto A'B'
+    \]
+\end{definition}
+Dunque vale anche \(\sigma(A) = \sigma(A')\) e:
+\[
+A\Psi = a\Psi \;\implies\; A'\Psi' = a\Psi' 
+\quad\implies\quad
+P^A_\Psi(a) = P^{A'}_{\Psi'}(a)
+\]
+\[
+\implies \;
+\left\{ A_1, A_2, \dots \right\} 
+\text{ compatibili }
+\iff
+\left\{ A'_1, A'_2, \dots \right\} 
+\text{ compatibili.}
+\]
+
+
+\begin{theorem}
+    {\normalfont\textbf{di Wigner}}
+Una trasformazione
+\[
+\ket{\Psi} \;\longmapsto\; \ket{\Psi'} ,
+\qquad
+A \;\longmapsto\; A'
+\]
+è di simmetria se e solo se
+\[
+\ket{\Psi'} = U\ket{\Psi},
+\qquad
+A' = U A U^{\dagger},
+\]
+dove \( U \) è un operatore unitario o antiunitario.
+\end{theorem}
+
+\[
+\expval{A'}_{\Psi'} 
+= \frac{1}{\norm{\Psi'}^2} 
+\mel{\Psi'}{A'}{\Psi'}
+= \frac{1}{\norm{U\Psi}^2} 
+\mel{U\Psi}{U A U^{\dagger}}{U\Psi}
+= \frac{1}{\norm{\Psi}^2} \mel{\Psi}{A}{\Psi}
+= \expval{A}_{\Psi}.
+\]
+
+\begin{definition}
+    Un operatore \((V, D_V)\) è \textit{antiunitario} se \(V(\mathcal{H})=\mathcal{H}\), \(\overline{D_V}=\mathcal{H}\), \(\norm{V\Psi}= \norm{\Psi}\) e è antilineare, cioè:
+    \[
+        V(\alpha \Psi_1 + \beta \Psi_2) = \alpha^* V(\Psi_1)+ \beta^* V(\Psi_2)  \iff \braket{V\Psi}{V\chi} = \overline{\braket{\Psi}{\chi}}
+    \]
+\end{definition}
+
+% 11 Lezione del 24/10/2025
 
