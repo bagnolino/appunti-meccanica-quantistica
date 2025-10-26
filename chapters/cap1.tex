@@ -619,9 +619,9 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
     Se \(\Psi_1\) e \(\Psi_2\) sono autovettori relativi ad \(\hat{a} \in \sigma_d(A)\), allora \(\alpha\Psi_1+ \beta\Psi_2\) è autovettore relativo ad \(\hat{a}\) .
 \end{remark}
 \begin{definition}
-    Per \(\forall a \in \sigma_d(A) , \; \exists\) autospazio \(\mathcal{H}_a\subseteq\mathcal{H}\) di autovettori, 
-    la cui dimensione \(d(a):= \operatorname{dim}\mathcal{A}_a\) è detta \textit{degenerazione} di \(a in \sigma_d(A)\) .\\
-    Se \(d(a)=1,\; a \) è detto \textit{non-degenere} e \(\Psi\in \mathcal{H}_a\) è unico a meno riscalamenti. Se \(d(a)>1, \; a\) è detto \textit{degenere}.
+    Per \(\forall a \in \sigma_d(A) , \; \exists\) autospazio \(\mathcal{H}\mathcal{P}_a\subseteq\mathcal{H}\) di autovettori, 
+    la cui dimensione \(d(a):= \operatorname{dim}\mathcal{A}\mathcal{P}_a\) è detta \textit{degenerazione} di \(a in \sigma_d(A)\) .\\
+    Se \(d(a)=1,\; a \) è detto \textit{non-degenere} e \(\Psi\in \mathcal{H}\mathcal{P}_a\) è unico a meno riscalamenti. Se \(d(a)>1, \; a\) è detto \textit{degenere}.
 \end{definition}
 
 \begin{theorem}
@@ -652,7 +652,7 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
     \begin{equation}
         \left\{ \ket{a, r} \right\}_{\substack{a \in \sigma_d(A)\\ r = 1,\dots,d(a)}}
         \qquad
-        \mathcal{H} = \bigoplus_{a \in \sigma_d(A)} \mathcal{H}_a.
+        \mathcal{H} = \bigoplus_{a \in \sigma_d(A)} \mathcal{H}\mathcal{P}_a.
     \end{equation}
 \end{theorem}
 
@@ -1045,19 +1045,329 @@ quindi lo spettro è \(\sigma(\mathcal{P}_{\tilde{\mathcal{H}}})= \{0,1\}\), in 
 \end{remark}
 
 
-Sia \(A\) autoaggiunto e \(a\in \sigma_d(A)\). Indichiamo con \(\mathcal{H}_a\) l'autospazio relativo ad \(a\) e con \(d(a)= \dim \mathcal{H}_a\) la degenerazione. 
-Fissata una base ON \(\{\ket{a,r}\}_{r=1}^{d(a)}\) di \(\mathcal{H}_a\), il proiettore su \(\mathcal{H}_a\) è
-\[
-    \mathcal{P}_a \equiv \mathcal{P}_{\mathcal{H}_a}= \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}.
-\]
+Sia \(A\) autoaggiunto e \(a\in \sigma_d(A)\). Indichiamo con \(\mathcal{H}\mathcal{P}_a\) l'autospazio relativo ad \(a\) e con \(d(a)= \dim \mathcal{H}\mathcal{P}_a\) la degenerazione. 
+Fissata una base ON \(\{\ket{a,r}\}_{r=1}^{d(a)}\) di \(\mathcal{H}\mathcal{P}_a\), il proiettore su \(\mathcal{H}\mathcal{P}_a\) è
+\begin{equation}
+    \mathcal{P}\mathcal{P}_a \equiv \mathcal{P}_{\mathcal{H}\mathcal{P}_a}= \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}.
+\end{equation}
+    
 
 Se lo spettro è puramente discreto, \(\sigma(A)= \sigma_d(A)\), ed esiste una base ON di autovettori di \(A\), allora valgono:
 \[
-    \mathbb{I}= \sum_{a\in \sigma(A)} \mathcal{P}_a\,,\qquad
-    A= \sum_{a\in \sigma(A)} a\,\mathcal{P}_a.
+    \mathbb{I}= \sum_{a\in \sigma(A)} \mathcal{P}\mathcal{P}_a\,,\qquad
+    A= \sum_{a\in \sigma(A)} a\,\mathcal{P}\mathcal{P}_a.
 \]
 
 Se \(\dim \mathcal{H} < \infty\), per ogni \(a\in \sigma(A)\) il proiettore si può esprimere come:
 \[
-    \mathcal{P}_a= \prod_{\substack{a'\in \sigma(A)\\ a'\neq a}} \frac{a'\,\mathbb{I}- A}{a'-a}.
+    \mathcal{P}\mathcal{P}_a= \prod_{\substack{a'\in \sigma(A)\\ a'\neq a}} \frac{a'\,\mathbb{I}- A}{a'-a}.
 \]
+
+
+% 8 Lezione del 20/10/2025
+
+Il valor medio di questo proiettore è:
+
+\begin{align*}
+    \expval{\mathcal{P}\mathcal{P}_a}_\Psi &= \frac{\expval{\mathcal{P}\mathcal{P}_a}{\Psi}}{\norm{\Psi}^2}= \sum_r^{d(a)} \frac{\braket{\Psi}{a,r}\braket{a,r}{\Psi}}{\norm{\Psi}^2} =
+    \sum_r  \frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}= P_\Psi(a)\\
+    &= \frac{\expval{\mathcal{P}^2_a}{\Psi}}{\norm{\Psi}^2}= \frac {\norm{\mathcal{P}\mathcal{P}_a\ket{\Psi}}^2}{\norm{\Psi}^2}
+\end{align*}
+
+Consideriamo ora il caso in cui lo spettro di \(A\) sia misto:
+\[
+\sigma(A) = \sigma_d(A) \cup \sigma_c(A)
+\]
+Sia \( S \subseteq \sigma(A) \), definiamo allora la base ortonormale:
+\[
+\left\{ \ket{a,r} \right\}_{a \in S,\, r=1,\dots,d(a)} \cup 
+\left\{ \ket{a,r} \right\}_{a \in \overline{S},\, r=1,\dots,d(a)} ,
+\]
+tale che 
+\[
+\mathcal{H} = \mathcal{H}_S \oplus \mathcal{H}_S^{\perp}.
+\]
+
+Possiamo allora definire il \textit{proiettore spettrale} su \(S\):
+\begin{equation}
+    P_S = \sum_{a \in \sigma_d(A) \cap S} \sum_{r=1}^{d(a)} \dyad{a,r}{a,r} 
+    + \int_{\sigma_c(A) \cap S} \dd{a} \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}.
+\end{equation}
+
+Il suo valor medio nello stato \(\ket{\Psi}\) è
+\[
+    \expval{P_S}_\Psi = \frac{\expval{P_S}{\Psi}}{\norm{\Psi}^2}
+    = \text{Probabilità che una misura di } A \text{ dia un valore } a \in S.
+\]
+
+\begin{remark}
+    \(P_S\) è del tutto analogo a una \textit{funzione caratteristica}:
+    \[
+        \chi_S(a) =
+        \begin{cases}
+            1 & a \in S \\
+            0 & a \notin S
+        \end{cases}
+    \]
+    e si può scrivere
+    \begin{equation}
+        P_S = \chi_S(A)
+        = \sum_{a \in \sigma_d(A)} \chi_S(a) \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}
+        + \int_{\sigma_c(A)} \dd{a}\, \chi_S(a) \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}.
+    \end{equation}
+\end{remark}
+
+    
+\subsection{Teoria della misura in M.Q.}
+In meccanica classica, supponiamo che le misure:
+\begin{itemize}
+    \item siano istantanee.
+    \item abbiamo precisione arbitraria.
+    \item siano non perturbative del sistema.
+\end{itemize}
+
+Questo significa che non sono presenti limiti teorici a queste caratteristiche; in laboratorio abbiamo errori di misura, ma per la meccanica classica possiamo ridurli indefinitivamente.
+
+In meccanica quantistica, supponiamo solamente che le misure siano istantanee. Inoltre bisogna considerare che in misure reali, lo spettro sarà sempre discreto per via della risoluzione finita dello strumento di misura.
+
+Ci occupiamo ora di studiare come cambia uno stato \(\ket{\Psi}\) nel momento in cui viene effettuata una misura di \(\mathcal{A}\) e otteniamo un risultato \(a \in \sigma(\mathcal{A})\).
+
+\begin{definition}
+    Si definisce \textit{misura di 1° specie}, una misura tale che, se ripeto la misura di \(\mathcal{A}\) a un tempo
+    \(t+ \epsilon\), ottengo nuovamente \(a\) con probabilità uguale a \(1\) per \(\epsilon\to 0^+\).
+\end{definition}
+Dunque con una misura di prima specie, lo stato iniziale tende all'autostato corrispondente al risultato \(a\).
+
+\begin{definition}
+    Si definisce \textit{misura ideale}, la misura che perturba minimamente il sistema compatibilimente con quanto detto per le misure di prima specie.
+\end{definition}
+
+
+\begin{postulato5}
+    Se in un sistema \(S\) nello stato \(\Sigma\), associato a \(\ket{\Psi}\), effettuando una misura di \(\mathcal{A}\) al tempo \(t\) ottengo un risultato \(a \in \sigma(\mathcal{A})\),
+    allora lo stato al tempo \(t+\epsilon\) per \(\epsilon\) abbastanza piccolo tende a \(\mathcal{P}\mathcal{P}_a\ket{\Psi}\).
+\end{postulato5}
+
+
+\subsection{Osservabili compatibili}  
+Ci chiediamo ora cosa succede se misuriamo un altro osservabile subito dopo aver effettuato una misura.
+
+Più precisamente, consideriamo gli osservabili \(\mathcal{A}, \mathcal{B}\) di spettro discreto e lo stato \(\ket{\Psi}\).
+Al tempo \(t\) misuro \(\mathcal{A}\) e ottengo \(a \in \sigma_d(\mathcal{A})\), al tempo \(t+\epsilon\) avrò lo stato \(\mathcal{P}\mathcal{P}_a\ket{\Psi}\) e misuro \(\mathcal{B}\) ottenendo \(b \in \sigma_d(\mathcal{B})\),
+avrò quindi lo stato \(\mathcal{P}_b\mathcal{P}\mathcal{P}_a\ket{\Psi}\) al tempo \(t+2\epsilon\) e infine misuro nuovamente \(\mathcal{A}\) .
+
+\begin{definition}
+    Due osservabili \(\mathcal{A}\) e \(\mathcal{B}\) si dicono \textit{compatibili} se una seconda misura di \(A\) al tempo \(t+2\epsilon\)
+    dà ancora \(a\) con probabilità \(1\)  \( \forall\, \ket{\Psi},\; \forall\, a \in \sigma(A),\; \forall\, b \in \sigma(B) \).
+\end{definition}
+
+\begin{remark}
+    Equivalentemente sono compatibili se \( \forall\, \ket{\Psi} \in \mathcal{H}_a,: \mathcal{P}_b \ket{\Psi} \in \mathcal{H}_a \), cioè
+    \(\mathcal{P}_b \mathcal{P}_a \ket{\Psi}\) è autovettore sia per \(\mathcal{A}\) che per \(\mathcal{B}\).
+\end{remark}
+
+\begin{theorem}
+    Dati due operatori \(A, \,B\) limitati dallo spettro discreto: \(\mathcal{A}, \,\mathcal{B}\) sono compatibili se e solo se esiste base ON dello spazio di Hilbert \(\mathcal{H}\) di autovettori simultanei: 
+    \[
+    \left\{ \ket{a,b,r} \right\}_{\substack{a \in \sigma(A)\\b \in \sigma(B)\\ r = 1,\dots,d(a,b)}} \quad \text{ t.c.} \quad A\ket{a,b,r}= a\ket{a,b,r}\ \ B\ket{a,b,r}=b\ket{a,b,r}
+    \]
+    se e solo se \(\left[ A, B \right]=0\) .
+\end{theorem}
+\begin{proof}
+    Omessa.
+\end{proof}
+
+\begin{remark}
+    Con \(d(a,b)\) si intende la dimensione di \(\mathcal{H}_{a,b}= \mathcal{H}_a\cap \mathcal{H}_b\). Per essere compatibili, due operatori devono essere diagonalizzabili dalla stessa base.
+\end{remark}
+
+\begin{example}
+    \[
+        \mathcal{H}= \mathbb{C}^3   \quad   A_1 = \begin{pmatrix}
+            1&0&0\\0&1&0\\0&0&-1
+        \end{pmatrix}
+        \quad 
+        A_2= \begin{pmatrix}
+            2&0&0\\0&3&0\\0&0&3
+        \end{pmatrix}
+    \]
+    \[
+\sigma(A_1)= \left\{ 1, -1 \right\}, \qquad 
+\sigma(A_2)= \left\{ 2, 3 \right\}
+\]
+\[
+\ket{1,2}= e_1 \quad \ket{1,3}=e_2 \quad \ket{-1,3}=e_3\
+\implies \ \sigma(A_1, A_2)= \left\{ (1,2), (1,3), (-1,3) \right\}
+\]
+\end{example}
+
+
+% 9 Lezione del 21/10/2025
+
+\begin{remark}
+    Per \(f(A) = \sum_a f(a)\, P_a\) e \( g(B) = \sum_b g(b)\, P_b \) vale:
+    \[
+        [A,B]=0 \iff [P_a,P_b]=0\; \forall a,b \iff [f(A),g(B)]=0 \, .
+    \]
+    L'osservazione si estende a operatori illimitati e a spettri continui.
+\end{remark}
+\begin{definition}
+    Dati \( A_1 \) e \( A_2 \) compatibili, si definisce \textit{spettro congiunto} l’insieme delle coppie di autovalori di \(A_1\) e \(A_2\)
+    legati ad uno stesso autovettore condiviso.
+\end{definition}
+Sia \(\vec{A} = (A_1, A_2, \dots, A_n)\) tale che \([A_i, A_j] = 0 \quad \forall i,j\).  
+Allora esiste una base ortonormale di autovettori simultanei:
+\[
+    \big\{ \ket{a_1, a_2, \dots, a_n; r} \big\}_{\substack{a_i \in \sigma(A_i)\\ r=1,\dots,d(\vec{a})}}
+\]
+dove \(\vec{a} = (a_1, a_2, \dots, a_n)\) e la degenerazione è data da
+\[
+    d(\vec{a}) = \dim\!\left( \bigcap_{i=1}^{n} \mathcal{H}_{a_i} \right)
+\]
+\[
+    \sigma(\vec{A}) = \left\{ \vec{a}\ \big|\ d(\vec{a}) \geq 1 \right\}.
+\]
+
+\begin{definition}
+    \(\vec{A} = (A_1, \dots, A_n)\) è \textit{insieme completo di osservabili compatibili (I.C.O.C.)} sse:
+    \[
+        [A_i, A_j] = 0 \quad \forall\, i,j \qquad \text{e} \qquad 
+        \forall\, \vec{a} \in \sigma(\vec{A}) \ \ d(\vec{a}) = 1
+    \]
+\end{definition}
+Dunque, se ho un I.C.O.C. posso misurare in successione rapida 
+tutte le osservabili dell’insieme e conoscere con certezza lo stato allora assunto dal sistema.
+
+\begin{theorem}
+    Se \((A_1, \dots, A_n)\) sono compatibili tra di loro,  
+    allora la tupla si può sempre completare:
+    \[
+        \exists\, B_1, \dots, B_m \quad \text{tali che} \quad [B_i, B_j] = [A_i, B_j] = 0 \quad \forall\, i,j
+    \]
+    e \((A_1, \dots, A_n, B_1, \dots, B_m)\) è un I.C.O.C.
+\end{theorem}
+
+
+\begin{example}
+    \textbf{Particella senza spin in 3D} \\
+    \(\mathcal{H}= L_2(\mathbb{R}^3, \dd[3]{x})\), \quad  misuriamo \(\Psi(\vec{x})\).
+
+    \[
+        \Rightarrow X_1, X_2, X_3 \qquad (X_s \Psi)(\vec{x}) = x_s \Psi(\vec{x})
+    \]
+    \[
+        \Rightarrow P_1, P_2, P_3 \qquad (P_s \Psi)(\vec{x}) = -i\hbar \pdv{\Psi(\vec{x})}{x_s}
+    \]
+
+    \[
+        [X_s, X_t]=[P_s, P_t]=0 \quad \text{ma} \quad [X_i, P_s] = i\hbar\,\delta_{is}
+    \]
+    Quindi, possiamo definire le basi:
+    \[
+        \vec{X} = (X_1, X_2, X_3) \quad \text{I.C.O.C.} \Rightarrow \text{base ON } \left\{ \ket{\vec{x}} \right\}_{\vec{x}\in \mathbb{R}^3} \text{ non degenere.}
+    \]
+    \[
+        \vec{P} = (P_1, P_2, P_3) \quad \text{I.C.O.C.} \Rightarrow \text{base ON } \left\{ \ket{\vec{p}} \right\}_{\vec{p}\in \mathbb{R}^3}, \quad 
+        \vec{P} = -i\hbar\, \vec{\nabla}
+    \]
+\end{example}
+
+
+\subsection{Quantizzazione Canonica}
+
+In meccanica classica, un sistema è definito dalle coordinate \(q_i\) e \(p_i \) per \(i = 1, \dots, n\) e le osservabili sono funzioni di queste variabili \(f(q_i,p_i)\),
+la cui evoluzione temporale è descritta grazie alle parentesi di Poisson \(\dot{f}= \left\{ f, \mathcal{H}_{CL} \right\}\).
+
+\begin{postulato6}
+    Il corrispondente sistema quantistico è dato da:
+\[
+q_i \;\longrightarrow\; Q_i
+\qquad\qquad
+p_i \;\longrightarrow\; P_i
+\qquad\qquad
+\{\ , \ \} \;\longrightarrow\; \frac{1}{i\hbar}[\  , \ ]
+\]
+
+ovvero:
+\[
+\{ q_j, p_k \} = \delta_{jk}
+\;\;\longrightarrow\;\;
+\frac{1}{i\hbar}[Q_j, P_k] = \delta_{jk}\,\mathbb{I}
+\]
+
+\[
+\{ Q_1, \dots, Q_n \} \quad\text{e}\quad \{ P_1, \dots, P_n \}
+\quad\text{sono I.C.O.C.}
+\]
+\end{postulato6}
+
+\begin{remark}
+    Il postulato non ci da informazioni sui domini.
+\end{remark}
+
+\begin{remark}
+    Funzioni del tipo: \(f(\vec{q}) \;\longrightarrow\; f(\vec{Q}), \ \ g(\vec{p}) \;\longrightarrow\; g(\vec{P})\) 
+    non danno problemi, essendo definite per operatori compatibili, ma funzioni come\(f(\vec{q},\vec{p}) \;\longrightarrow\; f(\vec{Q}, \vec{P})\) non possono essere calcolate semplicemente.
+\end{remark}
+
+
+
+\section{Evoluzione Temporale}
+Consideriamo ora l'evoluzioni causale, non consideriamo i processi di misura.
+
+\begin{postulato7}
+    Esiste operatore autoaggiunto \(H(t)\), \(\overline{D(H)}= \mathcal{H}\) tale che \(\forall\, \ket{\Psi(t)}\in D(H)\) vale:
+    \begin{equation}
+        i\hbar \dv{t}\ket{\Psi(t)}= H(t)\ket{\Psi(t)}
+    \end{equation}
+    detta \textit{equazione di Schrödinger}.
+\end{postulato7}
+
+Valgono le seguenti proprietà:
+\begin{itemize}
+    \item Primo ordine in \(t\): \(\ \forall\, \ket{\Psi(t_0)} \rightsquigarrow \exists! \,\ket{\Psi(t)} \ \forall\, t\) 
+    \item Lineare: \(a\ket{\Psi_1(t_0)}+b\ket{\Psi_2(t_0)}\rightsquigarrow a\ket{\Psi_1(t)}+b\ket{\Psi_2(t)}\)
+    \item \(\norm{\Psi(t)}= \text{ cost } \ \forall \,t\) dato che:
+    \[
+        \dv{t}\braket{\Psi(t)}{\Psi(t)} =
+        \braket*{\dv{t}\Psi(t)}{\Psi(t)} + \braket*{\Psi(t)}{\dv{t}\Psi(t)}
+    \]
+    \[
+        = \braket*{\frac{1}{i\hbar}H\Psi}{\Psi} + \braket*{\Psi}{-\frac{1}{i\hbar}H\Psi}
+        = -\frac{1}{i\hbar}\left( \braket{H\Psi}{\Psi} - \braket{\Psi}{H\Psi} \right)
+        \overset{H \text{ herm}}{=} 0
+    \]
+\end{itemize}
+
+\begin{example}
+    \textbf{Particella senza spin in 3D}\\
+    Una particella senza spin in 3D nello stato \(\ket{\Psi(t)}\) è descritta dalla funzione d'onda \(\Psi(\vec{x},t)=\braket{\vec{x}}{\Psi(t)}\) e dall'operatore:
+    \[
+        H= \frac{\abs{\vec{p}}^2}{2m}+ V(\vec{x})
+    \]
+    dove consideriamo solo stati normalizzati \(\norm{\Psi}= 1\) e \(\rho(\vec{x},t)= \abs{\Psi(\vec{x},t)}^2\).
+    Dall'eq. di Schrödinger otteniamo:
+    \[
+        i\hbar\,\pdv{\Psi}{t}
+        = \left( -\frac{\hbar^2}{2m}\nabla^2 + V(\vec{x}) \right)\Psi
+    \]
+    \[
+        -\,i\hbar\,\pdv{\Psi^*}{t}
+        = \left( -\frac{\hbar^2}{2m}\nabla^2 + V(\vec{x}) \right)\Psi^*
+    \]
+    Moltiplicando la prima equazione per \(\Psi^*\) e la seconda per \(\Psi\) e successivamente sommandole otteniamo:
+    \[
+        \Psi^* \pdv{\Psi}{t} + \Psi \pdv{\Psi^*}{t}
+        = \frac{i\hbar}{2m}\left( \Psi^* \nabla^2 \Psi - \Psi \nabla^2 \Psi^* \right)
+    \]
+    \[
+        \pdv{t} \abs{\Psi(\vec{x},t)}^2
+        = - \vec{\nabla} \cdot \left[ -\frac{i\hbar}{2m}\left( \Psi^* \vec{\nabla} \Psi - \Psi \vec{\nabla} \Psi^* \right) \right]
+    \]
+    Riarraggiando i termini e definendo la \textit{densità di corrente} \(\vec{j}(\vec{x},t)\), otteniamo l'equazione di continuità:
+    \begin{equation}
+        \dv{t}\rho(\vec{x},t) + \vec{\nabla}\cdot  \vec{j}(\vec{x},t)=0
+    \end{equation}
+\end{example}
+
+
