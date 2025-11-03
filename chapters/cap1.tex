@@ -619,9 +619,9 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
     Se \(\Psi_1\) e \(\Psi_2\) sono autovettori relativi ad \(\hat{a} \in \sigma_d(A)\), allora \(\alpha\Psi_1+ \beta\Psi_2\) è autovettore relativo ad \(\hat{a}\) .
 \end{remark}
 \begin{definition}
-    Per \(\forall a \in \sigma_d(A) , \; \exists\) autospazio \(\mathcal{H}\mathcal{P}_a\subseteq\mathcal{H}\) di autovettori, 
-    la cui dimensione \(d(a):= \operatorname{dim}\mathcal{A}\mathcal{P}_a\) è detta \textit{degenerazione} di \(a in \sigma_d(A)\) .\\
-    Se \(d(a)=1,\; a \) è detto \textit{non-degenere} e \(\Psi\in \mathcal{H}\mathcal{P}_a\) è unico a meno riscalamenti. Se \(d(a)>1, \; a\) è detto \textit{degenere}.
+    Per \(\forall a \in \sigma_d(A) , \; \exists\) autospazio \(\mathcal{H}_a\subseteq\mathcal{H}\) di autovettori, 
+    la cui dimensione \(d(a):= \operatorname{dim}\mathcal{H}_a\) è detta \textit{degenerazione} di \(a \in \sigma_d(A)\) .\\
+    Se \(d(a)=1,\; a \) è detto \textit{non-degenere} e \(\Psi\in \mathcal{H}_a\) è unico a meno riscalamenti. Se \(d(a)>1, \; a\) è detto \textit{degenere}.
 \end{definition}
 
 \begin{theorem}
@@ -652,7 +652,7 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
     \begin{equation}
         \left\{ \ket{a, r} \right\}_{\substack{a \in \sigma_d(A)\\ r = 1,\dots,d(a)}}
         \qquad
-        \mathcal{H} = \bigoplus_{a \in \sigma_d(A)} \mathcal{H}\mathcal{P}_a.
+        \mathcal{H} = \bigoplus_{a \in \sigma_d(A)} \mathcal{H}_a.
     \end{equation}
 \end{theorem}
 
@@ -1045,22 +1045,22 @@ quindi lo spettro è \(\sigma(\mathcal{P}_{\tilde{\mathcal{H}}})= \{0,1\}\), in 
 \end{remark}
 
 
-Sia \(A\) autoaggiunto e \(a\in \sigma_d(A)\). Indichiamo con \(\mathcal{H}\mathcal{P}_a\) l'autospazio relativo ad \(a\) e con \(d(a)= \dim \mathcal{H}\mathcal{P}_a\) la degenerazione. 
-Fissata una base ON \(\{\ket{a,r}\}_{r=1}^{d(a)}\) di \(\mathcal{H}\mathcal{P}_a\), il proiettore su \(\mathcal{H}\mathcal{P}_a\) è
+Sia \(A\) autoaggiunto e \(a\in \sigma_d(A)\). Indichiamo con \(\mathcal{H}_a\) l'autospazio relativo ad \(a\) e con \(d(a)= \dim \mathcal{H}_a\) la degenerazione. 
+Fissata una base ON \(\{\ket{a,r}\}_{r=1}^{d(a)}\) di \(\mathcal{H}_a\), il proiettore su \(\mathcal{H}_a\) è
 \begin{equation}
-    \mathcal{P}\mathcal{P}_a \equiv \mathcal{P}_{\mathcal{H}\mathcal{P}_a}= \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}.
+    \mathcal{P}_a \equiv \mathcal{P}_{\mathcal{H}_a}= \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}.
 \end{equation}
     
 
 Se lo spettro è puramente discreto, \(\sigma(A)= \sigma_d(A)\), ed esiste una base ON di autovettori di \(A\), allora valgono:
 \[
-    \mathbb{I}= \sum_{a\in \sigma(A)} \mathcal{P}\mathcal{P}_a\,,\qquad
-    A= \sum_{a\in \sigma(A)} a\,\mathcal{P}\mathcal{P}_a.
+    \mathbb{I}= \sum_{a\in \sigma(A)} \mathcal{P}_a\,,\qquad
+    A= \sum_{a\in \sigma(A)} a\,\mathcal{P}_a.
 \]
 
 Se \(\dim \mathcal{H} < \infty\), per ogni \(a\in \sigma(A)\) il proiettore si può esprimere come:
 \[
-    \mathcal{P}\mathcal{P}_a= \prod_{\substack{a'\in \sigma(A)\\ a'\neq a}} \frac{a'\,\mathbb{I}- A}{a'-a}.
+    \mathcal{P}_a= \prod_{\substack{a'\in \sigma(A)\\ a'\neq a}} \frac{a'\,\mathbb{I}- A}{a'-a}.
 \]
 
 
@@ -1069,9 +1069,9 @@ Se \(\dim \mathcal{H} < \infty\), per ogni \(a\in \sigma(A)\) il proiettore si p
 Il valor medio di questo proiettore è:
 
 \begin{align*}
-    \expval{\mathcal{P}\mathcal{P}_a}_\Psi &= \frac{\expval{\mathcal{P}\mathcal{P}_a}{\Psi}}{\norm{\Psi}^2}= \sum_r^{d(a)} \frac{\braket{\Psi}{a,r}\braket{a,r}{\Psi}}{\norm{\Psi}^2} =
+    \expval{\mathcal{P}_a}_\Psi &= \frac{\expval{\mathcal{P}_a}{\Psi}}{\norm{\Psi}^2}= \sum_r^{d(a)} \frac{\braket{\Psi}{a,r}\braket{a,r}{\Psi}}{\norm{\Psi}^2} =
     \sum_r  \frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}= P_\Psi(a)\\
-    &= \frac{\expval{\mathcal{P}^2_a}{\Psi}}{\norm{\Psi}^2}= \frac {\norm{\mathcal{P}\mathcal{P}_a\ket{\Psi}}^2}{\norm{\Psi}^2}
+    &= \frac{\expval{\mathcal{P}^2_a}{\Psi}}{\norm{\Psi}^2}= \frac {\norm{\mathcal{P}_a\ket{\Psi}}^2}{\norm{\Psi}^2}
 \end{align*}
 
 Consideriamo ora il caso in cui lo spettro di \(A\) sia misto:
@@ -1145,7 +1145,7 @@ Dunque con una misura di prima specie, lo stato iniziale tende all'autostato cor
 
 \begin{postulato5}
     Se in un sistema \(S\) nello stato \(\Sigma\), associato a \(\ket{\Psi}\), effettuando una misura di \(\mathcal{A}\) al tempo \(t\) ottengo un risultato \(a \in \sigma(\mathcal{A})\),
-    allora lo stato al tempo \(t+\epsilon\) per \(\epsilon\) abbastanza piccolo tende a \(\mathcal{P}\mathcal{P}_a\ket{\Psi}\).
+    allora lo stato al tempo \(t+\epsilon\) per \(\epsilon\) abbastanza piccolo tende a \(\mathcal{P}_a\ket{\Psi}\).
 \end{postulato5}
 
 
@@ -1153,8 +1153,8 @@ Dunque con una misura di prima specie, lo stato iniziale tende all'autostato cor
 Ci chiediamo ora cosa succede se misuriamo un altro osservabile subito dopo aver effettuato una misura.
 
 Più precisamente, consideriamo gli osservabili \(\mathcal{A}, \mathcal{B}\) di spettro discreto e lo stato \(\ket{\Psi}\).
-Al tempo \(t\) misuro \(\mathcal{A}\) e ottengo \(a \in \sigma_d(\mathcal{A})\), al tempo \(t+\epsilon\) avrò lo stato \(\mathcal{P}\mathcal{P}_a\ket{\Psi}\) e misuro \(\mathcal{B}\) ottenendo \(b \in \sigma_d(\mathcal{B})\),
-avrò quindi lo stato \(\mathcal{P}_b\mathcal{P}\mathcal{P}_a\ket{\Psi}\) al tempo \(t+2\epsilon\) e infine misuro nuovamente \(\mathcal{A}\) .
+Al tempo \(t\) misuro \(\mathcal{A}\) e ottengo \(a \in \sigma_d(\mathcal{A})\), al tempo \(t+\epsilon\) avrò lo stato \(\mathcal{P}_a\ket{\Psi}\) e misuro \(\mathcal{B}\) ottenendo \(b \in \sigma_d(\mathcal{B})\),
+avrò quindi lo stato \(\mathcal{P}_b\mathcal{P}_a\ket{\Psi}\) al tempo \(t+2\epsilon\) e infine misuro nuovamente \(\mathcal{A}\) .
 
 \begin{definition}
     Due osservabili \(\mathcal{A}\) e \(\mathcal{B}\) si dicono \textit{compatibili} se una seconda misura di \(A\) al tempo \(t+2\epsilon\)
@@ -1549,4 +1549,324 @@ dove \( U \) è un operatore unitario o antiunitario.
 \end{definition}
 
 % 11 Lezione del 24/10/2025
+
+\subsection{Visuali}
+\paragraph{Visuale di Schrödinger}Finora abbiamo sempre considerato la visione di Schrödinger del sistema, in cui lo stato evolve secondo:
+\[
+    \ket{\Psi_s(t)} = U(t, t_0) \ket{\Psi_s(t_0)} \qquad i\hbar \dv{t}U(t, t_0)= H _s(t) U (t, t_0)
+\]
+e le osservabili non dipendenti esplicitamente dal tempo si conservano \(A_s(t)= A_s(t_0)\) .
+
+\paragraph{Visuale di Heisenberg} Nell'istante \(t_0\) le visuali coincidono:
+\[
+    \ket{\Psi_h(t_0)} = \ket{\Psi_s(t_0)}   \qquad A_h(t_0)  = A_s(t_0)
+\]
+mentre al tempo \(t\) vogliamo che \(\ket{\Psi_h(t)}  = \ket{\Psi_h(t_0)}\) non cambi nel tempo, per cui deve essere:
+\[
+    \ket{\Psi_h(t)}  = \ket{\Psi_s(t_0)} = U^\dagger \ket{\Psi_s(t)} 
+\]
+
+Per essere equivalenti le due visioni, deve valere il teorema di Wigner e quindi abbiamo:
+\[
+    A_h(t)= U(t,t_0)^\dagger A_s U (t, t_0) 
+\]
+
+Nella visuale di Schrödinger gli stati variano nel tempo e gli operatori sono costanti, nella visuale di Heisenberg gli stati sono costanti e contengono già tutta l'informazione ma è la misura che cambia nel tempo.
+L'unica cosa che noi possiamo osservare fisicamente sono i valori medi delle misure:
+\begin{equation}
+    \expval{A_s}_{\Psi_s(t)}  = \expval{A_h(t)}_{\Psi_h} = \expval{\mathcal{A}}_\Sigma(t)    
+\end{equation}
+
+Vediamo ora come evolve un operatore esplictamente dipende dal tempo \(A_s(t)\) nella visuale di Heisenberg:
+\[
+    i\hbar \dv{t} A_h(t)= i\hbar \dv{t} \left(U(t,t_0)^\dagger A_s(t)U(t,t_0)\right) =
+\]
+\[
+    = \left(i\hbar\dv{ U^\dagger }{t}\right) A_s U + U^\dagger A_s \left(i\hbar\dv{U}{t}\right) + i\hbar U^\dagger \left( \dv{A_s}{t} \right)U =
+\]
+Usando la legge per l'operatore evoluzione temporale e la sua coniugata:
+\[
+    i\hbar \dv{t} U(t,t_0)= H_s(t)U(t, t_0) \qquad i\hbar \dv{t} U (t, t_0)^\dagger = - U(t, t_0)^\dagger H_s(t)
+\]
+e inserendo dei \(UU^\dagger = \mathbb{I}\) otteniamo:
+\[
+    = - U ^\dagger H_s UU^\dagger A_s U +U^\dagger A_s U U^\dagger H_s U + i\hbar U^\dagger \left( \pdv{A_s}{t} \right)U =
+\]
+\[
+    = - H_h(t) A_h(t)+ A_s(t)H_h  (t) + i\hbar \left( \pdv{A_s}{t} \right)_h(t)=
+\]
+\[
+    =\left[ A_h(t), H_h(t) \right] + i\hbar \left( \pdv{A_s}{t} \right)_h(t)
+\]
+
+Otteniamo così l'\textit{equazione di Heisenberg}:
+\begin{equation}
+    \dv{t} A_h(t) = \frac{1}{i\hbar}\left[ A_h(t), H_h(t) \right]   + \left( \pdv{A_s}{t} \right)_h (t)
+\end{equation}
+
+Questo vale in generale per sistemi anche non conservativi. Nel caso specifico di sistemi conservativi \(H_s(t)= H_s(t_0)\) vale:
+\[
+    U(t,t_0)= e^{-\frac{i}{\hbar } H_S (t-t_0)} \implies H_h(t)= e^{\frac{i}{\hbar }H_s(t-t_0)}H_s e^{-\frac{i}{\hbar} H_s(t-t_0)} = H_s
+\]
+Come abbiamo già visto, nella visuale di Schrödinger i valori medi delle osservabili sono costanti per stati stazionari.
+Nella visuale di Heisenberg, i valori medi sono costanti se gli operatori commutano con l'hamiltoniano.
+\[
+    \dv{t}\expval{A}_\Psi = \dv{t} \frac{\expval{A_h(t)}{\Psi_h}}{\norm{\Psi_h}^2}= \frac{\expval{\dv{t} A_h(t)}{\Psi_h}}{\norm{\Psi_h}^2} = 0 
+    \iff \left[ A,H \right] =0
+\]
+
+
+\subsection{Limite classico dei sistemi quantistici}
+A ogni osservabile classico \(f \) posso associare un operatore autoaggiunto \(F\) tali che:
+\[
+    \dv{t} f = \left\{ f, H_{cl} \right\} \to \dv{t} F_h = \frac{1}{i\hbar} \left[ F_h, H\right]   
+\]
+Dove consideriamo l'operatore hamiltoniano \(H\) associato all'hamiltoniana classica \(H_{cl}\) non dipendenti dal tempo.
+
+Consideriamo ora una particella in 1D e le sue osservabili \(Q\) posizione e \(P\) momento con errore trascurabile rispetto a precisione sistemi di misura.\\
+Associamo i valori medi di queste variabili alle corrispettive variabili classiche:
+\[
+    q(t) \approx \expval{Q}_\Psi \qquad p(t) \approx \expval{P}_\Psi    
+\]
+e associamo l'hamiltoniana classica all'operatore hamiltoniano:
+\[
+    H_{cl} (q,p)= \frac{p^2}{2m} + V(q)\  \longleftrightarrow \ H = \frac{P^2}{2m} + V(Q)
+\]
+Classicamente la soluzione è:
+\[
+    \begin{cases}
+        \dot{q}(t) = \pdv{H_{cl}}{p} = \frac{p(t)}{m}\\
+        \dot{p}(t) = - \pdv{H_{cl}}{q} = - V' (q(t))
+    \end{cases}
+\]
+Cerchiamo ora delle equazioni analoghe per i valori medi \(\expval{Q}_\Psi\) e \(\expval{P}_\Psi\) . 
+Rimaniamo nella visuale di Heisenberg e consideriamo per comodità \(\norm{\Psi}=1\).
+
+\[
+\dv{t} \expval{Q}_{\Psi}
+= \dv{t}\expval{Q_h(t)}{\Psi_h}
+= \expval{\dv{t} Q_h}{\Psi_h}
+= \expval{\tfrac{1}{i\hbar}[Q_h, H]}{\Psi_h}
+\]
+\[
+    \left[ Q_h, H \right]  = \left[ Q, \frac{P^2}{2m} \right] + \left[ Q, V(Q) \right] = \frac{1}{2m}\left( P\left[ Q,P \right] + [Q,P]P \right) = i\hbar \frac{P}{m}
+\]
+\[
+    \dv{t} \expval{Q}_{\Psi} = \frac{\expval{P}_\Psi}{m}
+\]
+Mentre per l'operatore \(P\):
+\[
+    \dv{t} \expval{P}_\Psi  = \expval{\tfrac{1}{i\hbar}\left[ P, H \right]}{\Psi_h}
+\]
+\[
+    \left[ P,H  \right]= \left[ P, \frac{P^2}{2m} \right] + \left[ P, V(Q) \right]  = -i\hbar V'(Q)
+\]
+\begin{attention}
+    Si sono usate le proprietà \(\left[ Q, g(P) \right]= i \hbar g'(P)\)  e \(\left[ P, f(Q) \right]= -i\hbar f'(Q)\)
+\end{attention}
+
+Otteniamo così il seguente teorema:
+
+\begin{theorem}
+    {\normalfont\textbf{di Ehrenfest}}
+    \begin{equation}
+        \dv{t}\expval{Q}_{\Psi} = \frac{\expval{P}_\Psi}{2m} \qquad \dv{t}\expval{P}_\Psi = - \expval{V'(Q)}_{\Psi}
+    \end{equation}
+\end{theorem}
+
+
+\subsection{Principio indeterminazione tempo-energia}
+
+Sappiamo che vale: 
+\[
+    (\Delta X_i )_{\Psi} (\Delta P_i )_\Psi \geq \frac{\hbar}{2}
+\]
+per \(i = 1,2,3\) le 3 dimensioni spaziali. Per invarianza di Lorentz ci aspetteremo qualcosa come:
+\[
+    (\Delta t)_{\Psi}(\Delta E)_\Psi \geq \frac{\hbar}{2}
+\]
+ma finora abbiamo visto soltanto una teoria non relativistica, \(t\) è un semplice parametro. Cosa significa inoltre l'indeterminazione del tempo?
+
+Consideriamo inanziatutto un operatore a.a. \(A\) e l'operatore hamiltoniano \(H\), senza nessuna dipendenza esplicita dal tempo e otteniamo:
+\[
+    (\Delta A)_{\Psi} (\Delta E)_\Psi = (\Delta A)_{\Psi} (\Delta H)_\Psi = \geq \frac{1}{2} \abs{\expval{\left[ A_h,H \right]}_\Psi}
+\]
+\[
+    (\Delta A)_{\Psi} (\Delta E)_\Psi  \geq \frac{\hbar}{2}\abs{\expval{\dv{t}A_h}} =\frac{\hbar}{2}\abs{\dv{t}\expval{A_h}}
+\]
+\[
+    \frac{ (\Delta A)_{\Psi} }{\abs{\dv{t}\expval{A_h}}}(\Delta E)_\Psi  \geq \frac{\hbar}{2} \qquad    \forall \, A \ a.a.
+\]
+Definiamo quindi:
+\[
+    (\Delta t)_{\Psi} =  \inf_{A} \frac{ (\Delta A)_{\Psi} }{\abs{\dv{t}\expval{A_h}}}
+\]
+come il tempo necessario affinché un qualche osservabile \(A\) vari in maniera significativa.
+
+
+% 12 Lezione del 27/10/2025
+
+\section{Stati misti}
+
+Occupiamoci ora di stati, di cui non disponiamo tutta l'informazione, ma solo la probabilità che sia in certo stato.
+\begin{definition}
+    Definiamo \textit{stato misto} \(\varepsilon = \left\{ \ket{\Psi_k}, p_k \right\}\) un insieme di stati puri normalizzati \(\ket{\Psi_k}\ : \norm{\Psi_k} = 1\) con le rispettive probabilità \(p_k \geq 0 \ \sum_k p_k = 1\).
+\end{definition}
+
+La misura di un'osservabile su uno stato misto restituisce:
+\[
+    \expval{A}_\varepsilon = \sum_k p_k \expval{A}_{\Psi_k}
+\]
+
+Per trattare gli stati misti è comodo associare a un certo oggeto matematico chiamato \textit{operatore densità} o \textit{matrice densità} \(\rho\).
+Trattiamo inizialmente l'operatore densità per stati puri \(\ket{\Psi}\), in questo caso è defito come:
+\[
+    \rho = \frac{\ket{\Psi}\bra{\Psi}}{\norm{\Psi}^2}
+\]
+ed è equivalente al proiettore su \(\ket{\Psi}\).\\ Consideriamo per comodità \(\norm{\Psi}= 1\) e otteniamo la forma matriciale \(p_{mn} = \braket{m}{\Psi}\braket{\Psi}{n}\). 
+Il valore medio degli osservabili si può ottenere:
+\[
+    \expval{A}_\Psi = \bra{\Psi}A\ket{\Psi}= \sum_{n,m} \braket{\Psi}{n}\bra{n}A\ket{m}\braket{m}{\Psi} = \sum_{n,m} \rho_{mn}A_{nm} = \Tr(\rho A)
+\]
+La traccia non dipende dalla base scelta, inoltre vale: \(\Tr(\alpha A + \beta B )= \alpha \Tr(A) \beta \Tr(B )\) e \(\Tr(ABC)= \Tr(CAB)\).
+
+\paragraph{Proprietà di \(\rho\)}
+\begin{itemize}
+    \item \(\rho^\dagger = \rho\)
+    \item \(\Tr \rho = \sum_n \braket{n}{\Psi}\braket{\Psi}{n}= \sum_n \abs{\braket{n}{\Psi}}^2 = 1\)
+    \item \(\forall\,\chi ,\ \norm{\chi} = 1\) vale \(\expval{\rho}_\chi = \braket{\chi}{\Psi}\braket{\Psi}{\chi}= \abs{\braket{\Psi}{\chi}}^2 \geq 0\) cioè \(\rho\) è semidefinito positivo.
+    \item \(\rho^2 = \rho \implies \Tr \rho^2 = 1\)
+\end{itemize}
+
+\begin{definition}
+    Un operatore \(\rho : \mathcal{H}\to \mathcal{H}\) è \textit{operatore densità} sse:
+    \begin{equation}
+        \rho^\dagger = \rho \qquad \Tr \rho = 1 \qquad \rho \geq 0
+    \end{equation}
+\end{definition}
+
+\begin{remark}
+    Dato un operatore a.a. \(A\) vale \(\expval{A}_\chi\geq 0 \ \forall \, \chi \iff \sigma(A) \subseteq \mathbb{R}_{\geq0}\) .
+\end{remark}
+\begin{proof} Solo spettri discreti \(\sigma(A)\equiv \sigma_d(A)\)\\
+    \((\implies) \ \forall a \in \sigma_d(A) \quad a = \expval{A}{a}\geq 0\)\\
+    \((\impliedby) \ \expval{A}{\chi} = \sum_{a,r}\bra{\chi}A\ket{a,r}\braket{a,r}{\chi}= \sum_{a,r}a \abs{\braket{a,r}{\chi}}^2\geq 0\)
+\end{proof}
+
+Per gli stati misti \( \varepsilon = \left\{ \ket{\Psi_k}, p_k \right\}\) con \(p_k \geq0  \ \sum_k p_k= 1 \ \norm{\Psi_k}= 1\) abbiamo un operatore densità \(\rho_k = \ket{\Psi_k}\bra{\Psi_k}\) per ogni stato puro.
+Il valore medio di un operatore \(A\) si calcola come:
+\[
+    \expval{A}_\varepsilon = \sum_k p_k \expval{A}_{\Psi_k} = \sum_k  p_k \Tr(\rho_k A)= \Tr[(\sum_k p_k\rho_k)A] = \Tr(\rho A)
+\]
+Dove abbiamo definito l'operatore densità per uno stato misto come:
+\begin{equation}
+    \rho : = \sum_k  p_k\ket{\Psi_k}\bra{\Psi_k}    
+\end{equation}
+
+Valgono ancora \(\rho^\dagger = \rho\), \(\rho\) semidefinito positivo e \(\Tr \rho = 1\).
+
+\begin{theorem}
+    Dato \(\rho\) operatore densità, esiste stato misto \(\varepsilon = \left\{ \ket{\Psi_k}, p_k \right\}\) con \(p_k \geq 0 \) e \(\sum_k p_k =1\) tale che 
+    \(\rho = \sum_k p_k \ket{\psi_k}\bra{\Psi_k}\) .
+\end{theorem}
+\begin{proof}
+    \(\rho\) a.a. \(\implies  \exists\) base o.n \(\left\{\ket{\Psi_k}\right\}\) tale che 
+    \[\rho\ket{\Psi_k}= p_k\ket{\Psi_k} \implies \rho = \sum_k \ket{\Psi_k}\bra{\Psi_k}\]
+    inoltre \(\rho\geq0 \implies p_k \geq 0\),
+    \[
+        1 = \Tr \rho = \sum_k \expval{\rho}{\Psi_k} = \sum_k    p_k
+    \]
+    
+\end{proof}
+
+
+\begin{remark}
+    Mix statistici diversi \( \varepsilon = \left\{ \ket{\Psi_k}, p_k  \right\}\) e \( \varepsilon' = \left\{ \ket{\Psi'_k}, p'_k  \right\}\) possono avere stesso \(\rho\) .
+    I due diversi mix sono indistinguibili perché restiruiscono gli stessi valori medi.
+\end{remark}
+Uno stato quantistico puro o misto è descritto interamente dal suo operatore densità.
+
+\begin{theorem}
+    Se \(\rho\) è operatore densità, allora \(\Tr (\rho^2)\leq 1\) ed \(\Tr(\rho^2)= 1 \iff \exists \ket{\Psi} \) tale che \(\rho = \ket{\Psi}\bra{\Psi}\), cioè è uno stato puro, se invece \(\Tr(\rho^2)< 1\) è uno stato misto.
+\end{theorem}
+\begin{proof}
+    \(\rho\) operatore densità \(\implies \exists\) base O.N. \(\left\{ \ket{\Psi_k} \right\}\) tale che:
+    \[
+    \rho = \sum_k p_k \ket{\Psi_k}\bra{\Psi_k}, 
+    \quad p_k \ge 0, 
+    \quad \sum_k p_k = 1
+    \]
+    \[
+     \implies 0 \le p_k \le 1 
+   \implies
+    0 \le p_k^2 \le p_k
+    \]
+
+    \[
+    \Tr(\rho^2)
+    = \sum_k \bra{\Psi_k} \rho^2 \ket{\Psi_k}
+    = \sum_k p_k^2 
+    \le \sum_k p_k = 1
+    \]
+
+    \[
+    \Tr(\rho^2) = 1 
+    \ \Longleftrightarrow\ 
+    p_k^2 = p_k \ \forall k 
+    \ \Longleftrightarrow\ 
+    p_k = 0 \text{ oppure } 1 \ \forall k
+    \]
+
+    \[
+    \text{Siccome } \sum_k p_k = 1 
+    \ \Rightarrow\ 
+    \exists k' \text{ t.c. } 
+    p_k = 
+    \begin{cases}
+    0 & k \neq k' \\
+    1 & k = k'
+    \end{cases}
+    \]
+
+    \[
+    \Rightarrow\ 
+    \rho = \ket{\Psi_{k'}}\bra{\Psi_{k'}}
+    \]
+
+\end{proof}
+
+
+\subsection{Evoluzione temporale}
+L'operatore densità rappresenta lo stato, quindi nella visuale di Schrödinger deve evolvere come:
+\begin{equation}
+    \rho_s(t)= \sum_k p_k \ket{\Psi_k(t)}\bra{\Psi_k(t)}= U(t,t_0)\rho_s(t_0)U (t, t_0)^\dagger
+\end{equation}
+Considerando la legge per l'operatore unitario è possibile trovare un'equazione differenziale:
+\begin{equation}
+    i\hbar \dv{t}\rho_s(t) = \left[ H_s(t, \rho_s(t)) \right]
+\end{equation}
+
+Nella visione di Heisenberg l'operatore densità non varia nel tempo \(\rho_h(t) = \rho_h(t_0)\) .
+\begin{example}
+\begin{itemize}
+    \item Stato termico
+        \[
+        \left\{ \big( \ket{E_n},\ p_n = \frac{e^{-E_n / kT}}{Z} \big) \right\},
+        \qquad 
+        Z = \sum_n e^{-E_n / kT}
+        \]
+    \item Stato massimamente misto, se $\dim \mathcal{H} = d < \infty$:
+    \[
+    \rho = \frac{1}{d} \mathbb{I}
+    \qquad 
+    \Tr(\rho^2) = \frac{1}{d} 
+    \qquad \text{(purezza minima)}
+    \]
+\end{itemize}
+\end{example}
+
+
+
+
+
 
