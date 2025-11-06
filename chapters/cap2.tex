@@ -1,0 +1,171 @@
+\chapter{Simmetrie}
+
+Riprendiamo la discussione sulle simmetrie introdotta nella sezione \ref{sec: sim_intro}. 
+Espandiamo il concetto di simmetria da un semplice cambio di visuale a vere e proprie trasformazioni di stati e osservabili, che mantengano sempre invariati i valori medi:
+\[
+    \Sigma\to \Sigma' \qquad \mathcal{A}\to \mathcal{A}' \qquad  \text{ t.c. } \expval{\mathcal{A}}_\Sigma  = \expval{\mathcal{A}'}_\Sigma
+\]
+
+Dal teorema di Wigner \ref{theo: Wigner} sappiamo che queste trasformazioni \(\tau\) sono indotte da operatori unitari o antiunitari \(U\), ma non garantisce l'unicità dell'operatore per simmetria.
+
+\begin{theorem}
+    Due operatori unitari o antiunitari \(U, \ U'\) inducono la stessa simmetria sse \(U ' = e^{i\theta}U\) .
+\end{theorem}
+\begin{proof}
+    \((\impliedby) \) 
+    \[
+        \left[ \Psi \right]\to \left[ e^{i\theta}U \Psi\right]= \left[ \Psi \right] \quad A \to e^{i\theta}UAU^\dagger e ^{-i\theta}= UAU^\dagger
+    \]
+    \((\implies) \) supposto che \(\tau_U = \tau_{U'}: \ \ UAU^\dagger = U'AU'^\dagger\) abbiamo che:
+    \[
+       U^\dagger U A U^\dagger U'= U^\dagger U'A A'^\dagger U'  \implies AU^\dagger U'= U^\dagger U ' A
+       \implies \left[ U^\dagger U', A \right]=0
+    \] 
+    Sfruttiamo il lemma: \(B\) t.c. \(\left[ B,A \right]= 0 , \ A \) a.a. \(\implies B = \lambda\mathbb{I}\).
+    \[
+        \implies U^\dagger U' = \lambda\mathbb{I} , \ \abs{\lambda} = 1 \implies U ' = e^{i\theta}U
+    \]
+\end{proof}
+Perciò ogni trasformazione di simmetria \(\tau\) è indotta da un \textit{raggio operatore} (anti)unitario:
+\[
+    \left[ U_\tau \right]= \left\{ U \ \text{ (anti)unitario t.c. } U' = e^{i\theta}U , \ \theta \in \mathbb{R}\right\}
+\]
+
+\begin{remark}
+    \(\mathbb{I}\) è simmetria, composizione di simmetrie \(\tau_1 \circ \tau_2\) è simmetria e \(\tau^{-1}\) è simmetria.
+\end{remark}
+
+
+\section{Gruppo di simmetria}
+\begin{definition}
+    Definiamo \textit{gruppo} \((G; \cdot )\) un insieme \(G\) dotato di un'operazione \(\cdot \) :
+    \[
+        \cdot : G \times G \to G \qquad (g,h)\to gh
+    \]
+    tale che:
+    \begin{itemize}
+        \item Associativa: \((gh)k= g(hk) \quad \forall\, g,h,k \in G\) .
+        \item Esiste neutro: \(\exists 1 \in G :\ 1g = g1 = g \quad \forall \, g \in G\) .
+        \item Esiste inverso: \(\forall \, g \in G , \ \exists\, g^{-1}\in G : \ gg^{-1}= 1 = g^{1}g\)
+    \end{itemize}
+\end{definition}
+Se vale anche la proprietà commutativa \(gh = hg \ \forall\, g,h \in G\) allora il gruppo si dice \textit{abeliano}.
+\begin{remark}
+    Si dimostra che \(1\) e \(g^{-1}\) dato \(g\) sono unici.
+\end{remark}
+
+\begin{example}
+    \((\mathbb{Z}; + ), \ (\mathbb{R}; +), (\mathbb{C}, +)\) sono gruppi abeliani. \\
+    \((\mathbb{N}; +)\) non è un gruppo.
+\end{example}
+\begin{example}
+    \(\left\{ \text{ matrici in } \mathbb{F} \text{ campo } n\times n \text{ invertibili } \right\}= GL(\mathbb{F}^n)\) , 
+    \(V\) spazi vettoriali: \(GL(V)= \left\{ \text{ operatori lineari invertibili } A: V\to V\right\}\) sono gruppi con la composizione di matrici/funzioni.
+\end{example}
+
+Le simmetrie della fisica \(\tau\) sono un gruppo \(G\) rispetto all'operazione di composizione:
+\[
+    \tau \leftrightarrow \left[ U_\tau \right]; \quad id \leftrightarrow \left[ \mathbb{I} \right]  ;\quad \tau_1\circ \tau_2 \leftrightarrow \left[ U_{\tau_1} U_{\tau_2} \right]; \quad
+    \tau^{-1}\leftrightarrow \left[ U^{-1}_\tau \right] = \left[ U^\dagger _\tau \right]
+\]
+Sto rappresentando il gruppo delle simmetrie della fisica attraverso gli operatori unitari.
+
+\begin{definition}
+    Dato un "gruppo astratto" \(G\) e uno spazio vettoriale \(V\) si dice \textit{rappresentazione} di \(G\) su \(V\) la mappa:
+    \[
+        \rho: G \to GL(V) \quad g \to \rho(g)
+    \]
+    tale che:
+    \begin{itemize}
+        \item \(\rho(1)= \mathbb{1}\)
+        \item \(\rho(gh)= \rho(g)\rho(h)\)
+        \item \(\rho(g^{-1}) = \rho(g)^{-1}\)
+    \end{itemize}
+    \((\rho, V)\) è detta \textit{rappresentazione lineare } di \(G\).
+\end{definition}
+
+\begin{example}
+    \(G= \left\{ 1,i,,-1,-i \right\}\) è gruppo rispetto al prodotto. \(V \subseteq \mathbb{C}^2: \)
+    \[
+        \begin{pmatrix}
+            1&0\\0&1
+        \end{pmatrix} \quad
+        \begin{pmatrix}
+            0&-1\\1&0
+        \end{pmatrix} \quad
+        \begin{pmatrix}
+            -1&0\\0&-1
+        \end{pmatrix} \quad
+        \begin{pmatrix}
+            0&1\\-1&0
+        \end{pmatrix} \quad
+    \]
+    è rappresentazione di \(G\) .
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Si vedrà}
+% Da fare Lezione del 04/10/0225
+
+\subsubsection{Rototraslazioni}
+
+\(g = (R, \vec{a})= (\mathbb{I}, \vec{a})(R,0)\)\\
+\(\vec{x}'= (R, \vec{a})\vec{x}= R\vec{x}+ \vec{a}\)
+\((R_1,\vec{a_1})(R_2, \vec{a_2})\vec{x}= (R _1, \vec{a})(R_2\vec{x}+\vec{a_2})= R_1R_2\vec{x}+ R_1\vec{a}+ \vec{a_1}= (R_1R_2, R_1\vec{a_2}+\vec{a_1})\)
+\(1d = (\mathbb{I},0)\)
+l'inversa è \((R,\vec{a})^{-1}= (R^{-1}, -R^{-1}\vec{a})\):
+\[
+    (R, \vec{a})(R^{-1}, R^{-1}\vec{a}) = (\mathbb{I}, - RR^{-1}\vec{a}+\vec{a})= (\mathbb{I},0)
+\]
+
+\(U_{(R, \vec{a})}= U_{\vec{a}}U_{R(\vec{\omega})}= e^{-\frac{i}{\hbar}\vec{P}\cdot\vec{a}}e^{-\frac{i}{\hbar}\vec{\omega}\cdot\vec{j}}\)
+
+\(\left[ J_i, J_j  \right]= i\hbar \sum_k\epsilon_{ijk}J_k\)
+\[
+    \left[ P_i, P_j \right] =0 \qquad \left[ J_i, P_j\right] = i\hbar \sum_k    \epsilon_{ijk}P_k
+\]
+
+
+
+
+\subsubsection{Traslazioni temporali}
+Consideriamo \(\ket{\Psi(t)}\) soluzione equazione di Schrödinger.
+\(\forall t.  \quad \ket{\Psi'(t)}= W\ket{\Psi(t)}\)
+E' ancora soluzione dell'eq di Schödinger?
+\[
+    i\hbar\dv{t}W\ket{\Psi(t)} =   W i\hbar \dv{t}\ket{\Psi(t)} = W H(t)\ket{\Psi(t)}
+\]
+Questo è uguale a \(H(t)W\ket{\Psi(t)}\) sse \(\left[ W, H(t) \right]=0\)
+
+Definiamo il \textit{gruppo di simmetrie della dinamica} come:
+\[
+    G_d = \left\{ W \text{ unitari }  : \left[ W, H \right]=0 \right\}
+\]
+Questo è equivalente a \(WHW^\dagger= H\) e se \(W\) è unitario allora \(\left[ W, U(t,t_0) \right]=0\)
+
+Nella visuale di Heisenberg, con \(A_h(t)= U(t-t_0)^\dagger A_s U(t-t_0)\)
+se \(W \in G_d\) vale:
+\[
+    WA_h(t)W^\dagger = U(t-t_0)^\dagger W A_s W^\dagger U(t-t_0)
+\]
+
+\(W(s)= e^{-\frac{i}{\hbar}sQ}\) vale:
+\[
+    \left[ W(s), H \right]= 0 \ \forall\, s \iff \left[ Q, H \right]    =0
+\]
+
+\begin{theorem}
+    di Noether in MQ\\
+    \(H\) invariante per simmetria generata da \(Q\) a.a. sse \(Q\) è quantità conservata 
+\end{theorem}
+

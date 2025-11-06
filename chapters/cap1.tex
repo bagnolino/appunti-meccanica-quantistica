@@ -1486,7 +1486,7 @@ detta equazione di Schrödinger stazionaria.
     La trattazione svolta segue la descrizione di Schrödinger, ne esiste una alternativa, detta di Heisenberg, con conclusioni analoghe.
 \end{remark}
 
-\subsection{Simmetrie}
+\subsection{Simmetrie}\label{sec: sim_intro}
 
 \begin{definition}
     Una \textit{trasformazione di simmetria} è una trasformazione:
@@ -1514,7 +1514,7 @@ P^A_\Psi(a) = P^{A'}_{\Psi'}(a)
 \]
 
 
-\begin{theorem}
+\begin{theorem} \label{theo: Wigner}
     {\normalfont\textbf{di Wigner}}
 Una trasformazione
 \[
@@ -1667,7 +1667,7 @@ Mentre per l'operatore \(P\):
 
 Otteniamo così il seguente teorema:
 
-\begin{theorem}
+\begin{theorem} \label{theo: Ehrenfest}
     {\normalfont\textbf{di Ehrenfest}}
     \begin{equation}
         \dv{t}\expval{Q}_{\Psi} = \frac{\expval{P}_\Psi}{2m} \qquad \dv{t}\expval{P}_\Psi = - \expval{V'(Q)}_{\Psi}
@@ -1864,6 +1864,279 @@ Nella visione di Heisenberg l'operatore densità non varia nel tempo \(\rho_h(t)
     \]
 \end{itemize}
 \end{example}
+
+
+
+% 13 Lezione del 28/10/2025
+
+
+\section{Applicazioni}
+
+\subsection{Oscillatore Armonico 1D} 
+In meccanica classica l'oscillatore armonico è descritto dall'hamiltoniana:
+\[
+    H_{cl} = \frac{P^2}{2m} + \frac{1}{2}m \omega^2 x^2 \qquad \text{ con } \omega = \sqrt{\frac{k}{m}}
+\]
+
+Classicamente ha soluzione:
+\[
+    x(t) = A\cos(\omega t + \delta) \qquad p(t) = - m\omega A \sin(\omega t + \delta) \qquad E = \frac{1}{2} m \omega^2 A^2
+\]
+Il caso dell'oscillatore armonico ha particolare rilevanza, perché molti sistemi fisici sono riconducibili a esso.
+
+In meccanica quanstistica vogliamo risolvere l'equazione \(H\ket{\Psi} = E\ket{\Psi}\) cioè trovare gli autovalori dell'operatore hamiltoniano:
+\[
+    H = \frac{P^2}{2m} + \frac{1}{2} m \omega^2 X^2 
+\]
+Effettuiamo le seguenti sostituzioni per avere operatori adimensionali:
+\[
+    \hat{X} = \sqrt{\frac{m\omega}{\hbar}}X \quad \hat{P} = \frac{1}{\sqrt{m\omega \hbar}}P  \
+    \implies  \ H = \frac{\hbar \omega}{2} ( \hat{P}^2 + \hat{X}^2)
+\]
+per cui vale \(\left[ \hat{X}, \hat{P} \right]= i\).\\
+Definiamo inoltre l'operatore di distruzione o abbassamento:
+\[
+    a = \frac{\hat{X}+ i\hat{P}}{\sqrt{2}}
+\]
+e l'operatore di creazione o innalzamento:
+\[
+    a^\dagger = \frac{\hat{X}-i \hat{P}}{\sqrt{2}}
+\]
+Il loro commutatore vale:
+\[
+    \left[ a,a^\dagger \right] = \frac{1}{2}\left( i\left[ \hat{P},\hat{X} \right]-i\left[ \hat{X}, \hat{P} \right]\right)    = 1
+\]
+\(a\) e \(a^\dagger\) non sono hermitiani ma \(N : = a ^+a\) lo è:
+\[
+    N = a^\dagger a = \frac{1}{2}\left( \hat{X}^2+\hat{P}^2 + i \hat{X}\hat{P} - i\hat{P}\hat{X}\right) = \frac{1}{2}\left( \hat{X}^2 + \hat{P}^2-1\right)
+\]
+Dunque per trovare gli autovalori di:
+\[
+    H = \hbar\omega\left(N + \frac{1}{2}\right)
+\]
+è sufficiente trovare gli autovalori di \(N\), tenendo in considerazione le seguenti relazioni:
+\[
+    aa^\dagger - a^\dagger a = 1 \qquad N = a^\dagger a \qquad aa^\dagger = N-1
+\]
+
+Innanzitutto, dimostriamo che \(N \geq 0 \), cioè semidefinita positiva \((\sigma(N)\subseteq \mathbb{R}_{\geq0})\).
+\[
+    \forall \,\Psi , \norm{\Psi} = 1 \quad \expval{N}{\Psi} = \expval{a^\dagger a}{\Psi} = \norm{a\ket{\psi}}^2 \geq0
+\]
+Inoltre \(a\ket{\Psi}= 0 \iff N\ket{\Psi}= 0\), dato che:
+\[
+   (\implies) \ N\ket{\Psi} = a^\dagger a \ket{\Psi} = 0 \qquad (\impliedby)\  \norm{a\ket{\Psi}}^2 = \expval{N}{\Psi} = 0
+\]
+
+Chiamando ora \(N\ket{\nu}= \nu \ket{\nu}\) dove \(\nu, \,\ket{\nu}\) sono autovalori e autovettori di \(N\). 
+Per un \(\nu \neq 0 \) consideriamo \(a\ket{\nu}\):
+\[
+    Na\ket{\nu}= a a^\dagger a \ket{\nu}- a\ket{\nu} = (\nu-1)a\ket{\nu}
+\]
+Se ripeto il procedimento arriverò a un certo \(a^k\ket{\nu}\) il cui autovalore sarà \((\nu-k)=0\).
+Se \(\nu \notin \mathbb{Z}, \ v-k \neq 0 \ \forall \,k \in \mathbb{N}\), ma per \(k\) suff. grande arriverò a un certo \(\nu-k\leq0\) che è assurdo,
+quindi otteniamo che \(\sigma(N)\subseteq \mathbb{Z}_{\geq0}\).\\
+Se invece consideriamo \(a^\dagger\ket{\nu}\), otteniamo:
+
+\[
+\norm{a^\dagger\ket{\nu}}^2 
+= \bra{\nu} a a^\dagger \ket{\nu}
+= \bra{\nu} (N + 1) \ket{\nu}
+= (\nu + 1)\norm{\ket{\nu}}^2 > 0
+\]
+
+\[
+N a^\dagger \ket{\nu}
+= a^\dagger a a^\dagger \ket{\nu}
+= a^\dagger (N + 1)\ket{\nu}
+= (\nu + 1)\, a^\dagger \ket{\nu}
+\]
+
+Cerhiamo il primo autovettore \(\ket{0}\), tale che \(N\ket{0}=0 \iff a \ket{0}=0\), in rappresentazione \(x\) è uguale a \(U_0(x)= \braket{x}{0}\), dunque:
+\[
+    a= \frac{1}{\sqrt{2}}\left( \hat{X}+ i\hat{P} \right)   = \frac{1}{\sqrt{2}}\left( \hat{x}+ \dv{\hat{x}} \right) \implies \left( \hat{x}+ \dv{\hat{x}} \right)U_0(\hat{x})= 0 \implies U_0(\hat{x})= C e^{\frac{-\hat{x}^2}{2}}
+\]
+
+Normalizzando otteniamo:
+\[
+    U_0(x)= \left(  \frac{m\omega}{\hbar\pi }\right)^{\frac{1}{4}}e ^{-\frac{m\omega}{\hbar}\frac{x^2}{2}}    
+\]
+Da qui, con l'operatore di innzalzamento \(a^\dagger\) possiamo ottenere tutti gli autovettori:
+\[
+    \ket{1} = a^\dagger \ket{0}  \implies U_1(\hat{x})= \frac{1}{\sqrt{2}}\left( \hat{x}- \dv{\hat{x}} \right) U_0(\hat{x})
+\]
+\[
+    \ket{n} = \frac{a^\dagger\ket{n-1}}{\sqrt{n}} = \dots = \frac{(a^\dagger)^n}{\sqrt{n!}}\ket{0}  \implies U_n(x) = c_n H_n\left(\sqrt{\frac{m\omega}{\hbar}x}\right)e^{-\frac{m \omega}{\hbar}\frac{x^2}{2}}
+\]
+
+Dove \(H_n(\dots)\) è il \textit{polinomio di Hermite} di grado \(n\).\\
+L'insieme degli autovettori \(\left\{ U_n(x) \right\}\) forma una base di \(L_2(\mathbb{R})\), detta di Hermite.
+Lo spettro è dunque puramente discreto:
+\[
+    \sigma(H)= \left\{ \hbar\omega(n + \frac{1}{2}), n = 0,1,2,3,\dots \right\}
+\]
+
+L'evoluzione temporale degli stati diventa immediata se si considera la scomposizione in questa base:
+\[
+    \ket{\Psi(t_0)}  = \sum_{n= 0}^{\infty} c_n(t_0) \ket{n}  \qquad c_n(t_0) = \braket{n}{\Psi(t_0)}  = \int_\mathbb{R} \dd{x} \overline{U_n(x)} \Psi(x, t_0)
+\]
+
+\[
+    \ket{\Psi(t)}  = e ^{-\frac{i}{\hbar}H (t-t_0)}\sum_{n= 0}^{\infty} c_n (t_0)\ket{n} = \sum_{n} e ^{-\frac{i}{\hbar}\hbar\omega(n + \frac{1}{2})(t-t_0)}c_n(t_0)\ket{n}=
+\]
+
+\[
+    = e^{-i\frac{\omega}{2}(t-t_0)}\sum_{n = 0}^{\infty} e ^{-i\omega n(t-t_0)}c_n(t_0)\ket{n} \implies \left[ \Psi\left(t+ \frac{2\pi}{\omega}\right) \right]= \left[ \Psi(t) \right]
+\]
+
+I valori medi di posizione e momento per un generico autovettore \(U_n(x)\) valgono:
+\[
+    \expval{X}_{U_n} 
+    = \sqrt{\frac{\hbar}{m\omega}} \expval{\hat{X}}_{U_n} 
+    = \sqrt{\frac{\hbar}{2m\omega}} \mel{n}{(a + a^\dagger)}{n} = 0
+\]
+
+\[
+    \expval{P}_{U_n} = 0
+\]
+
+\[
+    \expval{X^2}_{U_n} 
+    = \frac{\hbar}{2m\omega} \mel{n}{(a + a^\dagger)^2}{n}
+    = \frac{\hbar}{2m\omega} \mel{n}{(a^2 + a a^\dagger + a^\dagger a + (a^\dagger)^2)}{n}
+    = \frac{\hbar}{m\omega} \left( \frac{2n + 1}{2} \right)
+\]
+
+\[
+    \expval{P^2}_{U_n} = \hbar m \omega \left( n + \frac{1}{2} \right)
+    \qquad
+    \expval{\frac{P^2}{2m}}_{U_n} 
+    = \frac{\hbar \omega}{2} \left( n + \frac{1}{2} \right)
+    = \frac{E_n}{2}
+\]    
+
+In visuale di Heisenberg, vale il teorema di Ehrenfest \ref{theo: Ehrenfest}:
+\[
+    \dv{t}\expval{X}_{\Psi}(t) = \frac{\expval{P}_{\Psi}}{m}\qquad 
+    \dv{t}\expval{P}_{\Psi}(t)= - \expval{V'(X)}_{\Psi}= - m\omega\expval{X}_{\Psi}(t)
+\]
+
+
+\subsection{Potenziali 1D}
+In generale, per spazi di Hilbert \(\mathcal{H}= L_2(\mathbb{R}, \dd{x})\) e opertori hamiltoniani con potenziali 1D \(H = \frac{P^2}{2m}+ V(X)\), si cercano gli autovalori e autovettori di \(H\Psi_E(x)= E\Psi_E(x)\):
+\[
+    ( - \frac{\hbar^2}{2m} \dv[2]{}{x} + V(x))\Psi_E(x) = E\Psi_E(x)\implies \Psi''(x) - \frac{2m}{\hbar^2}(E - V(x))\Psi(x)=0
+\]
+Ci dobbiamo chiedere quale tipo di soluzioni abbia questa equazione: se \(\Psi(x)\in D_H\subseteq \mathcal{H}\) allora \(E \in \sigma_d(H)\), se invece \(\Psi(x \in S^*(\mathbb{R}))\) allora \(E \in \sigma_c(H)\).\\
+Di solito, se \(\Psi \in D_{p^2}\), allora \(\Psi \in D_H\) .
+
+\begin{theorem}
+    {\normalfont\textbf{Kato-Rellich}}\\
+    Considerato uno spazio di Hilbert \(\mathcal{H}= L_2(\mathbb{R}^n , \dd[n]{x})\) con \(n = 1,2,3\), 
+    se il potenziale ha forma \(V(\vec{x})= f_{\infty}(\vec{x})+ g_2(\vec{x})\)  con \(\abs{f_\infty(\vec{x})}\leq M , \ \forall\, \vec{x}\)
+    e \(g_2 \in L_2(\mathbb{R}^2)\) allora \(D_H = D_{\vec{P}^2}\)
+\end{theorem}
+\begin{example}
+    \(V(\vec{x})= \frac{k}{\abs{\vec{x}}} in L_2(\mathbb{R}^3)\) atomo di idrogeno. 
+\end{example}
+
+% 14 Lezione del 30/10/2025
+
+Sia \( D_H \subseteq L_2(\mathbb{R}) \) sufficientemente regolare, e siano \(\Psi, \Psi', \Psi'' \in L_2(\mathbb{R})\).  
+Allora \(H\Psi \in L_2(\mathbb{R})\) se \(V(x)\) è regolare.
+% \begin{center}
+% \begin{tikzpicture}
+%     \begin{axis}[
+%         axis lines=middle,
+%         xlabel={$x$},
+%         ylabel={$V(x)$},
+%         ymin=-1, ymax=5,
+%         xmin=-4, xmax=4,
+%         xtick=\empty, ytick=\empty,
+%         width=8cm, height=5cm
+%     ]
+%     \addplot[domain=-3.5:3.5, samples=200, thick, green!60!black]
+%         {2 + 2*exp(-x^2) - 3*exp(-x^4)};
+%     \draw[dashed] (-3.5,3.8) -- (3.5,3.8) node[right]{$V_{+\infty}$};
+%     \draw[dashed] (-3.5,0.5) -- (3.5,0.5) node[right]{$V_{-\infty}$};
+%     \end{axis}
+% \end{tikzpicture}
+% \end{center}
+
+Per \(x \to \pm\infty\), \(V(x) \approx V_{\pm\infty}\).  
+Studiamo se le soluzioni sono finite o distribuite.
+
+Per \(E > V_{+\infty}, V_{-\infty}\):
+\[
+\Psi'' + \frac{2m}{\hbar^2}(E - V_{\pm\infty})\Psi = 0, \qquad
+k_\pm = \sqrt{\frac{2m}{\hbar^2}(E - V_{\pm\infty})}
+\]
+Le soluzioni asintotiche sono oscillanti:
+\[
+\Psi(x) \simeq 
+\begin{cases}
+A e^{i k_- x} + B e^{-i k_- x}, & x \to -\infty \\
+C e^{i k_+ x} + D e^{-i k_+ x}, & x \to +\infty
+\end{cases}
+\]
+La matrice di trasferimento dipende da \(E\) e dalla forma di \(V(x)\):
+\[
+\begin{pmatrix}
+C \\ D
+\end{pmatrix}
+= M(E)
+\begin{pmatrix}
+A \\ B
+\end{pmatrix}
+\]
+
+Le soluzioni asintotiche di questo tipo non appartengono a \(L_2(\mathbb{R})\), quindi non sono autostati propri e lo spettro
+sarà continuo: \(E \in \sigma_c(H)\) e \(d(E)= 2\).
+
+Per \(V_{-\infty} < E \le V_{+\infty}\) (assumendo \(V_{-\infty}\le V_{+\infty}\)):
+\[
+k_- := \sqrt{\tfrac{2m}{\hbar^2}(E - V_{-\infty})}, 
+\qquad
+\beta_+ := \sqrt{\tfrac{2m}{\hbar^2}(V_{+\infty} - E)}.
+\]
+Asintotica:
+\[
+\Psi(x)\sim 
+\begin{cases}
+A\,e^{ik_- x} + B\,e^{-ik_- x}, & x\to -\infty \\[4pt]
+C\,e^{\beta_+ x} + D\,e^{-\beta_+ x}, & x\to +\infty
+\end{cases}
+\]
+Le soluzioni non sono in \(L_2(\mathbb{R})\). Per \(x\to - \infty\) la situazione è identica a prima, ma per \(x\to + \infty\) la soluzione non appartiene neanche a \(S^*\mathbb{R}\),
+è necessario eliminare il termine esplosivo a \(+\infty\), quindi \(C=0\). 
+Ne resta una sola soluzione accettabile per ogni \(E\): \(E \in \sigma_c(H), \ d(E)=1 \) . 
+
+
+
+\medskip
+Per \(V_{\min} \le E < \min\{V_{-\infty},V_{+\infty}\}\):
+\[
+\beta_- := \sqrt{\tfrac{2m}{\hbar^2}(V_{-\infty}-E)}, \qquad
+\beta_+ := \sqrt{\tfrac{2m}{\hbar^2}(V_{+\infty}-E)}.
+\]
+Asintotica puramente esponenziale:
+\[
+\Psi(x)\sim 
+\begin{cases}
+A\,e^{\beta_- x} + B\,e^{-\beta_- x}, & x\to -\infty \\[4pt]
+C\,e^{\beta_+ x} + D\,e^{-\beta_+ x}, & x\to +\infty
+\end{cases}
+\]
+I termini che esplodono vanno imposti nulli: per \(x\to -\infty\) si pone \(B=0\); per \(x\to +\infty\) si pone \(C=0\).
+Ho due condizioni su uno spazio 2D quindi l'unica soluzione possibile per un generico \(E\) è \(\Psi_e=0\).\\
+Tuttavia è possibile considerare i coefficienti in funzione di \(E\) e si annullerrano per certi valori di \(E\) fornendoci delle soluzioni non banali e uno spettro discreto:
+\(E \in \sigma_d(H)\), tali stati vengono detti \textit{stati legati}.
+
+
+
+
+
+
 
 
 

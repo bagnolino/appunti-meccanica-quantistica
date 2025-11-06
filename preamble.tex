@@ -15,6 +15,8 @@
 
 % Layout con intestazioni KOMA
 \usepackage[automark,headsepline]{scrlayer-scrpage}
+% Bilanciamento margini KOMA: più spazio sopra (header fuori), meno sotto (footer dentro)
+\KOMAoptions{headinclude=false,footinclude=true}
 % Header: mostra solo il titolo del capitolo (senza "Capitolo" e numero)
 \automark{chapter}
 \renewcommand*{\chaptermarkformat}{}
@@ -29,6 +31,9 @@
 
 % Stile capitolo grande, bold, allineato a sinistra
 \setkomafont{chapter}{\Huge\bfseries}
+
+
+
 
 % Matematica
 \usepackage{amsmath, amssymb, amsthm, mathtools}
