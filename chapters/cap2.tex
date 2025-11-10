@@ -333,69 +333,319 @@ Poiché \([P_i,P_j]=0\) si può fattorizzare (l’ordine è irrilevante):
 U(\vec a)=e^{-\frac{i}{\hbar}P_x a_x}\,e^{-\frac{i}{\hbar}P_y a_y}\,e^{-\frac{i}{\hbar}P_z a_z}.
 \]
 
+% 16 Lezione del 03/11/2025
+
+\subsection{Rotazioni 3D}
+
+Consideriamo la trasformazione di un vettore \(\vec{x} \in \mathbb{R}^3 \to \vec{x'}= R\vec{x}\), in cui consideriamo le matrici \(3\times3\) di rotazione \(R \) tali che \(R^\intercal R = \mathbb{I}_3\) detto \textit{gruppo ortogonale} \(O(3)\).\\
+Vale che \(\forall R \in O(3), \ \ \det R = \pm 1 \), tra queste consideriamo il \textit{gruppo speciale ortogonale}:
+\[
+    SO(3)= \left\{ R \in O(3): \det R = +1 \right\}
+\]
+\(O(3)\) e \(SO(3)\) sono gruppi di Lie.
+
+\begin{definition}
+    \((G, \cdot )\) è \textit{gruppo di Lie} se \(G\) è varietà differenziabile e \(\cdot : G \times G \to G \) è differenziabile. 
+\end{definition}
+
+\begin{example}
+    \(U(n)=\left\{ U \in \text{Mat}_{n\times n } : U^\dagger U = \mathbb{I} \right\}\) detto \textit{gruppo unitario}.\\
+    \(SU(n) = \left\{ U \in U(n ) : \det U = +1 \right\}\) detto \textit{gruppo unitario speciale}.
+\end{example}
 
 
+Consideriamo ora rotazioni infinitesime della forma \(R = \mathbb{I} + s \delta R + O(s^2)\). Per la condizione \(R^\intercal R =\mathbb{I}\) otteniamo:
+\[
+    \mathbb{I}= (\mathbb{I}+s \delta R^\intercal + \dots )(\mathbb{I}+s \delta R+ \dots )= \mathbb{I} + s(\delta R^\intercal+\delta R )
+    \implies \delta R^\intercal=-\delta R 
+\]
+Cioè deve essere una matrice antisimmetrica. Una base per lo spazio delle matrici antisimmetriche, detto \textit{algebra di Lie} di \(SO(3)\) e indicata con \(so(3)\), è data da:
+\[
+    T_1=\begin{pmatrix}
+        0 & 0 & 0\\
+        0 & 0 & -1\\
+        0 & 1 & 0
+    \end{pmatrix},\qquad
+    T_2=\begin{pmatrix}
+        0 & 0 & 1\\
+        0 & 0 & 0\\
+        -1 & 0 & 0
+    \end{pmatrix},\qquad
+    T_3=\begin{pmatrix}
+        0 & -1 & 0\\
+        1 & 0 & 0\\
+        0 & 0 & 0
+    \end{pmatrix} .
+\]
+I loro elementi sono compattiamente scritti come
+\[
+    (T_k)_{ij} = -\,\epsilon_{kij} ,\qquad i,j,k=1,2,3,
+\]
+con $\epsilon_{kij}$ simbolo di Levi\,–\,Civita. \\
+Se definiamo $\vec T=(T_1,T_2,T_3)\,, \ \vec\omega=(\omega_1,\omega_2,\omega_3)$, abbiamo che 
+ogni matrice \(R \in SO(3)\) è data da da \(R = e^{\vec{\omega}\cdot \vec{T}}\equiv R(\omega)\) e indica la rotazione lungo l'asse \(\vec{\omega}\) di un angolo \(\abs{\vec{\omega}}\).
 
 
+\begin{example}
+    \[
+        \vec{\omega}= \begin{pmatrix}
+            0\\0\\\pi/3
+        \end{pmatrix}\implies e^{\frac{\pi}{3}T_3} = \begin{pmatrix}
+            \cos \frac{\pi}{3}& - \sin \frac{\pi}{3} & 0\\
+            \sin \frac{\pi}{3} &\cos \frac{\pi}{3} & 0\\
+            0&0&1
+        \end{pmatrix}
+    \]
+\end{example}
+\begin{remark}
+    Vale la relazione: \(T_k = \pdv{R(\vec{\omega})}{\omega_k}\eval_{\vec{\omega}=0}\).
+\end{remark}
+
+\begin{remark}
+    In genereale, \(e^{\vec{\omega}\cdot\vec{T}}e^{\vec{\omega'}\cdot\vec{T}} \neq e^{(\vec{\omega}+\vec{\omega'})\cdot\vec{T}}\) perché \(\left[ T_i, T_j \right]= \sum_k \epsilon_{ijk}T_k \neq 0\) .
+\end{remark}
+
+Vediamo ora sistemi quantistici con simmetria \(SO(3)\). A ogni \(R(\vec{\omega}) \in SO(3)\) per il teorema di Wigner \ref{theo: Wigner} deve essere associato un operatore unitario \(U_{R(\vec{\omega})}\equiv U(\vec{\omega})= e^{-\frac{i}{\hbar}\vec{\omega}\cdot\vec{J}}\).\\
+Nella stessa maniera in cui \(SO(3)\) induce un algebra di Lie \(so(3)\), \(U_{R(\vec{\omega})}\) induce per il teorema di Stone \ref{theo: Stone} un insieme di operatori a.a.:
+\begin{equation}
+    \frac{1}{i\hbar} J_k := \pdv{U(\vec{\omega})}{\omega_k}\eval_{\vec{\omega}=0}
+\end{equation}
+
+Dunque se \(U(\vec{\omega})\) sono rappresentazione unitaria non proiettiva di \(SO(3)\) e \(\frac{1}{i\hbar}J_k\) sono rappresentazione autoaggiunta di \(so(3)\) e dovranno avere le stesse relazioni di commutazione:
+\[
+    \left[ J_i , J_k\right] = i\hbar\sum_k \epsilon_{ijk} J_k
+\]
+I \(J_k\) corrispondono alle componenti del momento angolare.
+
+Se invece \(U(\vec{\omega})\) è rappresentazione genuinamente proiettiva, ottengo:
+\[
+    \left[ J_i , J_k\right] = i\hbar\sum_k \epsilon_{ijk} J_k + c_{ij} \mathbb{I} 
+\]
+ma nel caso di \(so(3)\) si può sempre porre \(c_{ij}= 0 \ \forall\,i,j\) .\\
+Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
+\[
+    R(\vec{\omega })R(\vec{\omega}) = \mathbb{I}  \quad  \text{ ma }\quad  U_{R(\vec{\omega}) }U_{R(\vec{\omega}) }= \pm \mathbb{I} 
+\]
 
 
+\begin{example}
+    \textbf{Particella in 3D senza spin}
+    \[
+        \mathcal{H} = L_2(\mathbb{R}) \quad R \in SO(3)\qquad
+        \ket{\Psi' }= U(R)\ket{\Psi} \qquad \Psi'(\vec{x})= \Psi(R^{-1}\vec{x}) 
+    \]
+    \[
+        U(R)\vec{X}U(R)^\dagger = R^{-1} \vec{X}    \qquad U(R)\vec{P}U(R)^\dagger = R^{-1}\vec{P}  
+    \]
+    Il generatore infinitesimo è dato da \(J_k = i\hbar  \pdv{U(\vec{\omega})}{\omega_k}\eval_{\vec{\omega}=0}\) e vogliamo mostrare che in questo sistema: \(\vec{J}= \vec{L}:= \vec{X}\times \vec{P} \quad L_k = \sum_{i,j}\epsilon_{kij}X_i P_j\)
+
+    \[
+    \bra{\vec{x}}J_k\ket{\Psi}
+    = i\hbar\,\pdv{}{\omega_k}\bra{\vec{x}}U(\vec{\omega})\ket{\Psi}\eval_{\vec{\omega}=0}
+    = i\hbar\,\pdv{}{\omega_k}\Psi\!\big(R(\vec{\omega})^{-1}\vec{x}\big)\eval_{\vec{\omega}=0}
+    \]
+
+    \[
+    = i\hbar\sum_{j=1}^{3}(\pdv{j}\Psi)\,\pdv{}{\omega_k}\!\left[(R(-\vec{\omega})\vec{x})_j\right]\eval_{\vec{\omega}=0}
+    \]
+
+    Sviluppando \(R(-\vec{\omega})=\mathbb{I}-\sum_m\omega_mT_m+\dots\) con 
+    \((T_m)_{j\ell}=-\epsilon_{m j \ell}\), si ha:
+    \[
+    (R(-\vec{\omega})\vec{x})_j = x_j - \sum_{k,\ell}\omega_m(T_k)_{j\ell}x_\ell+ \dots
+    = x_j - \sum_{k,\ell}\omega_m\epsilon_{k \ell j}x_\ell + \dots
+    \]
+
+    \[
+    \implies \pdv{}{\omega_k} \left(R(-\vec{\omega})\vec{x}\right)_j\eval_{\vec{\omega}=0}
+    = \sum_{\ell}-\epsilon_{k  \ell j}x_\ell
+    \]
+
+    \[
+    \implies \bra{\vec{x}}J_k\ket{\Psi}
+    = i\hbar\sum_{j,\ell}-\epsilon_{k  \ell j}x_\ell(\pdv{j}\Psi)
+    = \sum_{j,\ell}\epsilon_{k\ell j}x_\ell(-i\hbar\pdv{j})\Psi
+    = \sum_{j,\ell}\epsilon_{k\ell j}X_\ell P_j\Psi
+    \]
+
+    \[
+    \boxed{J_k = \sum_{j,\ell}\epsilon_{k\ell j}X_\ell P_j = L_k}
+    \]
+    Vale inoltre: \(\left[ L_i, L_j \right]= i\hbar \sum_k \epsilon_{ijk} L_k\)
+
+    \begin{attention}
+        \(\vec{L}\) è il momento angolare orbitale, \(\vec{J}\) è il momento angolare totale. In alcuni sistemi fisici \(\vec{J}\neq \vec{L}\).
+    \end{attention}
+\end{example}
+
+\begin{definition}
+    Se ho terna di operatori \(\vec{V}\equiv (V_1,V_2,V_3)\), si dice che la terna trasforma come un vettore per \(SO(3)\) sse:
+    \[
+        \left[ J_j, V_k  \right]= i\hbar \sum_{l}\epsilon_{jkl}V_l \iff U(\vec{\omega}) V_j U (\vec{\omega})^\dagger = \sum_{k} R(\vec{\omega})^{-1}_{jk}V_k
+    \]
+\end{definition}
+\begin{definition}
+    Diciamo che un operatore \(S\) è \textit{scalare} per rotazioni se vale:
+    \[
+        \left[ J_i,S \right]=0 \quad i = 1,2,3 \qquad \ U(\vec{\omega})S U(\vec{\omega})^{\dagger} = S
+    \]
+\end{definition}
+\begin{example}
+    Se ho una terna che traforma come vettore ad esempio \(\vec{P}\), i loro moduli ad esempio \(P^2 = \vec{P}\cdot \vec{P}\) sono scalari.
+\end{example}
 
 
-
-
-
-\section{Si vedrà}
-% Da fare Lezione del 04/10/0225
+% 17 Lezione del 04/10/0225
 
 \subsubsection{Rototraslazioni}
-
-\(g = (R, \vec{a})= (\mathbb{I}, \vec{a})(R,0)\)\\
-\(\vec{x}'= (R, \vec{a})\vec{x}= R\vec{x}+ \vec{a}\)
-\((R_1,\vec{a_1})(R_2, \vec{a_2})\vec{x}= (R _1, \vec{a})(R_2\vec{x}+\vec{a_2})= R_1R_2\vec{x}+ R_1\vec{a}+ \vec{a_1}= (R_1R_2, R_1\vec{a_2}+\vec{a_1})\)
-\(1d = (\mathbb{I},0)\)
-l'inversa è \((R,\vec{a})^{-1}= (R^{-1}, -R^{-1}\vec{a})\):
+Una rototraslazione è una trasformazione descritta da:
+\[
+    g = (R, \vec{a})= (\mathbb{I}, \vec{a})(R,0) \qquad \vec{x}'= (R, \vec{a})\vec{x}= R\vec{x}+ \vec{a}
+\]
+definita in modo che prima avvenga la rotazione e successivamente la traslazione.\\
+Le rototraslazioni formano ovviamente un gruppo, la cui identità: \(id = (\mathbb{I},0)\), l'inversa è \((R,\vec{a})^{-1}= (R^{-1}, -R^{-1}\vec{a})\) e la composizione vale:
+\[
+(R_1,\vec{a_1})(R_2, \vec{a_2})\vec{x}= (R _1, \vec{a})(R_2\vec{x}+\vec{a_2})= R_1R_2\vec{x}+ R_1\vec{a}+ \vec{a_1}= (R_1R_2, R_1\vec{a_2}+\vec{a_1})
+\]
+Che verifica la definizione di inversa:
 \[
     (R, \vec{a})(R^{-1}, R^{-1}\vec{a}) = (\mathbb{I}, - RR^{-1}\vec{a}+\vec{a})= (\mathbb{I},0)
 \]
-
-\(U_{(R, \vec{a})}= U_{\vec{a}}U_{R(\vec{\omega})}= e^{-\frac{i}{\hbar}\vec{P}\cdot\vec{a}}e^{-\frac{i}{\hbar}\vec{\omega}\cdot\vec{j}}\)
-
-\(\left[ J_i, J_j  \right]= i\hbar \sum_k\epsilon_{ijk}J_k\)
+Essendo una composizione di rotazioni e traslazioni la rappresentazione unitaria è data da:
 \[
+    U_{(R, \vec{a})}= U_{\vec{a}}U_{R(\vec{\omega})}= e^{-\frac{i}{\hbar}\vec{P}\cdot\vec{a}}e^{-\frac{i}{\hbar}\vec{\omega}\cdot\vec{j}}
+\]
+Abbiamo quindi un gruppo a 6 parametri generato da le \(J_i e P_i\), la cui algebra è data da:
+\[
+    \left[ J_i, J_j  \right]= i\hbar \sum_k\epsilon_{ijk}J_k \qquad 
     \left[ P_i, P_j \right] =0 \qquad \left[ J_i, P_j\right] = i\hbar \sum_k    \epsilon_{ijk}P_k
 \]
 
 
 
 
-\subsubsection{Traslazioni temporali}
-Consideriamo \(\ket{\Psi(t)}\) soluzione equazione di Schrödinger.
-\(\forall t.  \quad \ket{\Psi'(t)}= W\ket{\Psi(t)}\)
-E' ancora soluzione dell'eq di Schödinger?
+\section{Simmetrie della dinamica}
+Consideriamo \(\ket{\Psi(t)}\) soluzione equazione di Schrödinger e una simmetria \(\tau\) descritta da un operatore unitario e indipendente dal tempo \(W\).\\
+\(\ket{\Psi'(t)}= W\ket{\Psi(t)} \ \forall\,t \) è ancora soluzione dell'eq di Schrödinger? 
 \[
-    i\hbar\dv{t}W\ket{\Psi(t)} =   W i\hbar \dv{t}\ket{\Psi(t)} = W H(t)\ket{\Psi(t)}
+    i\hbar\dv{t}W\ket{\Psi(t)} =   W i\hbar \dv{t}\ket{\Psi(t)} = W H(t)\ket{\Psi(t)} \equiv H(t)W\ket{\Psi(t)}  \iff \left[ W, H(t) \right]=0
 \]
-Questo è uguale a \(H(t)W\ket{\Psi(t)}\) sse \(\left[ W, H(t) \right]=0\)
 
 Definiamo il \textit{gruppo di simmetrie della dinamica} come:
 \[
-    G_d = \left\{ W \text{ unitari }  : \left[ W, H \right]=0 \right\}
+    G_d = \left\{ W \text{ (anti)unitari }  : \ \left[ W, H \right]=0 \right\} \subseteq G
 \]
-Questo è equivalente a \(WHW^\dagger= H\) e se \(W\) è unitario allora \(\left[ W, U(t,t_0) \right]=0\)
+Questo è equivalente a \(WHW^\dagger= H\) e se \(W\) è unitario (non anti) allora \(\left[ W, U(t,t_0) \right]=0\)
 
 Nella visuale di Heisenberg, con \(A_h(t)= U(t-t_0)^\dagger A_s U(t-t_0)\)
 se \(W \in G_d\) vale:
 \[
     WA_h(t)W^\dagger = U(t-t_0)^\dagger W A_s W^\dagger U(t-t_0)
 \]
+è ancora soluzione dell'eq di Heisenberg.
 
-\(W(s)= e^{-\frac{i}{\hbar}sQ}\) vale:
+Se \(W\) formano un gruppo a un parametro \(W(s)= e^{-\frac{i}{\hbar}sQ}\) vale:
 \[
-    \left[ W(s), H \right]= 0 \ \forall\, s \iff \left[ Q, H \right]    =0
+    \left[ W(s), H \right]= 0 \ \forall\, s \iff \left[ Q, H \right]    =0 \iff \dv{t} \expval{Q}_\Psi (t)=0 \quad \forall\, \Psi \in \mathcal{H}
 \]
+Esiste relazione diretta tra simmetrie di un sistema e quantità conservate.
 
-\begin{theorem}
-    di Noether in MQ\\
-    \(H\) invariante per simmetria generata da \(Q\) a.a. sse \(Q\) è quantità conservata 
+\begin{theorem}\label{theo: Noether}
+    {\normalfont\textbf{di Noether in MQ}}\\
+    \(H\) è invariante per simmetria generata da operatore \(Q\) autoaggiunto se e solo se \(Q\) è quantità conservata.
 \end{theorem}
 
+\begin{remark}
+    Dato \(W\) unitario, \(\left[ W, H \right]=0\) e \(H\ket{E}= E\ket{E}\), allora:
+    \[
+        HW\ket{E} = WH\ket{E}= EW\ket{E}
+    \]
+    \(W\ket{E}\) è ancora autovettore di \(H\) con stesso autovalore.
+\end{remark}
+
+\begin{remark}
+    Se esistono due autovettori \(\ket{E,1}\) e \(\ket{E,2}\) degeneri di \(H\), tali che \(\braket{E,r}{E,s}= \delta_{rs}\),
+    allora esite operatore unitario \(W\) tale che:
+    \[
+        \left[ W, H \right]= 0 \quad \begin{cases}
+            W\ket{E,1}= \ket{E,2}\\ W\ket{E,2}=\ket{E,1}
+        \end{cases}
+    \]
+\end{remark}
+\begin{proof}
+    Data \(\left\{ \ket{E,1}\equiv \ket{1}, \ket{E,2}\equiv \ket{2}, \ket{3},\ket{4}, \dots  \right\}\) base ON di autovettori di \(H\), definisco mappa lineare \(W\) tale che:
+    \[
+        W\ket{E,1}= \ket{E,2} \quad  W\ket{E,2}=\ket{E,1} \qquad W\ket{n}= \ket{n} \quad n\geq 3
+    \]
+    è unitario perché mappa base ON in base ON e vale \((WH-HW)\ket{n}=0 \quad \forall,n\)
+\end{proof}
+
+Di consueguenza sappiamo che se \(\sigma(H)\) è completamente non degenere \(\left\{ \ket{E} \right\}_{E \in \sigma(H)}\) e \(W \) unitario \(\left[ W, H \right]=0\), 
+allora per la prima osservazione abbiamo che \(W\ket{E}= f(E)\ket{E}\) con \(f(E)\in \mathbb{C} \quad \forall, E \in \sigma(H)\), dunque \(W = f(H)\). 
+Chiamiamo tali operatori \textit{gruppo di simmetrie banali della dinamica}:
+\[
+    K_d:= \left\{ W \text{ unitari } : \ W = f(H) \right\}   \subseteq G_d
+\]
+Perciò se \(\sigma(H)\) è completamente non degenere, \(K_d= G_d\)  e tutte le simmetrie delle dinamica possibili sono banali.\\
+Se invece \(E \in \sigma(H)\) è degenere, per la seconda osservazione esiste un \(W \in G_d, \ W \notin K_d\), cioè ammette simmetrie non banali.
+
+
+\subsection{Traslazioni temporali}
+L'omogeneità nel tempo per sistemi conservativi induce una simmetria per traslazioni temporali, data da un gruppo ad un parametro \(U(t)= e^{-\frac{i}{\hbar}Ht}\) che trasforma:
+\[
+    \ket{\Psi'}= U(t)\ket{\Psi} \qquad A'=U(t)AU(t)^\dagger 
+\]
+\begin{attention}
+    Non si tratta di evoluzione causale, stiamo cambiando sia le funzione d'onda che gli operatori e le medie rimangono invariate. 
+    Invece, nell'evoluzione casuale, cambiano solo le funzioni d'onda nella visuale di Schrödinger o solo gli operatori in quella di Heisenberg.
+\end{attention}
+
+
+\section{Simmetrie discrete}
+\subsection{Parità Spaziale}
+Consideriamo ora la riflessione rispetto all'origine: \(\vec{x}\to -\vec{x}\) descritta dalla matrice:
+\[
+    R_p = \begin{pmatrix}
+        -1&0&0\\0&-1&0\\0&0&-1
+    \end{pmatrix}
+    \in O(3) \quad \notin SO(3) \ (\det = -1)
+\]
+Notiamo che tutte le \textit{rotazioni impoprie} cioè \(\forall\, g \in O(3) \ \notin SO(3)\) possono essere scritte come \(g = R_pR(\vec{\omega})\) con \(R(\vec{\omega})\in SO(3)\).
+
+Consideriamo una particella senza spin in 3D e un operatore \(\mathbb{P}\) che agisce come:
+\[
+    \mathbb{P}\vec{X}\mathbb{P}^\dagger = -\vec{X} \qquad \mathbb{P}\vec{P}\mathbb{P}^\dagger = -\vec{P} \qquad \mathbb{P}\vec{L}\mathbb{P}^\dagger = \vec{L}  
+\]
+Gli operatori \(\vec{X}\) e \(\vec{P}\) per questo si dicono \textit{vettori polari} e \(\vec{L}\) si dice \textit{vettore assiale}.
+
+
+Verifichiamo se \(\mathbb{P}\) è unitario o antiunitario:
+\begin{equation*}
+\left[ \, \mathbb{P} X_j \mathbb{P}^\dagger ,\, \mathbb{P} P_k \mathbb{P}^\dagger \right]
+= \mathbb{P}\,[X_j,P_k] \,\mathbb{P}^\dagger
+= \mathbb{P}\,(i\hbar\,\delta_{jk})\,\mathbb{P}^\dagger 
+= \begin{cases}
+ i\hbar\,\delta_{jk}, & \mathbb{P} \text{ unitario},\\
+ -i\hbar\,\delta_{jk}, & \mathbb{P} \text{ antiunitario}.
+ \end{cases}
+\end{equation*}
+
+Dalla definizione di \(\mathbb{P}\) otteniamo:
+\[
+\left[ \, \mathbb{P} X_j \mathbb{P}^\dagger ,\, \mathbb{P} P_k \mathbb{P}^\dagger \right]
+= [-X_j,-P_k] = i\hbar\,\delta_{jk}.
+\]
+Confrontando i due risultati segue che \(\mathbb{P}\) è unitario.
+
+Dato che \(\mathbb{P}^2 = \mathbb{I}\) segue che \(\mathbb{P}= \mathbb{P}^{-1}= \mathbb{P}^\dagger\) cioé è sia unitario che autoaggiunto.\\
+Lo spettro \(\sigma(\mathbb{P})= \left\{ \pm 1   \right\}\), dunque per autovalore \(n_p \in \sigma(\mathbb{P})\) vale:
+\[
+    \bra{\vec{x}}\mathbb{P}\ket{\Psi}= n_p\braket{\vec{x}}{\Psi} \iff \Psi(-\vec{x}) = n_p \Psi(\vec{x})
+\]
+dunque gli autostati di \(n_p=1\) sono le funzioni d'onda pari, per \(n_p= -1\) le funzioni d'onda dispari.
+
+Per l'operatore hamiltoniano:
+\[
+    H = \frac{\abs{\vec{P}}^2}{2m} + V(\vec{x}) \to \mathbb{P}H\mathbb{P}= \frac{\abs{\vec{P}}^2}{2m} + V(-\vec{x}) 
+\]
+Perciò se \(V(\vec{x})= V(-\vec{x})\) allora \(\mathbb{P} \in G_d\)
