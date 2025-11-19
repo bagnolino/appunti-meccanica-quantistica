@@ -1155,3 +1155,289 @@ e la completezza:
 
 
 
+% 20 Lezione del 12/11/2025
+
+
+\section{Prodotto tensore}
+
+Consideriamo due sistemi quantistici indipendenti, descritti dai rispettivi spazi di Hilbert: \(S_1\to \mathcal{H}_1\) e \(S_2\to \mathcal{H}_2\)
+come possiamo descrivere un sistema \(S = S_1 \cup S_2\) unione dei due sottosistemi?
+
+\begin{definition}
+    Dati due spazi di Hilbert \(\mathcal{H}_1\) e \(\mathcal{H}_2\), il loro \textit{prodotto tensore} è un nuovo spazio di Hilbert \(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2\).
+    Esso è definito dall'operazione di prodotto tensore \(\otimes\), che associa a ogni coppia di vettori \(\ket{\Psi_1} \in \mathcal{H}_1\) e \(\ket{\Psi_2} \in \mathcal{H}_2\) un vettore \(\ket{\Psi_1} \otimes \ket{\Psi_2} \in \mathcal{H}\), con le seguenti proprietà:
+    \begin{itemize}
+        \item \textbf{Bilinearità:} L'operazione è lineare in ciascun argomento. Per ogni \(\lambda \in \mathbb{C}\):
+        \begin{align*}
+            (\lambda \ket{\Psi_1}) \otimes \ket{\Psi_2} &= \ket{\Psi_1} \otimes (\lambda \ket{\Psi_2}) = \lambda (\ket{\Psi_1} \otimes \ket{\Psi_2}) \\
+            (\ket{\Psi_1} + \ket{\chi_1}) \otimes \ket{\Psi_2} &= \ket{\Psi_1} \otimes \ket{\Psi_2} + \ket{\chi_1} \otimes \ket{\Psi_2} \\
+            \ket{\Psi_1} \otimes (\ket{\Psi_2} + \ket{\chi_2}) &= \ket{\Psi_1} \otimes \ket{\Psi_2} + \ket{\Psi_1} \otimes \ket{\chi_2}
+        \end{align*}
+        \item \textbf{Prodotto Scalare:} Il prodotto scalare su \(\mathcal{H}\) è definito da:
+        \[
+            \braket{\Psi_1 \otimes \Psi_2}{\chi_1 \otimes \chi_2} = \braket{\Psi_1}{\chi_1}_{\mathcal{H}_1} \braket{\Psi_2}{\chi_2}_{\mathcal{H}_2}
+        \]
+        \item \textbf{Base Ortonormale:} Se \(\{\ket{e_{1,n}}\}\) e \(\{\ket{e_{2,m}}\}\) sono basi ortonormali di \(\mathcal{H}_1\) e \(\mathcal{H}_2\), allora l'insieme
+        \[
+            \left\{ \ket{e_{1,n}} \otimes \ket{e_{2,m}} \right\}
+        \]
+        forma una base ortonormale di \(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2\). La dimensione dello spazio prodotto è \(\dim(\mathcal{H}) = \dim(\mathcal{H}_1) \cdot \dim(\mathcal{H}_2)\).
+    \end{itemize}
+\end{definition}
+Dati due vettori generici \(\ket{\Psi_1} \in \mathcal{H}_1\) e \(\ket{\Psi_2} \in \mathcal{H}_2\) che si decompongono nelle rispettive basi ortonormali:
+\[
+    \ket{\Psi_1} = \sum_{n} a_n \ket{e_{1,n}} \qquad \ket{\Psi_2} = \sum_{m} b_m \ket{e_{2,m}}
+\]
+Il prodotto tensore \(\ket{\Psi_1} \otimes \ket{\Psi_2} \in \mathcal{H}_1 \otimes \mathcal{H}_2\) (con base \(\{\ket{e_{1,n}} \otimes \ket{e_{2,m}}\}\)) si scompone come:
+\[
+    \ket{\Psi_1} \otimes \ket{\Psi_2} = \sum_{n,m} a_n b_m \ket{e_{1,n}} \otimes \ket{e_{2,m}}
+\]
+Un generico vettore \(\ket{\Psi} \in \mathcal{H}\) è una combinazione lineare degli elementi della base:
+\[
+    \ket{\Psi} = \sum_{n,m} c_{n,m} \ket{e_{1,n}} \otimes \ket{e_{2,m}}
+\]
+\begin{attention}
+    Non ogni stato \(\ket{\Psi} \in \mathcal{H}\) può essere scritto come prodotto tensore \(\ket{\Psi_1} \otimes \ket{\Psi_2}\).
+\end{attention}
+
+\begin{example}
+    Siano \(\mathcal{H}_i \cong \mathbb{C}^2\) con base \(\{\ket{u_i}, \ket{v_i}\}\) per \(i=1,2\).
+    Consideriamo il vettore in \(\mathcal{H}_1 \otimes \mathcal{H}_2\):
+    \[
+        \ket{\Psi} = \ket{u_1}\otimes\ket{u_2} + \ket{v_1}\otimes\ket{v_2}
+    \]
+    Verifichiamo se è possibile scomporlo come prodotto tensore di due stati (stato separabile):
+    \[
+        \ket{\Psi} \overset{?}{=} (\alpha\ket{u_1} + \beta\ket{v_1}) \otimes (\gamma\ket{u_2} + \delta\ket{v_2})
+    \]
+    Sviluppando il prodotto tensore, otteniamo:
+    \[
+        \ket{\Psi} = \alpha\gamma (\ket{u_1}\otimes\ket{u_2}) + \alpha\delta (\ket{u_1}\otimes\ket{v_2}) + \beta\gamma (\ket{v_1}\otimes\ket{u_2}) + \beta\delta (\ket{v_1}\otimes\ket{v_2}).
+    \]
+    Confrontando i coefficienti con l'espressione originale di \(\ket{\Psi}\), si ottiene il sistema di equazioni:
+    \[
+        \alpha\gamma = 1, \qquad \alpha\delta = 0, \qquad \beta\gamma = 0, \qquad \beta\delta = 1.
+    \]
+    Dalla seconda equazione, \(\alpha\delta = 0\), deve valere \(\alpha=0\) o \(\delta=0\).
+    \begin{itemize}
+        \item Se \(\alpha=0\), la prima equazione diventa \(\alpha\gamma = 0\), in contraddizione con \(\alpha\gamma = 1\).
+        \item Se \(\delta=0\), la quarta equazione diventa \(\beta\delta = 0\), in contraddizione con \(\beta\delta = 1\).
+    \end{itemize}
+    In entrambi i casi si giunge a una contraddizione, dunque non è possibile scomporlo. 
+\end{example}
+
+
+\subsection{Operatori in \texorpdfstring{\(\mathcal{H}_1\otimes\mathcal{H}_2\)}{H1⊗H2}}
+
+Consideriamo due operatori lineari definiti sui rispettivi spazi di Hilbert:
+\[
+    A_1: \mathcal{H}_1 \to \mathcal{H}_1 \qquad B_2: \mathcal{H}_2 \to \mathcal{H}_2
+\]
+
+L'azione dell'operatore prodotto tensoriale \(A_1 \otimes B_2\) su un generico vettore di \(\mathcal{H}_1 \otimes \mathcal{H}_2\), espresso nella base prodotto \(\ket{e_n} \otimes \ket{u_m}\), è data da:
+\begin{equation}
+    (A_1 \otimes B_2) \left( \sum_{n,m} C_{n,m} \ket{e_n} \otimes \ket{u_m} \right) = \sum_{n,m} C_{n,m} (A_1\ket{e_n}) \otimes (B_2\ket{u_m})
+\end{equation}
+In pratica, \(A_1\) agisce sui ket \(\ket{e_n}\) (spazio \(\mathcal{H}_1\)) e \(B_2\) agisce sui ket \(\ket{u_m}\) (spazio \(\mathcal{H}_2\)).
+
+Un operatore generico \(G: \mathcal{H} \to \mathcal{H}\) (dove \(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2\)) si può scrivere come somma di prodotti tensoriali:
+\[
+    G = \sum_{n,m} C_{nm} \, A_{1,n} \otimes B_{2,m}
+\]
+
+Dati \(A_1\) su \(\mathcal{H}_1\) e \(B_2\) su \(\mathcal{H}_2\), si definiscono le loro estensioni allo spazio totale:
+\begin{align}
+    \tilde{A}_1 &= A_1 \otimes \mathbb{I}_{\mathcal{H}_2} \\
+    \tilde{B}_2 &= \mathbb{I}_{\mathcal{H}_1} \otimes B_2
+\end{align}
+Questi operatori (che spesso vengono indicati senza tilde per abuso di notazione) rappresentano fisicamente operatori che agiscono solo su uno spazio (il proprio sottosistema), lasciando inalterato l'altro (agendo come l'identità).
+
+\begin{remark}
+    Gli operatori \(\tilde{A}_1\) e \(\tilde{B}_2\) (che non fanno niente nello spazio prodotto \(\mathcal{H}_1 \otimes \mathcal{H}_2\) dell'altro operatore) commutano sempre:
+    \begin{equation}
+        \tilde{A}_1 \tilde{B}_2 = A_1 \otimes B_2 = \tilde{B}_2 \tilde{A}_1
+    \end{equation}
+    Operatori che agiscono su spazi di Hilbert diversi (gradi di libertà distinti) commutano. Fare misure sul primo sistema senza toccare il secondo non perturba il secondo.
+\end{remark}
+
+Poiché commutano, esiste una base di autostati comune.
+Siano \(A_1\) e \(B_2\) operatori autoaggiunti (a.a.) con le rispettive basi ortonormali:
+\begin{itemize}
+    \item Per \(\mathcal{H}_1 \ni A_1\): \(\left\{ \ket{a, r} \right\}_{\substack{a \in \sigma(A_1) \\ r=1,\dots,d(a)}}\) base O.N. di \(\mathcal{H}_1\)
+    \item Per \(\mathcal{H}_2 \ni B_2\): \(\left\{ \ket{b, s} \right\}_{\substack{b \in \sigma(B_2) \\ s=1,\dots,d(b)}}\) base O.N. di \(\mathcal{H}_2\)
+\end{itemize}
+
+La base prodotto:
+\begin{equation}
+    \left\{ \ket{a, r} \otimes \ket{b, s} \right\}_{\substack{r=1\dots d(a) \\ s=1\dots d(b)}}
+\end{equation}
+è una base ortonormale di \(\mathcal{H}_1 \otimes \mathcal{H}_2\) ed è una base di autovettori simultanei di \(\tilde{A}_1\) e \(\tilde{B}_2\).
+
+La degenerazione degli autovalori congiunti è data dal prodotto delle degenerazioni:
+\[
+    \deg(a, b) = d(a)\,d(b)
+\]
+
+\begin{example}[Sistema di due particelle senza spin 3D]
+    
+Consideriamo un sistema composto da due particelle senza spin in tre dimensioni (3D).
+Lo spazio di Hilbert di ciascuna particella è:
+\[
+    \mathcal{H}_1 = L_2(\mathbb{R}^3, \dd[3]{\vec{x}_1}), \qquad \mathcal{H}_2 = L_2(\mathbb{R}^3, \dd[3]{\vec{x}_2}).
+\]
+Lo spazio di Hilbert del sistema composto è dato dal prodotto tensoriale degli spazi individuali:
+\[
+    \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \cong L_2(\mathbb{R}^6, \dd[3]{\vec{x}_1} \dd[3]{\vec{x}_2}).
+\]
+Lo stato del sistema è descritto da una \textit{funzione d'onda a due corpi} \(\Psi(\vec{x}_1, \vec{x}_2)\), che dipende dalle coordinate di entrambe le particelle.
+La condizione di normalizzazione è:
+\[
+    \norm{\Psi}^2 = \int_{\mathbb{R}^6} \dd[3]{\vec{x}_1} \dd[3]{\vec{x}_2} \, \abs{\Psi(\vec{x}_1, \vec{x}_2)}^2 < +\infty.
+\]
+La funzione d'onda è ottenuta proiettando lo stato \(\ket{\Psi}\) sulla base di posizione generalizzata \(\left\{ \ket{\vec{x}_1, \vec{x}_2} \equiv \ket{\vec{x}_1} \otimes \ket{\vec{x}_2} \right\}\):
+\[
+    \Psi(\vec{x}_1, \vec{x}_2) = \braket{\vec{x}_1, \vec{x}_2}{\Psi}.
+\]
+La densità di probabilità di trovare simultaneamente la particella 1 in un intorno di \(\vec{x}_1\) e la particella 2 in un intorno di \(\vec{x}_2\) è data da \(\abs{\Psi(\vec{x}_1, \vec{x}_2)}^2\).
+
+Un caso particolare è quello degli \textit{stati fattorizzabili} (o separabili), in cui lo stato del sistema composto è il prodotto tensoriale di due stati puri individuali:
+\[
+    \ket{\Psi} = \ket{\Psi_1} \otimes \ket{\Psi_2}
+\]
+A questo stato fattorizzato è associata una funzione d'onda che è il semplice prodotto delle funzioni d'onda individuali:
+\[
+    \Psi(\vec{x}_1, \vec{x}_2) = \braket{\vec{x}_1}{\Psi_1} \braket{\vec{x}_2}{\Psi_2} = \Psi_1(\vec{x}_1) \Psi_2(\vec{x}_2).
+\]
+\end{example}
+
+\begin{example}
+    \[
+        L_2(\mathbb{R}^3, \dd[3]{x}) \cong L_2(\mathbb{R}, \dd{x}) \otimes L_2(\mathbb{R}, \dd{y}) \otimes L_2(\mathbb{R}, \dd{z})
+        \cong L_2([0,+\infty), r^2 \dd{r}) \otimes L_2(S^2, \sin\vartheta \, \dd{\vartheta} \, \dd{\varphi})    
+    \]
+\end{example}
+
+\section{Spin}
+\subsection{Postulato dello Spin}
+
+Consideriamo una particella in 3 dimensioni. Avremo sempre le osservabili posizione \(\vec{X}\) e momento \(\vec{P}\).
+Definiamo il momento angolare orbitale come \(\vec{L} := \vec{X} \times \vec{P}\).
+
+Tuttavia, in generale, il generatore delle rotazioni infinitesime \(\vec{J}\) non coincide con \(\vec{L}\). Introduciamo quindi un nuovo operatore, detto \textit{operatore di Spin}:
+\begin{equation}
+    \vec{S} := \vec{J} - \vec{L} 
+\end{equation}
+dove le componenti sono \(\vec{S} = (S_x, S_y, S_z)\).
+
+Consideriamo l'azione di un operatore unitario di rotazione \(U(\vec{\omega}) = e^{-\frac{i}{\hbar}\vec{J}\cdot\vec{\omega}}\) su un operatore vettoriale \(\vec{X}\). 
+La legge di trasformazione è:
+\[
+U(\vec{\omega})\vec{X}U(\vec{\omega})^\dagger = R(\vec{\omega})^{-1}\vec{X}
+\]
+Per rotazioni infinitesime, possiamo sviluppare l'espressione usando la rappresentazione matriciale della rotazione:
+\[
+R(\vec{\omega})^{-1}\vec{X} \approx \left( \mathbb{I}_3 - \sum_j \omega_j T_j \right)\vec{X}
+\]
+Dalla relazione tra trasformazioni infinitesime e commutatori, otteniamo:
+\[
+[J_j, X_k] = i\hbar \pdv{}{\omega_j} \left( R(\vec{\omega})^{-1}\vec{X} \right)_k \bigg|_{\vec{\omega}=0} = i\hbar \sum_l \epsilon_{jkl} X_l
+\]
+Notiamo che questa relazione di commutazione è identica a quella del momento angolare orbitale \(\vec{L}\), poiché \(\vec{X}\) si trasforma come un vettore sotto rotazioni spaziali:
+\[
+[J_j, X_k] = [L_j, X_k] = i\hbar \sum_l \epsilon_{jkl} X_l
+\]
+Analogamente, poiché anche \(\vec{P}\) e \(\vec{L}\) sono vettori, valgono le stesse relazioni:
+\[
+[J_j, P_k] = i\hbar \sum_l \epsilon_{jkl} P_l = [L_j, P_k]
+\]
+\[
+[J_j, L_k] = i\hbar \sum_l \epsilon_{jkl} L_l = [L_j, L_k]
+\]
+
+Date queste relazioni, possiamo determinare i commutatori dello spin \(\vec{S} = \vec{J} - \vec{L}\) con le osservabili spaziali:
+
+\begin{equation}
+    [S_i, X_k] = [J_i - L_i, X_k] = [J_i, X_k] - [L_i, X_k] = 0
+\end{equation}
+\begin{equation}
+    [S_i, P_k] = [J_i - L_i, P_k] = 0
+\end{equation}
+\begin{equation}
+    [S_i, L_k] = [J_i - L_i, L_k] = 0
+\end{equation}
+
+Lo spin \(\vec{S}\) è quindi un momento angolare che commuta con tutte le variabili cinematiche spaziali (\(\vec{X}, \vec{P}, \vec{L}\)).\\
+Imponendo le regole di commutazione al momento angolare totale \(\vec{J} = \vec{L} + \vec{S}\):
+\[
+[L_i + S_i, L_j + S_j] = i\hbar \sum_k \epsilon_{ijk} (L_k + S_k)
+\]
+Espandendo e semplificando i termini orbitali \([L_i, L_j]\) presenti in ambo i membri:
+\[
+[L_i, L_j] + [S_i, S_j] = i\hbar \sum_k \epsilon_{ijk} L_k + i\hbar \sum_k \epsilon_{ijk} S_k
+\]
+Si ottiene la relazione fondamentale per lo spin:
+\begin{equation}
+    [S_i, S_j] = i\hbar \sum_k \epsilon_{ijk} S_k
+\end{equation}
+
+
+
+Consideriamo una singola particella quantistica. Introduciamo un nuovo operatore, il momento angolare di spin, per il quale vale il seguente postulato.
+
+\begin{postulato8}
+    Per una singola particella quantistica, l'operatore \(\vec{S}^2\) ha un singolo autovalore dato da:
+    \begin{equation}
+        \vec{S}^2 = \hbar^2 s(s+1) \mathbb{I}
+    \end{equation}
+    dove \(s \in \frac{1}{2}\mathbb{N}\) è un numero quantico caratteristico: ogni singola particella quantistica ha un singolo valore di \(s\) fissato.
+\end{postulato8}
+
+L'insieme di operatori \(\left\{ X_1, X_2, X_3, \vec{S}^2, S_z \right\}\) commuta e costituisce un I.C.O.C. (vedi \ref{def: icoc}).
+\begin{remark}
+    Includere o meno \(\vec{S}^2\) nell'I.C.O.C. non cambia la sostanza, poiché tale operatore è proporzionale all'identità ed è quindi già non degenere.
+\end{remark}
+
+
+Ci chiediamo ora come sia strutturato lo spazio di Hilbert \(\mathcal{H}\) per una particella dotata di spin.
+Rispetto al caso senza spin, abbiamo nuovi gradi di libertà. Lo spazio totale assume la forma di un \textbf{prodotto tensore} tra la parte spaziale (senza spin, \(L_2(\mathbb{R}^3, \dd[3]{x})\)) e la parte di spin:
+\begin{equation}
+    \mathcal{H} = \mathcal{H}_{\vec{x}} \otimes \mathcal{H}_s
+\end{equation}
+
+Gli operatori posizione \(\vec{X}\) e momento \(\vec{P}\) agiscono solo su \(\mathcal{H}_{\vec{x}}\). Nello spazio totale si scrivono come:
+\[
+    \vec{X} = \vec{X}_{\vec{x}} \otimes \mathbb{I}_{\mathcal{H}_s}
+\]
+\[
+    \vec{P} = \vec{P}_{\vec{x}} \otimes \mathbb{I}_{\mathcal{H}_s}
+\]
+dove \(\mathbb{I}_{\mathcal{H}_s}\) è l'identità nello spazio dello spin (questi operatori "non fanno nulla" nello spazio \(\mathcal{H}_s\)).
+
+Analogamente, i 3 operatori di spin agiscono solo su \(\mathcal{H}_s\):
+\[
+    \vec{S} = \mathbb{I}_{\mathcal{H}_{\vec{x}}} \otimes \vec{S}_s
+\]
+
+Poiché \(\vec{S}^2 \propto \mathbb{I}\), è necessario utilizzare \(S_z\) come osservabile per completare l'I.C.O.C. nel sottospazio dello spin. Lo spettro di \(S_z\) è dato da:
+\begin{equation}
+    \sigma(S_z) = \left\{ m\hbar \right\}_{m \in \{-s, \dots, s\}}
+\end{equation}
+Essendo \(m\) il numero quantico magnetico che varia a passi interi da \(-s\) a \(s\), la dimensione dello spazio di Hilbert dello spin è finita e vale:
+\begin{equation}
+    \dim \mathcal{H}_s = 2s+1
+\end{equation}
+
+\begin{example}
+    Riportiamo i valori di spin per alcune particelle note:
+    \begin{itemize}
+        \item Elettrone, protone, neutrone: \( s = \frac{1}{2} \)
+        \item Fotone, \( W \), \( Z \): \( s = 1 \)
+        \item \( \pi \), \( K \), Higgs: \( s = 0 \)
+    \end{itemize}
+\end{example}
+
+
+% 21 Lezione del 14/11/2025
+
+
+
