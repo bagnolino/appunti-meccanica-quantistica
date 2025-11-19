@@ -648,4 +648,510 @@ Per l'operatore hamiltoniano:
 \[
     H = \frac{\abs{\vec{P}}^2}{2m} + V(\vec{x}) \to \mathbb{P}H\mathbb{P}= \frac{\abs{\vec{P}}^2}{2m} + V(-\vec{x}) 
 \]
-Perciò se \(V(\vec{x})= V(-\vec{x})\) allora \(\mathbb{P} \in G_d\)
+Perciò se \(V(\vec{x})= V(-\vec{x})\) allora \(\mathbb{P} \in G_d\).
+
+
+
+% 18 Lezione del 07/11/2025
+
+\subsection{Inversione temporale}
+Consideriamo l'operatore \(\mathbb{T}\) che agisca nella seguente maniera:
+\[
+    \vec{x}\to \vec{x} \quad t \to -t \qquad \mathbb{T}\vec{X}\mathbb{T}^\dagger = \vec{X} \qquad  \mathbb{T}\vec{P}\mathbb{T}^\dagger = - \vec{P} \qquad  \mathbb{T}\vec{L}\mathbb{T}^\dagger = - \vec{L}
+\]
+
+In questo caso:
+\begin{align*}
+    \left[ \mathbb{T}X_j\mathbb{T}^\dagger,\mathbb{T}P_k\mathbb{T}^\dagger \right] 
+    &= \mathbb{T}\left[ X_j, P_k \right]\mathbb{T}^\dagger = \mathbb{T}i \hbar \delta_{jk}\mathbb{T}^\dagger \\
+    &= - \left[ X_j, P_k \right] = -i\hbar \delta_{jk}
+\end{align*}
+Dunque \(\mathbb{T}\) è antiunitario, perciò \(\braket{\chi}{\mathbb{T}\Psi}= \overline{\braket{\mathbb{T}\chi}{\Psi}}\).
+Come agisce \(\mathbb{T}\) sullo stato \(\ket{\Psi}\) ?
+\[
+    \mathbb{T}\ket{\Psi}= \mathbb{T}\int_{\mathbb{R}^3}\dd[3]{x}\ket{\vec{x}}\braket{\vec{x}}{\Psi} = \int_{\mathbb{R}^3}\dd[3]{x}\ket{\vec{x}}\braket{\vec{x}}{\Psi}^*
+    \implies \Psi'(\vec{x})= \Psi(\vec{x})^*
+\]
+Un sistema è invariante per inversione temporale se l'Hamiltoniana \(H\) commuta con \(\mathbb{T}\).
+\[
+    [\mathbb{T}, H] = 0 \iff H = \mathbb{T} H \mathbb{T}^\dagger
+\]
+Per un sistema conservativo, l'operatore di evoluzione temporale \(U(t) = e^{-\frac{i}{\hbar}Ht}\) si trasforma come:
+\begin{equation}
+    \mathbb{T} U(t) \mathbb{T}^\dagger = \mathbb{T} e^{-\frac{i}{\hbar}Ht} \mathbb{T}^\dagger = e^{\frac{i}{\hbar}Ht} = U(-t)
+\end{equation}
+Data una soluzione dell'equazione di Schrödinger \(\ket{\Psi(t)} = U(t)\ket{\Psi(0)}\), lo stato trasformato \(\mathbb{T}\ket{\Psi(t)}\) evolve come:
+\[
+    \mathbb{T}\ket{\Psi(t)} = \mathbb{T} U(t) \mathbb{T}^\dagger \mathbb{T}\ket{\Psi(0)} = U(-t) \mathbb{T}\ket{\Psi(0)}
+\]
+Questo stato \textbf{non è una soluzione} dell'equazione di Schrödinger, poiché la sua evoluzione temporale è invertita rispetto a quella richiesta.
+
+Tuttavia, se definiamo un nuovo stato \(\ket{\Psi'(t)}\) come lo stato originale evoluto all'indietro nel tempo e poi trasformato con \(\mathbb{T}\):
+\[
+    \ket{\Psi'(t)} := \mathbb{T}\ket{\Psi(-t)}
+\]
+allora \(\ket{\Psi'(t)}\) \textbf{è una soluzione} dell'equazione di Schrödinger.
+Infatti:
+\[
+    \ket{\Psi'(t)} = \mathbb{T} U(-t) \ket{\Psi(0)} = \left( \mathbb{T} U(-t) \mathbb{T}^\dagger \right) \mathbb{T}\ket{\Psi(0)} = U(t) \mathbb{T}\ket{\Psi(0)}
+\]
+Lo stato \(\ket{\Psi'(t)}\) evolve correttamente a partire da un nuovo stato iniziale \(\ket{\Psi'(0)} = \mathbb{T}\ket{\Psi(0)}\).
+
+Nella rappresentazione delle coordinate, questo significa che se \(\Psi(\vec{x}, t)\) è una soluzione, allora lo è anche la sua complessa coniugata con il tempo invertito.
+\[
+    \braket{\vec{x}}{\Psi'(t)} = \braket{\vec{x}}{\mathbb{T} | \Psi(-t)} = \braket{\vec{x}}{\Psi(-t)}^* = \Psi^*(\vec{x}, -t)
+\]
+
+Se \(\Psi(\vec{x}, t)\) è soluzione all'equazione di Schrödinger per un sistema con simmetria di inversione temporale, allora lo è anche \(\Psi^*(\vec{x}, -t)\).
+
+
+
+\subsection{Spettro del momento angolare}
+Consideriamo un sistema quantistico con simmetria di rotazione \(SO(3)\).
+Il momento angolare totale \(\vec{J} = (J_x, J_y, J_z)\) è un insieme di operatori autoaggiunti che generano le rotazioni tramite \(U(\vec{\alpha}) = e^{-\frac{i}{\hbar}\vec{\alpha} \cdot \vec{J}}\)
+e obbediscono all'algebra di Lie di \(so(3)\):
+\[
+    [J_i, J_j] = i\hbar \sum_k \epsilon_{ijk} J_k
+\]
+Per studiare lo spettro, ci concentriamo su \(J_z\), ma i risultati si estendono a \(J_x\) e \(J_y\) per simmetria.
+\begin{remark}
+    Gli spettri delle componenti del momento angolare coincidono, \(\sigma(J_z) = \sigma(J_x) = \sigma(J_y)\),
+    poiché le componenti sono collegate da trasformazioni unitarie (rotazioni).
+\end{remark}
+
+Definiamo l'operatore \(\vec{J}^2 = J_x^2 + J_y^2 + J_z^2\), che è uno scalare rotazionale e quindi commuta con tutte le componenti di \(\vec{J}\):
+\[
+    [\vec{J}^2, J_k] = 0
+\]
+Per trovare lo spettro di \(J_z\), introduciamo gli operatori di innalzamento e abbassamento (o operatori scala):
+\[
+    J_\pm := J_x \pm i J_y.
+\]
+Valgono le seguenti proprietà:
+\[
+    (J_\pm)^\dagger = J_\mp, \qquad \left[ \vec{J}^2, J_\pm \right] = 0, \qquad J_x = \frac{J_+ + J_-}{2}, \qquad J_y = \frac{J_+ - J_-}{2i}.
+\]
+Inoltre, valgono le relazioni di commutazione:
+\[
+    [J_z, J_\pm] = [J_z, J_x] \pm i[J_z, J_y]
+    = (i\hbar J_y) \pm i(-i\hbar J_x) = \pm \hbar (J_x \pm i J_y) = \pm \hbar J_\pm.
+\]
+I prodotti \(J_+ J_-\) e \(J_- J_+\) si possono esprimere in termini di \(\vec{J}^2\) e \(J_z\):
+\[
+    J_+ J_- = (J_x + i J_y)(J_x - i J_y) = J_x^2 + J_y^2 - i[J_x, J_y] = J_x^2 + J_y^2 + \hbar J_z = \vec{J}^2 - J_z^2 + \hbar J_z,
+\]
+\[
+    J_- J_+ = (J_x - i J_y)(J_x + i J_y) = J_x^2 + J_y^2 + i[J_x, J_y] = J_x^2 + J_y^2 - \hbar J_z = \vec{J}^2 - J_z^2 - \hbar J_z.
+\]
+Da cui si ricava il commutatore:
+\[
+    [J_+, J_-] = 2\hbar J_z.
+\]
+
+L'operatore \(\vec{J}^2\) è semidefinito positivo. Infatti, per ogni stato \(\ket{\Psi}\):
+\[
+    \expval{\vec{J}^2}_\Psi = \bra{\Psi} (J_x^2 + J_y^2 + J_z^2) \ket{\Psi}
+    = \norm{J_x \ket{\Psi}}^2 + \norm{J_y \ket{\Psi}}^2 + \norm{J_z \ket{\Psi}}^2 \ge 0.
+\]
+Di conseguenza, il suo spettro è non negativo: \(\sigma(\vec{J}^2) \subseteq \mathbb{R}_{\ge 0}\).
+
+Poiché \([\vec{J}^2, J_z]=0\), possiamo trovare una base ortonormale di autostati comuni \(\left\{ \ket{j, m} \right\}\).
+Definiamo i loro autovalori:
+\begin{align*}
+    \vec{J}^2 \ket{j, m} &= \hbar^2 j(j+1) \ket{j, m}, \quad j \ge 0 \\
+    J_z \ket{j, m} &= \hbar m \ket{j, m}, \quad m \in \mathbb{R}
+\end{align*}
+La parametrizzazione dell'autovalore di \(\vec{J}^2\) come \(\hbar^2 j(j+1)\) è una scelta standard che si rivelerà conveniente. La condizione \(\vec{J}^2 \ge 0\) è soddisfatta per \(j \ge 0\).
+
+Applichiamo ora gli operatori scala \(J_\pm\) agli autostati \(\ket{j,m}\). Poiché \([\vec{J}^2, J_\pm]=0\), il valore di \(j\) non cambia:
+\[
+    \vec{J}^2 (J_\pm \ket{j, m}) = J_\pm \vec{J}^2 \ket{j, m} = \hbar^2 j(j+1) (J_\pm \ket{j, m}).
+\]
+Invece, l'autovalore di \(J_z\) viene traslato:
+\[
+    J_z (J_\pm \ket{j, m}) = (J_\pm J_z + [J_z, J_\pm]) \ket{j, m}
+    = (J_\pm \hbar m \pm \hbar J_\pm) \ket{j, m}
+    = \hbar (m \pm 1) (J_\pm \ket{j, m}).
+\]
+Lo stato \(J_\pm \ket{j, m}\) è quindi un autostato di \(J_z\) con autovalore \(\hbar(m\pm 1)\).
+
+Perché \(J_\pm \ket{j, m}\) sia un autostato valido, non deve essere il vettore nullo. Calcoliamone la norma (assumendo \(\braket{j, m}{j, m} = 1\)):
+\[
+    \norm{J_\pm \ket{j, m}}^2 = \bra{j, m} J_\mp J_\pm \ket{j, m}
+    = \bra{j, m} (\vec{J}^2 - J_z^2 \mp \hbar J_z) \ket{j, m}
+\]
+Sostituendo gli autovalori, otteniamo:
+\begin{equation}
+    \norm{J_\pm \ket{j, m}}^2 = \hbar^2 [j(j+1) - m^2 \mp m]
+    = \hbar^2 [j(j+1) - m(m \pm 1)].
+\end{equation}
+Poiché la norma quadra deve essere non negativa, abbiamo due condizioni:
+\begin{align*}
+    \norm{J_+ \ket{j,m}}^2 \ge 0 \implies j(j+1) - m(m+1) \ge 0 \\
+    \norm{J_- \ket{j,m}}^2 \ge 0 \implies j(j+1) - m(m-1) \ge 0
+\end{align*}
+Queste due disequazioni sono entrambe soddisfatte se e solo se:
+\[
+    -j \le m \le j.
+\]
+Per un dato \(j\), i valori di \(m\) sono quindi limitati.
+
+La sequenza di autostati \(\dots, \ket{j, m-1}, \ket{j, m}, \ket{j, m+1}, \dots\) deve essere finita.
+Ciò accade quando il vettore diventa nullo:
+\begin{itemize}
+    \item Deve esistere un \(m_\text{max}\) tale che \(J_+ \ket{j, m_\text{max}} = 0\).
+    Dalla condizione sulla norma, \(j(j+1) - m_\text{max}(m_\text{max}+1) = 0\), che implica \(m_\text{max} = j\).
+    \item Deve esistere un \(m_\text{min}\) tale che \(J_- \ket{j, m_\text{min}} = 0\).
+    Similmente, \(j(j+1) - m_\text{min}(m_\text{min}-1) = 0\), che implica \(m_\text{min} = -j\).
+\end{itemize}
+Partendo da \(m_\text{min} = -j\), si deve poter raggiungere \(m_\text{max} = j\) con un numero intero \(k\) di passi da \(+1\) (applicando \(J_+\) ripetutamente):
+\[
+    m_\text{max} - m_\text{min} = k, \quad k \in \mathbb{Z}_{\ge 0}
+\]
+\[
+    j - (-j) = k \implies 2j = k.
+\]
+Questo implica che \(2j\) deve essere un numero intero non negativo. I valori possibili per \(j\) sono quindi:
+\[
+    j = 0, \frac{1}{2}, 1, \frac{3}{2}, \dots
+\]
+Per un dato \(j\), i valori permessi di \(m\) sono \(2j+1\) valori equispaziati:
+\[
+    m = -j, -j+1, \dots, j-1, j.
+\]
+
+
+
+
+% 19 Lezione del 10/11/2025
+
+Consideriamo una base ON di autostati \(\left\{ \ket{j,m} \right\} \)  per un certo \( j\) fissato con \(m \in \{-j, \dots, j\}\).
+
+Partendo dall'autostato dell'autovalore più grande \(m=j\,, \ \  \norm{\ket{j,j}}^2 = 1\), posso ottenere gli altri elementi della base grazie all'operatore di abbassamento:
+\[
+    \ket{j, m-1} := \frac{J_- \ket{j,m}}{\hbar \sqrt{j(j+1) - m(m-1)}} \quad \text{per } m > -j
+\]
+Che viene opportunamente normalizzato. Alla stessa maniera l'operatore di innalzamento agisce come:
+\[
+    J_+ \ket{j,m} = \frac{J_+ J_- \ket{j,m+1}}{\hbar \sqrt{j(j+1) - m(m+1)}} = \hbar \sqrt{j(j+1)-(m+1)m} \ket{j, m+1}
+\]
+
+Quindi gli operatori di innalzamento e abbassamento, aumentano e diminuiscono rispettivamente l'autovalore \(m \) e aggiungono un fattore di proporzione dipendente da \(j\)e \(m\):
+\begin{equation}
+    J_\pm \ket{j,m} = \hbar \sqrt{j(j+1)-m(m\pm 1)} \ket{j, m \pm 1}
+\end{equation}
+
+Rispetto a questa base ortonormale \(\left\{ \ket{j,m} \right\}_{m=-j}^j\) (con \(j\) fissato), le rappresentazioni matriciali degli operatori del momento angolare hanno una forma conveniente:
+\begin{itemize}
+    \item Per \(J_z\), la rappresentazione è diagonale:
+    \[
+        \matrixel{j,m'}{J_z}{j,m} = m\hbar\,\delta_{m'm}
+        \implies
+        J_z = \hbar \begin{pmatrix} j & & & 0 \\ & j-1 & & \\ & & \ddots & \\ 0 & & & -j \end{pmatrix}.
+    \]
+    \item Per gli operatori scala \(J_\pm\), definendo per brevità $\mu_\pm(j,m) = \hbar \sqrt{j(j+1)-m(m\pm 1)}$, si ha:
+    \[
+        \matrixel{j,m'}{J_+}{j,m} = \mu_+(j,m)\,\delta_{m',m+1},
+        \qquad
+        \matrixel{j,m'}{J_-}{j,m} = \mu_-(j,m)\,\delta_{m',m-1}.
+    \]
+    Le matrici corrispondenti sono strettamente triangolari, con elementi non nulli solo sulla prima sovradiagonale per \(J_+\) e sulla prima sottodiagonale per \(J_-\).
+    \[
+        J_+ = \begin{pmatrix} 0 & \mu_+(j,j-1) & 0 & \dots \\ 0 & 0 & \mu_+(j,j-2) & \dots \\ \vdots & & \ddots & \mu_+(j,-j) \\ 0 & \dots & \dots & 0 \end{pmatrix},
+    \]
+    \[
+        J_- = \begin{pmatrix} 0 & 0 & \dots & 0 \\ \mu_-(j,j) & 0 & \dots & 0 \\ 0 & \mu_-(j,j-1) & \ddots & \vdots \\ \vdots & & \ddots & 0 \\ 0 & \dots & \mu_-(j,-j+1) & 0 \end{pmatrix}.
+    \]
+    \item Per \(J_x\) e \(J_y\), le matrici si ottengono dalle relazioni \(J_x = (J_+ + J_-)/2\) e \(J_y = (J_+ - J_-)/(2i)\).
+    Sono matrici tridiagonali con elementi nulli sulla diagonale principale.
+    \[
+        J_x = \frac{1}{2} \begin{pmatrix} 0 & \mu_+(j,j-1) & & 0 \\ \mu_-(j,j) & 0 & \mu_+(j,j-2) & \\ & \mu_-(j,j-1) & \ddots & \mu_+(j,-j) \\ 0 & & \mu_-(j,-j+1) & 0 \end{pmatrix},
+    \]
+    \[
+        J_y = \frac{1}{2i} \begin{pmatrix} 0 & \mu_+(j,j-1) & & 0 \\ -\mu_-(j,j) & 0 & \mu_+(j,j-2) & \\ & -\mu_-(j,j-1) & \ddots & \mu_+(j,-j) \\ 0 & & -\mu_-(j,-j+1) & 0 \end{pmatrix}.
+    \]
+\end{itemize}
+
+
+\subsubsection{Spettro degenere}
+
+Se è presente degenerazione, l'autospazio \(\mathcal{H}_{j,m}\) associato agli autovalori \(j(j+1)\hbar^2\) e \(m\hbar\) ha dimensione \(d(j,m) > 1\).
+Si considera una base ortonormale di questo autospazio, indicizzata da un numero quantico aggiuntivo $r$:
+\[
+    \{ \ket{j, m, r} \}_{r=1, \dots, d(j,m)}
+\]
+tale che $\braket{j, m, r}{j, m, r'} = \delta_{rr'}$.
+
+Analizziamo l'azione degli operatori di scala, che agiscono sull'indice $m$ ma non sull'indice di degenerazione $r$.
+Per \(m > -j\), l'operatore di abbassamento \(J_-\) mappa lo stato \(\ket{j, m, r}\) in un nuovo stato. Definiamo i vettori normalizzati:
+\[
+    \ket{j, m-1, r} := \frac{J_- \ket{j, m, r}}{\hbar \sqrt{j(j+1) - m(m-1)}}
+\]
+Questi vettori sono ortonormali rispetto all'indice $r$:
+\[
+    \braket{j, m-1, r}{j, m-1, r'} = \delta_{rr'}
+\]
+Poiché abbiamo costruito un sistema ortonormale di \(d(j,m)\) vettori nell'autospazio \(\mathcal{H}_{j, m-1}\), la sua dimensione deve essere almeno \(d(j,m)\):
+\[
+    d(j, m-1) \ge d(j, m)
+\]
+
+Allo stesso modo, per \(m < j\), l'operatore di innalzamento \(J_+\) permette di definire i vettori normalizzati:
+\[
+    \ket{j, m+1, r} := \frac{J_+ \ket{j, m, r}}{\hbar \sqrt{j(j+1) - m(m+1)}}
+\]
+Anche questi vettori sono ortonormali, $\braket{j, m+1, r}{j, m+1, r'} = \delta_{rr'}$, il che implica:
+\[
+    d(j, m+1) \ge d(j, m)
+\]
+
+Combinando i due risultati, \(d(j, m+1) \ge d(j, m)\) e \(d(j, m) \ge d(j, m-1)\), e applicando il ragionamento a catena per tutti i valori di \(m\) da \(-j\) a \(j\), si conclude che la degenerazione deve essere la stessa per tutti i livelli:
+\[
+    d(j, m) \text{ è indipendente da } m.
+\]
+Possiamo quindi indicarla semplicemente con \(d(j)\).
+
+Gli operatori di scala definiscono isomorfismi tra gli autospazi adiacenti (eccetto ai bordi \(m=\pm j\)):
+\[
+    \mathcal{H}_{j, m-1} \xleftarrow{J_-} \mathcal{H}_{j,m} \xrightarrow{J_+} \mathcal{H}_{j, m+1}
+\]
+Tutti gli autospazi \(\mathcal{H}_{j,m}\) (per \(m \in \{-j, \dots, j\}\)) sono quindi isomorfi e hanno la stessa dimensione \(d(j)\).
+Si può costruire l'intera base partendo da una base ortonormale \(\left\{ \ket{j, j, r} \right\}_{r=1, \dots, d(j)}\) dell'autospazio con \(m=j\) e applicando ricorsivamente l'operatore di abbassamento \(J_-\):
+\[
+    \ket{j, m-1, r} := \frac{J_- \ket{j, m, r}}{\hbar \sqrt{j(j+1) - m(m-1)}}
+\]
+La base completa per un dato valore di \(j\) è quindi:
+\[
+    \{ \ket{j, m, r} \}_{m \in \{-j, \dots, j\}, \, r=1, \dots, d(j)}
+\]
+I valori permessi per \(j\) e la loro degenerazione \(d(j)\) dipendono dalle specifiche simmetrie del sistema fisico in esame.
+
+Invece di decomporre lo spazio di Hilbert totale \(\mathcal{H}\) negli autospazi \(\mathcal{H}_{j,m}\) (comuni a \(\vec{J}^2\) e \(J_z\)), è più conveniente utilizzare una decomposizione basata sugli indici \(j\) e sull'indice di degenerazione \(r\).
+
+Fissiamo \(j\) e \(r\), con \(1 \le r \le d(j)\). Definiamo il sottospazio \(\mathcal{H}_{j,r}\) come lo spazio generato dalla base:
+\[
+    \{ \ket{j, m, r} \}_{m \in \{-j, \dots, j\}}
+\]
+La dimensione di questo spazio è \(\dim \mathcal{H}_{j,r} = 2j+1 < +\infty\).
+
+Questi sottospazi \(\mathcal{H}_{j,r}\) sono \textbf{invarianti} (o stabili) sotto l'azione di tutti gli operatori del momento angolare \(\vec{J} = (J_x, J_y, J_z)\).
+Gli operatori \(J_z\) e \(J_\pm\) agiscono solo sui vettori con lo stesso indice \(j\) e \(r\):
+\begin{align*}
+    J_z \ket{j, m, r} &= m\hbar \ket{j, m, r} \in \mathcal{H}_{j,r} \\
+    J_\pm \ket{j, m, r} &= \hbar \sqrt{j(j+1) - m(m\pm 1)} \ket{j, m\pm 1, r} \in \mathcal{H}_{j,r}
+\end{align*}
+Di conseguenza, per qualsiasi stato \(\ket{\Psi} \in \mathcal{H}_{j,r}\), anche la sua trasformazione rimane nel sottospazio:
+\[
+    J_k \ket{\Psi} \in \mathcal{H}_{j,r} \quad (\text{per } k=x,y,z)
+\]
+e, più in generale, un operatore di rotazione finita lascia lo stato all'interno del sottospazio:
+\[
+    e^{-\frac{i}{\hbar} \vec{J} \cdot \vec{\omega}} \ket{\Psi} \in \mathcal{H}_{j,r}
+\]
+
+Lo spazio di Hilbert totale \(\mathcal{H}\) può quindi essere decomposto nella somma diretta di questi sottospazi invarianti:
+\[
+    \mathcal{H} = \bigoplus_j \bigoplus_{r=1}^{d(j)} \mathcal{H}_{j,r}
+\]
+Rispetto a questa decomposizione, la rappresentazione matriciale degli operatori del momento angolare (e delle rotazioni) diventa \textbf{diagonale a blocchi}. 
+\[
+e^{-\frac{i}{\hbar} \vec{J} \cdot \vec{\omega}} =
+\begin{pmatrix}
+    \begin{array}{|c|}
+    \hline
+    \text{Blocco } \mathcal{H}_{j,r} \\
+    \hline
+    \end{array}
+    & 0 & \cdots \\
+    0 &
+    \begin{array}{|c|}
+    \hline
+    \text{Blocco } \mathcal{H}_{j',r'} \\
+    \hline
+    \end{array}
+    & \cdots \\
+    \vdots & \vdots & \ddots
+\end{pmatrix}
+\]
+Ogni blocco, associato a un sottospazio \(\mathcal{H}_{j,r}\), è una matrice \((2j+1) \times (2j+1)\) che agisce solo sugli stati di quel sottospazio.
+
+All'interno di un singolo blocco (fissando \(j\) e \(r\) e usando la base \(\{\ket{j,m,r}\}_{m=-j}^j\)):
+\begin{itemize}
+    \item \(J_z\) è rappresentato da una matrice diagonale.
+    \item \(J_+\) e \(J_-\) sono rappresentati da matrici strettamente sopra/sotto-diagonali.
+    \item \(J_x\), \(J_y\) e l'operatore di rotazione \(e^{-\frac{i}{\hbar} \vec{J} \cdot \vec{\omega}}\) sono rappresentati da matrici non diagonali.
+\end{itemize}
+Questa struttura a blocchi è fondamentale perché permette di studiare le proprietà di rotazione del sistema analizzando separatamente le rappresentazioni irriducibili del gruppo delle rotazioni, ciascuna corrispondente a un valore di \(j\).
+
+\subsection{Particella senza spin in 3D}
+
+Consideriamo una particella senza spin in 3 dimensioni, il cui spazio di Hilbert è \( \mathcal{H} = L_2(\mathbb{R}^3, \dd[3]{x}) \).
+Le rotazioni sono implementate dall'operatore unitario \( U(R) \), che agisce sulla funzione d'onda come:
+\[
+    (U(R)\Psi)(\vec{x}) = \Psi(R^{-1}\vec{x}).
+\]
+Gli operatori posizione e momento sono:
+\[
+    \vec{X}\Psi(\vec{x}) = \vec{x}\Psi(\vec{x}), \qquad \vec{P}\Psi(\vec{x}) = -i\hbar\vec{\nabla}\Psi(\vec{x}).
+\]
+Per una particella senza spin, il momento angolare totale \( \vec{J} \) coincide con il momento angolare orbitale \( \vec{L} = \vec{X} \times \vec{P} \):
+\[
+    \vec{J} \equiv \vec{L} = \vec{X} \times \vec{P} = -i\hbar (\vec{x} \times \vec{\nabla}).
+\]
+Vogliamo trovare le autofunzioni simultanee di \( L^2 \) e \( L_z \).
+Le autofunzioni \( \Psi_{\ell,m}(\vec{x}) = \braket{\vec{x}}{\ell,m} \) devono soddisfare le equazioni agli autovalori:
+\begin{align}
+    L^2 \Psi_{\ell,m}(\vec{x}) &= \hbar^2 \ell(\ell+1) \Psi_{\ell,m}(\vec{x}) \\
+    L_z \Psi_{\ell,m}(\vec{x}) &= \hbar m \Psi_{\ell,m}(\vec{x})
+\end{align}
+
+Per risolvere queste equazioni differenziali, è conveniente passare alle coordinate sferiche \( (r, \vartheta, \varphi) \).
+Le relazioni tra coordinate cartesiane e sferiche sono:
+\[
+\begin{cases}
+    x = r \sin\vartheta \cos\varphi \\
+    y = r \sin\vartheta \sin\varphi \\
+    z = r \cos\vartheta
+\end{cases},
+\qquad
+\begin{cases}
+    r = \sqrt{x^2+y^2+z^2} \in [0, \infty) \\
+    \tan(\varphi) = \frac{y}{x} \quad \varphi \in [0, 2\pi] \\
+    \cos(\vartheta) = \frac{z}{r} \quad \vartheta \in [0, \pi] 
+\end{cases}
+\]
+
+La funzione d'onda si trasforma come \( \Psi(x,y,z) \rightsquigarrow \Psi(r, \vartheta, \varphi) \).
+L'elemento di volume in coordinate sferiche è \( \dd[3]{x} = r^2 \sin\vartheta \, \dd{r} \dd{\vartheta} \dd{\varphi} \).
+Di conseguenza, il prodotto scalare nello spazio di Hilbert \( \mathcal{H} = L_2(\mathbb{R}^3, r^2 \sin\vartheta \, \dd{r} \dd{\vartheta} \dd{\varphi}) \) diventa:
+\begin{equation}
+    \braket{\Psi_1}{\Psi_2} = \int_0^{\infty} \dd{r} \int_0^{\pi} \dd{\vartheta} \int_0^{2\pi} \dd{\varphi} \; r^2 \sin\vartheta \, \Psi_1^*(r, \vartheta, \varphi) \Psi_2(r, \vartheta, \varphi).
+\end{equation}
+ 
+Si può dimostrare che gli operatori momento angolare \(L_i\) non dipendono da \(\left( r, \pdv{}{r} \right)\) e scritti in coordinate sferiche diventano:
+
+\begin{align*}
+    L_x &= i\hbar \left( \sin\varphi \pdv{}{\vartheta} + \cos\varphi \cot\vartheta \pdv{}{\varphi} \right) \\
+    L_y &= i\hbar \left( -\cos\varphi \pdv{}{\vartheta} + \sin\varphi \cot\vartheta \pdv{}{\varphi} \right) \\
+    L_z &= -i\hbar \pdv{}{\varphi}
+\end{align*}
+\begin{remark}
+    \(L_z\) è il generatore infinitesimo di traslazioni di \(\varphi\), dunque rotazioni attorno all'asse z.
+\end{remark}
+Gli operatori di scala diventano:
+\begin{equation*}
+    L_\pm = L_x \pm i L_y = \hbar e^{\pm i\varphi} \left( \pm \pdv{}{\vartheta} + i \cot\vartheta \pdv{}{\varphi} \right)
+\end{equation*}
+Infine, l'operatore \( L^2 \) è dato da:
+\begin{equation*}
+    L^2 = -\hbar^2 \left( \pdv[2]{}{\vartheta} + \frac{1}{\tan\vartheta} \pdv{}{\vartheta} + \frac{1}{\sin^2\vartheta} \pdv[2]{}{\varphi} \right)
+\end{equation*}
+
+Verifichiamo la coerenza di \( L_z \) (riscrivendolo in coordinate cartesiane).
+Dalla regola della catena:
+\begin{align*}
+    -i\hbar \pdv{}{\varphi} &= -i\hbar \left( \pdv{x}{\varphi}\pdv{}{x} + \pdv{y}{\varphi}\pdv{}{y} + \underbrace{\pdv{z}{\varphi}}_{=0}\pdv{}{z} \right) \\
+    &= -i\hbar \left( \underbrace{(-r\sin\vartheta\sin\varphi)}_{=-y} \pdv{}{x} + \underbrace{(r\sin\vartheta\cos\varphi)}_{=x} \pdv{}{y} \right) \\
+    &= -i\hbar \left( x\pdv{}{y} - y\pdv{}{x} \right) \\
+    &= x\underbrace{\left(-i\hbar\pdv{}{y}\right)}_{=P_y} - y\underbrace{\left(-i\hbar\pdv{}{x}\right)}_{=P_x} = x P_y - y P_x
+\end{align*}
+Otteniamo quindi l'identità:
+\begin{equation*}
+    L_z = x P_y - y P_x = -i\hbar \pdv{}{\varphi}
+\end{equation*}
+
+\begin{remark}
+    \( L_z \) è il momento angolare coniugato alla variabile angolare \( \varphi \) in meccanica Hamiltoniana.
+\end{remark}
+
+Andiamo a risolvere ora quindi le equazioni agli autovalori per \(L^2\) e \(L_z\):
+\begin{equation*}
+    \begin{cases}
+        L^2 \Psi_{\ell,m}(r, \vartheta, \varphi) = \hbar^2 \ell(\ell+1) \Psi_{\ell,m}(r, \vartheta, \varphi) \\
+        L_z \Psi_{\ell,m}(r, \vartheta, \varphi) = \hbar m \Psi_{\ell,m}(r, \vartheta, \varphi)
+    \end{cases}
+\end{equation*}
+Dato che gli operatori non dipendono dalla coordinata \(r\), 
+è conveniente risolvere attraverso la separazione delle variabili \(\Psi_{\ell,m}(r, \vartheta, \varphi)= f_{\ell,m}(r)Y^m_\ell(\vartheta,\varphi)\) e le equazioni diventano:
+\[
+    \begin{cases}
+        L^2 Y^m_\ell(\vartheta,\varphi) = \hbar^2 \ell(\ell+1) Y^m_\ell(\vartheta,\varphi) \\
+        L_z Y^m_\ell(\vartheta,\varphi) = \hbar m Y^m_\ell(\vartheta,\varphi)
+    \end{cases}
+\]
+Chiamiamo le funzioni \(Y^m_\ell(\vartheta,\varphi)\) \textit{armoniche sferiche}.\\
+La condizioni di normalizzazione per \(\Psi_{\ell,m}(r, \vartheta, \varphi)\) diventa:
+\[
+    \int_{0}^{+\infty} dr\, r^2 \abs{f_{\ell,m}(r)}^2 = 1  \qquad
+    \int_{0}^{2\pi} d\varphi \int_{0}^{\pi} d\vartheta \sin\vartheta \abs{Y_\ell^m(\vartheta, \varphi)}^2 = 1
+\]
+
+Risolviamo per prima l'equazione per \(L_z\). Sostituendo la sua espressione in coordinate sferiche, si ottiene un'equazione differenziale ordinaria in \(\varphi\):
+\[
+    -i\hbar \pdv{}{\varphi} Y_\ell^m(\vartheta, \varphi) = m\hbar Y_\ell^m(\vartheta, \varphi)
+    \implies \pdv{}{\varphi} Y_\ell^m(\vartheta, \varphi) = i m Y_\ell^m(\vartheta, \varphi).
+\]
+La soluzione generale ha la forma:
+\[
+    Y_\ell^m(\vartheta, \varphi) = F_\ell^m(\vartheta) e^{i m \varphi},
+\]
+dove \(F_\ell^m(\vartheta)\) è una funzione che dipende solo dall'angolo polare \(\vartheta\).
+
+Per risolvere l'equazione per \(L^2\), consideriamo il caso estremo \(m=\ell\), che corrisponde all'autostato con il massimo autovalore di \(L_z\). Questo stato deve essere annichilito dall'operatore di innalzamento \(L_+\):
+\[
+    L_+ Y_{\ell}^{\ell}(\vartheta, \varphi) = 0.
+\]
+Sostituendo l'espressione di \(L_+\) e la forma della soluzione \(Y_\ell^\ell(\vartheta, \varphi) = F_\ell^\ell(\vartheta) e^{i\ell\varphi}\), si ottiene un'equazione differenziale per la parte in \(\vartheta\):
+\[
+    \hbar e^{i\varphi} \left( \pdv{}{\vartheta} + i\cot\vartheta \pdv{}{\varphi} \right) \left( F_{\ell}^{\ell}(\vartheta) e^{i\ell\varphi} \right) = 0.
+\]
+La soluzione di questa equazione è \(F_\ell^\ell(\vartheta) \propto (\sin\vartheta)^\ell\). L'autofunzione normalizzata per \(m=\ell\) è quindi:
+\[
+    Y_{\ell}^{\ell}(\vartheta, \varphi) = c_{\ell} (\sin\vartheta)^{\ell} e^{i\ell\varphi}.
+\]
+Le altre autofunzioni, per \(m < \ell\), si ottengono applicando ripetutamente l'operatore di abbassamento \(L_-\):
+\[
+    Y_{\ell}^m(\vartheta, \varphi) \propto (L_-)^{\ell-m} Y_{\ell}^{\ell}(\vartheta, \varphi).
+\]
+Dunque in generale la soluzione è:
+\begin{equation}
+    Y_{\ell}^m(\vartheta, \varphi) = \frac{(-1)^{\ell}}{2^{\ell}\ell!} \sqrt{\frac{2\ell + 1}{4\pi} \frac{(\ell + m)!}{(\ell - m)!}} e^{im\varphi} (\sin\vartheta)^{-m} \frac{\partial^{\ell-m}}{\partial(\cos\vartheta)^{\ell-m}} (\sin\vartheta)^{2\ell}
+\end{equation}
+\begin{equation}
+    Y_{\ell}^m(\vartheta, \varphi) = \frac{(-1)^{\ell}}{2^{\ell}\ell!} \sqrt{\frac{2\ell + 1}{4\pi} \frac{(\ell + m)!}{(\ell - m)!}} e^{im\varphi} P_{\ell,m}(\cos\vartheta, \sin\vartheta)
+\end{equation}
+
+La natura fisica della coordinata azimutale \(\varphi\) impone una condizione di periodicità sulla funzione d'onda: lo stato non deve cambiare per una rotazione di \(2\pi\).
+\[
+    Y_{\ell}^m(\vartheta, \varphi + 2\pi) = Y_{\ell}^m(\vartheta, \varphi)
+    \implies e^{im(\varphi+2\pi)} = e^{im\varphi}
+    \implies e^{i2\pi m} = 1.
+\]
+Questa condizione è soddisfatta se e solo se \(m\) è un numero intero. Poiché per un dato \(\ell\) i valori di \(m\) vanno da \(-\ell\) a \(\ell\) a passi interi, anche \(\ell\) deve essere un numero intero non negativo.
+
+Lo spettro congiunto degli operatori \(L^2\) e \(L_z\) per il momento angolare orbitale è quindi:
+\[
+    \ell \in \mathbb{N}_0 = \{0, 1, 2, \dots\}, \qquad m \in \{-\ell, -\ell + 1, \dots, \ell - 1, \ell\}.
+\]
+Le autofunzioni complete dell'operatore, includendo la parte radiale, hanno la forma:
+\[
+    \Psi_{\ell,m}(\vec{x}) = f(r) Y_{\ell}^m(\vartheta, \varphi),
+\]
+dove la funzione radiale \(f(r)\) è arbitraria, purché lo stato complessivo sia normalizzabile.
+Data questa arbitrarietà, ogni autovalore \((\ell, m)\) ha una degenerazione infinita, \(d(\ell, m) = \infty\), finché non si impongono ulteriori vincoli fisici (come un potenziale centrale).
+
+\begin{attention}
+    \(\ell \in \mathbb{N}_0\) è una condizione imposta dal particolare sistema fisico in questione.
+\end{attention}
+L'insieme delle armoniche sferiche \(Y_{\ell}^m(\vartheta, \varphi)\) formano una base ON dato che è verificata l'ortonormalità
+\[
+    \int_{0}^{2\pi} d\varphi \int_{0}^{\pi} d\vartheta (\sin\vartheta) \overline{Y_{\ell}^{m}(\vartheta, \varphi)} Y_{\ell'}^{m'}(\vartheta, \varphi) = \delta_{\ell\ell'} \delta_{mm'}
+\]
+e la completezza:
+\[
+    \sum_{\ell=0}^{+\infty} \sum_{m=-\ell}^{\ell} Y_{\ell}^{m*}(\vartheta', \varphi') Y_{\ell}^{m}(\vartheta, \varphi) = \frac{\delta(\vartheta - \vartheta')\delta(\varphi - \varphi')}{\sin\vartheta}
+\]
+
+
+
+
