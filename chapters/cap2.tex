@@ -1440,4 +1440,413 @@ Essendo \(m\) il numero quantico magnetico che varia a passi interi da \(-s\) a 
 % 21 Lezione del 14/11/2025
 
 
+Concentriamoci ora su particelle da spin \(s = \frac{1}{2}\), avremo dunque \(\vec{S}^2= \frac{3}{4}\hbar^2 \mathbb{I}\) , \(m = \left\{ -\frac{1}{2},\frac{1}{2} \right\}\) e lo spazio di Hilbert dello spin \(\mathcal{H}_s \cong\mathbb{C}^2\).\\
+Gli autostati di \(S_z\) sono:
+\[
+    S_z\ket{+}=+ \frac{\hbar}{2} \ket{+} \qquad S_z\ket{-}=-\frac{\hbar}{2} \ket{-}
+\]
+Abbiamo perciò una base ON \(\left\{ \ket{+},\ket{-} \right\}\). Gli operatori \(S_+\) e \(S_-\) agiscono come:
+\[
+    S_+\ket{+}=0 \qquad S_+\ket{-}= \hbar\ket{+}
+\]
+\[ 
+    S_-\ket{-}=0 \qquad S_-\ket{+}= \hbar\ket{-}
+\]
+Essendo \(\mathcal{H}_s \cong\mathbb{C}^2\), possiamo scrivere gli operatori come matrici sui numeri complessi 2x2:
+
+\[
+\ket{+} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+\qquad
+\ket{-} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\]
+\[
+S_z = \begin{pmatrix}
+    \hbar/2 & 0 \\
+    0 & -\hbar/2
+\end{pmatrix}
+\qquad
+S_+ = \hbar \begin{pmatrix}
+    0 & 1 \\
+    0 & 0
+\end{pmatrix}
+\qquad
+S_- = \hbar \begin{pmatrix}
+    0 & 0 \\
+    1 & 0
+\end{pmatrix}
+\]
+Possiamo quindi scrivere le tre componenenti dello spin \(\vec{S}\) come:
+\[
+    S_x = \frac{S_+ + S_-}{2} = \frac{\hbar}{2}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+    \qquad
+    S_y = \frac{\hbar}{2} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+    \qquad
+    S_z = \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\]
+\begin{definition}
+    Definiamo così le \textit{matrici di Pauli} \(\sigma_k\) tali che \(S_k= \frac{h}{2} \sigma_k\).
+    \[
+        \sigma_x = \sigma_1=\begin{pmatrix}
+            0 & 1\\
+            1 & 0
+        \end{pmatrix}
+        \qquad
+        \sigma_y =\sigma_2= \begin{pmatrix}
+            0 & -i\\
+            i & 0
+        \end{pmatrix}
+        \qquad
+        \sigma_z =\sigma_3= \begin{pmatrix}
+            1 & 0\\
+            0 & -1
+        \end{pmatrix}
+    \]
+\end{definition}
+
+Le matrici di Pauli hanno le seguenti proprietà:
+\begin{multicols}{2}
+\begin{itemize}
+    \item \(\sigma_k^\dagger = \sigma_k\)
+    \item \(\sigma_k^2= \mathbb{I}\)
+    \item \(\sigma_k^\dagger = \sigma_k^{-1}\)
+    \item se \(i \neq j, \quad \sigma_i\sigma_j=i \sum_{k}\epsilon_{ijk}\sigma_k\)
+    \item \(\left[ \sigma_i, \sigma_j \right]=2i\sum_k\epsilon_{ijk}\sigma_k\)
+    \item \(\left\{ \sigma_i,\sigma_j \right\}= 2\delta_{ij}\mathbb{I}\)
+    \item \(\Tr(\sigma_k)=0\)
+    \item \(\det\sigma_k= -1\)
+\end{itemize}    
+\end{multicols}
+
+Ogni matrice 2x2 hermitiana si scrive:
+\[
+    \begin{pmatrix}
+        a & b-ic \\
+        b+ic & d
+    \end{pmatrix}
+    = \frac{a+d}{2} \mathbb{I} + b \sigma_1 + c \sigma_2 + \frac{a-d}{2} \sigma_3, \quad a,b,c,d \in \mathbb{R}
+\]
+
+
+
+
+Se vogliamo descrivere lo spin in una generica direzione dello spazio 3D, consideriamo un versore $\hat{n}$:
+\[
+\hat{n} = (n_1, n_2, n_3) \in \mathbb{R}^3, \quad \abs{\hat{n}}=1 \implies \sum_k n_k^2 = 1
+\]
+Definiamo la combinazione lineare delle matrici di Pauli $\sigma_k$ lungo la direzione $\hat{n}$:
+\[
+\hat{n} \cdot \vec{\sigma} := \sum_k n_k \sigma_k =
+\begin{pmatrix}
+n_3 & n_1 - i n_2 \\
+n_1 + i n_2 & -n_3
+\end{pmatrix}
+\]
+Calcoliamo il quadrato dell'operatore $(\hat{n} \cdot \vec{\sigma})$:
+\[
+(\hat{n} \cdot \vec{\sigma})^2 = \sum_{k} n_k^2 \sigma_k^2+ \sum_{i < j} n_i n_j \{\sigma_i, \sigma_j\}=0
+\]
+Dati due vettori generici $\vec{u}, \vec{v} \in \mathbb{R}^3$, vogliamo calcolare il prodotto delle loro contrazioni con le matrici di Pauli:
+\[
+(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = \sum_{i,j} v_i u_j \sigma_i \sigma_j = \sum_{i,j} v_i u_j \left(\delta_{ij}\mathbb{I} + i \sum_k \epsilon_{ijk}\sigma_k\right)
+\]
+Il primo termine restituisce il prodotto scalare, il secondo (antisimmetrico) restituisce il prodotto vettoriale:
+\begin{equation}
+(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = (\vec{v} \cdot \vec{u}) \mathbb{I} + i (\vec{v} \times \vec{u}) \cdot \vec{\sigma}
+\end{equation}
+
+
+Vogliamo trovare la forma esplicita dell'operatore unitario di rotazione \(U(\vec{\omega})\):
+\[
+    U(\vec{\omega}) = e^{-\frac{i}{\hbar}\vec{\omega}\cdot\vec{S}}.
+    = e^{-\frac{i}{\hbar}\frac{\hbar}{2}\vec{\omega}\cdot\vec{\sigma}} = e^{-\frac{i}{2}\vec{\omega}\cdot\vec{\sigma}}.
+\]
+Parametrizziamo il vettore di rotazione \(\vec{\omega}\) con un asse (versore \(\hat{n}\)) e un angolo \(\theta\):
+\[
+    \vec{\omega} = \theta \hat{n}, \qquad \text{con } \abs{\hat{n}}=1.
+\]
+L'espressione diventa quindi:
+\[
+    U(\theta \hat{n}) = e^{-\frac{i}{2}\theta (\hat{n}\cdot\vec{\sigma})}.
+\]
+Per calcolare l'esponenziale, sfruttiamo la proprietà \((\hat{n}\cdot\vec{\sigma})^2 = \mathbb{I}\),
+espandiamo l'esponenziale in serie di Taylor e separiamo i termini pari e dispari:
+\begin{align*}
+    U(\theta\hat{n}) &= \sum_{k=0}^{\infty} \frac{1}{(2k)!} \left(-\frac{i\theta}{2}\right)^{2k} (\hat{n}\cdot\vec{\sigma})^{2k} + \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \left(-\frac{i\theta}{2}\right)^{2k+1} (\hat{n}\cdot\vec{\sigma})^{2k+1} \\
+    &= \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k)!} \left(\frac{\theta}{2}\right)^{2k} \mathbb{I} - i \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k+1)!} \left(\frac{\theta}{2}\right)^{2k+1} (\hat{n}\cdot\vec{\sigma}).
+\end{align*}
+Riconoscendo le serie di Taylor per il coseno e il seno, otteniamo la formula fondamentale per la rotazione dello spin:
+\begin{equation}
+    U(\theta \hat{n}) = \cos(\frac{\theta}{2})\mathbb{I} - i \sin(\frac{\theta}{2}) (\hat{n}\cdot\vec{\sigma}).
+\end{equation}
+La sua rappresentazione matriciale è:
+\[
+    U(\theta\hat{n}) =
+    \begin{pmatrix}
+        \cos\frac{\theta}{2} - i n_3 \sin\frac{\theta}{2} & -i\sin\frac{\theta}{2}(n_1 - i n_2) \\
+        -i\sin\frac{\theta}{2}(n_1 + i n_2) & \cos\frac{\theta}{2} + i n_3 \sin\frac{\theta}{2}
+    \end{pmatrix}.
+\]
+Se effettuiamo una rotazione completa di un angolo \(\theta = 2\pi\) attorno a un asse qualsiasi:
+\[
+    U(2\pi \hat{n}) = \cos(\pi)\mathbb{I} - i \sin(\pi)(\hat{n}\cdot\vec{\sigma}) = -\mathbb{I}.
+\]
+Non otteniamo l'identità \(\mathbb{I}\), ma \(-\mathbb{I}\). Lo stato ruotato differisce da quello iniziale per una fase globale:
+\[
+    \ket{\Psi'} = U(2\pi\hat{n})\ket{\Psi} = -\ket{\Psi}.
+\]
+Questo risultato indica che la rappresentazione delle rotazioni per spin \(1/2\) è \textbf{genuinamente proiettiva} (o a due valori).
+In generale, per una rotazione di un angolo \(\theta\) attorno all'asse \(z\), l'operatore di rotazione agisce su un autostato \(\ket{j,m}\) come:
+\[
+    e^{-\frac{i}{\hbar}J_z \theta} \ket{j,m} = e^{-i m \theta} \ket{j,m}.
+\]
+Per una rotazione completa di \(\theta = 2\pi\), la fase acquisita è \(e^{-i 2\pi m} = (-1)^{2m}\).
+\begin{itemize}
+    \item Se \(j\) è \textbf{intero}, \(m\) è intero e \(2m\) è pari. La fase è \(+1\). La rappresentazione è \textit{ordinaria}.
+    \item Se \(j\) è \textbf{semi-intero}, \(m\) è semi-intero e \(2m\) è dispari. La fase è \(-1\). La rappresentazione è \textit{genuinamente proiettiva}.
+\end{itemize}
+
+
+
+Consideriamo una particella con spin \( s=1/2 \). Lo spazio di Hilbert associato è dato dal prodotto tensoriale tra lo spazio delle posizioni e lo spazio di spin:
+\[
+    \mathcal{H} = \mathcal{H}_{\vec{x}} \otimes \mathcal{H}_s
+\]
+Definiamo un Insieme Completo di Osservabili Compatibili (I.C.O.C.) utilizzando l'operatore posizione e la componente \( z \) dello spin: \( \{ \vec{X}, S_z \} \).
+
+Costruiamo la base ortonormale di \( \mathcal{H} \) a partire dalle basi dei singoli spazi:
+\begin{itemize}
+    \item Base di \( \mathcal{H}_{\vec{x}} \): \( \{ \ket{\vec{x}} \} \) con \( \vec{x} \in \mathbb{R}^3 \).
+    \item Base di \( \mathcal{H}_s \): \( \{ \ket{\epsilon} \}_{\epsilon=\pm} \) dove \( \epsilon \) può assumere i due valori \( +, - \) (autostati di \( S_z \)).
+\end{itemize}
+
+La base del prodotto tensoriale è dunque:
+\[
+    \{ \ket{\vec{x}, \epsilon} := \ket{\vec{x}} \otimes \ket{\epsilon} \}
+\]
+
+Un generico vettore stato \( \ket{\Psi} \) in questo spazio sarà una combinazione lineare di questi vettori di base. Applicando la relazione di completezza otteniamo:
+\[
+    \ket{\Psi} = \int d^3x \sum_{\epsilon=\pm} \ket{\vec{x}, \epsilon} \braket{\vec{x}, \epsilon}{\Psi}
+\]
+Espandendo la somma su \( \epsilon \):
+\[
+    \ket{\Psi} = \int d^3x \left( \ket{\vec{x}, +}\braket{\vec{x}, +}{\Psi} + \ket{\vec{x}, -}\braket{\vec{x}, -}{\Psi} \right)
+\]
+
+Per rappresentare un vettore in questo spazio sono quindi necessarie due funzioni d'onda, che definiamo come proiezioni dello stato sugli autostati di base:
+\[
+    \Psi_+(\vec{x}) := \braket{\vec{x}, +}{\Psi} \qquad \text{e} \qquad \Psi_-(\vec{x}) := \braket{\vec{x}, -}{\Psi}
+\]
+
+Ogni stato è rappresentato da queste due funzioni d'onda. Un modo utile per rappresentare tale stato è utilizzare la notazione vettoriale, introducendo gli \textbf{Spinori di Pauli}:
+\[
+    \ket{\Psi} \equiv \begin{pmatrix} \Psi_+(\vec{x}) \\ \Psi_-(\vec{x}) \end{pmatrix} = [\Psi](\vec{x})
+\]
+
+Possiamo scomporre lo spinore utilizzando gli autovettori canonici dello spin (base di \( \mathcal{H}_s \)):
+\[
+    [\Psi](\vec{x}) = \Psi_+(\vec{x}) \begin{pmatrix} 1 \\ 0 \end{pmatrix} + \Psi_-(\vec{x}) \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\]
+dove \( \mqty(1\\0) \) rappresenta l'autostato con spin \( +\hbar/2 \) e \( \mqty(0\\1) \) rappresenta l'autostato con spin \( -\hbar/2 \).
+
+
+
+Il prodotto scalare tra due stati \( \ket{\Psi} \) e \( \ket{\Phi} \) si calcola inserendo la relazione di completezza nella base delle posizioni e dello spin:
+
+\[
+\braket{\Psi}{\Phi} = \int d^3x \left( \braket{\Psi}{\vec{x}, +}\braket{\vec{x}, +}{\Phi} + \braket{\Psi}{\vec{x}, -}\braket{\vec{x}, -}{\Phi} \right)
+\]
+
+Sostituendo le proiezioni con le rispettive componenti delle funzioni d'onda (ricordando che il bra corrisponde al complesso coniugato), otteniamo:
+
+\[
+= \int d^3x \left[ \Psi_+^*(\vec{x}) \Phi_+(\vec{x}) + \Psi_-^*(\vec{x}) \Phi_-(\vec{x}) \right]
+\]
+
+Possiamo riscrivere questa espressione utilizzando il formalismo matriciale, come prodotto tra un vettore riga e un vettore colonna:
+
+\[
+= \int d^3x \begin{pmatrix} \Psi_+^*(\vec{x}) & \Psi_-^*(\vec{x}) \end{pmatrix} \begin{pmatrix} \Phi_+(\vec{x}) \\ \Phi_-(\vec{x}) \end{pmatrix} 
+= \int d^3x [\Psi]^\dagger(\vec{x}) [\Phi](\vec{x})
+\]
+
+Dove abbiamo identificato il \textit{bra} \( \bra{\Psi} \) con lo spinore riga coniugato (trasposto e complesso coniugato):
+
+\[
+\bra{\Psi} \equiv [\Psi]^\dagger(\vec{x}) = \begin{pmatrix} \Psi_+^*(\vec{x}) & \Psi_-^*(\vec{x}) \end{pmatrix}
+\]
+
+
+La norma al quadrato dello stato \( \ket{\Psi} \) è quindi data da:
+
+\[
+\norm{\Psi}^2 = \braket{\Psi}{\Psi} = \int d^3x \left( \abs{\Psi_+(\vec{x})}^2 + \abs{\Psi_-(\vec{x})}^2 \right)
+\]
+
+Affinché lo stato sia fisico e normalizzabile, entrambe le funzioni d'onda componenti devono appartenere allo spazio \( L_2 \):
+\(
+\Psi_+(\vec{x}), \Psi_-(\vec{x}) \in L_2(\mathbb{R}^3)
+\)
+
+Tra gli operatori agiscono sullo spinore di Pauli $[\Psi](\vec{x})$, possiamo distinguere tra operatori che agiscono sulla parte spaziale \( \mathcal{H}_{\vec{x}} \) e operatori che agiscono sulla parte di spin \( \mathcal{H}_s \).\\
+I primi agiscono sulle componenti della funzione d'onda ma "banalmente" sullo spazio degli spin (sono proporzionali all'identità \( \mathbb{I}_{2\times 2} \) nello spazio dello spin).
+
+Per l'operatore posizione \( \vec{X} \) (o la sua componente \( k \)-esima \( X_k \)):
+\[
+(X_k [\Psi])(\vec{x}) = \begin{pmatrix} x_k & 0 \\ 0 & x_k \end{pmatrix} \begin{pmatrix} \Psi_+(\vec{x}) \\ \Psi_-(\vec{x}) \end{pmatrix} 
+\]
+Le entrate della matrice sono operatori lineari che agiscono sulle funzioni d'onda.
+
+Analogamente per l'operatore momento \( \vec{P} \) (componente \( P_k \)):
+\[
+(P_k [\Psi])(\vec{x}) = \begin{pmatrix} -i\hbar \pdv{x_k} & 0 \\ 0 & -i\hbar \pdv{x_k} \end{pmatrix} \begin{pmatrix} \Psi_+(\vec{x}) \\ \Psi_-(\vec{x}) \end{pmatrix} 
+\]
+In notazione vettoriale:
+\[
+(\vec{P} [\Psi])(\vec{x}) = -i\hbar \begin{pmatrix} \vec{\nabla} & 0 \\ 0 & \vec{\nabla} \end{pmatrix} \begin{pmatrix} \Psi_+(\vec{x}) \\ \Psi_-(\vec{x}) \end{pmatrix}
+\]
+
+
+Invece,l'operatore di spin \( \vec{S} \) agisce solo su \( \mathcal{H}_s \). È rappresentato da matrici numeriche (indipendenti da \( \vec{x} \)):
+\[
+\vec{S}[\Psi](\vec{x}) = \frac{\hbar}{2} \vec{\sigma} [\Psi](\vec{x})
+\]
+Ad esempio, per la componente \( S_y \) o \( S_z \) (indicato come \( S_3 \)):
+\[
+S_y [\Psi](\vec{x}) = \frac{\hbar}{2} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} \Psi_+(\vec{x}) \\ \Psi_-(\vec{x}) \end{pmatrix}
+\qquad
+S_z [\Psi](\vec{x}) = \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} \Psi_+(\vec{x}) \\ \Psi_-(\vec{x}) \end{pmatrix}
+\]
+Poiché \( \vec{S} \) e \( \vec{P} \) agiscono su spazi diversi, essi commutano: \( [\vec{S}, \vec{P}] = 0 \).
+
+\begin{example} \textbf{Prodotto scalare } \((\vec{S} \cdot \vec{P})\)\\
+Consideriamo l'operatore composto dal prodotto scalare tra spin e momento. Questo agisce sull'intero spazio \( \mathcal{H} = \mathcal{H}_{\vec{x}} \otimes \mathcal{H}_s \).
+
+\[
+(\vec{S} \cdot \vec{P}) [\Psi](\vec{x}) = \frac{\hbar}{2} (P_x \sigma_x + P_y \sigma_y + P_z \sigma_z) \begin{pmatrix} \Psi_+(\vec{x}) \\ \Psi_-(\vec{x}) \end{pmatrix}
+\]
+
+Esplicitando le matrici di Pauli e le componenti del momento:
+\[
+= \frac{\hbar}{2} \begin{pmatrix} P_z & P_x - i P_y \\ P_x + i P_y & -P_z \end{pmatrix} \begin{pmatrix} \Psi_+(\vec{x}) \\ \Psi_-(\vec{x}) \end{pmatrix}
+\]
+
+Sostituendo \( P_k = -i\hbar \partial_k \), otteniamo la forma finale dell'azione dell'operatore:
+\[
+= -i \frac{\hbar^2}{2} \begin{pmatrix} \partial_z & \partial_x - i\partial_y \\ \partial_x + i\partial_y & -\partial_z \end{pmatrix} \begin{pmatrix} \Psi_+(\vec{x}) \\ \Psi_-(\vec{x}) \end{pmatrix}
+\]
+\end{example}
+
+Definiamo l'operatore generatore delle rotazioni infinitesime per uno spinore come l'operatore momento angolare totale \( \vec{J} \), dato dalla somma del momento angolare orbitale e di spin:
+\[
+    \vec{J} = \vec{L} \otimes \mathbb{I}_s + \mathbb{I}_{\vec{x}} \otimes \vec{S}
+\]
+dove il primo termine agisce solo sullo spazio delle posizioni \( \mathcal{H}_{\vec{x}} \) e il secondo solo sullo spazio dello spin \( \mathcal{H}_s \).
+
+L'operatore unitario di rotazione finita di un angolo \( \abs{\vec{\omega}} \) attorno all'asse definito da \( \vec{\omega} \) è:
+\[
+    U(\vec{\omega}) = e^{-\frac{i}{\hbar} \vec{J} \cdot \vec{\omega}} = e^{-\frac{i}{\hbar} (\vec{L} \cdot \vec{\omega} \otimes \mathbb{I}_s + \mathbb{I}_{\vec{x}} \otimes \vec{S} \cdot \vec{\omega})}
+\]
+
+Poiché gli operatori agiscono su spazi disgiunti, essi commutano: \( [\vec{L} \otimes \mathbb{I}_s, \mathbb{I}_{\vec{x}} \otimes \vec{S}] = 0 \). Possiamo quindi utilizzare la proprietà \( e^{A+B} = e^A e^B \) per fattorizzare l'operatore:
+\[
+    U(\vec{\omega}) = \left( e^{-\frac{i}{\hbar} \vec{L} \cdot \vec{\omega}} \otimes \mathbb{I}_s \right) \left( \mathbb{I}_{\vec{x}} \otimes e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}} \right)
+    = e^{-\frac{i}{\hbar} \vec{L} \cdot \vec{\omega}} \otimes e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}}
+\]
+
+L'azione complessiva di questo operatore sullo spinore \( [\Psi](\vec{x}) \) combina due effetti:
+\begin{itemize}
+    \item La parte di spin \( e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}} \) è una matrice \( 2\times 2 \) che agisce sul vettore colonna, mescolando le componenti \( \Psi_+ \) e \( \Psi_- \).
+    \item La parte orbitale \( e^{-\frac{i}{\hbar} \vec{L} \cdot \vec{\omega}} \) sposta la particella nel punto ruotato, agendo sull'argomento della funzione d'onda con la rotazione inversa \( R^{-1}(\vec{\omega}) \).
+\end{itemize}
+
+La formula finale è dunque:
+\[
+    (U(\vec{\omega})[\Psi])(\vec{x}) = \left( e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}} \begin{pmatrix} \Psi_+ \\ \Psi_- \end{pmatrix} \right) (R^{-1}(\vec{\omega}) \cdot \vec{x})
+\]
+Insieme ruotano la funzione d'onda e i gradi di libertà (GDL) di spin.
+
+\subsubsection{Composizione di Momenti Angolari}
+
+Consideriamo uno spazio di Hilbert dato dal prodotto tensoriale di due spazi:
+\[
+    \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2
+\]
+Definiamo gli operatori momento angolare sui singoli spazi:
+\begin{itemize}
+    \item \( \vec{J}_1 = (J_{1x}, J_{1y}, J_{1z}) \) che agisce su \( \mathcal{H}_1 \)
+    \item \( \vec{J}_2 = (J_{2x}, J_{2y}, J_{2z}) \) che agisce su \( \mathcal{H}_2 \)
+\end{itemize}
+Entrambi obbediscono alla consueta algebra dei momenti angolari. Il momento angolare totale del sistema è:
+\[
+    \vec{J} = \vec{J}_1 + \vec{J}_2
+\]
+dove la somma è intesa come somma diretta di operatori estesi ai prodotti tensoriali (\( \vec{J}_1 \otimes \mathbb{I} + \mathbb{I} \otimes \vec{J}_2 \)).
+
+\begin{example}
+    \textbf{Particella con Spin} \\
+    In questo caso \( \mathcal{H}_1 \) rappresenta lo spazio delle coordinate spaziali e \( \mathcal{H}_2 \) lo spazio di spin.
+    \[
+        \vec{J}_1 \equiv \vec{L}, \quad \vec{J}_2 \equiv \vec{S} \implies \vec{J} = \vec{L} + \vec{S}
+    \]
+\end{example}
+
+\begin{example}
+    \textbf{Due particelle senza Spin}
+    \[
+        \vec{J}_1 \equiv \vec{L}_1, \quad \vec{J}_2 \equiv \vec{L}_2 \implies \vec{J} = \vec{L}_1 + \vec{L}_2
+    \]
+\end{example}
+
+Vogliamo diagonalizzare un insieme di operatori che commutano tra loro. Poiché \( \vec{J}_1 \) commuta con tutti i componenti di \( \vec{J}_2 \) (agendo su spazi diversi), possiamo scegliere il seguente set massimale di osservabili compatibili:
+\[
+    \left\{ \vec{J}_1^2, J_{1z}, \vec{J}_2^2, J_{2z} \right\}
+\]
+Di conseguenza, prendiamo come base ortonormale comune il prodotto tensoriale degli autovettori dei singoli momenti angolari:
+\[
+    \left\{ \ket{j_1, m_1, r} \otimes \ket{j_2, m_2, s} \equiv \ket{j_1, m_1; j_2, m_2; r, s} \right\}
+\]
+dove \( r,s \) indicano eventuali altri numeri quantici necessari per descrivere gli stati.
+
+Dato che siamo interessati all'operatore somma \( \vec{J} = \vec{J}_1 + \vec{J}_2 \), che rappresenta il generatore delle rotazioni infinitesime sullo spazio prodotto \( \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \), 
+cerchiamo di diagonalizzare un insieme alternativo di operatori che commutano tra loro. Poiché \( \vec{J}_1^2 \) e \( \vec{J}_2^2 \) commutano con tutto, il nuovo I.C.O.C. scelto è:
+\[
+    \left\{ \vec{J}^2, J_z, \vec{J}_1^2, \vec{J}_2^2 \right\}
+\]
+dove \( J_z = J_{1z} + J_{2z} \).
+
+Abbiamo quindi una nuova base ortonormale di autovettori comune a questo set di operatori:
+\[
+    \left\{ \ket{J, m, j_1, j_2, k} \right\}
+\]
+Questa base è più comoda per trattare le rotazioni del sistema complessivo, ma è fondamentale notare che sono basi diverse!
+Infatti, non possiamo diagonalizzare contemporaneamente \( \vec{J}^2 \) e le singole componenti \( z \) (\( J_{1z}, J_{2z} \)) dato che non commutano tra di loro. \\
+Lo si dimostra espandendo il quadrato del momento angolare totale:
+\[
+    \vec{J}^2 = (\vec{J}_1 + \vec{J}_2)^2 = \vec{J}_1^2 + \vec{J}_2^2 + 2\vec{J}_1 \cdot \vec{J}_2
+\]
+Esplicitando il prodotto scalare (ricordando che le componenti su spazi diversi commutano tra loro):
+\[
+    \vec{J}^2 = \vec{J}_1^2 + \vec{J}_2^2 + 2(J_{1x}J_{2x} + J_{1y}J_{2y} + J_{1z}J_{2z})
+\]
+
+Calcoliamo il commutatore con \( J_{1z} \). I termini \( \vec{J}_1^2, \vec{J}_2^2 \) e \( J_{1z}J_{2z} \) commutano con \( J_{1z} \). Rimangono i termini misti \( x \) e \( y \):
+\[
+    [J_{1z}, \vec{J}^2] = 2 [J_{1z}, J_{1x}J_{2x} + J_{1y}J_{2y}]
+\]
+Usando le relazioni di commutazione canoniche \( [J_z, J_x] = i\hbar J_y \) e \( [J_z, J_y] = -i\hbar J_x \):
+\[
+    [J_{1z}, \vec{J}^2] = 2i\hbar (J_{1y}J_{2x} - J_{1x}J_{2y}) \neq 0
+\]
+
+Analogamente per \( J_{2z} \):
+\[
+    [J_{2z}, \vec{J}^2] = -2i\hbar (J_{1y}J_{2x} - J_{1x}J_{2y}) \neq 0
+\]
+Poiché i commutatori non sono nulli, non esiste una base comune di autovettori per \( \vec{J}^2 \) e \( J_{1z} \) (o \( J_{2z} \)).
+
+
+
+
+
 
