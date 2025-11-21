@@ -1817,7 +1817,7 @@ dove \( J_z = J_{1z} + J_{2z} \).
 
 Abbiamo quindi una nuova base ortonormale di autovettori comune a questo set di operatori:
 \[
-    \left\{ \ket{J, m, j_1, j_2, k} \right\}
+    \left\{ \ket{j, m, j_1, j_2, k} \right\}
 \]
 Questa base è più comoda per trattare le rotazioni del sistema complessivo, ma è fondamentale notare che sono basi diverse!
 Infatti, non possiamo diagonalizzare contemporaneamente \( \vec{J}^2 \) e le singole componenti \( z \) (\( J_{1z}, J_{2z} \)) dato che non commutano tra di loro. \\
@@ -1844,6 +1844,293 @@ Analogamente per \( J_{2z} \):
     [J_{2z}, \vec{J}^2] = -2i\hbar (J_{1y}J_{2x} - J_{1x}J_{2y}) \neq 0
 \]
 Poiché i commutatori non sono nulli, non esiste una base comune di autovettori per \( \vec{J}^2 \) e \( J_{1z} \) (o \( J_{2z} \)).
+
+
+% 22 Lezione del 17/11/2025 
+
+Vogliamo dunque trovare un modo per cambiare da una base all'altra.
+
+\subsubsection{Addizione di Momenti Angolari e Coefficienti di Clebsch-Gordan}
+Fissiamo \(j_1, j_2, r, s\), con \(m_1 \in \{-j_1, \dots, j_1\} \) e \( m_2 \in \{-j_2, \dots, j_2\}\) 
+consideriamo lo spazio di Hilbert \(\mathcal{H}_{j_1, j_2, r, s} \) con \(\dim(\mathcal{H}) = (2j_1+1)(2j_2+1)\) e le due basi:
+\[
+    \left\{ \ket{j_1, m_1; j_2, m_2; r, s} \equiv \ket{m_1, m_2}\right\} \qquad\left\{ \ket{j, m, j_1, j_2, k}\equiv \ket{j, m}\right\}
+\]
+Ci chiediamo quali siano i possibili valori di $j, m$ in questo spazio. Per passare da una base all'altra, utilizziamo la relazione di completezza della base prodotto:
+\[
+    \ket{j, m} = \sum_{m_1, m_2} \ket{m_1; m_2} \braket{m_1; m_2}{j, m}
+\]
+I coefficienti dell'espansione $\braket{m_1; m_2}{j, m}$ sono detti \textit{coefficienti di Clebsch-Gordan}.
+
+Analizziamo l'azione dell'operatore $J_z = J_{1z} + J_{2z}$ sulle due basi:
+\[
+    J_z \ket{j, m} = m\hbar \ket{j, m} \ ;
+    \qquad
+    J_z \ket{m_1; m_2} = (J_{1z} + J_{2z})\ket{m_1; m_2} = \hbar(m_1 + m_2)\ket{m_1; m_2}
+\]
+Proiettando l'equazione agli autovalori, otteniamo una condizione sui coefficienti di Clebsch-Gordan:
+\[
+    \braket{m_1; m_2}{j, m} \neq 0 \implies m = m_1 + m_2
+\]
+Quindi la somma su $m_1, m_2$ nell'espansione è vincolata a quei termini che soddisfano la conservazione della componente $z$ del momento angolare.
+
+\begin{example}
+    Consideriamo come esempio il caso in cui \(\)
+\end{example}
+
+
+
+Consideriamo l'addizione di due momenti angolari con numeri quantici $j_1 = \frac{3}{2}$ e $j_2 = 1$.
+I possibili valori per i numeri quantici magnetici sono:
+\[
+    m_1 \in \left\{ -\frac{3}{2}, -\frac{1}{2}, \frac{1}{2}, \frac{3}{2} \right\} \qquad 
+    m_2 \in \left\{ -1, 0, 1 \right\}
+\]
+Lo spazio di Hilbert ha dimensione totale:
+\[
+    \dim(\mathcal{H}) = (2j_1+1)(2j_2+1) = 4 \times 3 = 12 \text{ stati}.
+\]
+
+Costruiamo la tabella degli stati della base disaccoppiata $\ket{m_1; m_2}$ ordinandoli per il valore del numero quantico magnetico totale $m = m_1 + m_2$.
+
+\begin{center}
+\begin{tabular}{c | l | c}
+    $m$ & Stati $\ket{m_1; m_2}$ & Degenerazione \\
+    \hline
+    $5/2$ & $\ket{\frac{3}{2}; 1}$ & 1 \\
+    $3/2$ & $\ket{\frac{1}{2}; 1}, \ket{\frac{3}{2}; 0}$ & 2 \\
+    $1/2$ & $\ket{-\frac{1}{2}; 1}, \ket{\frac{1}{2}; 0}, \ket{\frac{3}{2}; -1}$ & 3 \\
+    $-1/2$ & $\ket{-\frac{3}{2}; 1}, \ket{-\frac{1}{2}; 0}, \ket{\frac{1}{2}; -1}$ & 3 \\
+    $-3/2$ & $\ket{-\frac{3}{2}; 0}, \ket{-\frac{1}{2}; -1}$ & 2 \\
+    $-5/2$ & $\ket{-\frac{3}{2}; -1}$ & 1 \\
+\end{tabular}
+\end{center}
+
+Partiamo dal valore massimo possibile di $m$, che è $m_{\text{max}} = j_1 + j_2 = \frac{3}{2} + 1 = \frac{5}{2}$.
+Esiste un solo stato con questo valore:
+\[
+    \ket{\frac{3}{2}; 1}
+\]
+Poiché $m=j$ per lo stato di massimo peso, e dato che l'operatore di innalzamento totale $J_+ = J_{1+} + J_{2+}$ applicato a questo stato dà zero ($J_+ \ket{\frac{3}{2}; 1} = 0$), identifichiamo questo stato con il primo vettore della base accoppiata:
+\[
+    \ket{j=\frac{5}{2}, m=\frac{5}{2}} \equiv \ket{m_1=\frac{3}{2}; m_2=1}
+\]
+Da questo stato, possiamo generare tutti gli altri stati con $j=\frac{5}{2}$ (che sono $2j+1 = 6$ stati) applicando ripetutamente l'operatore di abbassamento $J_- = J_{1-} + J_{2-}$. Ricordiamo che l'azione sui ket è data da:
+\[
+    J_{\pm}\ket{j,m} = \hbar\sqrt{j(j+1) - m(m\pm 1)}\ket{j, m\pm 1}
+\]
+Applicando $J_-$ otteniamo lo stato con $m=\frac{3}{2}$ appartenente al multipletto $j=\frac{5}{2}$.
+Tuttavia, notiamo dalla tabella che per $m=\frac{3}{2}$ ci sono \textbf{due} stati linearmente indipendenti. Uno appartiene al multipletto $j=\frac{5}{2}$, l'altro deve necessariamente essere lo stato di massimo peso (highest weight) del multipletto successivo, ovvero $j=\frac{3}{2}$.
+Questa procedura si ripete "scremando" gli stati fino a completare la base accoppiata.
+
+
+\textbf{BUCOOOOOOOO DA FINIREEE}
+
+
+
+
+\section{Regole di superselezione}
+
+Ci chiediamo se la corrispondenza tra enti fisici e matematici sia sempre biunivoca:
+\[
+    \begin{matrix}
+        \Sigma & \overset{?}{\longleftrightarrow} & [\Psi] \\
+        \mathcal{A} & \overset{?}{\longleftrightarrow} & A_{a.a.}
+    \end{matrix}
+\]
+La risposta è: \textbf{non sempre}.
+Esistono operatori autoaggiunti che non corrispondono a osservabili fisiche e raggi vettori che non corrispondono a stati fisici (cioè non vale sempre la freccia $\leftarrow$).
+Tuttavia, noi tratteremo principalmente casi in cui vale la corrispondenza biunivoca (anche se scriviamo spesso solo la freccia $\to$).
+
+
+Consideriamo un sistema con simmetria $SO(3)$ (rotazioni).
+Le osservabili sono $\left\{ \vec{J}^2, J_z \right\}$ e lo spazio di Hilbert si decompone nella somma diretta degli autospazi di $\vec{J}^2$:
+\[
+    \mathcal{H} = \bigoplus_j \mathcal{H}_j
+\]
+Consideriamo uno stato $\ket{\Psi} \in \mathcal{H}_j$. Una rotazione fisica di un angolo $\theta = 2\pi$ attorno all'asse $z$ dovrebbe lasciare invariato uno stato fisico.
+L'operatore di evoluzione/trasformazione associato alla rotazione è $\tau_{\vec{\alpha}}$ con $\vec{\alpha}=(0,0,\theta)$.
+Applicandolo al raggio vettore $[\Psi]$:
+\[
+    \tau_{\theta=2\pi}[\Psi] = \left[ e^{-\frac{i}{\hbar} 2\pi J_z} \ket{\Psi} \right] = \left[ (-1)^{2j} \ket{\Psi} \right] = [\Psi]
+\]
+Dove abbiamo usato il fatto che l'azione su un autostato di $J_z$ introduce una fase dipendente da $j$:
+\begin{itemize}
+    \item Se $j \in \mathbb{Z} \implies (-1)^{2j} = 1$
+    \item Se $j \in \mathbb{Z} + \frac{1}{2} \implies (-1)^{2j} = -1$
+\end{itemize}
+Il risultato è consistente poiché i due vettori differiscono solo di un segno (una fase globale), quindi il raggio vettore $[\Psi]$ (lo stato fisico) rimane invariato.
+Il fattore $(-1)^{2j}$ è spesso indicato come $(-1)^F$ (numero fermionico).
+
+Supponiamo per assurdo che nello spazio di Hilbert $\mathcal{H}$ possano coesistere e sovrapporsi stati con spin intero ($J \in \mathbb{Z}$) e stati con spin semintero ($J \in \frac{1}{2}\mathbb{Z}$).
+Consideriamo due stati specifici:
+\[
+    \ket{\Psi_1} \in \mathcal{H}_{j=1}  \quad \ket{\Psi_2} \in \mathcal{H}_{j=1/2}
+\]
+E costruiamo una loro generica sovrapposizione lineare $\alpha \ket{\Psi_1} + \beta \ket{\Psi_2}$.
+Applichiamo ora l'operatore di rotazione di $2\pi$, indicato con $\tau_{2\pi}$, al raggio vettore corrispondente. L'azione dell'operatore corrisponde a quella di $(-1)^F$ (parità fermionica):
+\[
+    (-1)^F (\alpha \ket{\Psi_1} + \beta \ket{\Psi_2}) = \alpha (+1)\ket{\Psi_1} + \beta (-1)\ket{\Psi_2} = \alpha \ket{\Psi_1} - \beta \ket{\Psi_2}
+\]
+Dunque l'azione sul raggio vettore è:
+\[
+    \tau_{2\pi} \left[ \alpha \ket{\Psi_1} + \beta \ket{\Psi_2} \right] = \left[ \alpha \ket{\Psi_1} - \beta \ket{\Psi_2} \right]
+\]
+Questo risultato porta a un \textbf{assurdo}. Una rotazione fisica di $2\pi$ (che equivale geometricamente all'identità) non può modificare lo stato fisico del sistema. Tuttavia, i raggi vettori:
+\[
+    [\alpha \ket{\Psi_1} + \beta \ket{\Psi_2}] \quad \text{e} \quad [\alpha \ket{\Psi_1} - \beta \ket{\Psi_2}]
+\]
+rappresentano \textbf{stati fisici diversi}: non differiscono solo per un fattore di fase globale (come $e^{i\phi}\ket{\Psi}$), ma c'è un segno relativo cambiato tra i due coefficienti (interferenza relativa).
+
+\begin{attention}
+    Concludiamo che il raggio vettore sovrapposizione non corrisponde ad alcuno stato fisico $\Sigma$:
+    \[
+        [\alpha \ket{\Psi_1} + \beta \ket{\Psi_2}]\cancel{\longleftrightarrow} \Sigma
+    \]
+    Questa proibizione di sovrapporre stati con spin intero e semintero è un esempio di \textit{Regola di Superselezione}.
+\end{attention}
+Ne deduciamo che solo gli autostati di \((-1)^F\) sono stati fisici.
+Ogni volta che c'è una restrizione di questo tipo sugli stati, necessariamente seguono restrizioni anche sugli operatori autoaggiunti e sulle osservabili.
+
+Supponiamo di avere uno stato fisico $\ket{\Psi} \in \mathcal{H}_{\pm}$ (cioè un autostato di $(-1)^F$) e un'osservabile $\mathcal{A}$ associata a un operatore autoaggiunto $A$.
+Se facciamo una misura di $\mathcal{A}$ e otteniamo il valore $a$, lo stato collassa in:
+\[
+    \mathcal{P}_a \ket{\Psi}
+\]
+dove $\mathcal{P}_a$ è il proiettore sul valore misurato applicato a $\Psi$.
+Questo nuovo vettore deve essere uno stato fisico: non posso "creare" uno stato non fisico attraverso una misura.
+Quindi tutti i proiettori associati a un'osservabile devono mandare stati fisici in stati fisici.
+
+Se parto da un autostato di $(-1)^F$, devo arrivare in un autostato di $(-1)^F$.
+Questo implica che solo gli operatori autoaggiunti che commutano con $(-1)^F$ possono rappresentare delle osservabili.
+\[
+    \text{Solo } [A, (-1)^F] = 0
+\]
+Così facendo, quando faccio una misura, il sistema è ancora in un autostato di $(-1)^F$, quindi è ancora uno stato fisico.
+Poiché abbiamo restrizioni sugli stati, abbiamo restrizioni sulle osservabili.
+
+
+
+
+
+\section{Particelle identiche}
+
+\begin{definition}
+    Due particelle si dicono \textit{identiche} se e solo se posseggono le stesse proprietà intrinseche, ovvero quelle proprietà che non dipendono dallo stato dinamico del sistema (come massa, carica elettrica, spin, ecc\dots).
+    Poiché tali proprietà hanno probabilità 1 di essere misurate identiche, non esiste alcun esperimento fisico in grado di distinguerle.
+\end{definition}
+
+\begin{example}
+    Due elettroni ($e^-$) sono particelle identiche: avendo massa, carica e spin uguali, sono intrinsecamente indistinguibili.
+    Al contrario, un elettrone ($e^-$) e un positrone ($e^+$) hanno carica elettrica opposta, quindi sono distinguibili.
+\end{example}
+
+\begin{remark}
+    L'indistinguibilità è una problematica fondamentale della Meccanica Quantistica (MQ) che non sussiste in Meccanica Classica (MC).
+\end{remark}
+
+\textbf{Confronto tra Meccanica Classica e Quantistica}\\
+In \textbf{Meccanica Classica}, l'evoluzione temporale è deterministica e descritta tramite traiettorie. Se all'istante $t_0$ conosciamo le condizioni iniziali (posizione e velocità) di due particelle, possiamo idealmente assegnare loro delle etichette (1 e 2). Poiché le traiettorie sono ben definite e continue, se le particelle partono da posizioni distinte, rimarranno distinguibili per ogni istante successivo $t$: sappiamo sempre quale particella corrisponde all'etichetta 1 e quale alla 2.
+
+In \textbf{Meccanica Quantistica}, invece, lo stato è descritto da funzioni d'onda $\Psi_1$ e $\Psi_2$. Anche se all'istante iniziale $t_0$ le funzioni d'onda sono localizzate in regioni diverse, l'evoluzione temporale porta inevitabilmente i pacchetti d'onda ad allargarsi e sovrapporsi.
+Nel momento in cui vi è sovrapposizione spaziale (tempo $t$), se rileviamo una particella in una posizione $x$ e un'altra in $x'$, diventa impossibile stabilire quale delle due fosse originariamente la particella 1 e quale la 2. L'identità delle particelle si perde nella sovrapposizione quantistica.
+
+\begin{center}
+\begin{tikzpicture}
+    % Pannello Sinistro: Meccanica Classica
+    \begin{scope}[xshift=-4.5cm]
+        \node[font=\bfseries, text=orange!70!black] at (2, 3.5) {M. Classica};
+        % Assi
+        \draw[->] (0,0) -- (4,0) node[right] {$x$};
+        \draw[->] (0,0) -- (0,3) node[above] {$t$};
+        
+        % Traiettorie
+        \draw[blue, thick] (1,0) node[below] {(1)} to[out=80, in=260] (1.5,2.5) node[above, scale=0.8] {$\vec{r}_1(t)$};
+        \draw[green!60!black, thick] (3,0) node[below] {(2)} to[out=100, in=280] (2.5,2.5) node[above, scale=0.8] {$\vec{r}_2(t)$};
+        
+        \node[align=center, font=\footnotesize] at (2, -1) {Traiettorie distinte:\\identità preservata};
+    \end{scope}
+
+    % Separatore
+    \draw[dashed] (0, -1.5) -- (0, 3.5);
+
+    % Pannello Destro: Meccanica Quantistica
+    \begin{scope}[xshift=0.5cm]
+        \node[font=\bfseries, text=orange!70!black] at (2, 3.5) {M. Quantistica};
+        
+        % Asse x per t=0
+        \draw[->] (0,0.5) -- (4,0.5) node[right] {$x$};
+        \node[right] at (4, 1) {\scriptsize $t=0$};
+        
+        % Pacchetti t=0
+        \draw[blue, thick] (0.5,0.5) .. controls (0.8,1.5) and (1.2,1.5) .. (1.5,0.5) node[midway, below] {(1)};
+        \draw[green!60!black, thick] (2.5,0.5) .. controls (2.8,1.5) and (3.2,1.5) .. (3.5,0.5) node[midway, below] {(2)};
+        
+        % Asse x per t > 0
+        \draw[->] (0,2.5) -- (4,2.5) node[right] {$x$};
+        \draw[->] (4.2, 1.2) -- (4.2, 2.2) node[midway, right] {\scriptsize $t$};
+        
+        % Pacchetti sovrapposti t > 0
+        \draw[blue, thick] (0.2,2.5) .. controls (1,3.5) and (2.5,3) .. (3.5,2.5);
+        \draw[green!60!black, thick] (0.5,2.5) .. controls (1.5,3) and (3,3.5) .. (3.8,2.5);
+        
+        % Punti x e x'
+        \draw[dotted] (1.5, 2.5) -- (1.5, 3.2);
+        \node[below, scale=0.9] at (1.5, 2.5) {$x$};
+        \draw[dotted] (2.8, 2.5) -- (2.8, 3.2);
+        \node[below, scale=0.9] at (2.8, 2.5) {$x'$};
+        
+        \node[align=center, font=\footnotesize] at (2, -1) {Sovrapposizione $\Psi$:\\indistinguibilità};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+% 23 Lezione del 19/11/2025
+
+Consideriamo ora una particella su uno spazio di Hilbert \(\mathcal{H}\), due insiemi di osservabili I.C.O.C. \(\mathcal{A}\) e \(\mathcal{B}\) e la base di autovettori non degeneri di \(A\) \(\left\{ \ket{a_n} \right\}\).
+Se ho due particelle identiche, lo spazio di Hilbert è \(\mathcal{H}\otimes\mathcal{H}= \mathcal{H}^{\otimes2}\) con base ON \(\left\{ \ket{a_n1}\otimes \ket{a_n2} \right\}\).
+
+Misuriamo \(\mathcal{A}\) su entrambe le particelle, ottenendo due risultati diversi \(a_n\) e \(a_m\). Non sappiamo però su quale particella abbiamo misurato l'uno o l'altro, lo stato dopo la misura sarà dunque:
+\[
+    \alpha\ket{a_n}\otimes\ket{a_m} + \beta \ket{a_m}\otimes\ket{a_n}
+\]
+Lo spazio dei vettori compatibile con questa misura ha \(\dim =2\), abbiamo ottenuto della \textit{degenerazione di scambio}.
+
+
+
+Consideriamo il caso in cui, dopo aver misurato l'osservabile \( A \), si misuri \( B \). Ci chiediamo quale sia la probabilità che la misura di \( B \) dia due valori diversi per le due particelle \( b_i \neq b_j \).\\
+Non sapendo quale sia lo stato del sistema scegliamo arbitrariamente tra \(\ket{a_n}\otimes\ket{a_m} \) e \( \ket{a_m}\otimes\ket{a_n}\).
+La probabilità di transizione partendo da uno stato fattorizzato \( \ket{a_n}\otimes\ket{a_m} \) è data dal modulo quadro del prodotto scalare:
+\[
+    \text{Prob}_{\ket{a_n}\otimes\ket{a_m}}(b_i, b_j) = \abs{(\bra{b_i}\otimes\bra{b_j})(\ket{a_n}\otimes\ket{a_m})}^2
+    = \abs{\braket{b_i}{a_n}}^2 \abs{\braket{b_j}{a_m}}^2
+\]
+
+Se avessi scelto l'ordine opposto \( \ket{a_m}\otimes\ket{a_n} \), avrei ottenuto:
+\[
+    \text{Prob}_{\ket{a_m}\otimes\ket{a_n}}(b_i, b_j) = \abs{\braket{b_i}{a_m}}^2 \abs{\braket{b_j}{a_n}}^2
+\]
+
+Notiamo che otteniamo probabilità diverse! Quindi le probabilità dipendono dal vettore iniziale scelto. Tuttavia:
+\begin{itemize}
+    \item Solo una scelta è quella giusta, le altre portano a probabilità sbagliate che non osservo in laboratorio e quindi a risultati teorici errati.
+    \item Le particelle sono indistinguibili: le etichette \( (1) \) o \( (2) \) non sono osservabili.
+\end{itemize}
+Come scegliere, dunque,il vettore iniziale giusto?
+Per una particella singola la base è \( \{ \ket{e_n} \} \). Per due particelle lo spazio di Hilbert è il prodotto tensore \( \mathcal{H} \otimes \mathcal{H} = \mathcal{H}^{\otimes 2} \) 
+con base \( \{ \ket{e_n}\otimes\ket{e_m} \} \), le nostre teorie devono essere invarianti per lo scambio delle etichette 1 e 2.\\
+Formalizziamo meglio questo concetto.
+
+\subsubsection{Simmetria di Scambio}
+Definiamo un operatore unitario su \(\mathcal{H}\) detto \textit{operatore di scambio}:
+\[
+    \hat{P}_{1,2} ( \ket{u}\otimes\ket{v} ) = \ket{v}\otimes\ket{u}
+\]
+
+
+
+
+
 
 
 
