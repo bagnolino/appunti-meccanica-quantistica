@@ -2127,6 +2127,231 @@ Definiamo un operatore unitario su \(\mathcal{H}\) detto \textit{operatore di sc
     \hat{P}_{1,2} ( \ket{u}\otimes\ket{v} ) = \ket{v}\otimes\ket{u}
 \]
 
+\textbf{Proprietà:}
+\begin{itemize}
+    \item Il dominio è \( D(\hat{P}_{12}) = \mathcal{H} \otimes \mathcal{H} \) e l'immagine è \( \hat{P}_{12}(\mathcal{H} \otimes \mathcal{H}) = \mathcal{H} \otimes \mathcal{H} \).
+    \item Conserva la norma: \( \norm{\hat{P}_{12}\ket{\Psi}}^2 = \norm{\ket{\Psi}}^2 \).
+    \item 
+    \(
+    \hat{P}_{12}^2 = \mathbb{I} \implies \hat{P}_{12} = \hat{P}_{12}^{-1} = \hat{P}_{12}^\dagger \implies \hat{P}_{12} \text{ è a.a.}
+    \)
+    \item Lo spettro è discreto: \( \sigma(\hat{P}_{12}) = \{ \pm 1 \} \).
+\end{itemize}
+
+Possiamo dunque decomporre lo spazio prodotto tensore come somma diretta dei sottospazi relativi agli autovalori:
+\[
+\mathcal{H}^{\otimes 2} = \mathcal{H}_S \oplus \mathcal{H}_A
+\]
+dove:
+\begin{itemize}
+    \item \( \mathcal{H}_S \) (autovalore \( +1 \)): sottospazio simmetrico, \( \hat{P}_{12} \) lascia invariati i vettori qui dentro.
+    \item \( \mathcal{H}_A \) (autovalore \( -1 \)): sottospazio antisimmetrico, \( \hat{P}_{12} \) cambia segno ai vettori.
+\end{itemize}
+
+\begin{postulato9}
+    Dato uno stato fisico rappresentato dal raggio vettore \(\left[ \Psi \right]\), lo scambio di etichette deve lasciare lo stato invariato:
+    \begin{equation}
+        \left[ \Psi \right]= \left[ \hat{P}_{12} \ket{\Psi}\right]
+    \end{equation}
+    Dunque: \[
+        \hat{P}_{12} \Psi= c_\Psi\ket{\Psi}\,, \ c_\Psi \in \left\{ \pm 1  \right\} \implies \ket{\Psi} \in \mathcal{H}_S \ \text{ o } \ \ket{\Psi} \in \mathcal{H}_A
+    \]
+\end{postulato9}
+
+\begin{definition}
+    Per \(\ket{\Psi} \in \mathcal{H}^{\otimes 2}\) stato fisico di 2 particelle identiche:
+    \begin{itemize}
+        \item Se \(\ket{\Psi}\in \mathcal{H}_S\), la particella si dice \textit{bosone}.
+        \item Se \(\ket{\Psi}\in \mathcal{H}_A\), la particella si dice \textit{fermione}.
+    \end{itemize}
+\end{definition}
+
+\begin{theorem}
+    { \normalfont \textbf{Spin-statistica}}\\
+    Una particella di spin \(s \) è un bosone \(\iff s \in \mathbb{N}\) o un fermione \(\iff s \in \frac{1}{2} + \mathbb{N}\) .
+\end{theorem}
+
+
+Non tutti gli operatori a.a. su \(\mathcal{H}^{\otimes 2}\) corrispondono a un osservabile, un generico operatore \(A = \sum_i B_i\otimes C_i\) definisce un osservabile fisico solo se è invariante per scambio etichette:
+\[
+    \forall \ket{\Psi} \in \mathcal{H}_S \implies A\ket{\Psi} \in \mathcal{H}_S \qquad 
+    \forall \ket{\Psi} \in \mathcal{H}_A \implies A\ket{\Psi} \in \mathcal{H}_A 
+\]
+\[
+    \iff \hat{P}_{12} A \hat{P}^\dagger_{12} = A \iff \left[ A, \hat{P}_{12} \right]=0
+\]
+
+\begin{remark}
+    Nota che l'azione dell'operatore di scambio sugli operatori tensoriali è data da:
+    \[
+    \hat{P}_{12} \left( \sum_{i} B_i \otimes C_i \right) \hat{P}_{12}^\dagger = \sum_{i} C_i \otimes B_i
+    \]
+\end{remark}
+\begin{example}
+    Se \( B \neq C \), allora:
+    \begin{itemize}
+        \item \( B \otimes C - C \otimes B \) e \( B \otimes C \) non sono osservabili (perché non simmetrici rispetto allo scambio).
+        \item \( B \otimes B \), \( C \otimes C \) e \( B \otimes C + C \otimes B \) sono osservabili.
+    \end{itemize}
+\end{example}
+
+\begin{remark}
+    E' essenziale che anche $H$ sia invariante \quad $\hat{P}_{12} H \hat{P}_{12} = H$\\
+    Questa condizione implica che la simmetria (o antisimmetria) dello stato venga preservata durante l'evoluzione temporale:
+    \[
+    \implies \text{se } \ket{\psi} \in 
+    \begin{matrix}
+        \mathcal{H}_S \\ \mathcal{H}_A
+    \end{matrix} 
+    \quad \implies \quad 
+    U(t, t_0)\ket{\psi} \in 
+    \begin{matrix}
+        \mathcal{H}_S \\ \mathcal{H}_A
+    \end{matrix}
+    \]
+\end{remark}
+
+\begin{example}
+    Un esempio tipico di Hamiltoniana per due particelle identiche è:
+    \[
+    H = \frac{\vec{P}_1^2}{2m} + \frac{\vec{P}_2^2}{2m} + V(\vec{X}_1, \vec{X}_2)
+    \]
+    dove il potenziale di interazione deve essere simmetrico rispetto allo scambio delle coordinate delle particelle:
+    \[
+    V(\vec{X}_1, \vec{X}_2) = V(\vec{X}_2, \vec{X}_1)
+    \]
+\end{example}
+
+Grazie al postulato posso risolvere il problema della degenerazione di scambio: se misuro \(A\) su entrambe le particelle e ottengo due risultati \(a_n \neq a_m\), 
+l'unica combinazione lineare ammissibile per i bosoni è quella simmetrica:
+\[
+    \frac{1}{\sqrt{2}}\left( \ket{a_n}\otimes\ket{a_m} + \ket{a_n}+ \ket{a_m} \right)  \in \mathcal{H}_S
+\]
+Mentre per i fermioni è quella antisimmetrica:
+\[
+    \frac{1}{\sqrt{2}}\left( \ket{a_n}\otimes\ket{a_m} - \ket{a_n}+ \ket{a_m} \right)  \in \mathcal{H}_A
+\]
+
+\begin{attention}
+    Cosa succede se le due particelle dovessero trovarsi nello stesso stato \(\Psi \in \mathcal{H}\)? Per i bosoni non è un problema \(\ket{\Psi}\otimes\ket{\Psi} \in \mathcal{H}_S\),
+    per i fermioni non esiste una combinazione lineare antisimmetrica!
+\end{attention}
+
+\begin{pauli}
+    Se ho due fermioni identici non possono essere nello stesso stato di particella singola.
+\end{pauli}
+
+
+\subsubsection{Caso N particelle identiche}
+Consideriamo uno spazio di Hilbert \(\mathcal{H}^{\otimes N}= \mathcal{H}\otimes...\otimes \mathcal{H}\) con base \(\left\{ \ket{e_{n_1}}\ket{e_{n_2}}...\ket{e_{n_N}} \right\}\) (dove abbiamo omesso il simbolo \(\otimes\) per convenienza), i vettori sono descritti da:
+\[
+    \ket{\Psi} = \sum_{n_1,n_2,...,n_N}c_{n_1,n_2,..., n_N}\ket{e_{n_1}}\ket{e_{n_2}}...\ket{e_{n_N}}
+\]
+Vogliamo che la fisica sia invariante per qualsiasi scambio di etichette, cioè permutazioni del tipo:
+\[
+    \pi : \left\{ 1,2,...,N \right\}\to \left\{ 1,2,..., N \right\}
+\]
+Consideriamo dunque il gruppo delle permutazioni invertbili \(S_N\) .
+\begin{remark}
+    Il gruppo \(S_N\) ha \(N!\) elementi ed è non-abeliano se \(N\geq 3\) .
+\end{remark}
+
+Per ogni scambio ho un operatore unitario che agisce nel seguente modo:
+\begin{align*}
+    S_N \ni \pi \rightsquigarrow \hat{P}_{\pi}\ket{\Psi} &=\hat{P}_{\pi} \left( \sum_{n_1, \dots, n_N} c_{n_1, \dots, n_N} \ket{e_{n_1}} \ket{e_{n_2}} \dots \ket{e_{n_N}} \right) \\
+    &=\sum_{n_1, \dots, n_N} c_{n_1, \dots, n_N} \ket{e_{n_{\pi^{-1}(1)}}} \ket{e_{n_{\pi^{-1}(2)}}} \dots \ket{e_{n_{\pi^{-1}(N)}}}
+\end{align*}
+
+L'azione sui singoli vettori prodotto è quindi:
+\[
+\hat{P}_{\pi} \ket{u_1} \dots \ket{u_N} = \ket{u_{\pi^{-1}(1)}} \ket{u_{\pi^{-1}(2)}} \dots \ket{u_{\pi^{-1}(N)}}
+\]
+
+Ottengo così gli operatori \(\hat{P}_{\pi} \) per cui vale \(\hat{P}_{\pi} \hat{P}_{\pi'}= \hat{P}_{\pi\circ \pi'}\) e \(\hat{P}_{\pi}^\dagger = \hat{P}_{\pi}^{-1}= \hat{P}_{\pi^{-1}} \),
+i \(\hat{P}_{\pi} \) sono dunque rapresentazione unitaria non proiettiva di \(S_N\).
+\begin{remark}
+    Si è definita l'azione di \(\hat{P}_{\pi} \) usando la permutazione inversa \(\pi^{-1}\) perché altrimenti \(\hat{P}_{\pi} \hat{P}_{\pi'}= \hat{P}_{\pi\circ \pi'}\) avrebbe le composizione al contrario e non sarebbe lo stesso gruppo. 
+\end{remark}
+
+
+\begin{postulato9}
+    {\normalfont (Caso generale)}\\
+    Consideriamo \( N \) particelle identiche, \( \ket{\Psi} \in \mathcal{H}^{\otimes N} \) rappresenta uno stato fisico se e solo se:
+    \begin{equation}
+        \forall \pi \in S_N \quad \hat{P}_{\pi} \ket{\Psi} = c_{\pi}(\Psi) \ket{\Psi}
+    \end{equation}
+\end{postulato9}
+Si nota che:
+\begin{itemize}
+        \item Deve valere \( |c_{\pi}(\Psi)| = 1 \).
+        \item Se voglio che \( \forall \Psi, \Psi' \) fisici, anche la sovrapposizione \( \Psi + \Psi' \) sia uno stato fisico \( \implies c_{\pi}(\Psi) = c_{\pi}(\Psi') \) (cioè la costante \( c \) non dipende dallo specifico stato \( \Psi \)).
+\end{itemize}
+
+
+
+
+Consideriamo un particolare caso di permutazioni, le trasposizioni \(\pi_{ij}\) cambiano solo 2 elementi dell'insieme lasciando invariati gli altri:
+\[
+\begin{matrix}
+1 & \longrightarrow & 1 \\
+\vdots & & \vdots \\
+i & \longrightarrow & j \\
+\vdots & & \vdots \\
+j & \longrightarrow & i \\
+\vdots & & \vdots \\
+N & \longrightarrow & N
+\end{matrix}
+\]
+
+Qualunque permutazione la ottengo componendo trasposizioni:
+\[
+\forall \pi \in S_N, \quad \pi = \pi_{i_1 j_1} \circ \pi_{i_2 j_2} \circ \dots \circ \pi_{i_\ell j_\ell}
+\]
+Da cui segue la scomposizione per gli operatori:
+\[
+\hat{P}_{\pi} = \hat{P}_{i_1 j_1} \dots \hat{P}_{i_\ell j_\ell}
+\]
+
+\begin{remark}
+    La decomposizione di una permutazione \( \pi \) in trasposizioni non è unica.
+    Ciò implica che il numero di trasposizioni \( \ell \) può essere diverso, ma tutte le decomposizioni avranno la stessa parità.
+\end{remark}
+
+\begin{definition}
+    Una permutazione \( \pi \) è detta \textit{pari/dispari} se e solo se il numero di trasposizioni \( \ell \) nella sua decomposizione è pari/dispari.
+\end{definition}
+
+Essendo gli autovalori di una singola trasposizione \(\left\{ \pm 1 \right\}\) gli unici autovalori possibili per una permutazione sono:
+
+\begin{enumerate}
+    \item \( c_{\pi} = +1 \quad \forall \pi \in S_N \)
+    \item \( c_{\pi} = \mathrm{Sgn}(\pi) = 
+    \begin{cases}
+        +1 & \text{se } \pi \text{ è pari} \\
+        -1 & \text{se } \pi \text{ è dispari}
+    \end{cases}
+    \)
+\end{enumerate}
+
+
+\begin{theorem}
+    { \normalfont \textbf{Spin-statistica}}\\
+    \(N\) particelle identiche sono bosoni \(s \in \mathbb{N}\) se e solo se:
+    \[
+        \hat{P}_{\pi}\ket{\Psi}= +\ket{\Psi} \quad  \forall\,\pi \in S_N \iff \ket{\Psi}\in \mathcal{H}_S \subseteq \mathcal{H}^{\otimes N}
+    \]
+    \(N\) particelle identiche sono fermioni \(s \in \frac12 + \mathbb{N}\) se e solo se:
+    \[
+        \hat{P}_{\pi}\ket{\Psi}= \mathrm{Sgn}(\pi)\ket{\Psi} \quad  \forall\,\pi \in S_N \iff \ket{\Psi}\in \mathcal{H}_A \subseteq \mathcal{H}^{\otimes N}
+    \]
+\end{theorem}
+
+\begin{remark}
+    \(\mathcal{H}^{\otimes N}= \mathcal{H}_S \otimes \mathcal{H}_A \otimes \dots\) le altre componenenti sono spazi di hilbert di stati non fisici.
+\end{remark}
+
+
+
 
 
 
