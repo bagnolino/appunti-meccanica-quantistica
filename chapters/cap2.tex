@@ -984,6 +984,8 @@ All'interno di un singolo blocco (fissando \(j\) e \(r\) e usando la base \(\{\k
 Questa struttura a blocchi è fondamentale perché permette di studiare le proprietà di rotazione del sistema analizzando separatamente le rappresentazioni irriducibili del gruppo delle rotazioni, ciascuna corrispondente a un valore di \(j\).
 
 \subsection{Particella senza spin in 3D}
+\label{sec: particella3d}
+
 
 Consideriamo una particella senza spin in 3 dimensioni, il cui spazio di Hilbert è \( \mathcal{H} = L_2(\mathbb{R}^3, \dd[3]{x}) \).
 Le rotazioni sono implementate dall'operatore unitario \( U(R) \), che agisce sulla funzione d'onda come:
@@ -2238,11 +2240,12 @@ Mentre per i fermioni è quella antisimmetrica:
 \end{attention}
 
 \begin{pauli}
+    \label{theo: Pauli}
     Se ho due fermioni identici non possono essere nello stesso stato di particella singola.
 \end{pauli}
 
 
-\subsubsection{Caso N particelle identiche}
+\subsection{Caso N particelle identiche}
 Consideriamo uno spazio di Hilbert \(\mathcal{H}^{\otimes N}= \mathcal{H}\otimes...\otimes \mathcal{H}\) con base \(\left\{ \ket{e_{n_1}}\ket{e_{n_2}}...\ket{e_{n_N}} \right\}\) (dove abbiamo omesso il simbolo \(\otimes\) per convenienza), i vettori sono descritti da:
 \[
     \ket{\Psi} = \sum_{n_1,n_2,...,n_N}c_{n_1,n_2,..., n_N}\ket{e_{n_1}}\ket{e_{n_2}}...\ket{e_{n_N}}
@@ -2347,18 +2350,1034 @@ Essendo gli autovalori di una singola trasposizione \(\left\{ \pm 1 \right\}\) g
 \end{theorem}
 
 \begin{remark}
-    \(\mathcal{H}^{\otimes N}= \mathcal{H}_S \otimes \mathcal{H}_A \otimes \dots\) le altre componenenti sono spazi di hilbert di stati non fisici.
+    \(\mathcal{H}^{\otimes N}= \mathcal{H}_S \oplus \mathcal{H}_A \oplus \dots\) le altre componenenti sono spazi di Hilbert di stati non fisici.
 \end{remark}
 
+% 24 Lezione del 21/11/2025
+\begin{example}
+    \textbf{\(N=3\)}\\
+    Analizziamo la costruzione degli stati fisici per un sistema di 3 particelle identiche a partire dagli stati di singola particella.
+    Per particelle bosoniche gli stati devono essere completamente simmetrici sotto scambio di particelle, ovvero invarianti per ogni permutazione \(\pi\).
+    \begin{itemize}
+        \item \textbf{3 particelle nello stesso stato \(\ket{u}\):}
+        \[
+            \ket{u}\otimes\ket{u}\otimes\ket{u} = \ket{u}\ket{u}\ket{u}
+        \]
+        Questo stato è già invariante per qualsiasi permutazione, quindi appartiene a \(\mathcal{H}_S\).
+
+        \item \textbf{2 particelle in \(\ket{u}\) e 1 in \(\ket{v}\):}
+        Preso singolarmente, \(\ket{u}\ket{u}\ket{v}\) non è uno stato fisico per particelle indistinguibili. Dobbiamo costruire una combinazione lineare simmetrica sommando le permutazioni distinte:
+        \[
+            \frac{1}{\sqrt{3}}\left( \ket{u}\ket{u}\ket{v} + \ket{u}\ket{v}\ket{u} + \ket{v}\ket{u}\ket{u} \right) \in \mathcal{H}_S
+        \]
+        dove \(\frac{1}{\sqrt{3}}\) è il fattore di normalizzazione.
+
+        \item \textbf{3 particelle in stati tutti diversi \(\ket{a}, \ket{b}, \ket{c}\):}
+        Per ottenere una combinazione simmetrica appartenente a \(\mathcal{H}_S\), dobbiamo sommare su tutte le permutazioni possibili (\(3! = 6\)):
+        \[
+            \frac{1}{\sqrt{6}}\Big( \ket{a}\ket{b}\ket{c} + \ket{b}\ket{c}\ket{a} + \ket{c}\ket{a}\ket{b} + \ket{b}\ket{a}\ket{c} + \ket{a}\ket{c}\ket{b} + \ket{c}\ket{b}\ket{a} \Big) \in \mathcal{H}_S
+        \]
+        In generale, otteniamo lo stato fisico sommando sulle permutazioni \(\pi \in S_N\) tramite l'operatore di permutazione \(\hat{P}_\pi\):
+        \[
+            \mathcal{N} \sum_{\pi \in S_N} \hat{P}_\pi \ket{a}\ket{b}\ket{c} \in \mathcal{H}_S
+        \]
+    \end{itemize}
+
+    Se vogliamo rappresentare dei fermioni, lo stato deve essere totalmente antisimmetrico e appartenere a \(\mathcal{H}_A\). La somma diventa una somma alternante, con segno positivo per le permutazioni pari e negativo per quelle dispari:
+    \[
+        \frac{1}{\sqrt{6}}\Big( \ket{a}\ket{b}\ket{c} + \ket{b}\ket{c}\ket{a} + \ket{c}\ket{a}\ket{b} - \ket{b}\ket{a}\ket{c} - \ket{a}\ket{c}\ket{b} - \ket{c}\ket{b}\ket{a} \Big) \in \mathcal{H}_A
+    \]
+    La formula generale coinvolge la segnatura della permutazione \(\operatorname{sgn}(\pi)\):
+    \[
+        \mathcal{N} \sum_{\pi \in S_N} \operatorname{sgn}(\pi) \hat{P}_\pi \ket{a}\ket{b}\ket{c} \in \mathcal{H}_A
+    \]
+    \begin{attention}
+        Se avessimo due stati uguali (ad esempio \(\ket{a} = \ket{b}\)), i termini con segno opposto si cancellerebbero a vicenda annullando l'intera somma.
+        Questo risultato costituisce l'estensione del \textit{Principio di esclusione di Pauli} ( \ref{theo: Pauli}): non possono esserci due fermioni nello stesso stato quantico.
+    \end{attention}
+\end{example}
+
+\subsubsection{Osservabili fisici}
+Le osservabili fisiche sono rappresentate da operatori autoaggiunti \(A: \mathcal{H}^{\otimes N} \to \mathcal{H}^{\otimes N}\) che commutano con ogni operatore di permutazione:
+    \[
+        [A, \hat{P}_\pi] = 0 \quad \forall \pi \in S_N
+    \]
+    Questa condizione è equivalente a richiedere che l'operatore sia invariante sotto coniugazione per una qualsiasi permutazione:
+    \[
+        \hat{P}_\pi A \hat{P}_\pi^\dagger = A \quad \forall \pi \in S_N
+    \]
+In particolare, questa proprietà deve valere per l'operatore Hamiltoniano del sistema:
+    \[
+        \hat{P}_\pi H \hat{P}_\pi^\dagger = H \quad \forall \pi \in S_N
+    \]
+
+\begin{attention}
+    Le osservabili devono essere sempre \textbf{simmetriche} rispetto allo scambio di particelle, a differenza degli stati (che possono essere antisimmetrici nel caso dei fermioni).
+\end{attention}
+
+\begin{example}
+    Consideriamo un esempio con 3 particelle e due operatori di singola particella \(A\) e \(B\). Vogliamo costruire un operatore globale simmetrico.
+    La combinazione:
+    \[
+        \mathcal{O} = A\otimes A \otimes B + A\otimes B \otimes A + B\otimes A \otimes A
+    \]
+    è corretta. Se, per esempio, agisco con l'operatore di permutazione \(\hat{P}_{23}\) (scambio tra la particella 2 e 3):
+    \begin{itemize}
+        \item \(A\otimes \mathbf{A} \otimes \mathbf{B} \xrightarrow{\hat{P}_{23}} A\otimes \mathbf{B} \otimes \mathbf{A}\)
+        \item \(A\otimes \mathbf{B} \otimes \mathbf{A} \xrightarrow{\hat{P}_{23}} A\otimes \mathbf{A} \otimes \mathbf{B}\)
+        \item \(B\otimes \mathbf{A} \otimes \mathbf{A} \xrightarrow{\hat{P}_{23}} B\otimes \mathbf{A} \otimes \mathbf{A}\)
+    \end{itemize}
+    Se permuto gli elementi, la somma totale rimane uguale, quindi l'operatore è simmetrico.
+\end{example}
+
+\subsection{Sistema a due elettroni e composizione degli spin}
+
+Consideriamo un sistema composto da 2 elettroni ($2\,e^-$). Lo spazio di Hilbert totale è il prodotto tensore degli spazi delle singole particelle:
+\begin{itemize}
+    \item Spazio H 1° particella: \(\mathcal{H}_{\vec{x}_1} \otimes \mathcal{H}_{s_1}\)
+    \item Spazio H 2° particella: \(\mathcal{H}_{\vec{x}_2} \otimes \mathcal{H}_{s_2}\)
+\end{itemize}
+Per comodità, possiamo raggruppare la parte spaziale e la parte di spin:
+\[
+    \mathcal{H}^{tot} = (\mathcal{H}_{\vec{x}_1} \otimes \mathcal{H}_{s_1}) \otimes (\mathcal{H}_{\vec{x}_2} \otimes \mathcal{H}_{s_2}) 
+    \cong \underbrace{(\mathcal{H}_{\vec{x}_1} \otimes \mathcal{H}_{\vec{x}_2})}_{\mathcal{H}^{pos}} \otimes \underbrace{(\mathcal{H}_{s_1} \otimes \mathcal{H}_{s_2})}_{\mathcal{H}^{spin}}
+\]
+Dove:
+\begin{itemize}
+    \item \(\mathcal{H}^{pos} \cong L_2(\mathbb{R}^3 \times \mathbb{R}^3, d^3x_1 d^3x_2)\)
+    \item \(\mathcal{H}^{spin} \cong \mathbb{C}^2 \otimes \mathbb{C}^2\) (dimensione totale \(2\times2=4\))
+\end{itemize}
+
+Come già visto abbiamo due possibili scelte per l'insieme completo di osservabili che commutano (I.C.O.C.):
+\begin{itemize}
+    \item Utilizzando gli spin individuali.
+    \[
+        \{\vec{X}_1, \vec{X}_2, S_{1z}, S_{2z}\} \quad \longrightarrow \quad \ket{\vec{x}_1, \vec{x}_2, m_1, m_2}
+    \]
+    
+    \item Utilizzando lo spin totale del sistema \(\vec{S} = \vec{S}_1 + \vec{S}_2\).
+    \[
+        \{\vec{X}_1, \vec{X}_2, \vec{S}^2, S_z\} \quad \longrightarrow \quad \ket{\vec{x}_1, \vec{x}_2, S, m}
+    \]
+\end{itemize}
+
+\subsubsection{Stati di Singoletto e Tripletto}
+Effettuiamo il cambio di base per la parte di spin. Avendo \(s_1 = 1/2\) e \(s_2 = 1/2\), lo spin totale \(S\) può assumere valori nell'intervallo \(|s_1 - s_2| \le S \le s_1 + s_2\), ovvero \(S \in \{1, 0\}\).
+I 4 stati possibili si raggruppano in:
+
+\paragraph{Tripletto (\(S=1\))}
+Spin totale del sistema \(1\), simmetrico per scambio. Ci sono 3 stati (\(m=1, 0, -1\)):
+\[
+\begin{cases}
+    \ket{1, 1} = \ket{+ +} \\
+    \ket{1, 0} = \frac{1}{\sqrt{2}} \left( \ket{+ -} + \ket{- +} \right) \\
+    \ket{1, -1} = \ket{- -}
+\end{cases}
+\]
+Lo stato \(\ket{1,0}\) si ottiene applicando l'operatore di abbassamento \(S_-\) allo stato \(\ket{1,1}\).
+
+\paragraph{Singoletto (\(S=0\))}
+Spin totale nullo, antisimmetrico per scambio. C'è un solo stato (\(m=0\)), che deve essere ortogonale a \(\ket{1,0}\):
+\[
+    \ket{0, 0} = \frac{1}{\sqrt{2}} \left( \ket{+ -} - \ket{- +} \right)
+\]
+Questo stato appare solo una volta poiché \(S\) ha un solo valore disponibile (\(s_1 - s_2 = 0\)).
+
+Uno stato generico \(\ket{\Psi}\) in \(\mathcal{H}^{\otimes 2}\) può essere scritto espandendo sulla base accoppiata:
+\[
+    \ket{\Psi} = \sum_{S=0}^{1} \sum_{m=-S}^{S} \Psi_{S,m}(\vec{x}_1, \vec{x}_2) \ket{S, m}
+    \equiv \sum_{S,m} \Psi_{S,m}(\vec{x}_1, \vec{x}_2) \otimes \ket{S, m}
+\]
+dove le \(\Psi_{S,m}(\vec{x}_1, \vec{x}_2) = \braket{\vec{x}_1, \vec{x}_2, S, m}{\Psi}\) sono 4 funzioni d'onda spaziali che specificano lo stato.
+
+Poiché sono fermioni, la funzione d'onda totale $\ket{\Psi}$ deve essere antisimmetrica rispetto allo scambio delle particelle. Definito l'operatore di scambio $\hat{P}_{12}$, deve valere:
+\[
+    \hat{P}_{12} \ket{\Psi} = - \ket{\Psi}
+\]
+
+L'operatore di scambio agisce sia sui gradi di libertà spaziali che su quelli di spin. Possiamo scriverlo come prodotto tensore:
+\[
+    \hat{P}_{12} = \hat{P}_{12}^{pos} \otimes \hat{P}_{12}^{spin}
+\]
+
+Analizziamo l'azione separata delle due componenti:
+\begin{itemize}
+    \item \textbf{Parte spaziale:} scambia le coordinate delle due particelle:
+    \[
+    \hat{P}_{12}^{pos} \Psi(\vec{x}_1, \vec{x}_2) = \Psi(\vec{x}_2, \vec{x}_1)
+    \]
+    \item \textbf{Parte di spin:} scambia i numeri quantici di spin $m_1$ e $m_2$:
+    \[
+    \hat{P}_{12}^{spin} \ket{m_1, m_2} = \ket{m_2, m_1}
+    \]
+\end{itemize}
+
+
+L'azione di $\hat{P}_{12}^{spin}$ dipende dallo stato di spin totale $S$ del sistema:
+\begin{itemize}
+    \item Per lo stato di \textbf{Tripletto} ($S=1$), lo stato è simmetrico per scambio:
+    \[
+    \hat{P}_{12}^{spin} \ket{1, m} = + \ket{1, m}
+    \]
+    \item Per lo stato di \textbf{Singoletto} ($S=0$), lo stato è antisimmetrico per scambio:
+    \[
+    \hat{P}_{12}^{spin} \ket{0, 0} = - \ket{0, 0}
+    \]
+\end{itemize}
+
+Imponiamo ora la condizione che lo stato fisico complessivo sia antisimmetrico:
+\[
+    \hat{P}_{12} \ket{\Psi_{S,m}} = \left( \hat{P}_{12}^{pos} \otimes \hat{P}_{12}^{spin} \right) \left( \Psi_{space} \otimes \ket{S,m} \right) = - \ket{\Psi_{S,m}}
+\]
+Affinché il totale sia negativo, le simmetrie spaziali e di spin devono essere opposte.
+
+
+Per lo stato di tripleto (\(s=1\)), la parte di spin è simmetrica ($+$). Di conseguenza, la parte spaziale deve essere \textbf{antisimmetrica} ($-$) per ottenere un segno totale negativo:
+\[
+    \implies \Psi_{S=1, m}(\vec{x}_2, \vec{x}_1) = - \Psi_{S=1, m}(\vec{x}_1, \vec{x}_2)
+\]
+
+Invece per lo stato di singoletto (\(s=0\)), la parte di spin è antisimmetrica ($-$). Di conseguenza, la parte spaziale deve essere \textbf{simmetrica} ($+$):
+\[
+    \implies \Psi_{S=0, 0}(\vec{x}_2, \vec{x}_1) = + \Psi_{S=0, 0}(\vec{x}_1, \vec{x}_2)
+\]
+
+\subsubsection{Effetto fisico di funzioni d'onda simmetirce e antisimmetriche}
+
+Consideriamo due funzioni d'onda di particella singola \(\psi_A(\vec{x}), \psi_B(\vec{x}) \in L_2(\mathbb{R}^3)\), con \(\psi_A \neq \psi_B\):
+    \[
+        \int \abs{\psi_{A,B}(\vec{x})}^2 \dd[3]{x} = 1 \qquad \braket{\psi_A}{\psi_B} = 0
+    \]
+
+Supponiamo di avere due \(e^-\), uno con funzione d'onda \(\psi_A\) e uno con funzione d'onda \(\psi_B\) (e qualche stato di spin). 
+La funzione d'onda spaziale totale sarà:
+    \[
+        \Psi_{\substack{S=0 \\ S=1}} (\vec{x}_1, \vec{x}_2) = \frac{1}{\sqrt{2}} \left( \psi_A(\vec{x}_1) \psi_B(\vec{x}_2) \pm \psi_A(\vec{x}_2) \psi_B(\vec{x}_1) \right)
+    \]
+Il più per le funzioni d'onda simmetriche e il meno per le funzioni d'onda antisimmetriche. Entrambe le funzioni sono normalizzate:
+\[
+    \int \abs{\Psi(\vec{x}_1, \vec{x}_2)}^2 \dd[3]{x_1} \dd[3]{x_2} = 1
+\]
+
+Calcoliamo la probabilità di trovare entrambe le particelle nella stessa posizione \(\vec{x}_1 = \vec{x} = \vec{x}_2\):
+\[
+    \rho(\vec{x}, \vec{x}) = \abs{\Psi(\vec{x}, \vec{x})}^2
+\]
+
+Analizziamo i tre casi possibili:
+
+\begin{enumerate}
+    \item \textbf{\(\Psi\) simmetrica}:
+    \[
+        \rho_S(\vec{x}, \vec{x}) = \abs{\frac{1}{\sqrt{2}} \left( 2\psi_A(\vec{x})\psi_B(\vec{x}) \right)}^2 = \frac{1}{2} \cdot 4 \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x})}^2 = 2 \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x})}^2
+    \]
+    La probabilità è doppia rispetto al caso di particelle distinguibili (attrazione efficace).
+
+    \item \textbf{\(\Psi\) antisimmetrica}:
+    \[
+        \rho_A(\vec{x}, \vec{x}) = \abs{\frac{1}{\sqrt{2}} \left( \psi_A(\vec{x})\psi_B(\vec{x}) - \psi_A(\vec{x})\psi_B(\vec{x}) \right)}^2 = 0
+    \]
+    La probabilità è nulla: principio di esclusione di Pauli (repulsione efficace).
+
+    \item \textbf{Particelle distinguibili}:
+    \[
+        \Psi_D(\vec{x}_1, \vec{x}_2) = \psi_A(\vec{x}_1)\psi_B(\vec{x}_2)\implies 
+        \rho_D(\vec{x}, \vec{x}) = \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x})}^2
+    \]
+\end{enumerate}
+
+Calcoliamo ora invece la probabilità che le particelle si trovino in posizioni differenti \(\vec{x}\neq \vec{x}'\):
+
+\begin{enumerate}
+    \item \textbf{\(\Psi\) Simmetrica o Antisimmetrica (Indistinguibili)}:
+    Poiché \(\Psi\) è (anti)simmetrica, il modulo quadro è invariante per lo scambio delle coordinate:
+    \[
+        \abs{\Psi(\vec{x}, \vec{x}')}^2 = \abs{\Psi(\vec{x}', \vec{x})}^2
+    \]
+    Quindi la densità totale diventa:
+    \[
+        \rho_{S,A}^{tot}(\vec{x}, \vec{x}') = 2 \cdot \abs{\Psi(\vec{x}, \vec{x}')}^2 = 2 \cdot \frac{1}{2} \abs{\psi_A(\vec{x})\psi_B(\vec{x}') \pm \psi_A(\vec{x}')\psi_B(\vec{x})}^2
+    \]
+    Espandendo il modulo quadro:
+    \[
+        = \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x}')}^2 + \abs{\psi_A(\vec{x}')}^2 \abs{\psi_B(\vec{x})}^2 \pm 2 \Re\left( \psi_A^*(\vec{x})\psi_B^*(\vec{x}')\psi_A(\vec{x}')\psi_B(\vec{x}) \right)
+    \]
+    Il termine aggiuntivo:
+    \begin{equation}
+        \pm 2 \Re\left( \psi_A^*(\vec{x})\psi_B^*(\vec{x}')\psi_A(\vec{x}')\psi_B(\vec{x}) \right)
+    \end{equation}
+    rappresenta l'\textbf{interazione di scambio}.
+
+    \item \textbf{Particelle Distinguibili}:
+    Per particelle classiche o distinguibili, non c'è simmetrizzazione:
+    \[
+        \rho_D^{tot}(\vec{x}, \vec{x}') = \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x}')}^2 + \abs{\psi_A(\vec{x}')}^2 \abs{\psi_B(\vec{x})}^2
+    \]
+\end{enumerate}
+
+\begin{example}
+    Se abbiamo un \(e^-\) sulla Terra e un altro sulla Luna, devo anti-simmetrizzare il loro stato?
+
+Siano \(\psi_A(\vec{x})\) a supporto in \(R_A\) (Terra) e \(\psi_B(\vec{x})\) a supporto in \(R_B\) (Luna), tali che \(R_A \cap R_B = \emptyset\).
+\[
+    \psi_{A,B}(\vec{x}) = 0 \quad \forall \vec{x} \notin R_{A,B}
+\]
+
+Verifichiamo la probabilità che si trovino nello stesso punto:
+\[
+    \rho(\vec{x}, \vec{x}) \propto \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x})}^2 = 0 \quad \forall \vec{x}
+\]
+Infatti:
+\begin{itemize}
+    \item Se \(\vec{x} \in R_A \implies \psi_B(\vec{x}) = 0\)
+    \item Se \(\vec{x} \in R_B \implies \psi_A(\vec{x}) = 0\)
+    \item Se \(\vec{x} \notin R_A \cup R_B \implies \psi_{A,B}(\vec{x}) = 0\)
+\end{itemize}
+
+Il termine di interferenza (scambio) si annulla identicamente:
+\[
+    2\Re \left( \psi_A^*(\vec{x})\psi_B^*(\vec{x}') \psi_A(\vec{x}')\psi_B(\vec{x}) \right) = 0 \quad \forall \vec{x}, \vec{x}'
+\]
+Questo perché per ogni coppia \((\vec{x}, \vec{x}')\), almeno uno dei fattori nel prodotto incrociato è nullo (non c'è sovrapposizione delle funzioni d'onda).
+
+\[
+    \rho_S^{tot}(\vec{x}, \vec{x}') = \rho_A^{tot}(\vec{x}, \vec{x}') = \rho_D^{tot}(\vec{x}, \vec{x}')
+\]
+Non commetto alcun errore se le tratto come particelle \textbf{distinguibili}.
+\end{example}
+
+
+\section{Potenziali Centrali}
+
+Ignoriamo lo spin (\( \vec{S}=0 \implies \vec{J}=\vec{L} \)), tutte le osservabili sono funzioni di posizione e momento. Consideriamo un potenziale dipendente solo dalla distanza centro-punto (raggio):
+\[
+H = \frac{\vec{P}^2}{2m} + V(R) \qquad R = \sqrt{\vec{X}^2}
+\]
+L'operatore \( R \) agisce come moltiplicazione per la distanza:
+\[
+R\ket{\vec{x}} = \abs{\vec{x}}\ket{\vec{x}}
+\]
+Calcoliamo i commutatori con il momento angolare \( \vec{L} \):
+\[
+[\vec{L}, \vec{P}^2] = 0 = [\vec{L}, \vec{X}^2] = [\vec{L}, V(R)]
+\]
+Questo implica che l'hamiltoniana è invariante per rotazioni (\( SO(3) \to \) simmetria dinamica) e commuta con tutte e tre le componenti di \( \vec{L} \):
+\[
+[\vec{L}, H] = 0
+\]
+
+\begin{remark}
+    Se \([P_i, V(\vec{x})] = 0 \implies V(\vec{x})\) non dipende da \( X_i \implies \) si riduce ad un problema in \(\dim < 3\).
+\end{remark}
+
+Poiché \( H \) commuta con \( \vec{L} \), possiamo diagonalizzare simultaneamente \( \{H, \vec{L}^2, L_z\} \). Questi formano un insieme di osservabili compatibili.
+Possiamo dunque risolvere l'equazione agli autovalori simultaneamente per \( H \) , \( \vec{L}^2 \) e \(L_z\). Cerchiamo gli autovettori simultanei \( \ket{E, \ell, m} \):
+\begin{equation}
+    \label{eq: potCentrali}
+    \begin{cases}
+        H\ket{E,\ell,m} = E\ket{E,\ell,m} \\
+        \vec{L}^2\ket{E,\ell,m} = \hbar^2 \ell(\ell+1)\ket{E,\ell,m} \\
+        L_z\ket{E,\ell,m} = \hbar m\ket{E,\ell,m}
+    \end{cases}
+\end{equation}
+
+Dobbiamo esprimere \( H \) in coordinate polari. Analizziamo la scomposizione del momento, partendo dal caso classico per arrivare a quello quantistico.
+\paragraph{In Meccanica Classica}
+Consideriamo una particella individuata dal vettore posizione \( \vec{x} \). Possiamo scomporre il vettore momento \( \vec{p} \) nelle componenti radiale (parallela a \( \vec{x} \)) e perpendicolare:
+\[
+\vec{p} = \vec{p}_r + \vec{p}_\perp
+\]
+Indicando con \( r = |\vec{x}| \) la distanza dall'origine e con \( \vec{u}_r = \frac{\vec{x}}{r} \) il versore radiale, la componente radiale scalare è:
+\[
+p_r = \vec{p} \cdot \frac{\vec{x}}{r} = \vec{p} \cdot \vec{u}_r
+\]
+Il momento angolare è definito come \( \vec{l} = \vec{x} \times \vec{p} \). Poiché \( \vec{x} \) è perpendicolare a \( \vec{p}_\perp \), il suo modulo vale:
+\[
+|\vec{l}| = |\vec{x}| |\vec{p}_\perp| = r p_\perp \implies p_\perp = \frac{|\vec{l}|}{r}
+\]
+Possiamo quindi scrivere il quadrato del momento come somma dei quadrati delle componenti:
+\[
+\vec{p}^2 = p_r^2 + p_\perp^2 = p_r^2 + \frac{\vec{l}^2}{r^2}
+\]
+
+\paragraph{In Meccanica Quantistica}
+Esiste una relazione analoga per gli operatori:
+\begin{equation}
+    \vec{P}^2 = P_r^2 + \frac{\vec{L}^2}{R^2}
+\end{equation}
+Dove \( P_r^2 \) è l'operatore associato alla parte radiale dell'energia cinetica. La sua espressione esplicita è data da:
+\begin{equation*}
+    P_r^2 = -\hbar^2 \frac{1}{r} \pdv[2]{r} r
+\end{equation*}
+\begin{attention}
+    La dimostrazione di questa formula è stata saltata.
+\end{attention}
+
+Sostituendo questa espressione nell'operatore momento (che, a meno di costanti, corrisponde al Laplaciano), otteniamo la scomposizione in coordinate sferiche:
+\[
+\vec{P}^2 = -\hbar^2 \nabla^2 = \underbrace{-\hbar^2 \frac{1}{r} \frac{\partial^2 (r \cdot)}{\partial r^2}}_{P_r^2} + \frac{\vec{L}^2}{r^2}
+\]
+Dove \( \vec{L}^2 \) racchiude la parte angolare del Laplaciano (l'espressione complicata che appare nello studio delle armoniche sferiche).
+
+Bisogna prestare attenzione al dominio per garantire l'autoaggiuntezza della coordinata radiale.
+Consideriamo lo spazio \( L_2(\mathbb{R}^3, r^2 \dd{r} \sin\vartheta \dd{\vartheta} \dd{\varphi}) \). Dobbiamo imporre condizioni affinché l'operatore sia ben definito:
+\begin{equation}
+    D_{P_r^2} = \left\{ \psi(r, \vartheta, \varphi) \in L^2 \text{ suff. regolari} : \lim_{r \to 0^+} r\psi(r, \vartheta, \varphi) = 0 \right\}
+\end{equation}
+Questa condizione al bordo (comportamento nell'origine) è fondamentale.
+Si richiede inoltre che \( \psi, \psi', \psi'' \in L_2(\mathbb{R}^3) \) e che siano sufficientemente regolari.
+Questo dominio coincide con il dominio dell'Hamiltoniana \( D_H \) per i potenziali fisici che ci interessano (es. Coulomb).
+
+\begin{remark}
+    Se si provasse a definire l'operatore momento radiale lineare come \( P_r = -i\hbar \frac{1}{r} \partial_r r \) con un dominio analogo, si scoprirebbe che tale operatore è hermitiano ma \textbf{non autoaggiunto}.
+\end{remark}
+
+% 25 Lezione del 24/11/2025
+
+\subsection{Autofunzioni radiali}
+Possiamo ora risolvere il sistema agli autovalori \ref{eq: potCentrali} cercando le autofunzioni : \[\braket{r,\vartheta, \varphi}{E, \ell, m}= \Psi_{E, \ell, m}(r, \vartheta, \varphi)\]
+Sappiamo già dalla trattazione in \ref{sec: particella3d} che le soluzioni hanno la forma \[\Psi_{E, \ell, m}(r, \vartheta, \varphi)= f_{E,\ell,m}(r)Y^m_\ell(\vartheta,\varphi)\]
+Si tratta di risolvere dunque solo la prima equazione:
+\[
+\frac{\hbar^2}{2m} \left( -\frac{1}{r} \partial_r^2 r + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) f_{E,\ell,m}(r) Y_\ell^m(\theta, \varphi) = 0
+\]
+Essendo l'equazione solo nella variabile \(r\), posso rimuovere l'armonica sferica. Per comodità moltiplico tutto per \(r\) e definisco:
+\[
+u_{E,\ell,m}(r) := r f_{E,\ell,m}(r)
+\]
+Ottenendo così:
+\[
+\left( -\partial_r^2 + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) u_{E,\ell,m}(r) = 0
+\]
+Abbiamo quindi un'equazione differenziale di secondo ordine nella sola variabile \(r\), e avrò in generale due soluzioni linearmente indipendenti. 
+Controlliamo però che le soluzioni \(u(r)\) siano accettabili fisicamente.
+
+\subsubsection{Comportamento a \(r\to 0\)}
+
+Per i potenziali \( V(r) \) che consideriamo, il dominio dell'hamiltoniana è definito come:
+\[
+D(H) = D(P_r^2) = \left\{ f \text{ suff. reg.}, \lim_{r\to 0} r f(r) = 0 \right\}
+\]
+
+Bisogna distinguere i due casi dello spettro:
+\begin{itemize}
+    \item \textbf{Spettro discreto:} \( \Psi \in D(H) \implies \lim_{r\to 0} u(r) = 0 \). Questa condizione è necessaria affinché \( \Psi \in D_H \).
+    \item \textbf{Spettro continuo:} devo imporre comunque \( \lim_{r\to 0} r f(r) = 0 \).
+\end{itemize}
+
+Lo spazio \( S^*(\mathbb{R}^3) \) contiene funzioni che si comportano come \( f(r) \sim \frac{1}{r} \) per \( r \to 0 \).
+Tuttavia, se \( f(r) \) è una soluzione dell'equazione radiale per \( r > 0 \) e \( \lim_{r\to 0} r f(r) \neq 0 \), allora nel senso delle distribuzioni emerge una singolarità nell'origine.
+
+Se la funzione d'onda \( \Psi \) si comportasse come \( \frac{1}{r} \), l'applicazione dell'operatore cinetico genererebbe un termine proporzionale a \( \delta^3(\vec{x}) \) nell'origine:
+\[
+\left( -\partial_r^2 + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) r f(r) \propto \delta^3(\vec{x}) \neq 0
+\]
+Questo termine non viene cancellato da nient'altro (a meno che il potenziale stesso non abbia una delta), quindi non sarebbe possibile risolvere l'equazione agli autovalori.
+
+Dobbiamo dunque imporre che:
+\begin{equation}
+\lim_{r\to 0^+} r f(r) = 0
+\end{equation}
+La funzione può avere singolarità, ma deve essere almeno più debole (es. \( 1/\sqrt{r} \)). 
+Con questa condizione su \( f(r) \) si passa da uno spazio delle soluzioni 2D a uno spazio 1D nelle soluzioni.
+
+\subsubsection{Comportamento a \(r\to \infty\)}
+Consideriamo il caso di potenziali a \textit{corto raggio}, ovvero tali che tendono a una costante per $r \gg 0$.
+Senza perdita di generalità, possiamo shiftare il potenziale in modo che $V(r) \to 0$ per $r \to \infty$.
+
+In questa approssimazione, per $r \gg 0$, possiamo trascurare sia $V(r)$ (che tende a zero) sia il termine centrifugo $\frac{\ell(\ell+1)}{r^2}$ (che decade come $1/r^2$). L'equazione radiale ridotta diventa:
+\[
+\left( \partial_r^2 + \frac{2mE}{\hbar^2} \right) u_{E,\ell}(r) = 0
+\]
+La natura delle soluzioni dipende dal segno dell'energia $E$ (rispetto al valore asintotico del potenziale).
+
+\paragraph{Caso $E > 0$: Stati di Scattering}
+Definiamo il vettore d'onda $k = \sqrt{\frac{2mE}{\hbar^2}}$. La soluzione asintotica è una combinazione lineare di onde piane oscillanti:
+\[
+u(r) \sim A e^{ikr} + B e^{-ikr} \quad \implies \quad f(r) \sim A \frac{e^{ikr}}{r} + B \frac{e^{-ikr}}{r} \quad \text{per } r \to \infty
+\]
+Queste soluzioni rappresentano \textit{stati di scattering} (spettro continuo). Sono funzioni non normalizzabili in senso stretto ($L_2$), ma accettabili nel senso delle distribuzioni (come onde piane).
+Le costanti $A$ e $B$ vengono fissate (a meno di un fattore di normalizzazione) dalle condizioni al contorno per $r \to 0$.
+
+\paragraph{Caso $E < 0$: Stati Legati}
+Definiamo il parametro reale $\rho = \sqrt{\frac{-2mE}{\hbar^2}}$. La soluzione generale è data da esponenziali reali:
+\[
+u(r) \sim A e^{\rho r} + B e^{-\rho r} \quad \implies \quad f(r) \sim A \frac{e^{\rho r}}{r} + B \frac{e^{-\rho r}}{r} \quad \text{per } r \to \infty
+\]
+Perché la funzione d'onda rappresenti uno stato fisico (normalizzabile, ovvero $\Psi \in L_2$), non può divergere all'infinito.
+Dobbiamo quindi imporre la condizione asintotica: \(A = 0\)\\
+Rimangono solo i termini esponenzialmente decrescenti, che identificano gli \textit{stati legati}.
 
 
 
+\section{Sistema di due particelle senza spin}
+
+Consideriamo un sistema composto da due particelle distinguibili senza spin. Lo spazio di Hilbert associato è:
+\[
+\mathcal{H} = L_2(\mathbb{R}^3 \times \mathbb{R}^3, d^3x_a d^3x_b)
+\]
+Le osservabili per le due particelle sono rispettivamente $\vec{X}_a, \vec{P}_a$ (massa $m_a$) e $\vec{X}_b, \vec{P}_b$ (massa $m_b$).
+
+L'Hamiltoniana del sistema è data da:
+\[
+H = \frac{\vec{P}_a^2}{2m_a} + \frac{\vec{P}_b^2}{2m_b} + V(|\vec{X}_a - \vec{X}_b|)
+\]
+La forma del potenziale $V(|\vec{X}_a - \vec{X}_b|)$, che dipende solo dalla distanza relativa, implica che ci troviamo in uno spazio \textbf{omogeneo ed isotropo}. 
+Questo significa che il sistema è invariante per traslazioni e rotazioni
+
+Per semplificare il problema, passiamo al sistema di riferimento del Centro di Massa (CM) effettuando un cambio di variabili.
+Definiamo la massa totale $M = m_a + m_b$.
+
+Coordinate del Centro di Massa:
+\[
+\vec{X}_{CM} = \frac{m_a \vec{X}_a + m_b \vec{X}_b}{M} \quad (\text{media pesata delle posizioni})
+\]
+\[
+\vec{P}_{CM} = \vec{P}_a + \vec{P}_b
+\]
+Coordinate Relative:
+\[
+\vec{X}_r = \vec{X}_a - \vec{X}_b
+\]
+\[
+\vec{P}_r = \frac{m_b \vec{P}_a - m_a \vec{P}_b}{M}
+\]
+Nota: $\vec{P}_r$ è costruito in modo da essere coniugato a $\vec{X}_r$ e ortogonale al moto del CM.
+
+Le nuove coordinate sono canoniche. La normalizzazione nelle definizioni è fissata proprio per preservare le regole di commutazione:
+\[
+[X_{CM, i}, P_{CM, j}] = i\hbar \delta_{ij}
+\]
+\[
+[X_{r, i}, P_{r, j}] = i\hbar \delta_{ij}
+\]
+Inoltre, le coordinate del CM e quelle relative commutano tra loro:
+\[
+[\vec{P}_{CM}, \vec{X}_r] = 0, \quad [\vec{X}_{CM}, \vec{P}_r] = 0, \quad \text{etc.}
+\]
+Dato che le variabili del CM e quelle relative sono indipendenti (i commutatori misti sono nulli), potremo trattare la parte del centro di massa e la parte relativa separatamente.
+
+
+Esprimendo l'Hamiltoniana nelle nuove coordinate, otteniamo la somma di due termini disaccoppiati:
+\[
+H = \underbrace{\frac{\vec{P}_{CM}^2}{2M}}_{H_{CM}} + \underbrace{\frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)}_{H_{rel}} \quad \text{ con } \; \mu = \frac{m_a+m_b}{M}
+\]
+Questo ci permette di fattorizzare lo spazio di Hilbert e le soluzioni:
+\[
+\mathcal{H} = L_2(\mathbb{R}^3, d^3x_{CM}) \otimes L_2(\mathbb{R}^3, d^3x_r) = \mathcal{H}_{CM} \otimes \mathcal{H}_{rel}
+\]
+
+\subsection{Simmetrie Dinamiche}
+
+L'Hamiltoniana \( H \) è invariante per traslazioni (perché lo spazio è omogeneo) e anche per rotazioni (perché isotropo).
+Definiamo i momenti:
+\[
+\vec{P}_{CM}, \quad \vec{L}_{CM} = \vec{X}_{CM} \times \vec{P}_{CM}, \quad \vec{L}_r = \vec{X}_r \times \vec{P}_r
+\]
+dove \( \vec{P}_{CM} \) è associato all'invarianza per traslazioni e \( \vec{L}_{CM} \) all'invarianza per rotazioni.
+
+Consideriamo il seguente I.C.O.C.:
+\[
+\left\{ \vec{P}_{CM}, H_{rel}, \vec{L}_r^2, L_{rz} \right\}
+\]
+Notiamo che \( \vec{P}_{CM} \) agisce sullo spazio del centro di massa (CM), mentre \( H_{rel}, \vec{L}_r^2, L_{rz} \) agiscono sullo spazio relativo.
+Di conseguenza, le autofunzioni fattorizzano:
+\[
+\Phi_{\vec{P}_{CM}}(\vec{X}_{CM}) \, \Psi_{E,\ell,m}(\vec{X}_r)
+\]
+Esplicitando l'autofunzione del momento in 3D per il centro di massa, otteniamo:
+\[
+\frac{e^{\frac{i}{\hbar}\vec{P}_{CM}\cdot \vec{X}_{CM}}}{(2\pi\hbar)^{3/2}} \, {\Psi_{E,\ell,m}(\vec{X}_r)}
+\]
+Quindi, risolvere la parte radiale relativa equivale a risolvere un problema con potenziale centrale.
+
+\subsection{Atomo di idrogeno}
+
+Consideriamo l'atomo di idrogeno (la trattazione è valida anche per atomi idrogenoidi ionizzati), composto da un elettrone \( e^- \) e un protone \( p^+ \) come nucleo.
+
+Iniziamo effettuando le seguenti approssimazioni:
+\begin{itemize}
+    \item Trascuriamo gli effetti relativistici (assumiamo l'energia cinetica \( K \ll m_p c^2, m_e c^2 \)).
+    \item Trascuriamo la radiazione elettromagnetica: considereremo solo il potenziale elettrostatico tra le cariche, senza includere l'interazione E.M. completa.
+    \item Trascuriamo lo SPIN: trattiamo le particelle come se avessero \( \text{SPIN}=0 \) (anche se non lo sono), coerentemente con l'aver trascurato l'interazione elettromagnetica.
+\end{itemize}
+
+Consideriamo i valori delle masse:
+\[
+m_e \simeq 0.511 \, \frac{\text{MeV}}{c^2} \simeq 0.91 \cdot 10^{-30} \, \text{kg}
+\]
+\[
+m_p \simeq 938 \, \frac{\text{MeV}}{c^2} \simeq 1.7 \cdot 10^{-27} \, \text{kg} \simeq 1800 \, m_e
+\]
+Poiché \( m_e \ll m_p \implies M_{tot} \simeq m_p \).
+Calcoliamo la massa ridotta del sistema:
+\[
+\mu = \frac{m_e m_p}{M_{tot}} = 0.995 \, m_e \sim m_e
+\]
+
+L'Hamiltoniana totale del sistema si decompone in:
+\[
+H = H_{CM} + H_r
+\]
+Ci focalizziamo esclusivamente sulla parte relativa \( H_r \) e sul momento angolare relativo \( \vec{L}_r \).
+L'Hamiltoniana relativa è:
+\[
+H_r = \frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)
+\]
+\begin{remark}
+    D'ora in poi ometteremo il pedice \( r \) per semplicità, dato che tratteremo solo questa Hamiltoniana. Poniamo quindi \( r = |\vec{X}| \) (distanza).
+\end{remark}
+
+L'Hamiltoniana diventa:
+\[
+H = \frac{\vec{P}^2}{2\mu} + V(r)
+\]
+Il potenziale è quello Coulombiano:
+\[
+V(r) = - \frac{q_e^2}{4\pi\varepsilon_0 r} = - \frac{e^2}{r}
+\]
+Nell'ultimo passaggio abbiamo usato la notazione CGS (Gauss), spesso utilizzata nei testi di riferimento.
+Riportiamo alcune costanti utili:
+\[
+q_e = 1.6 \cdot 10^{-19} \, \text{C}, \quad e^2 = 2.3 \cdot 10^{-28} \, \text{J}\cdot\text{m}, \quad \frac{e^2}{\hbar c} \simeq \frac{1}{137}
+\]
+
+\subsubsection{Ricerca degli stati legati}
+Vogliamo risolvere il sistema con potenziale centrale \( V(r) = -\frac{e^2}{r} \).
+Osserviamo che \( V(r) \xrightarrow{r \to \infty} 0 \) (va a zero lentamente, ma è accettabile).
+Avremo due tipi di spettro:
+\begin{itemize}
+    \item \textbf{Spettro continuo} (\( \sigma_c \)) per \( E > 0 \): corrisponde agli stati di scattering.
+    \item \textbf{Spettro discreto} (\( \sigma_d \)) per \( E < 0 \): corrisponde agli \textbf{stati legati}.
+\end{itemize}
+Ci concentriamo sulla ricerca degli stati legati (\( E < 0 \)). Per avere una base completa di \( \mathcal{H} \) dovremmo includere anche gli stati non legati, ma per ora li tralasciamo.
+
+Cerchiamo autofunzioni \( \Psi_{E,\ell,m} \) dell'insieme \( \{ H, \vec{L}^2, L_z \} \) nella forma fattorizzata:
+\[
+\Psi_{E,\ell,m}(r, \theta, \varphi) = f_{E,\ell}(r) Y_\ell^m(\theta, \varphi)
+\]
+Definiamo la funzione radiale ridotta \( u_{E,\ell}(r) = r f_{E,\ell}(r) \).
+
+Anche se \( V(r) \) non è limitato nell'origine, grazie al \textbf{Teorema di Kato-Rellich} possiamo affermare che il dominio dell'Hamiltoniana coincide con quello dell'energia cinetica:
+\[
+D(H) = D(\vec{P}^2)
+\]
+Questo impone delle condizioni al contorno per \( r \to 0^+ \):
+\[
+\lim_{r \to 0^+} r f_{E,l}(r) \equiv \lim_{r \to 0^+} u_{E,l}(r) = 0
+\]
+
+Eq. diff. parte radiale:
+\[
+\left( -\partial_r^2 + \underbrace{\frac{\ell(\ell+1)}{r^2}}_{\text{en. cinetica rotazionale}} + \frac{2\mu}{\hbar^2} \left( -\frac{e^2}{r} - E \right) \right) \underbrace{r F_{E,\ell}(r)}_{u_{E,\ell}(r)} = 0
+\]
+
+Rendiamo l'equazione adimensionale, sfruttando le seguenti quantità:
+\begin{itemize}
+    \item Raggio di Bohr:
+    \[
+        a_0 = \frac{\hbar^2}{\mu e^2} \simeq 0.529 \cdot 10^{-10} \text{ m}
+    \]
+    \item Energia di ionizzazione:
+    \[
+        E_I = \frac{e^2}{2a_0} = \frac{\hbar^2}{2\mu a_0^2} \simeq 13.6 \text{ eV} \equiv 1 \text{ Ry (Rydberg)}
+    \]
+\end{itemize}
+
+Definiamo le variabili adimensionali: 
+\(
+\rho = \frac{r}{a_0}
+\)
+e \( \lambda \) tale che \( E = - \lambda^2 E_I < 0 \).
+Considerando quindi la funzione scalata \( u_{\lambda, \ell}(\rho) \equiv u_{E,\ell}(r) \), l'equazione differenziale diventa:
+\[
+\frac{1}{a_0^2} \left( -\partial_\rho^2 + \frac{l(l+1)}{\rho^2} - \frac{2}{\rho} + \lambda^2 \right) u_{\lambda,\ell}(\rho) = 0
+\]
+
+Per risolvere questa equazione supponiamo che la soluzione abbia forma \(u_{E,\ell}(\rho)= e^{-\lambda\rho}y(\rho) \) ,
+per funzioni \(y(\rho)\) compatibili con la condizioni al limite, cioè con crescita subesponenziale a \(+\infty\) e \(\lim_{\rho\to 0^+}y(\rho)=0\).\\
+Otteniamo dunque:
+\[
+    \frac{1}{a_0^2} \left( - \frac{\partial^2}{\partial \rho^2} + \frac{\ell(\ell+1)}{\rho^2} - \frac{2}{\rho} + \lambda^2 \right) \left( e^{-\lambda \rho} y(\rho) \right) = 0 \\
+\]
+\[
+    e^{-\lambda \rho} \left( -\partial_\rho^2 - \lambda^2 + 2\lambda \partial_\rho + \frac{\ell(\ell+1)}{\rho^2} - \frac{2}{\rho} + \lambda^2 \right) y(\rho) = 0\\
+\]
+Dobbiamo risolvere dunque:
+\begin{equation}
+    \left( -\rho^2 \partial_\rho^2 + 2\lambda \rho^2 \partial_\rho + \ell(\ell+1) - 2\rho \right) y_{E,\ell}(\rho) = 0
+\end{equation}
+
+% 26 Lezione del 28/11/2025
+
+Cerchiamo soluzioni in forma di serie di potenze:
+\[
+    y_{E, \ell}(\rho)=  \sum_{k = 0}^{+\infty}c_k \rho^{k+k_0+1}
+\]
+dove richediamo che \(c_0 \neq 0\) e quindi \(k_0+1\) è il grado più basso della serie.
+Calcoliamo i termini che compaiono nell'equazione:
+\begin{align*}
+\rho^2 \partial_\rho y &= \sum_{k=0}^{\infty} c_k (k+k_0+1) \rho^{k+k_0+2} = \sum_{k'=1}^{\infty} c_{k'-1} (k'+k_0) \rho^{k'+k_0+1} \\
+\rho^2 \partial_\rho^2 y &= \sum_{k=0}^{\infty} c_k (k+k_0+1)(k+k_0) \rho^{k+k_0+1} \\
+\rho y &= \sum_{k'=1}^{\infty} c_{k'-1} \rho^{k'+k_0+1}
+\end{align*}
+
+Sostituendo quindi all'interno dell'equazione (aggiungendo i termini per \(k' = 0\) per cui vale \(c_{-1}\equiv0\)):
+\[
+\sum_{k=0}^{+\infty} \rho^{k+\ell+1} \big( -(k+k_0)(k+k_0+1)c_k + 2\lambda c_{k-1}(k+k_0) + \ell(\ell+1)c_k - 2c_{k-1} \big) = 0
+\]
+
+Questa equazione deve valere per ogni possibile valore di \(\rho\) e quindi la parentesi deve essere essere identicamente nulla per ogni valore di \(k\).\\
+Per \(k=0\) abbiamo:
+\[
+-k_0(k_0+1)c_0 + \ell(\ell+1)c_0 = 0
+\]
+dato che avviamo imposto che \(c_0 \neq 0\), otteniamo \(k_0 = \ell\) .\\
+Per \( k > 0 \):
+\[
+\left[ (k+\ell)(k+\ell+1) - \ell(\ell+1) \right] c_k = 2 \left( \lambda(k+\ell) - 1 \right) c_{k-1}
+\]
+Il termine tra parentesi quadre a sinistra si semplifica in:
+\[
+(k+\ell)(k+\ell+1) - \ell(\ell+1) = k(k+2\ell+1)
+\]
+che è sempre positivo e diverso da 0 per \( k>0 \). Otteniamo quindi la \textbf{relazione ricorsiva}:
+
+\begin{equation}
+    c_k = c_{k-1} \frac{2[\lambda(k+\ell)-1]}{k(k+2\ell+1)} \quad \text{vale } \forall \,k > 0    
+\end{equation}
+
+Questo ci dice che ogni \( c_k \) è legato al precedente \( c_{k-1} \). Quindi, partendo da \( c_0 \), trovo tutti i coefficienti. \( c_0 \) non è fissato dalla relazione, ma sarà determinato dalla costante di normalizzazione.
+
+Vediamo se la serie converge usando il \textit{criterio del rapporto}:
+\[
+\frac{c_k}{c_{k-1}} = \frac{2[\lambda(k+\ell)-1]}{k(k+2\ell+1)} \sim \frac{2\lambda k}{k^2} = \frac{2\lambda}{k} \xrightarrow{k \to \infty} 0
+\]
+Il limite è \( 0 \), il che implica che il raggio di convergenza è \( \infty \). Di conseguenza la serie \( y(\rho) \) converge \( \forall \rho > 0 \).
+
+\subsubsection{Comportamento asintotico}
+Come appena visto, se \( \lambda(k+\ell)-1 \neq 0 \quad \forall k > 0 \), allora il rapporto tra i coefficienti per \( k \to \infty \) è:
+\[
+\frac{c_k}{c_{k-1}} \sim \frac{2\lambda}{k}
+\]
+Pertanto, per \( \rho \to \infty \), la funzione radiale si comporta come
+\(
+y(\rho) \sim e^{2\lambda\rho}
+\)
+e di conseguenza la funzione d'onda completa \( u(\rho) \):
+\[
+u(\rho) = e^{-\lambda\rho}y(\rho) \sim e^{-\lambda\rho} e^{2\lambda\rho} = e^{\lambda\rho}
+\]
+Questa soluzione \textbf{diverge} per \( \rho \to \infty \) e non è accettabile fisicamente (non appartiene a \( L_2(\mathbb{R}, dx) \)).
+
+Per ottenere una soluzione fisicamente accettabile, è necessario che la serie si tronchi, diventando un polinomio.
+Deve esistere un intero \( m \in \mathbb{N} \) (con \( m > 0 \)) tale che il numeratore della relazione ricorsiva si annulli per \( k=m \):
+\[
+\lambda(m+\ell) - 1 = 0
+\]
+Se questa condizione è verificata, allora \( c_m = 0 \) e poiché ogni coefficiente dipende dal precedente, avremo:
+\[
+c_k = 0 \quad \forall k \ge m
+\]
+In questo modo la serie diventa finita:
+\[
+y_{E,\ell}(\rho) = \sum_{k=0}^{m-1} c_k \rho^{k+\ell+1}
+\]
+che è un polinomio di grado massimo legato a \( m+\ell \). Questa condizione di troncamento determina gli autovalori dell'energia permessi.
+
+Definiamo ora il \textit{numero quantico principale} \( n \) come:
+\[
+n := m + \ell
+\]
+Da questa definizione e dalla condizione di troncamento, otteniamo il valore quantizzato di \( \lambda \):
+\[
+\lambda = \frac{1}{n}
+\]
+Poiché \( m \ge 1 \) e \( \ell \ge 0 \), i valori possibili per \( n \) sono gli interi positivi:
+\[
+n = 1, 2, 3, 4, \dots
+\]
+
+Inoltre, dato che \( m = n - \ell \ge 1 \), per un fissato valore di \( n \), il momento angolare \( \ell \) è vincolato dalla condizione:
+\[
+\boxed{ 0 \le \ell < n }
+\]
+ovvero \( \ell \) può assumere i valori \( 0, 1, \dots, n-1 \).
+
+Sostituendo \( \lambda = 1/n \) nell'espressione dell'energia \( E = -\lambda^2 E_I \) (dove \( E_I \) è l'energia di ionizzazione), otteniamo i livelli energetici permessi:
+\[
+\boxed{ E_n = -\frac{1}{n^2} E_I }
+\]
+L'energia dipende solo dal numero quantico principale \( n \). In questo modo abbiamo ricavato lo spettro discreto dell'atomo di idrogeno.
+
+La differenza di energia tra due livelli \( n_1 \) e \( n_2 \) è data dalla \textbf{formula di Rydberg}:
+\[
+E_{n_1} - E_{n_2} = \left( \frac{1}{n_2^2} - \frac{1}{n_1^2} \right) E_I
+\]
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+        scale=0.75,   % Ridotto la scala generale (default era 1.0)
+        >=latex,
+        level/.style={thick, line cap=round},
+        s-orb/.style={green!60!black},
+        p-orb/.style={blue!70!black},
+        d-orb/.style={violet},
+        f-orb/.style={orange}
+    ]
+
+    % Asse delle Energie
+    \draw[->, thick] (0, 0.5) -- (0, 9) node[above] {\small $E/E_I$};
+    \node[red, left, font=\footnotesize] at (0, 8.5) {0};
+    \draw[red, thick] (-0.1, 8.5) -- (0.1, 8.5);
+
+    % Ticks e label asse Y
+    \foreach \y/\n/\val in {1/1/-1, 3.5/2/{-\dfrac{1}{4}}, 5.5/3/{-\dfrac{1}{9}}, 7/4/{-\dfrac{1}{16}}} {
+        \draw[thick] (-0.1, \y) -- (0.1, \y);
+        \node[left, font=\scriptsize] at (-0.2, \y) {$n=\n \;\; \val$};
+    }
+
+    % Intestazioni l (momento angolare)
+    \node[font=\large] at (2, 9.5) {$\ell=0$};
+    \node[font=\large] at (5, 9.5) {$\ell=1$};
+    \node[font=\large] at (8, 9.5) {$\ell=2$};
+    \node[font=\large] at (11, 9.5) {$\ell=3$};
+
+    % --- Livelli Energetici ---
+
+    % n=1
+    \draw[level, s-orb] (1, 1) -- (3, 1) node[midway, above, font=\small] {$1s$};
+    \node[right, font=\footnotesize] at (12, 1) {1 stato};
+
+    % n=2
+    \draw[level, s-orb] (1, 3.5) -- (3, 3.5) node[midway, above, font=\small] {$2s$};
+    \draw[level, p-orb] (4, 3.5) -- (6, 3.5) node[midway, above, font=\small] {$2p$};
+    \node[right, font=\footnotesize] at (12, 3.5) {$1+3=4$ stati};
+
+    % n=3
+    \draw[level, s-orb] (1, 5.5) -- (3, 5.5) node[midway, above, font=\small] {$3s$};
+    \draw[level, p-orb] (4, 5.5) -- (6, 5.5) node[midway, above, font=\small] {$3p$};
+    \draw[level, d-orb] (7, 5.5) -- (9, 5.5) node[midway, above, font=\small] {$3d$};
+    \node[right, font=\footnotesize] at (12, 5.5) {$1+3+5=9$ stati};
+
+    % n=4
+    \draw[level, s-orb] (1, 7) -- (3, 7) node[midway, above, font=\small] {$4s$};
+    \draw[level, p-orb] (4, 7) -- (6, 7) node[midway, above, font=\small] {$4p$};
+    \draw[level, d-orb] (7, 7) -- (9, 7) node[midway, above, font=\small] {$4d$};
+    \draw[level, f-orb] (10, 7) -- (12, 7) node[midway, above, font=\small] {$4f$};
+    \node[right, font=\footnotesize] at (12.2, 7) {16 stati};
+
+    % Linea tratteggiata per lo zero
+    \draw[dashed, gray] (0, 8.5) -- (12, 8.5);
+
+    \end{tikzpicture}
+    \caption{Schema dei livelli energetici dell'atomo di idrogeno.}
+    \label{fig:spettro_H}
+\end{figure}
+
+\subsubsection{Degenerazione degli stati}
+Il grado di degenerazione del livello energetico \( E_n \) si ottiene sommando le degenerazioni dovute al momento angolare orbitale \( \ell \) per tutti i valori permessi (da \( 0 \) a \( n-1 \)):
+\[
+\text{deg}(E_n) = \sum_{\ell=0}^{n-1} (2\ell+1) = 2\frac{n(n-1)}{2} + n = n^2
+\]
+Ad esempio:
+\begin{itemize}
+    \item Per \( n=1 \): 1 stato (\( 1s \)).
+    \item Per \( n=2 \): 4 stati (\( 2s, 2p \)).
+\end{itemize}
+\begin{remark}
+    In questo calcolo non abbiamo tenuto conto dello \textit{spin}. Includendolo successivamente, la degenerazione aumenta (raddoppia).
+\end{remark}
+
+Se un sistema presenta degenerazione, ciò implica l'esistenza di una simmetria dinamica. Dato che abbiamo stati diversi con la stessa energia, deve esistere un operatore unitario che li lega (o "mescola").
+
+\begin{itemize}
+    \item Il sistema ha \textbf{simmetria per rotazioni} (\( SO(3) \)): questo spiega la degenerazione nel numero quantico magnetico \( m \), mescolando stati con lo stesso \( \ell \).
+    \item Tuttavia, nell'atomo di idrogeno osserviamo che stati con \( \ell \) diversi (es. \( 2s \) e \( 2p \)) hanno la stessa energia. Le rotazioni non possono trasformare uno stato \( s \) in uno stato \( p \).
+\end{itemize}
+
+Questo suggerisce che il sistema possiede \textbf{simmetrie ulteriori} (più grandi di \( SO(3) \)) che mescolano stati con \( \ell \) diversi.
+
+La "nuova" simmetria è legata a una quantità conservata specifica per il potenziale \( 1/r \) (potenziale Coulombiano/Kepleriano): il \textbf{Vettore di Runge-Lenz} \( \vec{M} \).
+
+Esso è definito (a meno di costanti moltiplicative) come:
+\[
+\vec{M} = \frac{\vec{P} \times \vec{L} - \vec{L} \times \vec{P}}{2\mu} - e^2 \frac{\vec{X}}{R}
+\]
+dove \( \mu \) è la massa ridotta e \( R = |\vec{X}| \).
+
+Vale la relazione di commutazione con l'Hamiltoniana:
+\[
+[\vec{M}, H] = 0
+\]
+Questo implica che \( \vec{M} \) è una costante del moto (simmetria dinamica). L'esistenza di questo vettore conservato è specifica della forma del potenziale \( \propto 1/r \) dell'atomo di idrogeno e fornisce le informazioni aggiuntive che spiegano la degenerazione "accidentale" in \( \ell \).
+
+\subsubsection{Struttura delle autofunzioni dell'Atomo di Idrogeno}
+
+Analizziamo come sono fatte le autofunzioni. La parte radiale $u_{n,\ell}(\rho)$ ha la forma:
+\[
+    u_{n,\ell}(\rho)= e^{-\frac{\rho}{n}} \left( c_0 \rho^{\ell+1} + \dots + c_{n-\ell-1}\rho^n \right)
+\]
+Consideriamo lo stato fondamentale ($n=1, \ell=0$):
+\[
+    f_{n=1, \ell=0}(r) = \frac{2}{\sqrt{a_0^3}} e^{-\frac{r}{a_0}} \quad \text{e} \quad Y_0^0 = \frac{1}{\sqrt{4\pi}}
+\]
+Da cui otteniamo la funzione d'onda completa per lo stato fondamentale:
+\[
+    \Psi_{1,0,0} = \frac{1}{\sqrt{\pi a_0^3}} e^{-\frac{r}{a_0}}
+\]
+
+La funzione d'onda generale si scrive separando la parte radiale da quella angolare:
+\[
+    \Psi_{n,\ell,m} = \frac{1}{r} u_{n,\ell}(r) Y_{\ell}^m(\vartheta, \varphi)
+\]
+Le funzioni dipenderanno da $r$ (dato che $\rho$ è scalato su $a_0$). Esplicitando la struttura:
+\[
+    \Psi_{n,\ell,m} = \frac{N_{n,\ell}}{\sqrt{a_0^3}} e^{-\frac{r}{n a_0}} \left( \frac{2r}{n a_0} \right)^\ell L\left( \frac{2r}{n a_0} \right) Y_\ell^m(\vartheta, \varphi)
+\]
+dove il termine $L$ rappresenta un \textit{polinomio di Laguerre} di grado $n-\ell-1$.
+
+Analizziamo il comportamento vicino al nucleo ($r \to 0$):
+\[
+    \Psi \sim r^\ell
+\]
+Quando $\ell > 0$ la funzione radiale tende a 0 (poiché $\Psi \sim r^\ell$). Quindi, solo per $\ell=0$ si ha una probabilità non trascurabile di trovare l'elettrone vicino al nucleo. La probabilità è piccata su distanze dell'ordine di $a_0$ dal nucleo.
+
+In tutti i casi valgono le seguenti relazioni per i valori medi (Teorema del Viriale):
+\[
+    \expval{\frac{\vec{P}^2}{2m}}_{\Psi_{n,\ell,m}} = + \frac{E_I}{n^2}
+\]
+Cioè il valore medio dell'energia cinetica è uguale al modulo dell'energia totale (o energia di ionizzazione $E_I$ scalata), ed è opposto all'energia totale.
+\[
+    \expval{V(r)} = - \frac{2 E_I}{n^2}
+\]
+Così che l'energia totale risulta:
+\[
+    \expval{H} = - \frac{E_I}{n^2}
+\]
+
+Infine, verifichiamo la validità dell'approssimazione non relativistica confrontando l'energia cinetica media con l'energia a riposo:
+\[
+    \expval{\frac{\vec{P}^2}{2m}} \ll mc^2 \implies \text{OK approssimazione relativistica}
+\]
 
 
 
+\section{Perturbazioni Stazionarie}
 
+Trattiamo ora il caso delle perturbazioni stazionarie, ovvero quelle in cui l'operatore non dipende esplicitamente dal tempo.
+L'Hamiltoniana del sistema è data da:
+\[
+    H = H_0 + W = H_0 + \lambda \hat{W} \qquad \text{con } \lambda \ll 1
+\]
+dove $H_0$ è l'\textit{Hamiltoniano imperturbato}, di cui sappiamo risolvere l'equazione agli autovalori e trovare gli autovettori, mentre $W$ rappresenta la perturbazione controllata dal parametro reale $\lambda$.
 
+Lo spettro di $H_0$ è assunto discreto e non degenere (ogni autovalore corrisponde a un singolo autovettore a meno di normalizzazione):
+\[
+    \sigma(H_0) = \left\{ E_1^0 < E_2^0 < E_3^0 < \dots \right\}
+\]
+Gli autostati $\{ \ket{E_a^0} \}$ formano una base ortonormale di autovettori, per cui vale $\braket{E_a^0}{E_b^0} = \delta_{ab}$.
 
+Analizziamo il sistema al variare del parametro $\lambda$:
+\begin{itemize}
+    \item Per $\lambda = 0$ conosciamo tutto del sistema (caso imperturbato).
+    \item Per $\lambda$ piccoli (in un intorno di zero), supponiamo che le grandezze cambino con continuità.
+\end{itemize}
+Gli autovalori $E_a^\lambda$ cambiano al variare di $\lambda$. Sebbene possa verificarsi il fenomeno del \textit{level crossing} (incrocio dei livelli), noi ci limitiamo a piccole variazioni dove l'ordine dei livelli tende a preservarsi e rimaniamo "prima" che varino troppo.
 
+Vogliamo risolvere l'equazione agli autovalori per l'Hamiltoniana completa:
+\[
+    (H(\lambda) - E_a^\lambda) \ket{E_a^\lambda} = 0 \quad \iff \quad H\ket{E_a^\lambda} = E_a^\lambda \ket{E_a^\lambda}
+\]
+Sia gli autovalori che gli autovettori dipendono da $\lambda$. Se $\lambda$ è sufficientemente piccolo, i corrispondenti autovalori rimangono non degeneri (ad esempio, se $E_1^0$ è il livello fondamentale non degenere, per $\lambda$ piccoli rimarrà il più basso e l'autospazio rimarrà di dimensione 1).
+Valgono i limiti per $\lambda \to 0$:
+\[
+    \ket{E_a^\lambda} \xrightarrow{\lambda \to 0} \ket{E_a^0} \qquad E_a^\lambda \xrightarrow{\lambda \to 0} E_a^0
+\]
 
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=middle,
+            xlabel={$\lambda$},
+            ylabel={$E^\lambda$},
+            xtick=\empty,
+            ytick={1, 2, 3.5, 4.5},
+            yticklabels={$E_1^0$, $E_2^0$, $E_3^0$, $E_4^0$},
+            ymin=0, ymax=5.5,
+            xmin=0, xmax=4.5,
+            width=10cm, height=7cm,
+            clip=false,
+            axis line style={-latex},
+            every axis y label/.style={at={(ticklabel* cs:1.05)}, anchor=south},
+            every axis x label/.style={at={(ticklabel* cs:1.05)}, anchor=west}
+        ]
 
+        % E1 (viola): parte dal basso e sale incrociando
+        \addplot[thick, violet, domain=0:3, samples=100, smooth] {1 + 0.1*x + 0.3*x^2};
+
+        % E2 (verde petrolio): parte da sopra e scende incrociando
+        \addplot[thick, teal, domain=0:3, samples=100, smooth] {2 - 0.2*x - 0.1*x^2};
+
+        % E3 (rosso): sale
+        \addplot[thick, red, domain=0:3.5, samples=100, smooth] {3.5 + 0.3*tanh(x-1)};
+
+        % E4 (ciano): rimane quasi costante
+        \addplot[thick, cyan!80!blue, domain=0:4, samples=100, smooth] {4.5 + 0.1*sin(deg(x))};
+
+        % Level crossing
+        % Punto di incrocio approssimativo
+        \node[circle, fill, inner sep=1.5pt] (crossing) at (axis cs:1.28, 1.61) {};
+        
+        % Etichetta spostata più a destra per evitare sovrapposizioni
+        % (tra la curva viola che sale e la verde che scende)
+        \node[right, align=left] (label) at (axis cs:2.1, 1.8) {\small \textit{level crossing}};
+        
+        % Freccia che punta al crossing
+        \draw[->, shorten >= 2pt] (label.west) -- (crossing);
+
+        % Linee tratteggiate verticali (opzionali per stile)
+        \draw[dashed, red!80!black, thick] (axis cs:0.6, 0) -- (axis cs:0.6, 5);
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Livelli energetici in funzione del parametro perturbativo $\lambda$.}
+    \label{fig:level_crossing}
+\end{figure}
+
+Fissiamo un livello \( a \) tale per cui \( \ket{\lambda} \equiv \ket{E_a^\lambda} \) e \( E^\lambda \equiv E_a^\lambda \).
+Consideriamo lo sviluppo in serie di Taylor per studiare come cambiano autovalori e autovettori, abbiamo:
+\[
+    E^\lambda = \mathcal{E}_0 + \mathcal{E}_1 \lambda + \mathcal{E}_2 \lambda^2 + \dots + \mathcal{E}_n \lambda^n + O(\lambda^{n+1})
+\]
+dove identifichiamo il termine di ordine zero con il livello imperturbato \( \mathcal{E}_0 = E_a^0 \), mentre \( \mathcal{E}_1 \) rappresenta la correzione al primo ordine e così via.
+
+Analogamente, fissiamo anche il vettore di stato:
+\[
+    \ket{E^\lambda} = \ket{\lambda} = \ket{0} + \lambda \ket{1} + \lambda^2 \ket{2} + \dots + \lambda^n \ket{n} + O(\lambda^{n+1})
+\]
+dove \( \ket{0} = \ket{E_a^0} \) è lo stato imperturbato noto e gli altri termini \( \ket{1}, \ket{2}, \dots \) sono le correzioni incognite.\\
+In questo modo otteniamo delle soluzioni approssimate di autovalori e autovettori trascurando i termini di ordine \( \lambda^{n+1} \).
+
+\begin{attention}
+    Esiste un problema di ambiguità nella definizione di \( \ket{\lambda} \): possiamo sempre riscalare il vettore.
+    \[
+        \ket{\lambda} \longrightarrow c(\lambda) \ket{\lambda}
+    \]
+    Poiché \( \forall \lambda \) posso riscalare il vettore in maniera diversa (mettendo \( c \in \mathbb{C} \) in funzione di \( \lambda \)), è necessario imporre delle condizioni per rimuovere questa ambiguità:
+    \begin{itemize}
+        \item Fissiamo lo stato imperturbato: \( \ket{E_a^0} \equiv \ket{0} \) con \( \braket{0}{0}=1 \).
+        \item Normalizzazione: \( \braket{\lambda}{\lambda} = 1 \quad \forall \lambda \in \mathbb{R} \).
+        \item Fase: impongo \( \braket{0}{\lambda} \in \mathbb{R} \implies \braket{0}{n} = \braket{n}{0} \quad \forall n \).
+    \end{itemize}
+
+    Sviluppiamo la condizione di normalizzazione al primo ordine:
+    \begin{align*}
+        1 = \braket{\lambda}{\lambda} &= \big( \bra{0} + \lambda \bra{1} + \dots \big) \big( \ket{0} + \lambda \ket{1} + \dots \big) \\
+        &= \underbrace{\braket{0}{0}}_{1} + \lambda \underbrace{\big( \braket{1}{0} + \braket{0}{1} \big)}_{2\braket{0}{1}} + O(\lambda^2)
+    \end{align*}
+    Da cui si ricava la condizione: \(\braket{0}{1} = 0\)
+\end{attention}
+
+% 27 Lezione del 05/12/2025
