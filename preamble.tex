@@ -97,6 +97,40 @@
 
 
 
+\usepackage[most]{tcolorbox}
+
+% Definizione di uno stile comune "printer-friendly"
+\tcbset{postulatoStyle/.style={
+    colback=blue!5,     % Sfondo azzurro chiarissimo (grigio chiaro in B/N)
+    colframe=blue!50,    % Bordo azzurro medio (grigio medio in B/N)
+    sharp corners, 
+    boxrule=0.5pt, 
+    enhanced, 
+    breakable
+}}
+
+% Applicazione dello stile agli ambienti esistenti
+\tcolorboxenvironment{postulato1}{postulatoStyle}
+\tcolorboxenvironment{postulato2}{postulatoStyle}
+\tcolorboxenvironment{postulato3}{postulatoStyle}
+\tcolorboxenvironment{postulato4}{postulatoStyle}
+\tcolorboxenvironment{postulato5}{postulatoStyle}
+\tcolorboxenvironment{postulato6}{postulatoStyle}
+\tcolorboxenvironment{postulato7}{postulatoStyle}
+
+
+
+\usepackage{marginnote}
+\newcommand{\lezione}[2]{%
+  \marginnote{\footnotesize\sffamily\textcolor{blue!50!gray}{\textbf{Lez. #1}\\#2}}%
+  \pdfbookmark[2]{Lezione #1 (#2)}{lez#1}%
+}
+
+
+
+
+
+
 % Comandi utili
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}

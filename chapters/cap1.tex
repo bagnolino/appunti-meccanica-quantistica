@@ -2,11 +2,12 @@
 
 
 \chapter{Postulati della Meccanica Quantistica}
-
+\lezione{2}{30/09/2025}
 
 \section{Stati in MQ}
 
 \subsection{Stati classici}
+
 Iniziamo considerando gli stati in meccanica classica.
 Nel formalismo hamiltoniano, uno stato all'istante \(t\) 
 è determinato da: \(\left\{ q_i(t), p_i(t) \right\}\quad i = 1,\dots, N\) .\\
@@ -82,7 +83,7 @@ Definiamo inoltre la \textit{norma} \(\norm{\psi}: = \sqrt{\ip{\psi}{\psi} }\)
 \begin{example}
     Sono spazi di Hilbert:
     \begin{itemize}
-        \item \(\mathcal{H}= L_2(\mathbb{R},\dd{x})\) con prodotto scalare \(\ip{\psi}{\chi}= \int_{\mathbb{R}} \overline{\psi(x)}\chi(x)\dd{x}\)
+        \item \(\mathcal{H}= L_2(\mathbb{R},\dd{x})\), cioè le funzioni modulo quadro integrabili, con prodotto scalare \(\ip{\psi}{\chi}= \int_{\mathbb{R}} \overline{\psi(x)}\chi(x)\dd{x}\)
         \item \(\mathcal{H}= \mathbb{C}^n\) con prodotto scalare \(\ip{u}{v}= \sum_{k=1}^{n} u_k^* v_k\)
     \end{itemize}
 \end{example}
@@ -156,7 +157,7 @@ che equivale al prodotto scalare tra i vettori \(\ket{\psi}\) e \(\ket{\chi}\) .
 \end{theorem}
 Inoltre per \(\forall \ket{\psi} \in \mathcal{H}\) è possibile la scomposizione:
 \(\ket{\psi}= \sum_{n=1}^{\infty}c_n\ket{n}\) con \(c_n = \braket{n}{\psi}\) .
-Da cui notiamo \(\ket{\psi}= \sum_{n=1}^{\infty}\ket{n}\braket{n}{\psi} \implies \mathbb{I}_n= \sum_{i=1}^{\infty} \dyad{n}{n}\)
+Da cui notiamo \(\ket{\psi}= \sum_{n=1}^{\infty}\ket{n}\braket{n}{\psi} \implies \mathbb{I}_n= \sum_{n=1}^{\infty} \dyad{n}{n}\)
 detta \textbf{relazione di completezza}.
 
 \begin{example}
@@ -178,19 +179,23 @@ detta \textbf{relazione di completezza}.
 
 \subsection{Rappresentazione x e p}
 Consideriamo una funzione d'onda \(\psi(x) \in L_2(\mathbb{R}, \dd{x})\),
-la decompongo in onde monocromatiche \(e^{ikx}\) e considero la \textbf{legge di Broglie}: \(\frac{2\pi}{\lambda}= k = \frac{p}{\hbar}\), otteniamo:
-\[
-\psi(x)= \frac{1}{\sqrt{2\pi\hbar}}\int_{\mathbb{R}} \dd{p} e^{i\frac{px}{\hbar}} \tilde{\psi}(p) = \mathcal{F}^{-1}[\tilde{\psi}(p)](x)
-\]
-\[
-\tilde{\psi}(p)= \frac{1}{\sqrt{2\pi\hbar}}\int_{\mathbb{R}} \dd{x} e^{-i\frac{px}{\hbar}} \psi(x)= \mathcal{F}[\psi(x)](p)
-\]
+la decompongo in onde monocromatiche \(e^{ikx}\) e attraverso la \textbf{legge di Broglie}: 
+\begin{equation}
+    \frac{2\pi}{\lambda}= k = \frac{p}{\hbar}
+\end{equation}
+otteniamo:
+\begin{equation}
+    \psi(x)= \frac{1}{\sqrt{2\pi\hbar}}\int_{\mathbb{R}} \dd{p} e^{i\frac{px}{\hbar}} \tilde{\psi}(p) = \mathcal{F}^{-1}[\tilde{\psi}(p)](x)
+\end{equation}
+\begin{equation}
+    \tilde{\psi}(p)= \frac{1}{\sqrt{2\pi\hbar}}\int_{\mathbb{R}} \dd{x} e^{-i\frac{px}{\hbar}} \psi(x)= \mathcal{F}[\psi(x)](p)
+\end{equation}
 La densità di probabilità tra \(p\) e \(p +\dd{p}\) è \(\rho_\Sigma= \frac{\abs{\tilde{\psi}(p)}^2}{\norm{\tilde{\psi}}^2}\).
 \begin{theorem}
     \textbf{Plancherel}
-    \[
-    \norm{\tilde{\psi}}^2= \int_{\mathbb{R}} \dd{p} \abs{\tilde{\psi}(p)}^2= \int_{\mathbb{R}} \dd{x} \abs{\psi(x)}^2 = \norm{\psi}^2 <\infty
-    \]
+    \begin{equation}
+        \norm{\tilde{\psi}}^2= \int_{\mathbb{R}} \dd{p} \abs{\tilde{\psi}(p)}^2= \int_{\mathbb{R}} \dd{x} \abs{\psi(x)}^2 = \norm{\psi}^2 <\infty
+    \end{equation}
 \end{theorem}
 Dunque, \(\tilde{\psi}(p)\) appartiene a \(L_2(\mathbb{R},\dd{p})\) .
 
@@ -205,15 +210,15 @@ Dunque, \(\tilde{\psi}(p)\) appartiene a \(L_2(\mathbb{R},\dd{p})\) .
 
 \begin{example}
     Se \(\operatorname{dim} \mathcal{H} < \infty \implies \mathcal{H}\simeq \mathbb{C}^n\),invece
-    se \(\operatorname{dim} \mathcal{H} = \infty \implies \mathcal{H} \simeq \ell_2\) .\\
+    se \(\operatorname{dim} \mathcal{H} = \infty \implies \mathcal{H} \simeq \ell_2\), cioè le successioni al quadrato sommabili  .\\
     Dato l'isomorfismo \(L_2(\mathbb{R},\dd{x})\simeq \ell_2\) posso rappresentare una funzione \(\psi(x)\) come un vettore \(\ket{\psi}\in \ell_2\) .
 \end{example}
 
 \begin{definition}
     Definisco il \textit{raggio vettore} \([\Psi]\) come l'insieme dei vettori che rappresentano lo stesso stato:
-    \[
-    [\Psi ]= \big\{ \alpha\ket{\Psi}, \alpha \in \mathbb{C} \setminus \left\{ 0 \right\} \big\}
-    \]
+    \begin{equation}
+        [\Psi ]= \big\{ \alpha\ket{\Psi}, \alpha \in \mathbb{C} \setminus \left\{ 0 \right\} \big\}
+    \end{equation}
 \end{definition}
 
 \begin{postulato1}
@@ -222,11 +227,15 @@ Dunque, \(\tilde{\psi}(p)\) appartiene a \(L_2(\mathbb{R},\dd{p})\) .
 \end{postulato1}
 
 %3 Lezione del 02/10/2025
+\lezione{3}{02/10/2025}
 
 \begin{example}
     \(\mathcal{H}= \mathbb{C}^3 \quad e_1= \begin{pmatrix}
         1   & 0 & 0
-    \end{pmatrix}\quad  \Psi_1= (e_2-e_1)\,,\; \Psi_2= \frac{1}{\sqrt{2}}\left( e_1-e_2 \right)\,,\; \Psi_3 = i(e_1+e_2)\)
+    \end{pmatrix}\)
+    \[  
+    \Psi_1= (e_2-e_1)\,,\quad \Psi_2= \frac{1}{\sqrt{2}}\left( e_1-e_2 \right)\,,\quad \Psi_3 = i(e_1+e_2)
+    \]
     tra queste tre funzioni d'onda \(\Psi_1 \) e \( \Psi_2 \) rappresentano lo stesso stato.
 \end{example}
 
@@ -296,17 +305,17 @@ In fisica, possiamo usare anche i ket che appartengono a \(S^*(\mathbb{R})\), pe
 \]
 
 Se \(\Psi(x) \in L_2(\mathbb{R}, \dd{x})\), \(\exists \, \Psi_n \in S(\mathbb{R})\) tale che \(\norm{\Psi-\Psi_n}_{L_2}\overset{n \to \infty}{\longrightarrow} 0\); 
-si dimostra che \(\tilde{\Psi}(p)= \braket{p}{\Psi} : = \lim_{n\to \infty}\braket{p}{\Psi_n}\) converfe per quasi \(\forall p \in \mathbb{R}\)
+si dimostra che \(\tilde{\Psi}(p)= \braket{p}{\Psi} : = \lim_{n\to \infty}\braket{p}{\Psi_n}\) converge per quasi \(\forall p \in \mathbb{R}\)
 
 
 \section{Osservabili}
 \begin{definition}
-    Un'\textit{osservabile} \(\mathcal{A}\) è una quantità fisica \textbf{misurabile } con operazioni eseguibili nel sistema quantistico \(S\) .
+    Un'\textit{osservabile} \(\mathcal{A}\) è una quantità fisica \textbf{misurabile} con operazioni eseguibili nel sistema quantistico \(S\) .
 \end{definition}
 Il risultato della misura di un'osservabile deve essere sempre \textbf{reale}.
 
 \begin{definition}
-    Definiamo lo \textit{spettro di } \(\mathcal{A}\): \(\sigma(\mathcal{A})\) come l'insieme dei valori ottenibili da una
+    Definiamo lo \textit{spettro di} \(\mathcal{A} \): \(\sigma(\mathcal{A})\) come l'insieme dei valori ottenibili da una
     misura di \(\mathcal{A}\) al variare di tutti gli stati possibili di \(S\) .
 \end{definition}
 
@@ -316,30 +325,33 @@ Lo spettro \(\sigma(\mathcal{A})\) può essere discreto, continuo o misto.
     Disponendo di \(N >> 1 \) copie del sistema \(S\) nello stesso stato \(\Sigma\), posso effettuare \(N\) misure di \(\mathcal{A}\) 
     ottenendo risultati \(a_1,a_2,\dots, a_N \in \sigma(\mathcal{A})\). Definisco:
     \begin{itemize}
-        \item Il \textit{valor medio } di \(\mathcal{A}\) nello stato \(\Sigma\) come: \[
+        \item Il \textit{valor medio} di \(\mathcal{A}\) nello stato \(\Sigma\) come: 
+        \begin{equation}
             \expval{\mathcal{A}}_\Sigma := \lim_{N\to \infty} \frac{a_1+\dots+a_N}{N}
-        \]
-        \item La \textit{fluttuazione quadratica media} di \(\mathcal{A}\) nello stato \(\Sigma\) attorno a \(\hat{a} \in \mathbb{R}\) come: \[
-            \left( \Delta \mathcal{A} \right)_{\hat{a}, \Sigma}:= \sqrt{\expval{\mathcal{A}- \hat{a}}_\Sigma}= \sqrt{\lim_{N \to \infty} \frac{(a_1-\hat{a})^2+ \dots+ (a_N-\hat{a})^2}{N}} 
-        \] Di solito si considera \(\hat{a}= \expval{\mathcal{A}}_\Sigma\); \(\left( \Delta\mathcal{A} \right)_{\expval{\mathcal{A}, \Sigma}}\) rappresenta l'incertezza della misura di \(\mathcal{A}\) nello stato \(\Sigma\) .
+        \end{equation}
+        \item La \textit{fluttuazione quadratica media} di \(\mathcal{A}\) nello stato \(\Sigma\) attorno a \(\hat{a} \in \mathbb{R}\) come: 
+        \begin{equation}
+            \left( \Delta \mathcal{A} \right)_{\hat{a}, \Sigma}:= \sqrt{\expval{\mathcal{A}- \hat{a}}_\Sigma}= \sqrt{\lim_{N \to \infty} \frac{(a_1-\hat{a})^2+ \dots+ (a_N-\hat{a})^2}{N}}
+        \end{equation} 
+        Di solito si considera \(\hat{a}= \expval{\mathcal{A}}_\Sigma\); \(\left( \Delta\mathcal{A} \right)_{\expval{\mathcal{A}}, \Sigma}\) rappresenta l'incertezza della misura di \(\mathcal{A}\) nello stato \(\Sigma\) .
     \end{itemize}
 \end{definition}
 
-E' importante notare che nel caso discreto: \[
+È importante notare che nel caso discreto: 
+\begin{equation}
     \expval{\mathcal{A}}_\Sigma = \lim_{N\to \infty} \sum_{a \in \sigma(\mathcal{A})} a \frac{m(a)}{N} = \sum_{a \in \sigma(\mathcal{A})} a P_\Sigma(a)
-\]
+\end{equation}
 che si generalizza nel caso di uno spettro misto come:
-\[
+\begin{equation}
     \expval{A}_\Sigma = \sum_{a \in \sigma_d(\mathcal{A})} a P_\Sigma(a) + \int_{a \in \sigma_c(\mathcal{A}) } \dd{a} a \rho_\Sigma(a)
-\]
-
+\end{equation}
 \begin{example}
     In meccanica classica, dato un'osservabile \(f(q_i,p_i)\) per uno stato puro \(\Sigma\): 
     \(\expval{f}= f(q_i, p_i)\) e \(\left( \Delta f \right)_{(q_i,p_i) \expval{f}}=0\) .
 \end{example}
 
 \begin{example}
-    In meccanica quantistica, consideriamo una particella senza spin 1-dim, il suo stato è descritto da una funzione d'onda \(\Psi(x) \in L_2(\mathbb{R}, \dd{x})\).
+    In meccanica quantistica, data una particella senza spin 1-dim, il suo stato è descritto da una funzione d'onda \(\Psi(x) \in L_2(\mathbb{R}, \dd{x})\).
     Vogliamo misurare l'osservabile posizione \(\mathcal{X}\), il cui spettro \(\sigma(\mathcal{X}) = \mathbb{R}\) :
     \[
         \expval{\mathcal{X}}_{\Sigma= [\Psi]} = \int_{\sigma(\mathcal{X})= \mathbb{R}} x\rho_\Sigma(x) \dd{x} = \int_{\mathbb{R}} x \frac{\abs{\Psi(x)}^2}{\norm{\Psi}^2} \dd{x}= 
@@ -368,6 +380,8 @@ che si generalizza nel caso di uno spettro misto come:
 
 
 %4 Lezione del 06/10/2025
+\lezione{4}{06/10/2025}
+
 
 \begin{example}
     \textbf{Operatore momento P}\\
@@ -383,32 +397,40 @@ che si generalizza nel caso di uno spettro misto come:
         (P\Psi)(x)= \matrixel{x}{P}{\Psi}=\int_\mathbb{R} \dd{p} \braket{x}{p} \bra{p}P\ket{\Psi}= 
         \int_\mathbb{R} \dd{p} \frac{1}{\sqrt{2\pi \hbar}} e^{i\frac{p}{\hbar}x}p \tilde{\Psi}(p)= 
     \]
-    \[
+    \begin{equation}
         =\mathcal{F}^{-1}[p\tilde{\Psi}(p)](x)= -i\hbar \dv{x} \Psi(x) \implies P = -i\hbar \dv{x}
-    \]
-    Euivalentemente si dimostra che l'operatore \(X\) in rappresentazione \(p\): \(X = i\hbar \dv{p}\)
+    \end{equation}
+    Equivalentemente si dimostra che l'operatore \(X\) in rappresentazione \(p\): 
+    \begin{equation}
+        X = i\hbar \dv{p}
+    \end{equation}
 \end{example}
 
 
 \subsection[Operatori lineari]{Operatori lineari su \(\mathcal{H}\)}
 
 Data una coppia \((A, D_A)\), dove \(A: D_A \subseteq \mathcal{H}\to \mathcal{H}\) è un operatore lineare e \(D_A\) il suo dominio, 
-vale la linearità: \(A(a\ket{\Psi_1}+ b\ket{\Psi_2})= aA\ket{\Psi_1}+bA\ket{\Psi_2}\) .
+vale la linearità:
+\[
+A(a\ket{\Psi_1}+ b\ket{\Psi_2})= aA\ket{\Psi_1}+bA\ket{\Psi_2}
+\]
 Si dice, inoltre, che è \textit{densamente definito} se \(\overline{D_A}= \mathcal{H}\) .
 
 \begin{example}
     \(\mathcal{H}= L_2(\mathbb{R},\dd{x})\), per l'operatore posizione \((X\Psi)(x)= x\Psi(x)\) 
     non posso prendere come dominio tutto \(\mathcal{H}\), perché anche se \(\Psi(x) \in L_2(\mathbb{R},\dd{x})\) 
-    non è detto che \(x\Psi(x) \in L_2(\mathbb{R}, \dd{x})\). 
+    non è detto che \(x\Psi(x) \in L_2(\mathbb{R}, \dd{x})\). \\
     Ad esempio \(\Psi(x)= \frac{1}{\sqrt{x^2+1}} \in L_2(\mathbb{R},\dd{x})\), ma \(x\Psi(x) \notin  L_2(\mathbb{R}, \dd{x})\) .\\
     Di conseguenza scelgo come dominio \(D_x=  \left\{\Psi(x) \in L_2(\mathbb{R}, \dd{x}) : x \Psi(x) \in L_2(\mathbb{R}, \dd{x})  \right\}\) .
 \end{example}
 
-Un operatore è limitato se \(\exists M >0 \) t.c. \(\norm{A\Psi} \leq M \norm{\Psi}\quad \forall\, \Psi \in D_A\)
-ed è limitato se e solo se è anche continuo, cioè se \(\forall\, \Psi_n \in D_A\to \Psi \in D_A, \ A\Psi_n \to A \Psi\) .
+\begin{definition}
+    Un operatore è \textit{limitato} se \(\exists M >0 \) t.c. \(\norm{A\Psi} \leq M \norm{\Psi}\quad \forall\, \Psi \in D_A\)
+    ed è limitato se e solo se è anche \textit{continuo}, cioè se \(\forall\, \Psi_n \in D_A\to \Psi \in D_A, \ A\Psi_n \to A \Psi\) .
+\end{definition}
 
 Se \(A\) è continuo e densamente definito allora posso estendere il dominio a tutto \(\mathcal{H}\) ed è continuo: \(A : \mathcal{H}\to \mathcal{H}\) . \\
-Un operatore limitato corrispone a uno spettro di un'osservabile limitato.
+Un operatore limitato corrisponde a uno spettro di un osservabile limitato.
 Se \(\operatorname{dim}\mathcal{H} < \infty\), tutti gli operatori sono limitati. 
 
 \begin{definition}
@@ -429,9 +451,13 @@ Se \(\operatorname{dim}\mathcal{H} < \infty\), tutti gli operatori sono limitati
 
 
 \subsection{Rappresentazione matriciale}
-E' possibile e comodo rappresentare gli operatori lineari come matrici:
+È possibile e comodo rappresentare gli operatori lineari come matrici:
 data una base ortonormale \(\left\{ \ket{n}_{n \in \mathbb{N}} \right\}\),
-ogni ket è possibile rappresentarlo come \(\ket{\Psi}= \sum_n \ket{n}\braket{n}{\Psi}= \sum_n c_n \ket{n}\), con l'operatore:
+ogni ket è possibile rappresentarlo come:
+\[
+\ket{\Psi}= \sum_n \ket{n}\braket{n}{\Psi}= \sum_n c_n \ket{n}
+\]
+L'operatore è quindi:
 \[
     A\ket{\Psi}= \sum_n \ket{n} \bra{n}A\ket{\Psi}= \sum_n d_n \ket{n}
 \]
@@ -463,16 +489,16 @@ Similmente, la si può rappresentare come :
 
 \begin{example}
     \textbf{Operatore identità}
-    \[
+    \begin{equation}
         \mathbb{I}= \sum_{n,m} \ket{n}\bra{n} \mathbb{I} \ket{m}\bra{m}= \sum_{n,m} \ket{n}\delta_{nm}\bra{m}= \sum_n \ket{n}\bra{n}
-    \]
+    \end{equation}
 \end{example}
 
 \begin{example}
     \textbf{Operatori aggiunti}
-    \[
+    \begin{equation}
         (A^\dagger)_{nm}= \braket{n}{A^\dagger m}= \overline{\braket{A^\dagger m}{n}}= \overline{\braket{m}{A n}}= A_{mn}^*
-    \]
+    \end{equation}
     L'aggiunto di un operatore euqivale a trasporre la matrice e cogniugare i suoi elementi.
 \end{example}
 
@@ -491,7 +517,7 @@ Similmente, la si può rappresentare come :
 
 \subsection{Proprietà degli operatori per essere osservabili}
 Ricordiamoci le tre caratteristiche che deve avere un operatore \(A\) per rappresentare un'osservabile \(\mathcal{A}\): 
-\textbf{linearità}, \textbf{densamente definito} e \textbf{autoaggiunto}. Vediamole una per una:
+\textit{linearità}, \textit{densamente definito} e \textit{autoaggiunto}. Vediamole una per una:
 
 \subsubsection{Linearità}
 Data dalla necessita che \(\expval{A}_{\Psi}= \frac{\expval{A}{\Psi}}{\norm{\Psi}^2}\) 
@@ -499,7 +525,7 @@ deve essere invariante per trasformazioni \(\Psi\to \alpha \Psi\ (\alpha\neq 0)\
 
 \subsubsection{Densamente definito}
 
-Se abbiamo uno spettro \(\sigma(\mathcal{A})\) illimitato, non possiamo richiedere che \(D_A = \mathcal{H}\)\\
+Se abbiamo uno spettro \(\sigma(\mathcal{A})\) illimitato, non possiamo richiedere che \(D_A = \mathcal{H}\) .\\
 Può essere che il mio stato \(\ket{\Psi} \notin D_A\) e dunque \(\expval{A}_{\Psi}\) e \(\expval{\Delta A}_{\Psi}\) non essere definiti; 
 è perfettamente ammissibile che ogni misura effettuata restituisca un risultato limitato, ma il cui valore medio non converga a nessun numero,
 anche per distribuzioni di probabilità ben definite.\\
@@ -507,14 +533,14 @@ Che un operatore restituisca distribuzioni di probabilità ben definite è l'uni
 
 \subsubsection{Autoaggiuntezza}
 \begin{definition}
-    Un operatore \((A, D_A)\), \(\overline{D_A}= \mathcal{H}\) è \textit{hermitiano} o \textit{simmetrico} sse:
+    Un operatore \((A, D_A)\), \(\overline{D_A}= \mathcal{H}\) è \textit{hermitiano} o \textit{simmetrico} se e solo se:
     \begin{equation}
         \braket{\chi}{A\Psi}   = \braket{A\chi}{\Psi} \quad \forall\, \Psi, \chi \in D_A
     \end{equation}  
     o equivalentemente: \(A^\dagger\chi = A\chi \quad   \forall\,\chi   \in D_A\subseteq D_{A^\dagger}\)
 \end{definition}
 \begin{definition}
-    Un operatore \((A, D_A)\), \(\overline{D_A}= \mathcal{H}\) è \textit{autoaggiunto} sse: \((A, D_A)= (A^\dagger, D_{A^\dagger})\) 
+    Un operatore \((A, D_A)\), \(\overline{D_A}= \mathcal{H}\) è \textit{autoaggiunto} se e solo se: \((A, D_A)= (A^\dagger, D_{A^\dagger})\) 
     o equivalentemente sse è hermitiano e \(D_A= D_{A^\dagger}\)
 \end{definition}
 
@@ -523,7 +549,7 @@ Che un operatore restituisca distribuzioni di probabilità ben definite è l'uni
     Spesso in testi inglesi non si fa distinzione tra i due termini.
 \end{remark}
 \begin{remark}
-    In rappresentazione matriciale un operatore è hermitiano sse \(A_{nm}= A_{mn}^*\) .
+    In rappresentazione matriciale un operatore è hermitiano se e solo se \(A_{nm}= A_{mn}^*\)
 \end{remark}
 
 Perché richiediamo che gli operatori siano hermitiani?
@@ -539,7 +565,10 @@ Perché richiediamo che gli operatori siano hermitiani?
     \]
 \end{proof}
 
-Data un'osservabile \(\mathcal{A}\), consideriamo una funzione di questa osservabile \(f: \sigma(\mathcal{A})\to\mathcal{H}\rightsquigarrow f(\mathcal{A})\) . 
+Data un'osservabile \(\mathcal{A}\), consideriamo una funzione di questa osservabile 
+\[ 
+f: \sigma(\mathcal{A})\to\mathcal{H}\rightsquigarrow f(\mathcal{A})
+\] 
 Nel senso che se misuro \(\mathcal{A}\) ho ottenuto una misura anche di \(f(\mathcal{A})\), ad esempio misurando il momento ottengo una misura indiretta dell'energia cinetica.\\
 Come facciamo a essere certi che questa \(f(\mathcal{A})\) a cui è associata \(f(A)\) sia ben definita?
 \begin{example}\(\mathcal{A} = \mathcal{P}\)
@@ -551,9 +580,9 @@ Come facciamo a essere certi che questa \(f(\mathcal{A})\) a cui è associata \(
 
 \begin{remark}
     Dato uno stato \(\Sigma\to [\Psi]\) e un'osservabile \(\mathcal{A} \to A \):
-    \[
-        (\Delta A )_{\hat{a}, \Sigma} = \sqrt{\expval{(\mathcal{A}-\hat{a})^2}_\Sigma}   = \sqrt{\expval{(A-\hat{a}\mathbb{I})^2}_{\Psi}}
-    \]
+   \begin{equation}
+     (\Delta A )_{\hat{a}, \Sigma} = \sqrt{\expval{(\mathcal{A}-\hat{a})^2}_\Sigma}   = \sqrt{\expval{(A-\hat{a}\mathbb{I})^2}_{\Psi}}
+   \end{equation}
 \end{remark}
 
 \subsection{Spettri discreti}
@@ -561,11 +590,12 @@ Come facciamo a essere certi che questa \(f(\mathcal{A})\) a cui è associata \(
 Vediamo ora come sono collegati gli osservabili agli operatori autoaggiunti,
 ad esempio, le informazioni sullo spettro di un'osservabile devono essere contenute all'interno dell'operatore \(A\).
 \begin{definition}
-    \(\Sigma\) è \textit{autostato} di \(\mathcal{A}\) relativo ad \(\hat{a}\in \mathbb{R}\) sse una misura di \(\mathcal{A}\) nello stato
+    \(\Sigma\) è \textit{autostato} di \(\mathcal{A}\) relativo ad \(\hat{a}\in \mathbb{R}\) se e solo se una misura di \(\mathcal{A}\) nello stato
     \(\Sigma\) da con certezza il valore \(P_\Sigma(\hat{a})=1\) .
 \end{definition}
 
 % 5 Lezione del 08/10/2025
+\lezione{5}{08/10/2025}
 
 \begin{theorem}
     \(\Sigma\) è autostato di \(\mathcal{A}\) relativo ad \(\hat{a} \in \mathbb{R}\)   \(\iff (\Delta \mathcal{A})_{\hat{a},\Sigma}=0\)
@@ -599,7 +629,7 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
 \end{definition}
 
 \begin{theorem}
-    \(\Sigma\) autostato di \(\mathcal{A}\) relativo ad \(\hat{a} \in \mathbb{R}\) sse \(\Psi\) autovettore di \(A\) relativo ad \(\hat{a} \in \mathbb{R}\) .
+    \(\Sigma\) autostato di \(\mathcal{A}\) relativo ad \(\hat{a} \in \mathbb{R}\) se e solo se \(\Psi\) autovettore di \(A\) relativo ad \(\hat{a} \in \mathbb{R}\) .
 \end{theorem}
 \begin{proof}
     \[
@@ -607,7 +637,7 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
         \frac{\braket{(A-\hat{a}\mathbb{I})\Psi}{(A-\hat{a}\mathbb{I})\Psi}}{\norm{\Psi}^2} = \frac{\norm{(A-\hat{a}\mathbb{I})\Psi}^2}{\norm{\Psi}^2}
     \]
     \[
-        (\Delta\mathcal{A})_{\hat{a},\Sigma} = \iff (A-\hat{a}\mathbb{I})\Psi=0 
+        (\Delta\mathcal{A})_{\hat{a},\Sigma} = 0 \iff (A-\hat{a}\mathbb{I})\Psi=0 
     \]    
 \end{proof}
 
@@ -621,13 +651,13 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
 \begin{definition}
     Per \(\forall a \in \sigma_d(A) , \; \exists\) autospazio \(\mathcal{H}_a\subseteq\mathcal{H}\) di autovettori, 
     la cui dimensione \(d(a):= \operatorname{dim}\mathcal{H}_a\) è detta \textit{degenerazione} di \(a \in \sigma_d(A)\) .\\
-    Se \(d(a)=1,\; a \) è detto \textit{non-degenere} e \(\Psi\in \mathcal{H}_a\) è unico a meno riscalamenti. Se \(d(a)>1, \; a\) è detto \textit{degenere}.
+    Se \(d(a)=1,\; a \) è detto \textit{non-degenere} e \(\Psi\in \mathcal{H}_a\) è unico a meno riscalamenti. \\Se \(d(a)>1, \; a\) è detto \textit{degenere}.
 \end{definition}
 
 \begin{theorem}
     Se \(A\) è hermitiano, dati due autovalori \(a_1, a_2 \in \sigma_d(A)\) con \(a_1\neq a_2\) e i rispettivi autovettori 
-    \(\Psi_1 \in \mathcal{H}_{a_1}, \Psi_2 \in \mathcal{H}_{a_2}\), allora \(\braket{\Psi_1}{\Psi_2}=0\).\\
-    Cioè, autovettori relativi ad autovalori diversi sono ortogonali tra loro.
+    \(\Psi_1 \in \mathcal{H}_{a_1}, \Psi_2 \in \mathcal{H}_{a_2}\), allora \(\braket{\Psi_1}{\Psi_2}=0\) , 
+    cioè autovettori relativi ad autovalori diversi sono ortogonali tra loro.
 \end{theorem}
 \begin{proof}
     Poiché \(A\) è hermitiano, vale \(\braket{\Psi_1}{A\Psi_2}= \braket{A\Psi_1}{\Psi_2}\). Essendo 
@@ -657,9 +687,9 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
 \end{theorem}
 
 Possiamo quindi scomporre ogni vettore nella forma:
-\[
-    \ket{\Psi} = \sum_{a \in \sigma_d(A)}  \sum_{r=1}^{d(a)} \ket{a,r}\braket{a,r}{\Psi}= \sum_{a \in \sigma_d(A)}\sum_{r=1}^{d(a)}    C_{a,r} \ket{a,r}    
-\]
+\begin{equation}
+    \ket{\Psi} = \sum_{a \in \sigma_d(A)}  \sum_{r=1}^{d(a)} \ket{a,r}\braket{a,r}{\Psi}= \sum_{a \in \sigma_d(A)}\sum_{r=1}^{d(a)}    C_{a,r} \ket{a,r}
+\end{equation}
 e ottenere:
 \[
     \expval{\mathcal{A}}_{\Sigma}= \sum_{a \in \sigma(\mathcal{A})} a P_{\Sigma}(a) \quad \expval{A}_{\Psi} = \frac{\expval{A}{\Psi}}{\norm{\Psi}^2} =
@@ -670,33 +700,33 @@ e ottenere:
     \sum_{a \in \sigma_d(A)} a \sum_{r=1}^{d(a)} \frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}
     =\sum_{a \in \sigma_d(A)} a \sum_{r=1}^{d(a)} \frac{\abs{C_{a,r}}^2}{\norm{\Psi}^2}
 \]
-\[
+\begin{equation}
     \expval{\mathcal{A}}_\Sigma = \expval{A}_\Psi \ \forall\,\Sigma  \implies P_\Sigma(a)   = \sum_{r=1}^{d(a)} \frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}=
-    \sum_{r=1}^{d(a)} \frac{\abs{C_{a,r}}^2}{\norm{\Psi}^2}
-\]
+        \sum_{r=1}^{d(a)} \frac{\abs{C_{a,r}}^2}{\norm{\Psi}^2}
+\end{equation}
 Nel caso non degenere (\(d(a)=1\))  questa equazione si riconduce alle legge di Born: 
-\[
+\begin{equation}
     P_\Sigma(a)= \frac{\abs{\braket{a}{\Psi}}^2}{\norm{\Psi}^2}
-\]
+\end{equation}
 
 Rispetto a questa base, la rappresentazione matriciale è diagonale:
-\[
-A =
-\begin{pmatrix}
-\begin{matrix}
-    a_1& & \\
-    & \ddots &\\
-    & & a_1
-\end{matrix} &\mathbb{O}\\
-\mathbb{O} & \begin{matrix}
-    a_2& & \\
-    & \ddots &\\
-    & & \ddots
-\end{matrix} 
-\end{pmatrix},
-\qquad
-\matrixel{a',r'}{A}{a,r} = a\,\delta_{a'a}\,\delta_{r'r}.
-\]
+\begin{equation}
+    A =
+    \begin{pmatrix}
+    \begin{matrix}
+        a_1& & \\
+        & \ddots &\\
+        & & a_1
+    \end{matrix} &\mathbb{O}\\
+    \mathbb{O} & \begin{matrix}
+        a_2& & \\
+        & \ddots &\\
+        & & \ddots
+    \end{matrix} 
+    \end{pmatrix},
+    \qquad
+    \matrixel{a',r'}{A}{a,r} = a\,\delta_{a'a}\,\delta_{r'r}.
+\end{equation}
 
 \subsection{Spettri continui}
 
@@ -712,7 +742,7 @@ Cerchiamo gli autovettori dell'operatore posizione \(X\) relativi a un possibile
 \[
     (X-x_0)\Psi(x)= 0 \iff (x-x_0)\Psi(x)= 0 \ \forall x \implies \Psi(x) = 0 \ \forall x \neq x_0
 \]
-Ma \(\Psi= 0\) non è autovettore , quindi nessun \(x_0 \in \mathbb{R}\) è autovalore e nessuna \(\Psi \in D_X\subseteq L_2(\mathbb{R},\dd{x})\) è autofunzione.
+Ma \(\Psi= 0\) non è autovettore, quindi nessun \(x_0 \in \mathbb{R}\) è autovalore e nessuna \(\Psi \in D_X\subseteq L_2(\mathbb{R},\dd{x})\) è autofunzione.
 
 Lo stesso vale per l'operatore momento \(P\):
 \[
@@ -770,7 +800,7 @@ si estende a:
     quale sia il corretto spazio \(S^*\) di distribuzioni.
 \end{attention}
 \begin{definition}
-    \(a \in \mathbb{R}\) è \textit{autovalore generalizzato} di \(A\) sse:
+    \(a \in \mathbb{R}\) è \textit{autovalore generalizzato} di \(A\) se e solo se:
     \[
         \exists\Psi \in S^*(\mathbb{R}^n), \,\Psi\neq 0 : \ (A-a)\Psi= 0
     \]
@@ -815,12 +845,14 @@ Si dimostra che \(\sigma_d(A)= \left\{ \text{ autovalori propri } \right\} \subs
     Dati un'osservabile \(\mathcal{A}\) associata all'operatore autoaggiunto \(A\),
     uno stato \(\Sigma\) associato al raggio vettore \([\Psi]\) e la base ortonormale di autovettori \(\left\{ \ket{a,r} \right\}\):
     \begin{itemize}
-        \item Se \(a \in \sigma_d(A)\) allora \[
+        \item Se \(a \in \sigma_d(A)\) allora 
+        \begin{equation}
             P_\Sigma(a)= \sum_{r=1}^{d(a)}\frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}
-        \]
-        \item Se \(a \in \sigma_c(A)\) allora la probabilità che \(a' \in [a,a + \dd{a}]\) è \(\rho_\Sigma \dd{a}\) con \[
+        \end{equation}
+        \item Se \(a \in \sigma_c(A)\) allora la probabilità che \(a' \in [a,a + \dd{a}]\) è \(\rho_\Sigma \dd{a}\) con 
+        \begin{equation}
             \rho_\Sigma (a) = \sum_{r=1}^{d(a)}\frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}
-        \]
+        \end{equation}
     \end{itemize}
 \end{postulato4}
 
@@ -844,10 +876,10 @@ Dobbiamo considerare l'operatore autoaggiunto \((A, D_A)\) e la base ortonormale
 
 \subsubsection{Operatore momento}
 Studiamo l'operatore momento \(P = -i\hbar \dv{x}\) su \(\mathcal{H} = L_2 ( a, b)\) con \(a,b \in \mathbb{R}\cup \pm \infty\), 
-ci chiediamo come facciamo a sapere dove il dominio per cui l'operatore è autoaggiunto?
+chiediamoci quale sia il dominio per cui l'operatore è autoaggiunto?
 
 \begin{definition}
-    \(f(x)\) è \textit{assolutamente continua} sse è derivabile quasi ovunque e \[
+    \(f(x)\) è \textit{assolutamente continua} se e solo se è derivabile quasi ovunque e \[
         f(x) = f(c)+ \int_{c}^{x}f'(y) \dd{y}
     \]
 \end{definition}
@@ -913,16 +945,17 @@ e quindi \((P,D_P)\) è autoaggiunto.
 % 7 Lezione del 17/10/2025
 
 \subsection{Relazioni di indeterminazione}
+\lezione{7}{17/10/2025}
 
+\begin{definition}
+    \([A,B]= AB-BA \) si chiama \textit{commutatore}, \(\left\{ A, B \right\} = AB+BA \) si dice \textit{anticommutatore}.
+\end{definition}
 \begin{theorem}
     Dati \(A, B\) operatori autoaggiunti, \(\forall \, a,b \in \mathbb{ R}\) e \(\forall\, \Psi\neq 0 \) :
     \begin{equation}
         (\Delta A )_{a,\Psi} (\Delta B )_{b, \Psi}\geq \frac{1}{2}\abs{\expval{[A,B]}_\Psi}
     \end{equation}
 \end{theorem}
-\begin{remark}
-    \([A,B]= AB-BA \) si chiama \textit{commutatore}, \(\left\{ A, B \right\} = AB+BA \) si dice \textit{anticommutatore}.
-\end{remark}
 
 \begin{proof}
     Definiamo per comodità : \(\hat{A} = A- a \mathbb{I}\) e \(\hat{B} = B - b\mathbb{I}\) autoaggiunti.
@@ -1013,7 +1046,10 @@ e quindi \((P,D_P)\) è autoaggiunto.
 
 \begin{definition}
     Consideriamo un sottospazio \(\tilde{\mathcal{H}}\subseteq \mathcal{H}\) per cui possiamo scrivere 
-    \(\mathcal{H} = \tilde{\mathcal{H}} \oplus \tilde{\mathcal{H}}^\perp\) e \(\ket{\Psi} = \ket{\Psi_\parallel} \oplus \ket{\Psi_\perp}\) 
+    \begin{equation}
+        \mathcal{H} = \tilde{\mathcal{H}} \oplus \tilde{\mathcal{H}}^\perp \qquad 
+        \ket{\Psi} = \ket{\Psi_\parallel} \oplus \ket{\Psi_\perp}
+    \end{equation}
     dove \(\ket{\Psi} \in \mathcal{H},\,\ket{\Psi_\parallel} \in\tilde{\mathcal{H}},\, \ket{\Psi_\perp}\in\tilde{\mathcal{H}}^\perp\) si definisce
     \textit{proiettore} su \(\tilde{\mathcal{H}}\):
     \begin{equation}
@@ -1045,18 +1081,18 @@ quindi lo spettro è \(\sigma(\mathcal{P}_{\tilde{\mathcal{H}}})= \{0,1\}\), in 
 \end{remark}
 
 
-Sia \(A\) autoaggiunto e \(a\in \sigma_d(A)\). Indichiamo con \(\mathcal{H}_a\) l'autospazio relativo ad \(a\) e con \(d(a)= \dim \mathcal{H}_a\) la degenerazione. 
+Sia \(A\) autoaggiunto e \(a\in \sigma_d(A)\). Indichiamo con \(\mathcal{H}_a\) l'autospazio relativo ad \(a\) e con \(d(a)= \dim \mathcal{H}_a\) la degenerazione. \\
 Fissata una base ON \(\{\ket{a,r}\}_{r=1}^{d(a)}\) di \(\mathcal{H}_a\), il proiettore su \(\mathcal{H}_a\) è
 \begin{equation}
     \mathcal{P}_a \equiv \mathcal{P}_{\mathcal{H}_a}= \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}.
 \end{equation}
     
 
-Se lo spettro è puramente discreto, \(\sigma(A)= \sigma_d(A)\), ed esiste una base ON di autovettori di \(A\), allora valgono:
-\[
+Se lo spettro è puramente discreto (\(\sigma(A)= \sigma_d(A)\)) ed esiste una base ON di autovettori di \(A\), allora valgono:
+\begin{equation}
     \mathbb{I}= \sum_{a\in \sigma(A)} \mathcal{P}_a\,,\qquad
-    A= \sum_{a\in \sigma(A)} a\,\mathcal{P}_a.
-\]
+        A= \sum_{a\in \sigma(A)} a\,\mathcal{P}_a.
+\end{equation}
 
 Se \(\dim \mathcal{H} < \infty\), per ogni \(a\in \sigma(A)\) il proiettore si può esprimere come:
 \[
@@ -1065,14 +1101,14 @@ Se \(\dim \mathcal{H} < \infty\), per ogni \(a\in \sigma(A)\) il proiettore si p
 
 
 % 8 Lezione del 20/10/2025
+\lezione{8}{20/10/2025}
 
 Il valor medio di questo proiettore è:
-
-\begin{align*}
+\begin{align}
     \expval{\mathcal{P}_a}_\Psi &= \frac{\expval{\mathcal{P}_a}{\Psi}}{\norm{\Psi}^2}= \sum_r^{d(a)} \frac{\braket{\Psi}{a,r}\braket{a,r}{\Psi}}{\norm{\Psi}^2} =
     \sum_r  \frac{\abs{\braket{a,r}{\Psi}}^2}{\norm{\Psi}^2}= P_\Psi(a)\\
     &= \frac{\expval{\mathcal{P}^2_a}{\Psi}}{\norm{\Psi}^2}= \frac {\norm{\mathcal{P}_a\ket{\Psi}}^2}{\norm{\Psi}^2}
-\end{align*}
+\end{align}
 
 Consideriamo ora il caso in cui lo spettro di \(A\) sia misto:
 \[
@@ -1083,21 +1119,18 @@ Sia \( S \subseteq \sigma(A) \), definiamo allora la base ortonormale:
 \left\{ \ket{a,r} \right\}_{a \in S,\, r=1,\dots,d(a)} \cup 
 \left\{ \ket{a,r} \right\}_{a \in \overline{S},\, r=1,\dots,d(a)} ,
 \]
-tale che 
-\[
-\mathcal{H} = \mathcal{H}_S \oplus \mathcal{H}_S^{\perp}.
-\]
+tale che \(\mathcal{H} = \mathcal{H}_S \oplus \mathcal{H}_S^{\perp}\) .
 
 Possiamo allora definire il \textit{proiettore spettrale} su \(S\):
 \begin{equation}
     P_S = \sum_{a \in \sigma_d(A) \cap S} \sum_{r=1}^{d(a)} \dyad{a,r}{a,r} 
-    + \int_{\sigma_c(A) \cap S} \dd{a} \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}.
+    + \int_{\sigma_c(A) \cap S} \dd{a} \sum_{r=1}^{d(a)} \dyad{a,r}{a,r}
 \end{equation}
 
 Il suo valor medio nello stato \(\ket{\Psi}\) è
 \[
     \expval{P_S}_\Psi = \frac{\expval{P_S}{\Psi}}{\norm{\Psi}^2}
-    = \text{Probabilità che una misura di } A \text{ dia un valore } a \in S.
+    = \text{Probabilità che una misura di } A \text{ dia un valore } a \in S\,.
 \]
 
 \begin{remark}
@@ -1152,7 +1185,7 @@ Dunque con una misura di prima specie, lo stato iniziale tende all'autostato cor
 \subsection{Osservabili compatibili}  
 Ci chiediamo ora cosa succede se misuriamo un altro osservabile subito dopo aver effettuato una misura.
 
-Più precisamente, consideriamo gli osservabili \(\mathcal{A}, \mathcal{B}\) di spettro discreto e lo stato \(\ket{\Psi}\).
+Più precisamente, consideriamo gli osservabili \(\mathcal{A}, \mathcal{B}\) di spettro discreto e lo stato \(\ket{\Psi}\).\\
 Al tempo \(t\) misuro \(\mathcal{A}\) e ottengo \(a \in \sigma_d(\mathcal{A})\), al tempo \(t+\epsilon\) avrò lo stato \(\mathcal{P}_a\ket{\Psi}\) e misuro \(\mathcal{B}\) ottenendo \(b \in \sigma_d(\mathcal{B})\),
 avrò quindi lo stato \(\mathcal{P}_b\mathcal{P}_a\ket{\Psi}\) al tempo \(t+2\epsilon\) e infine misuro nuovamente \(\mathcal{A}\) .
 
@@ -1203,12 +1236,13 @@ avrò quindi lo stato \(\mathcal{P}_b\mathcal{P}_a\ket{\Psi}\) al tempo \(t+2\ep
 
 
 % 9 Lezione del 21/10/2025
+\lezione{9}{21/10/2025}
 
 \begin{remark}
     Per \(f(A) = \sum_a f(a)\, P_a\) e \( g(B) = \sum_b g(b)\, P_b \) vale:
-    \[
+    \begin{equation}
         [A,B]=0 \iff [P_a,P_b]=0\; \forall a,b \iff [f(A),g(B)]=0 \, .
-    \]
+    \end{equation}
     L'osservazione si estende a operatori illimitati e a spettri continui.
 \end{remark}
 \begin{definition}
@@ -1217,24 +1251,24 @@ avrò quindi lo stato \(\mathcal{P}_b\mathcal{P}_a\ket{\Psi}\) al tempo \(t+2\ep
 \end{definition}
 Sia \(\vec{A} = (A_1, A_2, \dots, A_n)\) tale che \([A_i, A_j] = 0 \quad \forall i,j\).  
 Allora esiste una base ortonormale di autovettori simultanei:
-\[
+\begin{equation}
     \big\{ \ket{a_1, a_2, \dots, a_n; r} \big\}_{\substack{a_i \in \sigma(A_i)\\ r=1,\dots,d(\vec{a})}}
-\]
+\end{equation}
 dove \(\vec{a} = (a_1, a_2, \dots, a_n)\) e la degenerazione è data da
-\[
+\begin{equation}
     d(\vec{a}) = \dim\!\left( \bigcap_{i=1}^{n} \mathcal{H}_{a_i} \right)
-\]
-\[
+\end{equation}
+\begin{equation}
     \sigma(\vec{A}) = \left\{ \vec{a}\ \big|\ d(\vec{a}) \geq 1 \right\}.
-\]
+\end{equation}
 
 \begin{definition}
     \label{def: icoc}
     \(\vec{A} = (A_1, \dots, A_n)\) è \textit{insieme completo di osservabili compatibili (I.C.O.C.)} se e solo se:
-    \[
+    \begin{equation}
         [A_i, A_j] = 0 \quad \forall\, i,j \qquad \text{e} \qquad 
-        \forall\, \vec{a} \in \sigma(\vec{A}) \ \ d(\vec{a}) = 1
-    \]
+            \forall\, \vec{a} \in \sigma(\vec{A}) \ \ d(\vec{a}) = 1
+    \end{equation}
 \end{definition}
 Dunque, se ho un I.C.O.C. posso misurare in successione rapida 
 tutte le osservabili dell’insieme e conoscere con certezza lo stato allora assunto dal sistema.
@@ -1259,7 +1293,6 @@ tutte le osservabili dell’insieme e conoscere con certezza lo stato allora ass
     \[
         \Rightarrow P_1, P_2, P_3 \qquad (P_s \Psi)(\vec{x}) = -i\hbar \pdv{\Psi(\vec{x})}{x_s}
     \]
-
     \[
         [X_s, X_t]=[P_s, P_t]=0 \quad \text{ma} \quad [X_i, P_s] = i\hbar\,\delta_{is}
     \]
@@ -1314,7 +1347,7 @@ ovvero:
 
 
 \section{Evoluzione temporale}
-Consideriamo ora l'evoluzioni causale, non consideriamo i processi di misura.
+Consideriamo ora l'evoluzione temporale di tipo causale, escludendo la trattazione dei processi di misura.
 
 \begin{postulato7}
     Esiste operatore autoaggiunto \(H(t)\), \(\overline{D(H)}= \mathcal{H}\) tale che \(\forall\, \ket{\Psi(t)}\in D(H)\) vale:
@@ -1323,6 +1356,10 @@ Consideriamo ora l'evoluzioni causale, non consideriamo i processi di misura.
     \end{equation}
     detta \textit{equazione di Schrödinger}.
 \end{postulato7}
+
+\begin{definition}
+    Tale operatore \(H(t )\) è detto \textit{operatore hamiltoniano}.
+\end{definition}
 
 Valgono le seguenti proprietà:
 \begin{itemize}
@@ -1374,6 +1411,7 @@ Valgono le seguenti proprietà:
 
 
 % 10 Lezione del 23/10/2025
+\lezione{10}{23/10/2025}
 
 \subsection{Operatori unitari}
 
@@ -1388,8 +1426,8 @@ Valgono le seguenti proprietà:
 \end{remark}
 
 \begin{definition}
-    Un operatore \((U, D_U)\) si dice \textit{unitario} se è isometrico, \(D_U = \mathcal{H}\)e \(U(\mathcal{H})= \mathcal{H}\).
-    Equivalentemente, questo vale sse:
+    Un operatore \((U, D_U)\) si dice \textit{unitario} se è isometrico, \(D_U = \mathcal{H}\) e \(U(\mathcal{H})= \mathcal{H}\).
+    Equivalentemente, questo vale se e solo se:
     \begin{equation}
         U^\dagger U = \mathbb{I} = UU^\dagger \iff U^\dagger = U^{-1}
     \end{equation}
@@ -1405,9 +1443,10 @@ Valgono le seguenti proprietà:
 \end{remark}
 
 E' possibile quindi definire l'evoluzione temporale come un operatore
-\[
+\begin{equation}
     \ket{\Psi(t_0)}\mapsto \ket{\Psi(t)}= U(t, t_0)\ket{\Psi(t_0)}
-\] che ha le seguenti proprietà:
+\end{equation}
+con le seguenti proprietà:
 \begin{itemize}
     \item Eq. di Schrödinger \(\implies U(t, t_0)\) lineare.
     \item \(\norm{\Psi(t_0)}= \norm{\Psi(t)} \ \forall\,t \implies U(t,t_0)\) è isometrico.
@@ -1464,15 +1503,13 @@ detta equazione di Schrödinger stazionaria.
 \qquad
 \text{con} \quad C_{E,r}(t_0) = \braket{E,r}{\Psi(t_0)}
 \]
-\[
-\ket{\Psi(t)} = e^{-\frac{i}{\hbar}H(t-t_0)}\ket{\Psi(t_0)}
-\]
-\[
-= \int_{\sigma(H)} \sum_r e^{-\frac{i}{\hbar}E(t-t_0)}\ket{E,r}\braket{E,r}{\Psi(t_0)}\,\dd{E}
-\]
-\[
-\implies \quad C_{E,r}(t) = e^{-\frac{i}{\hbar}E(t-t_0)}\,C_{E,r}(t_0)
-\]
+\begin{equation}
+    \ket{\Psi(t)} = e^{-\frac{i}{\hbar}H(t-t_0)}\ket{\Psi(t_0)}
+    = \int_{\sigma(H)} \sum_r e^{-\frac{i}{\hbar}E(t-t_0)}\ket{E,r}\braket{E,r}{\Psi(t_0)}\,\dd{E}
+\end{equation}
+\begin{equation}
+    \implies \quad C_{E,r}(t) = e^{-\frac{i}{\hbar}E(t-t_0)}\,C_{E,r}(t_0)
+\end{equation}
 
 \begin{definition}
     Gli stati \(\ket{\Psi_E}\equiv\ket{E}\), tali che \(H\ket{\Psi_e}= E\Psi_E\), si dicono \textit{stati stazionari}.\\
@@ -1491,13 +1528,13 @@ detta equazione di Schrödinger stazionaria.
 
 \begin{definition}
     Una \textit{trasformazione di simmetria} è una trasformazione:
-    \[
+    \begin{equation}
         [\Psi] \mapsto [\Psi']  \,;\quad A \text{ a.a. } \mapsto A' \text{ a.a. }
-    \]
+    \end{equation}
     tale che \(\expval{A'}_{\Psi'}= \expval{A}_{\Psi}\) e preservi le relazioni algebriche:
-    \[
+    \begin{equation}
         \alpha A +\beta B \mapsto \alpha A' + \beta B'  \,; \quad AB \mapsto A'B'
-    \]
+    \end{equation}
 \end{definition}
 Dunque vale anche \(\sigma(A) = \sigma(A')\) e:
 \[
@@ -1524,14 +1561,14 @@ Una trasformazione
 A \;\longmapsto\; A'
 \]
 è di simmetria se e solo se
-\[
-\ket{\Psi'} = U\ket{\Psi},
-\qquad
-A' = U A U^{\dagger},
-\]
+\begin{equation}
+    \ket{\Psi'} = U\ket{\Psi},
+    \qquad
+    A' = U A U^{\dagger},
+\end{equation}
 dove \( U \) è un operatore unitario o antiunitario.
 \end{theorem}
-
+\begin{proof}
 \[
 \expval{A'}_{\Psi'} 
 = \frac{1}{\norm{\Psi'}^2} 
@@ -1540,22 +1577,24 @@ dove \( U \) è un operatore unitario o antiunitario.
 \mel{U\Psi}{U A U^{\dagger}}{U\Psi}
 = \frac{1}{\norm{\Psi}^2} \mel{\Psi}{A}{\Psi}
 = \expval{A}_{\Psi}.
-\]
+\]  
+\end{proof}
 
 \begin{definition}
     Un operatore \((V, D_V)\) è \textit{antiunitario} se \(V(\mathcal{H})=\mathcal{H}\), \(\overline{D_V}=\mathcal{H}\), \(\norm{V\Psi}= \norm{\Psi}\) e è antilineare, cioè:
-    \[
+    \begin{equation}
         V(\alpha \Psi_1 + \beta \Psi_2) = \alpha^* V(\Psi_1)+ \beta^* V(\Psi_2)  \iff \braket{V\Psi}{V\chi} = \overline{\braket{\Psi}{\chi}}
-    \]
+    \end{equation}
 \end{definition}
 
 % 11 Lezione del 24/10/2025
+\lezione{11}{24/10/2025}
 
 \subsection{Visuali}
 \paragraph{Visuale di Schrödinger}Finora abbiamo sempre considerato la visione di Schrödinger del sistema, in cui lo stato evolve secondo:
-\[
+\begin{equation}
     \ket{\Psi_s(t)} = U(t, t_0) \ket{\Psi_s(t_0)} \qquad i\hbar \dv{t}U(t, t_0)= H _s(t) U (t, t_0)
-\]
+\end{equation}
 e le osservabili non dipendenti esplicitamente dal tempo si conservano \(A_s(t)= A_s(t_0)\) .
 
 \paragraph{Visuale di Heisenberg} Nell'istante \(t_0\) le visuali coincidono:
@@ -1563,14 +1602,14 @@ e le osservabili non dipendenti esplicitamente dal tempo si conservano \(A_s(t)=
     \ket{\Psi_h(t_0)} = \ket{\Psi_s(t_0)}   \qquad A_h(t_0)  = A_s(t_0)
 \]
 mentre al tempo \(t\) vogliamo che \(\ket{\Psi_h(t)}  = \ket{\Psi_h(t_0)}\) non cambi nel tempo, per cui deve essere:
-\[
-    \ket{\Psi_h(t)}  = \ket{\Psi_s(t_0)} = U^\dagger \ket{\Psi_s(t)} 
-\]
+\begin{equation}
+    \ket{\Psi_h(t)}  = \ket{\Psi_s(t_0)} = U^\dagger \ket{\Psi_s(t)}
+\end{equation}
 
-Per essere equivalenti le due visioni, deve valere il teorema di Wigner e quindi abbiamo:
-\[
-    A_h(t)= U(t,t_0)^\dagger A_s U (t, t_0) 
-\]
+Per essere equivalenti le due visioni, deve valere il teorema di Wigner (\ref{theo: Wigner}) e quindi abbiamo:
+\begin{equation}
+    A_h(t)= U(t,t_0)^\dagger A_s U (t, t_0)
+\end{equation}
 
 Nella visuale di Schrödinger gli stati variano nel tempo e gli operatori sono costanti, nella visuale di Heisenberg gli stati sono costanti e contengono già tutta l'informazione ma è la misura che cambia nel tempo.
 L'unica cosa che noi possiamo osservare fisicamente sono i valori medi delle misure:
@@ -1583,7 +1622,7 @@ Vediamo ora come evolve un operatore esplictamente dipende dal tempo \(A_s(t)\) 
     i\hbar \dv{t} A_h(t)= i\hbar \dv{t} \left(U(t,t_0)^\dagger A_s(t)U(t,t_0)\right) =
 \]
 \[
-    = \left(i\hbar\dv{ U^\dagger }{t}\right) A_s U + U^\dagger A_s \left(i\hbar\dv{U}{t}\right) + i\hbar U^\dagger \left( \dv{A_s}{t} \right)U =
+    = \left(i\hbar\dv{ U^\dagger }{t}\right) A_s U + U^\dagger A_s \left(i\hbar\dv{U}{t}\right) + i\hbar U^\dagger \left( \dv{A_s}{t} \right)U 
 \]
 Usando la legge per l'operatore evoluzione temporale e la sua coniugata:
 \[
@@ -1606,15 +1645,15 @@ Otteniamo così l'\textit{equazione di Heisenberg}:
 \end{equation}
 
 Questo vale in generale per sistemi anche non conservativi. Nel caso specifico di sistemi conservativi \(H_s(t)= H_s(t_0)\) vale:
-\[
+\begin{equation}
     U(t,t_0)= e^{-\frac{i}{\hbar } H_S (t-t_0)} \implies H_h(t)= e^{\frac{i}{\hbar }H_s(t-t_0)}H_s e^{-\frac{i}{\hbar} H_s(t-t_0)} = H_s
-\]
+\end{equation}
 Come abbiamo già visto, nella visuale di Schrödinger i valori medi delle osservabili sono costanti per stati stazionari.
 Nella visuale di Heisenberg, i valori medi sono costanti se gli operatori commutano con l'hamiltoniano.
-\[
+\begin{equation}
     \dv{t}\expval{A}_\Psi = \dv{t} \frac{\expval{A_h(t)}{\Psi_h}}{\norm{\Psi_h}^2}= \frac{\expval{\dv{t} A_h(t)}{\Psi_h}}{\norm{\Psi_h}^2} = 0 
-    \iff \left[ A,H \right] =0
-\]
+        \iff \left[ A,H \right] =0
+\end{equation}
 
 
 \subsection{Limite classico dei sistemi quantistici}
@@ -1683,9 +1722,9 @@ Sappiamo che vale:
     (\Delta X_i )_{\Psi} (\Delta P_i )_\Psi \geq \frac{\hbar}{2}
 \]
 per \(i = 1,2,3\) le 3 dimensioni spaziali. Per invarianza di Lorentz ci aspetteremo qualcosa come:
-\[
+\begin{equation}
     (\Delta t)_{\Psi}(\Delta E)_\Psi \geq \frac{\hbar}{2}
-\]
+\end{equation}
 ma finora abbiamo visto soltanto una teoria non relativistica, \(t\) è un semplice parametro. Cosa significa inoltre l'indeterminazione del tempo?
 
 Consideriamo inanziatutto un operatore a.a. \(A\) e l'operatore hamiltoniano \(H\), senza nessuna dipendenza esplicita dal tempo e otteniamo:
@@ -1699,36 +1738,38 @@ Consideriamo inanziatutto un operatore a.a. \(A\) e l'operatore hamiltoniano \(H
     \frac{ (\Delta A)_{\Psi} }{\abs{\dv{t}\expval{A_h}}}(\Delta E)_\Psi  \geq \frac{\hbar}{2} \qquad    \forall \, A \ a.a.
 \]
 Definiamo quindi:
-\[
+\begin{equation}
     (\Delta t)_{\Psi} =  \inf_{A} \frac{ (\Delta A)_{\Psi} }{\abs{\dv{t}\expval{A_h}}}
-\]
+\end{equation}
 come il tempo necessario affinché un qualche osservabile \(A\) vari in maniera significativa.
 
 
 % 12 Lezione del 27/10/2025
 
 \section{Stati misti}
+\lezione{12}{27/10/2025}
 
-Occupiamoci ora di stati, di cui non disponiamo tutta l'informazione, ma solo la probabilità che sia in certo stato.
+Passiamo ora all'analisi degli stati caratterizzati da un'informazione incompleta, definiti dalla sola distribuzione di probabilità su un insieme di stati puri.
+
 \begin{definition}
     Definiamo \textit{stato misto} \(\varepsilon = \left\{ \ket{\Psi_k}, p_k \right\}\) un insieme di stati puri normalizzati \(\ket{\Psi_k}\ : \norm{\Psi_k} = 1\) con le rispettive probabilità \(p_k \geq 0 \ \sum_k p_k = 1\).
 \end{definition}
 
 La misura di un'osservabile su uno stato misto restituisce:
-\[
+\begin{equation}
     \expval{A}_\varepsilon = \sum_k p_k \expval{A}_{\Psi_k}
-\]
+\end{equation}
 
-Per trattare gli stati misti è comodo associare a un certo oggeto matematico chiamato \textit{operatore densità} o \textit{matrice densità} \(\rho\).
+Per trattare gli stati misti è comodo associarli a un certo oggeto matematico chiamato \textit{operatore densità} o \textit{matrice densità} \(\rho\).
 Trattiamo inizialmente l'operatore densità per stati puri \(\ket{\Psi}\), in questo caso è defito come:
-\[
+\begin{equation}
     \rho = \frac{\ket{\Psi}\bra{\Psi}}{\norm{\Psi}^2}
-\]
+\end{equation}
 ed è equivalente al proiettore su \(\ket{\Psi}\).\\ Consideriamo per comodità \(\norm{\Psi}= 1\) e otteniamo la forma matriciale \(p_{mn} = \braket{m}{\Psi}\braket{\Psi}{n}\). 
 Il valore medio degli osservabili si può ottenere:
-\[
+\begin{equation}
     \expval{A}_\Psi = \bra{\Psi}A\ket{\Psi}= \sum_{n,m} \braket{\Psi}{n}\bra{n}A\ket{m}\braket{m}{\Psi} = \sum_{n,m} \rho_{mn}A_{nm} = \Tr(\rho A)
-\]
+\end{equation}
 La traccia non dipende dalla base scelta, inoltre vale: \(\Tr(\alpha A + \beta B )= \alpha \Tr(A) \beta \Tr(B )\) e \(\Tr(ABC)= \Tr(CAB)\).
 
 \paragraph{Proprietà di \(\rho\)}
@@ -1740,7 +1781,7 @@ La traccia non dipende dalla base scelta, inoltre vale: \(\Tr(\alpha A + \beta B
 \end{itemize}
 
 \begin{definition}
-    Un operatore \(\rho : \mathcal{H}\to \mathcal{H}\) è \textit{operatore densità} sse:
+    Un operatore \(\rho : \mathcal{H}\to \mathcal{H}\) è \textit{operatore densità} se e solo se:
     \begin{equation}
         \rho^\dagger = \rho \qquad \Tr \rho = 1 \qquad \rho \geq 0
     \end{equation}
@@ -1756,9 +1797,9 @@ La traccia non dipende dalla base scelta, inoltre vale: \(\Tr(\alpha A + \beta B
 
 Per gli stati misti \( \varepsilon = \left\{ \ket{\Psi_k}, p_k \right\}\) con \(p_k \geq0  \ \sum_k p_k= 1 \ \norm{\Psi_k}= 1\) abbiamo un operatore densità \(\rho_k = \ket{\Psi_k}\bra{\Psi_k}\) per ogni stato puro.
 Il valore medio di un operatore \(A\) si calcola come:
-\[
+\begin{equation}
     \expval{A}_\varepsilon = \sum_k p_k \expval{A}_{\Psi_k} = \sum_k  p_k \Tr(\rho_k A)= \Tr[(\sum_k p_k\rho_k)A] = \Tr(\rho A)
-\]
+\end{equation}
 Dove abbiamo definito l'operatore densità per uno stato misto come:
 \begin{equation}
     \rho : = \sum_k  p_k\ket{\Psi_k}\bra{\Psi_k}    
@@ -1783,7 +1824,7 @@ Valgono ancora \(\rho^\dagger = \rho\), \(\rho\) semidefinito positivo e \(\Tr \
 
 \begin{remark}
     Mix statistici diversi \( \varepsilon = \left\{ \ket{\Psi_k}, p_k  \right\}\) e \( \varepsilon' = \left\{ \ket{\Psi'_k}, p'_k  \right\}\) possono avere stesso \(\rho\) .
-    I due diversi mix sono indistinguibili perché restiruiscono gli stessi valori medi.
+    I due diversi mix sono indistinguibili perché restituiscono gli stessi valori medi.
 \end{remark}
 Uno stato quantistico puro o misto è descritto interamente dal suo operatore densità.
 
@@ -1872,6 +1913,7 @@ Nella visione di Heisenberg l'operatore densità non varia nel tempo \(\rho_h(t)
 
 
 \section{Applicazioni}
+\lezione{13}{28/10/2025}
 
 \subsection{Oscillatore Armonico 1D} 
 In meccanica classica l'oscillatore armonico è descritto dall'hamiltoniana:
@@ -1886,31 +1928,31 @@ Classicamente ha soluzione:
 Il caso dell'oscillatore armonico ha particolare rilevanza, perché molti sistemi fisici sono riconducibili a esso.
 
 In meccanica quanstistica vogliamo risolvere l'equazione \(H\ket{\Psi} = E\ket{\Psi}\) cioè trovare gli autovalori dell'operatore hamiltoniano:
-\[
-    H = \frac{P^2}{2m} + \frac{1}{2} m \omega^2 X^2 
-\]
+\begin{equation}
+    H = \frac{P^2}{2m} + \frac{1}{2} m \omega^2 X^2
+\end{equation}
 Effettuiamo le seguenti sostituzioni per avere operatori adimensionali:
-\[
+\begin{equation}
     \hat{X} = \sqrt{\frac{m\omega}{\hbar}}X \quad \hat{P} = \frac{1}{\sqrt{m\omega \hbar}}P  \
-    \implies  \ H = \frac{\hbar \omega}{2} ( \hat{P}^2 + \hat{X}^2)
-\]
+        \implies  \ H = \frac{\hbar \omega}{2} ( \hat{P}^2 + \hat{X}^2)
+\end{equation}
 per cui vale \(\left[ \hat{X}, \hat{P} \right]= i\).\\
 Definiamo inoltre l'operatore di distruzione o abbassamento:
-\[
+\begin{equation}
     a = \frac{\hat{X}+ i\hat{P}}{\sqrt{2}}
-\]
+\end{equation}
 e l'operatore di creazione o innalzamento:
-\[
+\begin{equation}
     a^\dagger = \frac{\hat{X}-i \hat{P}}{\sqrt{2}}
-\]
+\end{equation}
 Il loro commutatore vale:
-\[
+\begin{equation}
     \left[ a,a^\dagger \right] = \frac{1}{2}\left( i\left[ \hat{P},\hat{X} \right]-i\left[ \hat{X}, \hat{P} \right]\right)    = 1
-\]
+\end{equation}
 \(a\) e \(a^\dagger\) non sono hermitiani ma \(N : = a ^+a\) lo è:
-\[
+\begin{equation}
     N = a^\dagger a = \frac{1}{2}\left( \hat{X}^2+\hat{P}^2 + i \hat{X}\hat{P} - i\hat{P}\hat{X}\right) = \frac{1}{2}\left( \hat{X}^2 + \hat{P}^2-1\right)
-\]
+\end{equation}
 Dunque per trovare gli autovalori di:
 \[
     H = \hbar\omega\left(N + \frac{1}{2}\right)
@@ -1931,9 +1973,9 @@ Inoltre \(a\ket{\Psi}= 0 \iff N\ket{\Psi}= 0\), dato che:
 
 Chiamando ora \(N\ket{\nu}= \nu \ket{\nu}\) dove \(\nu, \,\ket{\nu}\) sono autovalori e autovettori di \(N\). 
 Per un \(\nu \neq 0 \) consideriamo \(a\ket{\nu}\):
-\[
+\begin{equation}
     Na\ket{\nu}= a a^\dagger a \ket{\nu}- a\ket{\nu} = (\nu-1)a\ket{\nu}
-\]
+\end{equation}
 Se ripeto il procedimento arriverò a un certo \(a^k\ket{\nu}\) il cui autovalore sarà \((\nu-k)=0\).
 Se \(\nu \notin \mathbb{Z}, \ v-k \neq 0 \ \forall \,k \in \mathbb{N}\), ma per \(k\) suff. grande arriverò a un certo \(\nu-k\leq0\) che è assurdo,
 quindi otteniamo che \(\sigma(N)\subseteq \mathbb{Z}_{\geq0}\).\\
@@ -1966,9 +2008,9 @@ Da qui, con l'operatore di innzalzamento \(a^\dagger\) possiamo ottenere tutti g
 \[
     \ket{1} = a^\dagger \ket{0}  \implies U_1(\hat{x})= \frac{1}{\sqrt{2}}\left( \hat{x}- \dv{\hat{x}} \right) U_0(\hat{x})
 \]
-\[
+\begin{equation}
     \ket{n} = \frac{a^\dagger\ket{n-1}}{\sqrt{n}} = \dots = \frac{(a^\dagger)^n}{\sqrt{n!}}\ket{0}  \implies U_n(x) = c_n H_n\left(\sqrt{\frac{m\omega}{\hbar}x}\right)e^{-\frac{m \omega}{\hbar}\frac{x^2}{2}}
-\]
+\end{equation}
 
 Dove \(H_n(\dots)\) è il \textit{polinomio di Hermite} di grado \(n\).\\
 L'insieme degli autovettori \(\left\{ U_n(x) \right\}\) forma una base di \(L_2(\mathbb{R})\), detta di Hermite.
@@ -1991,36 +2033,36 @@ L'evoluzione temporale degli stati diventa immediata se si considera la scomposi
 \]
 
 I valori medi di posizione e momento per un generico autovettore \(U_n(x)\) valgono:
-\[
+\begin{equation}
     \expval{X}_{U_n} 
-    = \sqrt{\frac{\hbar}{m\omega}} \expval{\hat{X}}_{U_n} 
-    = \sqrt{\frac{\hbar}{2m\omega}} \mel{n}{(a + a^\dagger)}{n} = 0
-\]
+        = \sqrt{\frac{\hbar}{m\omega}} \expval{\hat{X}}_{U_n} 
+        = \sqrt{\frac{\hbar}{2m\omega}} \mel{n}{(a + a^\dagger)}{n} = 0
+\end{equation}
 
-\[
+\begin{equation}
     \expval{P}_{U_n} = 0
-\]
+\end{equation}
 
-\[
+\begin{equation}
     \expval{X^2}_{U_n} 
-    = \frac{\hbar}{2m\omega} \mel{n}{(a + a^\dagger)^2}{n}
-    = \frac{\hbar}{2m\omega} \mel{n}{(a^2 + a a^\dagger + a^\dagger a + (a^\dagger)^2)}{n}
-    = \frac{\hbar}{m\omega} \left( \frac{2n + 1}{2} \right)
-\]
+        = \frac{\hbar}{2m\omega} \mel{n}{(a + a^\dagger)^2}{n}
+        = \frac{\hbar}{2m\omega} \mel{n}{(a^2 + a a^\dagger + a^\dagger a + (a^\dagger)^2)}{n}
+        = \frac{\hbar}{m\omega} \left( \frac{2n + 1}{2} \right)
+\end{equation}
 
-\[
+\begin{equation}
     \expval{P^2}_{U_n} = \hbar m \omega \left( n + \frac{1}{2} \right)
-    \qquad
-    \expval{\frac{P^2}{2m}}_{U_n} 
-    = \frac{\hbar \omega}{2} \left( n + \frac{1}{2} \right)
-    = \frac{E_n}{2}
-\]    
+        \qquad
+        \expval{\frac{P^2}{2m}}_{U_n} 
+        = \frac{\hbar \omega}{2} \left( n + \frac{1}{2} \right)
+        = \frac{E_n}{2}    
+\end{equation}
 
 In visuale di Heisenberg, vale il teorema di Ehrenfest \ref{theo: Ehrenfest}:
-\[
+\begin{equation}
     \dv{t}\expval{X}_{\Psi}(t) = \frac{\expval{P}_{\Psi}}{m}\qquad 
-    \dv{t}\expval{P}_{\Psi}(t)= - \expval{V'(X)}_{\Psi}= - m\omega\expval{X}_{\Psi}(t)
-\]
+        \dv{t}\expval{P}_{\Psi}(t)= - \expval{V'(X)}_{\Psi}= - m\omega\expval{X}_{\Psi}(t)
+\end{equation}
 
 
 \subsection{Potenziali 1D}
@@ -2038,10 +2080,11 @@ Di solito, se \(\Psi \in D_{p^2}\), allora \(\Psi \in D_H\) .
     e \(g_2 \in L_2(\mathbb{R}^2)\) allora \(D_H = D_{\vec{P}^2}\)
 \end{theorem}
 \begin{example}
-    \(V(\vec{x})= \frac{k}{\abs{\vec{x}}} in L_2(\mathbb{R}^3)\) atomo di idrogeno. 
+    \(V(\vec{x})= \frac{k}{\abs{\vec{x}}} \in L_2(\mathbb{R}^3)\) atomo di idrogeno. 
 \end{example}
 
 % 14 Lezione del 30/10/2025
+\lezione{14}{30/10/2025}
 
 Sia \( D_H \subseteq L_2(\mathbb{R}) \) sufficientemente regolare, e siano \(\Psi, \Psi', \Psi'' \in L_2(\mathbb{R})\).  
 Allora \(H\Psi \in L_2(\mathbb{R})\) se \(V(x)\) è regolare.
