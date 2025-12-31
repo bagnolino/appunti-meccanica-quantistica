@@ -2,14 +2,14 @@
 
 Riprendiamo la discussione sulle simmetrie introdotta nella sezione \ref{sec: sim_intro}. 
 Espandiamo il concetto di simmetria da un semplice cambio di visuale a vere e proprie trasformazioni di stati e osservabili, che mantengano sempre invariati i valori medi:
-\[
+\begin{equation}
     \Sigma\to \Sigma' \qquad \mathcal{A}\to \mathcal{A}' \qquad  \text{ t.c. } \expval{\mathcal{A}}_\Sigma  = \expval{\mathcal{A}'}_\Sigma
-\]
+\end{equation}
 
-Dal teorema di Wigner \ref{theo: Wigner} sappiamo che queste trasformazioni \(\tau\) sono indotte da operatori unitari o antiunitari \(U\), ma non garantisce l'unicità dell'operatore per simmetria.
+Dal teorema di Wigner \ref{theo: Wigner} sappiamo che queste trasformazioni \(\tau\) sono indotte da operatori unitari o antiunitari \(U\), ma il teorema non garantisce l'unicità dell'operatore per simmetria.
 
 \begin{theorem}
-    Due operatori unitari o antiunitari \(U, \ U'\) inducono la stessa simmetria sse \(U ' = e^{i\theta}U\) .
+    Due operatori unitari o antiunitari \(U, \ U'\) inducono la stessa simmetria se e solo se \(U ' = e^{i\theta}U\) .
 \end{theorem}
 \begin{proof}
     \((\impliedby) \) 
@@ -27,9 +27,9 @@ Dal teorema di Wigner \ref{theo: Wigner} sappiamo che queste trasformazioni \(\t
     \]
 \end{proof}
 Perciò ogni trasformazione di simmetria \(\tau\) è indotta da un \textit{raggio operatore} (anti)unitario:
-\[
+\begin{equation}
     \left[ U_\tau \right]= \left\{ U \ \text{ (anti)unitario t.c. } U' = e^{i\theta}U , \ \theta \in \mathbb{R}\right\}
-\]
+\end{equation}
 
 \begin{remark}
     \(\mathbb{I}\) è simmetria, composizione di simmetrie \(\tau_1 \circ \tau_2\) è simmetria e \(\tau^{-1}\) è simmetria.
@@ -39,9 +39,9 @@ Perciò ogni trasformazione di simmetria \(\tau\) è indotta da un \textit{raggi
 \section{Gruppo di simmetria}
 \begin{definition}
     Definiamo \textit{gruppo} \((G; \cdot )\) un insieme \(G\) dotato di un'operazione \(\cdot \) :
-    \[
+    \begin{equation}
         \cdot : G \times G \to G \qquad (g,h)\to gh
-    \]
+    \end{equation}
     tale che:
     \begin{itemize}
         \item Associativa: \((gh)k= g(hk) \quad \forall\, g,h,k \in G\) .
@@ -72,9 +72,9 @@ Sto rappresentando il gruppo delle simmetrie della fisica attraverso gli operato
 
 \begin{definition}
     Dato un "gruppo astratto" \(G\) e uno spazio vettoriale \(V\) si dice \textit{rappresentazione} di \(G\) su \(V\) la mappa:
-    \[
+    \begin{equation}
         \rho: G \to GL(V) \quad g \to \rho(g)
-    \]
+    \end{equation}
     tale che:
     \begin{itemize}
         \item \(\rho(1)= \mathbb{I}\)
@@ -104,8 +104,12 @@ Sto rappresentando il gruppo delle simmetrie della fisica attraverso gli operato
 \end{example}
 
 % 15 Lezione del 31/10/2025
+\lezione{15}{31/10/2025}
+
 
 Se \(V\) è spazio di Hilbert e \(\rho(g)\) è unitario \(\forall \, g \in G\), allora \(\rho\) è \textit{rappresentazione unitaria}.
+
+\subsection{Rappresentazioni proiettive}
 
 Chiediamoci ora \(\rho: \tau\to \rho(\tau)= U_\tau\), dove scelgo \(U_\tau \) come rappresentante di \(\left[ U_\tau \right]\), è rappresentazione?\\
 Possiamo sempre scegliere per \(\tau = id\) tra i \(\left[ \mathbb{I} \right] \) l'operatore \(\mathbb{I}\). Scelti \(U_{\tau_1}\) e \(U_{\tau_2}\),
@@ -119,7 +123,7 @@ non sempre esiste però \(U_{\tau_3}\) t.c. \(e^{i\theta_{12}}=1\) condizione ne
     \]
 \end{definition}
 
-E allora posso fare scelte diverse: \( \rho : \tau \mapsto U'_\tau = e^{i\alpha(tau)}U_\tau\)
+E allora posso fare scelte diverse: \( \rho : \tau \mapsto U'_\tau = e^{i\alpha(\tau)}U_\tau\)
 \[
     U'_{\tau_3} = e^{i\alpha_3} U_{\tau_3}= e^{i\alpha_3}e^{i\theta_{12}}U_{\tau_{1}}U_{\tau_2}= 
     e^{i\theta'_{12}}U'_{\tau_1}U'_{\tau_2}
@@ -205,7 +209,7 @@ Dove è stato definito il \textit{generatore infinitesimo di trasformazioni} \(Q
         Q\ket{\Psi} \equiv i\hbar \dv{s}U(s )\eval_{s=0}\ket{\Psi}    := i\hbar\lim_{s \to 0} \frac{U(s)\ket{\Psi}-\ket{\Psi}}{s}
     \]
     converge \(\forall\,\ket{\Psi}\in  D \subseteq \mathcal{H}, \ \overline{D}= \mathcal{H}\), \((Q,D)\) è a.a. e \(U(s )= e^{-\frac{i}{\hbar}sQ}\).\\
-    Viceversa, dato un operatore a.a. \((Q, D)\) denso \(D \subseteq\mathcal{H}, \ \overline{D}= \mathcal{H}\) allora \(U(s)= e^{-\frac{i}{\hbar}sQ}\) è gruppo ad un parametro di oepratori unitari.
+    Viceversa, dato un operatore a.a. \((Q, D)\) denso \(D \subseteq\mathcal{H}, \ \overline{D}= \mathcal{H}\) allora \(U(s)= e^{-\frac{i}{\hbar}sQ}\) è gruppo ad un parametro di operatori unitari.
 \end{theorem}
 
 Consideriamo una simmetria a un parametro \(\tau(s ): A \to A(s )= U(s )A U(s )^\dagger \):
@@ -270,26 +274,26 @@ Supponiamo di partire da un sistema quantistico con
 \]
 (coerente con la quantizzazione del corrispondente sistema classico).
 Dato che \(P\) è a.a., l’operatore
-\[
-    U(a)\equiv e^{-\frac{i}{\hbar}aP}, \qquad a\in\mathbb{R},
-\]
+\begin{equation}
+    U(a)\equiv e^{-\frac{i}{\hbar}aP} \qquad a\in\mathbb{R}
+\end{equation}
 è un gruppo uniparametrico di operatori unitari.
 
 \begin{equation}
-    [Q,U(a)] =\left[ Q, e^{-\frac{i}{\hbar}aP} \right]     = aU(a).
+    [Q,U(a)] =\left[ Q, e^{-\frac{i}{\hbar}aP} \right]     = aU(a)
 \end{equation}
 
 
 Sia \(\ket{q}\) un autovettore (generalizzato) di \(Q\): \(Q\ket{q}=q\ket{q}\): 
 \[
     Q\,U(a)\ket{q}= \bigl(U(a)Q + aU(a)\bigr)\ket{q}
-                 = (q+a)\,U(a)\ket{q}.
+    = (q+a)\,U(a)\ket{q}
 \]
 Dunque \(U(a)\ket{q}\) è ancora autovettore di \(Q\) con autovalore \(q+a\).
 Poiché \(a\in\mathbb{R}\) è arbitrario, segue che lo spettro di \(Q\) è traslato di qualsiasi quantità reale:
 \[
     q\in\sigma(Q)\ \Longrightarrow\ q+a\in\sigma(Q)\ \ \forall\,a\in\mathbb{R}
-    \quad\Longrightarrow\quad \sigma(Q)=\mathbb{R}.
+    \quad\Longrightarrow\quad \sigma(Q)=\mathbb{R}
 \]
 
 
@@ -301,7 +305,7 @@ equivalentemente, \(P\) è il generatore infinitesimo delle traslazioni della va
 
 Sia \(\vec a=(a_x,a_y,a_z)\). Le traslazioni formano un gruppo abeliano a tre parametri:
 \[
-\tau(\vec a)\circ\tau(\vec b)=\tau(\vec a+\vec b)=\tau(\vec b)\circ \tau(\vec a)\,.
+\tau(\vec a)\circ\tau(\vec b)=\tau(\vec a+\vec b)=\tau(\vec b)\circ \tau(\vec a)
 \]
 La rappresentazione unitaria \(U(\vec a)\) agisce su stati e osservabili come
 \[
@@ -312,36 +316,37 @@ La rappresentazione unitaria \(U(\vec a)\) agisce su stati e osservabili come
 \]
 
 I generatori infinitesimi lungo gli assi sono \(P_x,P_y,P_z\) e, in generale,
-\[
-P_i \;=\; i\hbar\,\pdv{U(\vec a)}{a_i}\bigg|_{\vec a=0},\qquad i=x,y,z.
-\]
+\begin{equation}
+    P_i \;=\; i\hbar\,\pdv{U(\vec a)}{a_i}\bigg|_{\vec a=0}\qquad i=x,y,z
+\end{equation}
 Per una traslazione nella direzione unitaria \(\hat n\):
 \[
-i\hbar\,\dv{s}U(s\hat n)\bigg|_{s=0}= \vec P\!\cdot\!\hat n,
+i\hbar\,\dv{s}U(s\hat n)\bigg|_{s=0}= \vec P\!\cdot\!\hat n
 \]
 e, dato un vettore arbitrario \(\vec a\),
 \[
-i\hbar\,\dv{s}U(s\vec a)\bigg|_{s=0}= \vec P\!\cdot\!\vec a.
+i\hbar\,\dv{s}U(s\vec a)\bigg|_{s=0}= \vec P\!\cdot\!\vec a
 \]
 
 Dal teorema di Stone segue dunque
-\[
-U(\vec a)=\exp\!\left(-\frac{i}{\hbar}\,\vec P\!\cdot\!\vec a\right).
-\]
+\begin{equation}
+    U(\vec a)=\exp\!\left(-\frac{i}{\hbar}\,\vec P\!\cdot\!\vec a\right)
+\end{equation}
 Poiché \([P_i,P_j]=0\) si può fattorizzare (l’ordine è irrilevante):
 \[
-U(\vec a)=e^{-\frac{i}{\hbar}P_x a_x}\,e^{-\frac{i}{\hbar}P_y a_y}\,e^{-\frac{i}{\hbar}P_z a_z}.
+U(\vec a)=e^{-\frac{i}{\hbar}P_x a_x}\,e^{-\frac{i}{\hbar}P_y a_y}\,e^{-\frac{i}{\hbar}P_z a_z}
 \]
 
 % 16 Lezione del 03/11/2025
 
 \subsection{Rotazioni 3D}
+\lezione{16}{03/11/2025}
 
 Consideriamo la trasformazione di un vettore \(\vec{x} \in \mathbb{R}^3 \to \vec{x'}= R\vec{x}\), in cui consideriamo le matrici \(3\times3\) di rotazione \(R \) tali che \(R^\intercal R = \mathbb{I}_3\) detto \textit{gruppo ortogonale} \(O(3)\).\\
-Vale che \(\forall R \in O(3), \ \ \det R = \pm 1 \), tra queste consideriamo il \textit{gruppo speciale ortogonale}:
-\[
+Vale che \(\forall R \in O(3), \ \det R = \pm 1 \), tra queste consideriamo il \textit{gruppo speciale ortogonale}:
+\begin{equation}
     SO(3)= \left\{ R \in O(3): \det R = +1 \right\}
-\]
+\end{equation}
 \(O(3)\) e \(SO(3)\) sono gruppi di Lie.
 
 \begin{definition}
@@ -379,11 +384,15 @@ Cioè deve essere una matrice antisimmetrica. Una base per lo spazio delle matri
 \]
 I loro elementi sono compattiamente scritti come
 \[
-    (T_k)_{ij} = -\,\epsilon_{kij} ,\qquad i,j,k=1,2,3,
+    (T_k)_{ij} = -\,\epsilon_{kij} \qquad i,j,k=1,2,3
 \]
 con $\epsilon_{kij}$ simbolo di Levi\,–\,Civita. \\
-Se definiamo $\vec T=(T_1,T_2,T_3)\,, \ \vec\omega=(\omega_1,\omega_2,\omega_3)$, abbiamo che 
-ogni matrice \(R \in SO(3)\) è data da da \(R = e^{\vec{\omega}\cdot \vec{T}}\equiv R(\omega)\) e indica la rotazione lungo l'asse \(\vec{\omega}\) di un angolo \(\abs{\vec{\omega}}\).
+Se definiamo 
+\[
+    \vec T=(T_1,T_2,T_3)\,, \quad \vec\omega=(\omega_1,\omega_2,\omega_3)
+\]
+abbiamo che 
+ogni matrice \(R \in SO(3)\) è data da \(R = e^{\vec{\omega}\cdot \vec{T}}\equiv R(\omega)\) e indica la rotazione lungo l'asse \(\vec{\omega}\) di un angolo \(\abs{\vec{\omega}}\).
 
 
 \begin{example}
@@ -411,10 +420,10 @@ Nella stessa maniera in cui \(SO(3)\) induce un algebra di Lie \(so(3)\), \(U_{R
     \frac{1}{i\hbar} J_k := \pdv{U(\vec{\omega})}{\omega_k}\eval_{\vec{\omega}=0}
 \end{equation}
 
-Dunque se \(U(\vec{\omega})\) sono rappresentazione unitaria non proiettiva di \(SO(3)\) e \(\frac{1}{i\hbar}J_k\) sono rappresentazione autoaggiunta di \(so(3)\) e dovranno avere le stesse relazioni di commutazione:
-\[
+Dunque se \(U(\vec{\omega})\) è rappresentazione unitaria non proiettiva di \(SO(3)\) e \(\frac{1}{i\hbar}J_k\) sono rappresentazione autoaggiunta di \(so(3)\) e dovranno avere le stesse relazioni di commutazione:
+\begin{equation}
     \left[ J_i , J_k\right] = i\hbar\sum_k \epsilon_{ijk} J_k
-\]
+\end{equation}
 I \(J_k\) corrispondono alle componenti del momento angolare.
 
 Se invece \(U(\vec{\omega})\) è rappresentazione genuinamente proiettiva, ottengo:
@@ -437,7 +446,8 @@ Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
     \[
         U(R)\vec{X}U(R)^\dagger = R^{-1} \vec{X}    \qquad U(R)\vec{P}U(R)^\dagger = R^{-1}\vec{P}  
     \]
-    Il generatore infinitesimo è dato da \(J_k = i\hbar  \pdv{U(\vec{\omega})}{\omega_k}\eval_{\vec{\omega}=0}\) e vogliamo mostrare che in questo sistema: \(\vec{J}= \vec{L}:= \vec{X}\times \vec{P} \quad L_k = \sum_{i,j}\epsilon_{kij}X_i P_j\)
+    Il generatore infinitesimo è dato da \(J_k = i\hbar  \pdv{U(\vec{\omega})}{\omega_k}\eval_{\vec{\omega}=0}\) 
+    e vogliamo mostrare che in questo sistema: \(\vec{J}= \vec{L}:= \vec{X}\times \vec{P}\) con \( L_k = \sum_{i,j}\epsilon_{kij}X_i P_j\)
 
     \[
     \bra{\vec{x}}J_k\ket{\Psi}
@@ -446,14 +456,14 @@ Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
     \]
 
     \[
-    = i\hbar\sum_{j=1}^{3}(\pdv{j}\Psi)\,\pdv{}{\omega_k}\!\left[(R(-\vec{\omega})\vec{x})_j\right]\eval_{\vec{\omega}=0}
+    = i\hbar\sum_{j=1}^{3}(\pdv{x_j}\Psi)\,\pdv{}{\omega_k}\!\left[(R(-\vec{\omega})\vec{x})_j\right]\eval_{\vec{\omega}=0}
     \]
 
     Sviluppando \(R(-\vec{\omega})=\mathbb{I}-\sum_m\omega_mT_m+\dots\) con 
     \((T_m)_{j\ell}=-\epsilon_{m j \ell}\), si ha:
     \[
-    (R(-\vec{\omega})\vec{x})_j = x_j - \sum_{k,\ell}\omega_m(T_k)_{j\ell}x_\ell+ \dots
-    = x_j - \sum_{k,\ell}\omega_m\epsilon_{k \ell j}x_\ell + \dots
+    (R(-\vec{\omega})\vec{x})_j = x_j - \sum_{k,\ell}\omega_k(T_k)_{j\ell}x_\ell+ \dots
+    = x_j - \sum_{k,\ell}\omega_k\epsilon_{k \ell j}x_\ell + \dots
     \]
 
     \[
@@ -479,29 +489,31 @@ Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
 \end{example}
 
 \begin{definition}
-    Se ho terna di operatori \(\vec{V}\equiv (V_1,V_2,V_3)\), si dice che la terna trasforma come un vettore per \(SO(3)\) sse:
-    \[
+    Se ho terna di operatori \(\vec{V}\equiv (V_1,V_2,V_3)\), si dice che la terna trasforma come un vettore per \(SO(3)\) se e solo se:
+    \begin{equation}
         \left[ J_j, V_k  \right]= i\hbar \sum_{l}\epsilon_{jkl}V_l \iff U(\vec{\omega}) V_j U (\vec{\omega})^\dagger = \sum_{k} R(\vec{\omega})^{-1}_{jk}V_k
-    \]
+    \end{equation}
 \end{definition}
 \begin{definition}
     Diciamo che un operatore \(S\) è \textit{scalare} per rotazioni se vale:
-    \[
+    \begin{equation}
         \left[ J_i,S \right]=0 \quad i = 1,2,3 \qquad \ U(\vec{\omega})S U(\vec{\omega})^{\dagger} = S
-    \]
+    \end{equation}
 \end{definition}
 \begin{example}
     Se ho una terna che traforma come vettore ad esempio \(\vec{P}\), i loro moduli ad esempio \(P^2 = \vec{P}\cdot \vec{P}\) sono scalari.
 \end{example}
 
 
-% 17 Lezione del 04/10/0225
+% 17 Lezione del 04/10/2025
 
 \subsubsection{Rototraslazioni}
+\lezione{17}{04/10/2025}
+
 Una rototraslazione è una trasformazione descritta da:
-\[
+\begin{equation}
     g = (R, \vec{a})= (\mathbb{I}, \vec{a})(R,0) \qquad \vec{x}'= (R, \vec{a})\vec{x}= R\vec{x}+ \vec{a}
-\]
+\end{equation}
 definita in modo che prima avvenga la rotazione e successivamente la traslazione.\\
 Le rototraslazioni formano ovviamente un gruppo, la cui identità: \(id = (\mathbb{I},0)\), l'inversa è \((R,\vec{a})^{-1}= (R^{-1}, -R^{-1}\vec{a})\) e la composizione vale:
 \[
@@ -531,11 +543,13 @@ Consideriamo \(\ket{\Psi(t)}\) soluzione equazione di Schrödinger e una simmetr
     i\hbar\dv{t}W\ket{\Psi(t)} =   W i\hbar \dv{t}\ket{\Psi(t)} = W H(t)\ket{\Psi(t)} \equiv H(t)W\ket{\Psi(t)}  \iff \left[ W, H(t) \right]=0
 \]
 
-Definiamo il \textit{gruppo di simmetrie della dinamica} come:
-\[
-    G_d = \left\{ W \text{ (anti)unitari }  : \ \left[ W, H \right]=0 \right\} \subseteq G
-\]
-Questo è equivalente a \(WHW^\dagger= H\) e se \(W\) è unitario (non anti) allora \(\left[ W, U(t,t_0) \right]=0\)
+\begin{definition}
+    Definiamo il \textit{gruppo di simmetrie della dinamica} come:
+    \begin{equation}
+        G_d = \left\{ W \text{ (anti)unitari }  : \ \left[ W, H \right]=0 \right\} \subseteq G
+    \end{equation}
+    Questo è equivalente a \(WHW^\dagger= H\) e se \(W\) è unitario (non anti) allora \(\left[ W, U(t,t_0) \right]=0\)
+\end{definition}
 
 Nella visuale di Heisenberg, con \(A_h(t)= U(t-t_0)^\dagger A_s U(t-t_0)\)
 se \(W \in G_d\) vale:
@@ -545,9 +559,9 @@ se \(W \in G_d\) vale:
 è ancora soluzione dell'eq di Heisenberg.
 
 Se \(W\) formano un gruppo a un parametro \(W(s)= e^{-\frac{i}{\hbar}sQ}\) vale:
-\[
+\begin{equation}
     \left[ W(s), H \right]= 0 \ \forall\, s \iff \left[ Q, H \right]    =0 \iff \dv{t} \expval{Q}_\Psi (t)=0 \quad \forall\, \Psi \in \mathcal{H}
-\]
+\end{equation}
 Esiste relazione diretta tra simmetrie di un sistema e quantità conservate.
 
 \begin{theorem}\label{theo: Noether}
@@ -557,20 +571,20 @@ Esiste relazione diretta tra simmetrie di un sistema e quantità conservate.
 
 \begin{remark}
     Dato \(W\) unitario, \(\left[ W, H \right]=0\) e \(H\ket{E}= E\ket{E}\), allora:
-    \[
+    \begin{equation}
         HW\ket{E} = WH\ket{E}= EW\ket{E}
-    \]
+    \end{equation}
     \(W\ket{E}\) è ancora autovettore di \(H\) con stesso autovalore.
 \end{remark}
 
 \begin{remark}
     Se esistono due autovettori \(\ket{E,1}\) e \(\ket{E,2}\) degeneri di \(H\), tali che \(\braket{E,r}{E,s}= \delta_{rs}\),
     allora esite operatore unitario \(W\) tale che:
-    \[
+    \begin{equation}
         \left[ W, H \right]= 0 \quad \begin{cases}
-            W\ket{E,1}= \ket{E,2}\\ W\ket{E,2}=\ket{E,1}
-        \end{cases}
-    \]
+                W\ket{E,1}= \ket{E,2}\\ W\ket{E,2}=\ket{E,1}
+            \end{cases}
+    \end{equation}
 \end{remark}
 \begin{proof}
     Data \(\left\{ \ket{E,1}\equiv \ket{1}, \ket{E,2}\equiv \ket{2}, \ket{3},\ket{4}, \dots  \right\}\) base ON di autovettori di \(H\), definisco mappa lineare \(W\) tale che:
@@ -583,9 +597,9 @@ Esiste relazione diretta tra simmetrie di un sistema e quantità conservate.
 Di consueguenza sappiamo che se \(\sigma(H)\) è completamente non degenere \(\left\{ \ket{E} \right\}_{E \in \sigma(H)}\) e \(W \) unitario \(\left[ W, H \right]=0\), 
 allora per la prima osservazione abbiamo che \(W\ket{E}= f(E)\ket{E}\) con \(f(E)\in \mathbb{C} \quad \forall, E \in \sigma(H)\), dunque \(W = f(H)\). 
 Chiamiamo tali operatori \textit{gruppo di simmetrie banali della dinamica}:
-\[
+\begin{equation}
     K_d:= \left\{ W \text{ unitari } : \ W = f(H) \right\}   \subseteq G_d
-\]
+\end{equation}
 Perciò se \(\sigma(H)\) è completamente non degenere, \(K_d= G_d\)  e tutte le simmetrie delle dinamica possibili sono banali.\\
 Se invece \(E \in \sigma(H)\) è degenere, per la seconda osservazione esiste un \(W \in G_d, \ W \notin K_d\), cioè ammette simmetrie non banali.
 
@@ -655,6 +669,8 @@ Perciò se \(V(\vec{x})= V(-\vec{x})\) allora \(\mathbb{P} \in G_d\).
 % 18 Lezione del 07/11/2025
 
 \subsection{Inversione temporale}
+\lezione{18}{07/11/2025}
+
 Consideriamo l'operatore \(\mathbb{T}\) che agisca nella seguente maniera:
 \[
     \vec{x}\to \vec{x} \quad t \to -t \qquad \mathbb{T}\vec{X}\mathbb{T}^\dagger = \vec{X} \qquad  \mathbb{T}\vec{P}\mathbb{T}^\dagger = - \vec{P} \qquad  \mathbb{T}\vec{L}\mathbb{T}^\dagger = - \vec{L}
@@ -710,9 +726,9 @@ Se \(\Psi(\vec{x}, t)\) è soluzione all'equazione di Schrödinger per un sistem
 Consideriamo un sistema quantistico con simmetria di rotazione \(SO(3)\).
 Il momento angolare totale \(\vec{J} = (J_x, J_y, J_z)\) è un insieme di operatori autoaggiunti che generano le rotazioni tramite \(U(\vec{\alpha}) = e^{-\frac{i}{\hbar}\vec{\alpha} \cdot \vec{J}}\)
 e obbediscono all'algebra di Lie di \(so(3)\):
-\[
+\begin{equation}
     [J_i, J_j] = i\hbar \sum_k \epsilon_{ijk} J_k
-\]
+\end{equation}
 Per studiare lo spettro, ci concentriamo su \(J_z\), ma i risultati si estendono a \(J_x\) e \(J_y\) per simmetria.
 \begin{remark}
     Gli spettri delle componenti del momento angolare coincidono, \(\sigma(J_z) = \sigma(J_x) = \sigma(J_y)\),
@@ -723,10 +739,10 @@ Definiamo l'operatore \(\vec{J}^2 = J_x^2 + J_y^2 + J_z^2\), che è uno scalare 
 \[
     [\vec{J}^2, J_k] = 0
 \]
-Per trovare lo spettro di \(J_z\), introduciamo gli operatori di innalzamento e abbassamento (o operatori scala):
-\[
+Per trovare lo spettro di \(J_z\), introduciamo gli \textit{operatori di innalzamento e abbassamento} (o operatori scala):
+\begin{equation}
     J_\pm := J_x \pm i J_y.
-\]
+\end{equation}
 Valgono le seguenti proprietà:
 \[
     (J_\pm)^\dagger = J_\mp, \qquad \left[ \vec{J}^2, J_\pm \right] = 0, \qquad J_x = \frac{J_+ + J_-}{2}, \qquad J_y = \frac{J_+ - J_-}{2i}.
@@ -757,10 +773,10 @@ Di conseguenza, il suo spettro è non negativo: \(\sigma(\vec{J}^2) \subseteq \m
 
 Poiché \([\vec{J}^2, J_z]=0\), possiamo trovare una base ortonormale di autostati comuni \(\left\{ \ket{j, m} \right\}\).
 Definiamo i loro autovalori:
-\begin{align*}
+\begin{align}
     \vec{J}^2 \ket{j, m} &= \hbar^2 j(j+1) \ket{j, m}, \quad j \ge 0 \\
     J_z \ket{j, m} &= \hbar m \ket{j, m}, \quad m \in \mathbb{R}
-\end{align*}
+\end{align}
 La parametrizzazione dell'autovalore di \(\vec{J}^2\) come \(\hbar^2 j(j+1)\) è una scelta standard che si rivelerà conveniente. La condizione \(\vec{J}^2 \ge 0\) è soddisfatta per \(j \ge 0\).
 
 Applichiamo ora gli operatori scala \(J_\pm\) agli autostati \(\ket{j,m}\). Poiché \([\vec{J}^2, J_\pm]=0\), il valore di \(j\) non cambia:
@@ -781,19 +797,19 @@ Perché \(J_\pm \ket{j, m}\) sia un autostato valido, non deve essere il vettore
     = \bra{j, m} (\vec{J}^2 - J_z^2 \mp \hbar J_z) \ket{j, m}
 \]
 Sostituendo gli autovalori, otteniamo:
-\begin{equation}
+\[
     \norm{J_\pm \ket{j, m}}^2 = \hbar^2 [j(j+1) - m^2 \mp m]
-    = \hbar^2 [j(j+1) - m(m \pm 1)].
-\end{equation}
+    = \hbar^2 [j(j+1) - m(m \pm 1)]
+\]
 Poiché la norma quadra deve essere non negativa, abbiamo due condizioni:
 \begin{align*}
     \norm{J_+ \ket{j,m}}^2 \ge 0 \implies j(j+1) - m(m+1) \ge 0 \\
     \norm{J_- \ket{j,m}}^2 \ge 0 \implies j(j+1) - m(m-1) \ge 0
 \end{align*}
 Queste due disequazioni sono entrambe soddisfatte se e solo se:
-\[
+\begin{equation}
     -j \le m \le j.
-\]
+\end{equation}
 Per un dato \(j\), i valori di \(m\) sono quindi limitati.
 
 La sequenza di autostati \(\dots, \ket{j, m-1}, \ket{j, m}, \ket{j, m+1}, \dots\) deve essere finita.
@@ -824,7 +840,7 @@ Per un dato \(j\), i valori permessi di \(m\) sono \(2j+1\) valori equispaziati:
 
 
 % 19 Lezione del 10/11/2025
-
+\lezione{19}{10/11/2025}
 Consideriamo una base ON di autostati \(\left\{ \ket{j,m} \right\} \)  per un certo \( j\) fissato con \(m \in \{-j, \dots, j\}\).
 
 Partendo dall'autostato dell'autovalore più grande \(m=j\,, \ \  \norm{\ket{j,j}}^2 = 1\), posso ottenere gli altri elementi della base grazie all'operatore di abbassamento:
@@ -836,7 +852,7 @@ Che viene opportunamente normalizzato. Alla stessa maniera l'operatore di innalz
     J_+ \ket{j,m} = \frac{J_+ J_- \ket{j,m+1}}{\hbar \sqrt{j(j+1) - m(m+1)}} = \hbar \sqrt{j(j+1)-(m+1)m} \ket{j, m+1}
 \]
 
-Quindi gli operatori di innalzamento e abbassamento, aumentano e diminuiscono rispettivamente l'autovalore \(m \) e aggiungono un fattore di proporzione dipendente da \(j\)e \(m\):
+Quindi gli operatori di innalzamento e abbassamento, aumentano e diminuiscono rispettivamente l'autovalore \(m \) e aggiungono un fattore di proporzione dipendente da \(j\) e \(m\):
 \begin{equation}
     J_\pm \ket{j,m} = \hbar \sqrt{j(j+1)-m(m\pm 1)} \ket{j, m \pm 1}
 \end{equation}
@@ -989,17 +1005,17 @@ Questa struttura a blocchi è fondamentale perché permette di studiare le propr
 
 Consideriamo una particella senza spin in 3 dimensioni, il cui spazio di Hilbert è \( \mathcal{H} = L_2(\mathbb{R}^3, \dd[3]{x}) \).
 Le rotazioni sono implementate dall'operatore unitario \( U(R) \), che agisce sulla funzione d'onda come:
-\[
+\begin{equation}
     (U(R)\Psi)(\vec{x}) = \Psi(R^{-1}\vec{x}).
-\]
+\end{equation}
 Gli operatori posizione e momento sono:
-\[
+\begin{equation}
     \vec{X}\Psi(\vec{x}) = \vec{x}\Psi(\vec{x}), \qquad \vec{P}\Psi(\vec{x}) = -i\hbar\vec{\nabla}\Psi(\vec{x}).
-\]
+\end{equation}
 Per una particella senza spin, il momento angolare totale \( \vec{J} \) coincide con il momento angolare orbitale \( \vec{L} = \vec{X} \times \vec{P} \):
-\[
+\begin{equation}
     \vec{J} \equiv \vec{L} = \vec{X} \times \vec{P} = -i\hbar (\vec{x} \times \vec{\nabla}).
-\]
+\end{equation}
 Vogliamo trovare le autofunzioni simultanee di \( L^2 \) e \( L_z \).
 Le autofunzioni \( \Psi_{\ell,m}(\vec{x}) = \braket{\vec{x}}{\ell,m} \) devono soddisfare le equazioni agli autovalori:
 \begin{align}
@@ -1032,22 +1048,22 @@ Di conseguenza, il prodotto scalare nello spazio di Hilbert \( \mathcal{H} = L_2
  
 Si può dimostrare che gli operatori momento angolare \(L_i\) non dipendono da \(\left( r, \pdv{}{r} \right)\) e scritti in coordinate sferiche diventano:
 
-\begin{align*}
+\begin{align}
     L_x &= i\hbar \left( \sin\varphi \pdv{}{\vartheta} + \cos\varphi \cot\vartheta \pdv{}{\varphi} \right) \\
     L_y &= i\hbar \left( -\cos\varphi \pdv{}{\vartheta} + \sin\varphi \cot\vartheta \pdv{}{\varphi} \right) \\
     L_z &= -i\hbar \pdv{}{\varphi}
-\end{align*}
+\end{align}
 \begin{remark}
     \(L_z\) è il generatore infinitesimo di traslazioni di \(\varphi\), dunque rotazioni attorno all'asse z.
 \end{remark}
 Gli operatori di scala diventano:
-\begin{equation*}
+\begin{equation}
     L_\pm = L_x \pm i L_y = \hbar e^{\pm i\varphi} \left( \pm \pdv{}{\vartheta} + i \cot\vartheta \pdv{}{\varphi} \right)
-\end{equation*}
+\end{equation}
 Infine, l'operatore \( L^2 \) è dato da:
-\begin{equation*}
+\begin{equation}
     L^2 = -\hbar^2 \left( \pdv[2]{}{\vartheta} + \frac{1}{\tan\vartheta} \pdv{}{\vartheta} + \frac{1}{\sin^2\vartheta} \pdv[2]{}{\varphi} \right)
-\end{equation*}
+\end{equation}
 
 Verifichiamo la coerenza di \( L_z \) (riscrivendolo in coordinate cartesiane).
 Dalla regola della catena:
@@ -1058,21 +1074,21 @@ Dalla regola della catena:
     &= x\underbrace{\left(-i\hbar\pdv{}{y}\right)}_{=P_y} - y\underbrace{\left(-i\hbar\pdv{}{x}\right)}_{=P_x} = x P_y - y P_x
 \end{align*}
 Otteniamo quindi l'identità:
-\begin{equation*}
+\begin{equation}
     L_z = x P_y - y P_x = -i\hbar \pdv{}{\varphi}
-\end{equation*}
+\end{equation}
 
 \begin{remark}
     \( L_z \) è il momento angolare coniugato alla variabile angolare \( \varphi \) in meccanica Hamiltoniana.
 \end{remark}
 
 Andiamo a risolvere ora quindi le equazioni agli autovalori per \(L^2\) e \(L_z\):
-\begin{equation*}
+\begin{equation}
     \begin{cases}
         L^2 \Psi_{\ell,m}(r, \vartheta, \varphi) = \hbar^2 \ell(\ell+1) \Psi_{\ell,m}(r, \vartheta, \varphi) \\
         L_z \Psi_{\ell,m}(r, \vartheta, \varphi) = \hbar m \Psi_{\ell,m}(r, \vartheta, \varphi)
     \end{cases}
-\end{equation*}
+\end{equation}
 Dato che gli operatori non dipendono dalla coordinata \(r\), 
 è conveniente risolvere attraverso la separazione delle variabili \(\Psi_{\ell,m}(r, \vartheta, \varphi)= f_{\ell,m}(r)Y^m_\ell(\vartheta,\varphi)\) e le equazioni diventano:
 \[
@@ -1094,9 +1110,9 @@ Risolviamo per prima l'equazione per \(L_z\). Sostituendo la sua espressione in 
     \implies \pdv{}{\varphi} Y_\ell^m(\vartheta, \varphi) = i m Y_\ell^m(\vartheta, \varphi).
 \]
 La soluzione generale ha la forma:
-\[
+\begin{equation}
     Y_\ell^m(\vartheta, \varphi) = F_\ell^m(\vartheta) e^{i m \varphi},
-\]
+\end{equation}
 dove \(F_\ell^m(\vartheta)\) è una funzione che dipende solo dall'angolo polare \(\vartheta\).
 
 Per risolvere l'equazione per \(L^2\), consideriamo il caso estremo \(m=\ell\), che corrisponde all'autostato con il massimo autovalore di \(L_z\). Questo stato deve essere annichilito dall'operatore di innalzamento \(L_+\):
@@ -1132,9 +1148,9 @@ La natura fisica della coordinata azimutale \(\varphi\) impone una condizione di
 Questa condizione è soddisfatta se e solo se \(m\) è un numero intero. Poiché per un dato \(\ell\) i valori di \(m\) vanno da \(-\ell\) a \(\ell\) a passi interi, anche \(\ell\) deve essere un numero intero non negativo.
 
 Lo spettro congiunto degli operatori \(L^2\) e \(L_z\) per il momento angolare orbitale è quindi:
-\[
+\begin{equation}
     \ell \in \mathbb{N}_0 = \{0, 1, 2, \dots\}, \qquad m \in \{-\ell, -\ell + 1, \dots, \ell - 1, \ell\}.
-\]
+\end{equation}
 Le autofunzioni complete dell'operatore, includendo la parte radiale, hanno la forma:
 \[
     \Psi_{\ell,m}(\vec{x}) = f(r) Y_{\ell}^m(\vartheta, \varphi),
@@ -1161,6 +1177,7 @@ e la completezza:
 
 
 \section{Prodotto tensore}
+\lezione{20}{12/11/2025}
 
 Consideriamo due sistemi quantistici indipendenti, descritti dai rispettivi spazi di Hilbert: \(S_1\to \mathcal{H}_1\) e \(S_2\to \mathcal{H}_2\)
 come possiamo descrivere un sistema \(S = S_1 \cup S_2\) unione dei due sottosistemi?
@@ -1176,13 +1193,13 @@ come possiamo descrivere un sistema \(S = S_1 \cup S_2\) unione dei due sottosis
             \ket{\Psi_1} \otimes (\ket{\Psi_2} + \ket{\chi_2}) &= \ket{\Psi_1} \otimes \ket{\Psi_2} + \ket{\Psi_1} \otimes \ket{\chi_2}
         \end{align*}
         \item \textbf{Prodotto Scalare:} Il prodotto scalare su \(\mathcal{H}\) è definito da:
-        \[
+        \begin{equation}
             \braket{\Psi_1 \otimes \Psi_2}{\chi_1 \otimes \chi_2} = \braket{\Psi_1}{\chi_1}_{\mathcal{H}_1} \braket{\Psi_2}{\chi_2}_{\mathcal{H}_2}
-        \]
+        \end{equation}
         \item \textbf{Base Ortonormale:} Se \(\{\ket{e_{1,n}}\}\) e \(\{\ket{e_{2,m}}\}\) sono basi ortonormali di \(\mathcal{H}_1\) e \(\mathcal{H}_2\), allora l'insieme
-        \[
+        \begin{equation}
             \left\{ \ket{e_{1,n}} \otimes \ket{e_{2,m}} \right\}
-        \]
+        \end{equation}
         forma una base ortonormale di \(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2\). La dimensione dello spazio prodotto è \(\dim(\mathcal{H}) = \dim(\mathcal{H}_1) \cdot \dim(\mathcal{H}_2)\).
     \end{itemize}
 \end{definition}
@@ -1243,9 +1260,9 @@ L'azione dell'operatore prodotto tensoriale \(A_1 \otimes B_2\) su un generico v
 In pratica, \(A_1\) agisce sui ket \(\ket{e_n}\) (spazio \(\mathcal{H}_1\)) e \(B_2\) agisce sui ket \(\ket{u_m}\) (spazio \(\mathcal{H}_2\)).
 
 Un operatore generico \(G: \mathcal{H} \to \mathcal{H}\) (dove \(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2\)) si può scrivere come somma di prodotti tensoriali:
-\[
+\begin{equation}
     G = \sum_{n,m} C_{nm} \, A_{1,n} \otimes B_{2,m}
-\]
+\end{equation}
 
 Dati \(A_1\) su \(\mathcal{H}_1\) e \(B_2\) su \(\mathcal{H}_2\), si definiscono le loro estensioni allo spazio totale:
 \begin{align}
@@ -1441,6 +1458,7 @@ Essendo \(m\) il numero quantico magnetico che varia a passi interi da \(-s\) a 
 
 % 21 Lezione del 14/11/2025
 
+\lezione{21}{14/11/2025}
 
 Concentriamoci ora su particelle da spin \(s = \frac{1}{2}\), avremo dunque \(\vec{S}^2= \frac{3}{4}\hbar^2 \mathbb{I}\) , \(m = \left\{ -\frac{1}{2},\frac{1}{2} \right\}\) e lo spazio di Hilbert dello spin \(\mathcal{H}_s \cong\mathbb{C}^2\).\\
 Gli autostati di \(S_z\) sono:
@@ -1529,23 +1547,21 @@ Ogni matrice 2x2 hermitiana si scrive:
 \]
 
 
-
-
 Se vogliamo descrivere lo spin in una generica direzione dello spazio 3D, consideriamo un versore $\hat{n}$:
 \[
 \hat{n} = (n_1, n_2, n_3) \in \mathbb{R}^3, \quad \abs{\hat{n}}=1 \implies \sum_k n_k^2 = 1
 \]
 Definiamo la combinazione lineare delle matrici di Pauli $\sigma_k$ lungo la direzione $\hat{n}$:
-\[
-\hat{n} \cdot \vec{\sigma} := \sum_k n_k \sigma_k =
-\begin{pmatrix}
-n_3 & n_1 - i n_2 \\
-n_1 + i n_2 & -n_3
-\end{pmatrix}
-\]
+\begin{equation}
+    \hat{n} \cdot \vec{\sigma} := \sum_k n_k \sigma_k =
+    \begin{pmatrix}
+    n_3 & n_1 - i n_2 \\
+    n_1 + i n_2 & -n_3
+    \end{pmatrix}
+\end{equation}
 Calcoliamo il quadrato dell'operatore $(\hat{n} \cdot \vec{\sigma})$:
 \[
-(\hat{n} \cdot \vec{\sigma})^2 = \sum_{k} n_k^2 \sigma_k^2+ \sum_{i < j} n_i n_j \{\sigma_i, \sigma_j\}=0
+(\hat{n} \cdot \vec{\sigma})^2 = \sum_{k} n_k^2 \sigma_k^2+ \sum_{i < j} n_i n_j \{\sigma_i, \sigma_j\}=\mathbb{I}
 \]
 Dati due vettori generici $\vec{u}, \vec{v} \in \mathbb{R}^3$, vogliamo calcolare il prodotto delle loro contrazioni con le matrici di Pauli:
 \[
@@ -1559,8 +1575,8 @@ Il primo termine restituisce il prodotto scalare, il secondo (antisimmetrico) re
 
 Vogliamo trovare la forma esplicita dell'operatore unitario di rotazione \(U(\vec{\omega})\):
 \[
-    U(\vec{\omega}) = e^{-\frac{i}{\hbar}\vec{\omega}\cdot\vec{S}}.
-    = e^{-\frac{i}{\hbar}\frac{\hbar}{2}\vec{\omega}\cdot\vec{\sigma}} = e^{-\frac{i}{2}\vec{\omega}\cdot\vec{\sigma}}.
+    U(\vec{\omega}) = e^{-\frac{i}{\hbar}\vec{\omega}\cdot\vec{S}}
+    = e^{-\frac{i}{\hbar}\frac{\hbar}{2}\vec{\omega}\cdot\vec{\sigma}} = e^{-\frac{i}{2}\vec{\omega}\cdot\vec{\sigma}}
 \]
 Parametrizziamo il vettore di rotazione \(\vec{\omega}\) con un asse (versore \(\hat{n}\)) e un angolo \(\theta\):
 \[
@@ -1649,8 +1665,7 @@ Possiamo scomporre lo spinore utilizzando gli autovettori canonici dello spin (b
 \[
     [\Psi](\vec{x}) = \Psi_+(\vec{x}) \begin{pmatrix} 1 \\ 0 \end{pmatrix} + \Psi_-(\vec{x}) \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 \]
-dove \( \mqty(1\\0) \) rappresenta l'autostato con spin \( +\hbar/2 \) e \( \mqty(0\\1) \) rappresenta l'autostato con spin \( -\hbar/2 \).
-
+dove \( \mqty(1\\0) \) rappresenta l'autostato con spin \( +\hbar/2 \) e \( \mqty(0\\1) \) rappresenta l'autostato con {spin \( -\hbar/2 \).}
 
 
 Il prodotto scalare tra due stati \( \ket{\Psi} \) e \( \ket{\Phi} \) si calcola inserendo la relazione di completezza nella base delle posizioni e dello spin:
@@ -1780,9 +1795,9 @@ Definiamo gli operatori momento angolare sui singoli spazi:
     \item \( \vec{J}_2 = (J_{2x}, J_{2y}, J_{2z}) \) che agisce su \( \mathcal{H}_2 \)
 \end{itemize}
 Entrambi obbediscono alla consueta algebra dei momenti angolari. Il momento angolare totale del sistema è:
-\[
+\begin{equation}
     \vec{J} = \vec{J}_1 + \vec{J}_2
-\]
+\end{equation}
 dove la somma è intesa come somma diretta di operatori estesi ai prodotti tensoriali (\( \vec{J}_1 \otimes \mathbb{I} + \mathbb{I} \otimes \vec{J}_2 \)).
 
 \begin{example}
@@ -1800,10 +1815,11 @@ dove la somma è intesa come somma diretta di operatori estesi ai prodotti tenso
     \]
 \end{example}
 
-Vogliamo diagonalizzare un insieme di operatori che commutano tra loro. Poiché \( \vec{J}_1 \) commuta con tutti i componenti di \( \vec{J}_2 \) (agendo su spazi diversi), possiamo scegliere il seguente set massimale di osservabili compatibili:
-\[
+Vogliamo diagonalizzare un insieme di operatori che commutano tra loro. Poiché \( \vec{J}_1 \) commuta con tutti i componenti di \( \vec{J}_2 \) (agendo su spazi diversi),
+possiamo scegliere il seguente set massimale di osservabili compatibili:
+\begin{equation}
     \left\{ \vec{J}_1^2, J_{1z}, \vec{J}_2^2, J_{2z} \right\}
-\]
+\end{equation}
 Di conseguenza, prendiamo come base ortonormale comune il prodotto tensoriale degli autovettori dei singoli momenti angolari:
 \[
     \left\{ \ket{j_1, m_1, r} \otimes \ket{j_2, m_2, s} \equiv \ket{j_1, m_1; j_2, m_2; r, s} \right\}
@@ -1812,9 +1828,9 @@ dove \( r,s \) indicano eventuali altri numeri quantici necessari per descrivere
 
 Dato che siamo interessati all'operatore somma \( \vec{J} = \vec{J}_1 + \vec{J}_2 \), che rappresenta il generatore delle rotazioni infinitesime sullo spazio prodotto \( \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \), 
 cerchiamo di diagonalizzare un insieme alternativo di operatori che commutano tra loro. Poiché \( \vec{J}_1^2 \) e \( \vec{J}_2^2 \) commutano con tutto, il nuovo I.C.O.C. scelto è:
-\[
+\begin{equation}
     \left\{ \vec{J}^2, J_z, \vec{J}_1^2, \vec{J}_2^2 \right\}
-\]
+\end{equation}
 dove \( J_z = J_{1z} + J_{2z} \).
 
 Abbiamo quindi una nuova base ortonormale di autovettori comune a questo set di operatori:
@@ -1852,7 +1868,9 @@ Poiché i commutatori non sono nulli, non esiste una base comune di autovettori 
 
 Vogliamo dunque trovare un modo per cambiare da una base all'altra.
 
-\subsubsection{Addizione di Momenti Angolari e Coefficienti di Clebsch-Gordan}
+\subsubsection{Addizione di Momenti Angolari e Coefficienti di Clebsch-Gordan (DA FARE)}
+\lezione{22}{17/11/2025}
+
 Fissiamo \(j_1, j_2, r, s\), con \(m_1 \in \{-j_1, \dots, j_1\} \) e \( m_2 \in \{-j_2, \dots, j_2\}\) 
 consideriamo lo spazio di Hilbert \(\mathcal{H}_{j_1, j_2, r, s} \) con \(\dim(\mathcal{H}) = (2j_1+1)(2j_2+1)\) e le due basi:
 \[
@@ -1979,9 +1997,9 @@ Dunque l'azione sul raggio vettore è:
     \tau_{2\pi} \left[ \alpha \ket{\Psi_1} + \beta \ket{\Psi_2} \right] = \left[ \alpha \ket{\Psi_1} - \beta \ket{\Psi_2} \right]
 \]
 Questo risultato porta a un \textbf{assurdo}. Una rotazione fisica di $2\pi$ (che equivale geometricamente all'identità) non può modificare lo stato fisico del sistema. Tuttavia, i raggi vettori:
-\[
+\begin{equation}
     [\alpha \ket{\Psi_1} + \beta \ket{\Psi_2}] \quad \text{e} \quad [\alpha \ket{\Psi_1} - \beta \ket{\Psi_2}]
-\]
+\end{equation}
 rappresentano \textbf{stati fisici diversi}: non differiscono solo per un fattore di fase globale (come $e^{i\phi}\ket{\Psi}$), ma c'è un segno relativo cambiato tra i due coefficienti (interferenza relativa).
 
 \begin{attention}
@@ -2089,8 +2107,10 @@ Nel momento in cui vi è sovrapposizione spaziale (tempo $t$), se rileviamo una 
 
 % 23 Lezione del 19/11/2025
 
+\lezione{23}{19/11/2025}
+
 Consideriamo ora una particella su uno spazio di Hilbert \(\mathcal{H}\), due insiemi di osservabili I.C.O.C. \(\mathcal{A}\) e \(\mathcal{B}\) e la base di autovettori non degeneri di \(A\) \(\left\{ \ket{a_n} \right\}\).
-Se ho due particelle identiche, lo spazio di Hilbert è \(\mathcal{H}\otimes\mathcal{H}= \mathcal{H}^{\otimes2}\) con base ON \(\left\{ \ket{a_n1}\otimes \ket{a_n2} \right\}\).
+Se ho due particelle identiche, lo spazio di Hilbert è \(\mathcal{H}\otimes\mathcal{H}= \mathcal{H}^{\otimes2}\) con base ON \(\left\{ \ket{a_{n1}}\otimes \ket{a_{n2}} \right\}\).
 
 Misuriamo \(\mathcal{A}\) su entrambe le particelle, ottenendo due risultati diversi \(a_n\) e \(a_m\). Non sappiamo però su quale particella abbiamo misurato l'uno o l'altro, lo stato dopo la misura sarà dunque:
 \[
@@ -2123,11 +2143,11 @@ Per una particella singola la base è \( \{ \ket{e_n} \} \). Per due particelle 
 con base \( \{ \ket{e_n}\otimes\ket{e_m} \} \), le nostre teorie devono essere invarianti per lo scambio delle etichette 1 e 2.\\
 Formalizziamo meglio questo concetto.
 
-\subsubsection{Simmetria di Scambio}
+\subsection{Simmetria di Scambio}
 Definiamo un operatore unitario su \(\mathcal{H}\) detto \textit{operatore di scambio}:
-\[
+\begin{equation}
     \hat{P}_{1,2} ( \ket{u}\otimes\ket{v} ) = \ket{v}\otimes\ket{u}
-\]
+\end{equation}
 
 \textbf{Proprietà:}
 \begin{itemize}
@@ -2170,7 +2190,7 @@ dove:
 
 \begin{theorem}
     { \normalfont \textbf{Spin-statistica}}\\
-    Una particella di spin \(s \) è un bosone \(\iff s \in \mathbb{N}\) o un fermione \(\iff s \in \frac{1}{2} + \mathbb{N}\) .
+    Una particella di spin \(s \) è un bosone se e solo se \(s \in \mathbb{N}\) o un fermione se e solo se \(s \in \frac{1}{2} + \mathbb{N}\) .
 \end{theorem}
 
 
@@ -2226,13 +2246,13 @@ Non tutti gli operatori a.a. su \(\mathcal{H}^{\otimes 2}\) corrispondono a un o
 
 Grazie al postulato posso risolvere il problema della degenerazione di scambio: se misuro \(A\) su entrambe le particelle e ottengo due risultati \(a_n \neq a_m\), 
 l'unica combinazione lineare ammissibile per i bosoni è quella simmetrica:
-\[
+\begin{equation}
     \frac{1}{\sqrt{2}}\left( \ket{a_n}\otimes\ket{a_m} + \ket{a_n}+ \ket{a_m} \right)  \in \mathcal{H}_S
-\]
+\end{equation}
 Mentre per i fermioni è quella antisimmetrica:
-\[
+\begin{equation}
     \frac{1}{\sqrt{2}}\left( \ket{a_n}\otimes\ket{a_m} - \ket{a_n}+ \ket{a_m} \right)  \in \mathcal{H}_A
-\]
+\end{equation}
 
 \begin{attention}
     Cosa succede se le due particelle dovessero trovarsi nello stesso stato \(\Psi \in \mathcal{H}\)? Per i bosoni non è un problema \(\ket{\Psi}\otimes\ket{\Psi} \in \mathcal{H}_S\),
@@ -2247,13 +2267,13 @@ Mentre per i fermioni è quella antisimmetrica:
 
 \subsection{Caso N particelle identiche}
 Consideriamo uno spazio di Hilbert \(\mathcal{H}^{\otimes N}= \mathcal{H}\otimes...\otimes \mathcal{H}\) con base \(\left\{ \ket{e_{n_1}}\ket{e_{n_2}}...\ket{e_{n_N}} \right\}\) (dove abbiamo omesso il simbolo \(\otimes\) per convenienza), i vettori sono descritti da:
-\[
+\begin{equation}
     \ket{\Psi} = \sum_{n_1,n_2,...,n_N}c_{n_1,n_2,..., n_N}\ket{e_{n_1}}\ket{e_{n_2}}...\ket{e_{n_N}}
-\]
+\end{equation}
 Vogliamo che la fisica sia invariante per qualsiasi scambio di etichette, cioè permutazioni del tipo:
-\[
+\begin{equation}
     \pi : \left\{ 1,2,...,N \right\}\to \left\{ 1,2,..., N \right\}
-\]
+\end{equation}
 Consideriamo dunque il gruppo delle permutazioni invertbili \(S_N\) .
 \begin{remark}
     Il gruppo \(S_N\) ha \(N!\) elementi ed è non-abeliano se \(N\geq 3\) .
@@ -2340,13 +2360,13 @@ Essendo gli autovalori di una singola trasposizione \(\left\{ \pm 1 \right\}\) g
 \begin{theorem}
     { \normalfont \textbf{Spin-statistica}}\\
     \(N\) particelle identiche sono bosoni \(s \in \mathbb{N}\) se e solo se:
-    \[
+    \begin{equation}
         \hat{P}_{\pi}\ket{\Psi}= +\ket{\Psi} \quad  \forall\,\pi \in S_N \iff \ket{\Psi}\in \mathcal{H}_S \subseteq \mathcal{H}^{\otimes N}
-    \]
+    \end{equation}
     \(N\) particelle identiche sono fermioni \(s \in \frac12 + \mathbb{N}\) se e solo se:
-    \[
+    \begin{equation}
         \hat{P}_{\pi}\ket{\Psi}= \mathrm{Sgn}(\pi)\ket{\Psi} \quad  \forall\,\pi \in S_N \iff \ket{\Psi}\in \mathcal{H}_A \subseteq \mathcal{H}^{\otimes N}
-    \]
+    \end{equation}
 \end{theorem}
 
 \begin{remark}
@@ -2354,8 +2374,10 @@ Essendo gli autovalori di una singola trasposizione \(\left\{ \pm 1 \right\}\) g
 \end{remark}
 
 % 24 Lezione del 21/11/2025
+
 \begin{example}
     \textbf{\(N=3\)}\\
+    \lezione{24}{21/11/2025}
     Analizziamo la costruzione degli stati fisici per un sistema di 3 particelle identiche a partire dagli stati di singola particella.
     Per particelle bosoniche gli stati devono essere completamente simmetrici sotto scambio di particelle, ovvero invarianti per ogni permutazione \(\pi\).
     \begin{itemize}
@@ -2399,17 +2421,17 @@ Essendo gli autovalori di una singola trasposizione \(\left\{ \pm 1 \right\}\) g
 
 \subsubsection{Osservabili fisici}
 Le osservabili fisiche sono rappresentate da operatori autoaggiunti \(A: \mathcal{H}^{\otimes N} \to \mathcal{H}^{\otimes N}\) che commutano con ogni operatore di permutazione:
-    \[
+    \begin{equation}
         [A, \hat{P}_\pi] = 0 \quad \forall \pi \in S_N
-    \]
+    \end{equation}
     Questa condizione è equivalente a richiedere che l'operatore sia invariante sotto coniugazione per una qualsiasi permutazione:
-    \[
+    \begin{equation}
         \hat{P}_\pi A \hat{P}_\pi^\dagger = A \quad \forall \pi \in S_N
-    \]
+    \end{equation}
 In particolare, questa proprietà deve valere per l'operatore Hamiltoniano del sistema:
-    \[
+    \begin{equation}
         \hat{P}_\pi H \hat{P}_\pi^\dagger = H \quad \forall \pi \in S_N
-    \]
+    \end{equation}
 
 \begin{attention}
     Le osservabili devono essere sempre \textbf{simmetriche} rispetto allo scambio di particelle, a differenza degli stati (che possono essere antisimmetrici nel caso dei fermioni).
@@ -2434,8 +2456,8 @@ In particolare, questa proprietà deve valere per l'operatore Hamiltoniano del s
 
 Consideriamo un sistema composto da 2 elettroni ($2\,e^-$). Lo spazio di Hilbert totale è il prodotto tensore degli spazi delle singole particelle:
 \begin{itemize}
-    \item Spazio H 1° particella: \(\mathcal{H}_{\vec{x}_1} \otimes \mathcal{H}_{s_1}\)
-    \item Spazio H 2° particella: \(\mathcal{H}_{\vec{x}_2} \otimes \mathcal{H}_{s_2}\)
+    \item Spazio di Hilbert della 1° particella: \(\mathcal{H}_1 = \mathcal{H}_{\vec{x}_1} \otimes \mathcal{H}_{s_1}\)
+    \item Spazio di Hilbert della 2° particella: \(\mathcal{H}_2 = \mathcal{H}_{\vec{x}_2} \otimes \mathcal{H}_{s_2}\)
 \end{itemize}
 Per comodità, possiamo raggruppare la parte spaziale e la parte di spin:
 \[
@@ -2467,27 +2489,27 @@ I 4 stati possibili si raggruppano in:
 
 \paragraph{Tripletto (\(S=1\))}
 Spin totale del sistema \(1\), simmetrico per scambio. Ci sono 3 stati (\(m=1, 0, -1\)):
-\[
-\begin{cases}
-    \ket{1, 1} = \ket{+ +} \\
-    \ket{1, 0} = \frac{1}{\sqrt{2}} \left( \ket{+ -} + \ket{- +} \right) \\
-    \ket{1, -1} = \ket{- -}
-\end{cases}
-\]
+\begin{equation}
+    \begin{cases}
+        \ket{1, 1} = \ket{+ +} \\
+        \ket{1, 0} = \frac{1}{\sqrt{2}} \left( \ket{+ -} + \ket{- +} \right) \\
+        \ket{1, -1} = \ket{- -}
+    \end{cases}
+\end{equation}
 Lo stato \(\ket{1,0}\) si ottiene applicando l'operatore di abbassamento \(S_-\) allo stato \(\ket{1,1}\).
 
 \paragraph{Singoletto (\(S=0\))}
 Spin totale nullo, antisimmetrico per scambio. C'è un solo stato (\(m=0\)), che deve essere ortogonale a \(\ket{1,0}\):
-\[
+\begin{equation}
     \ket{0, 0} = \frac{1}{\sqrt{2}} \left( \ket{+ -} - \ket{- +} \right)
-\]
+\end{equation}
 Questo stato appare solo una volta poiché \(S\) ha un solo valore disponibile (\(s_1 - s_2 = 0\)).
 
 Uno stato generico \(\ket{\Psi}\) in \(\mathcal{H}^{\otimes 2}\) può essere scritto espandendo sulla base accoppiata:
-\[
+\begin{equation}
     \ket{\Psi} = \sum_{S=0}^{1} \sum_{m=-S}^{S} \Psi_{S,m}(\vec{x}_1, \vec{x}_2) \ket{S, m}
-    \equiv \sum_{S,m} \Psi_{S,m}(\vec{x}_1, \vec{x}_2) \otimes \ket{S, m}
-\]
+        \equiv \sum_{S,m} \Psi_{S,m}(\vec{x}_1, \vec{x}_2) \otimes \ket{S, m}
+\end{equation}
 dove le \(\Psi_{S,m}(\vec{x}_1, \vec{x}_2) = \braket{\vec{x}_1, \vec{x}_2, S, m}{\Psi}\) sono 4 funzioni d'onda spaziali che specificano lo stato.
 
 Poiché sono fermioni, la funzione d'onda totale $\ket{\Psi}$ deve essere antisimmetrica rispetto allo scambio delle particelle. Definito l'operatore di scambio $\hat{P}_{12}$, deve valere:
@@ -2545,45 +2567,45 @@ Invece per lo stato di singoletto (\(s=0\)), la parte di spin è antisimmetrica 
 \subsubsection{Effetto fisico di funzioni d'onda simmetirce e antisimmetriche}
 
 Consideriamo due funzioni d'onda di particella singola \(\psi_A(\vec{x}), \psi_B(\vec{x}) \in L_2(\mathbb{R}^3)\), con \(\psi_A \neq \psi_B\):
-    \[
-        \int \abs{\psi_{A,B}(\vec{x})}^2 \dd[3]{x} = 1 \qquad \braket{\psi_A}{\psi_B} = 0
-    \]
+\begin{equation}
+    \int \abs{\psi_{A,B}(\vec{x})}^2 \dd[3]{x} = 1 \qquad \braket{\psi_A}{\psi_B} = 0
+\end{equation}
 
 Supponiamo di avere due \(e^-\), uno con funzione d'onda \(\psi_A\) e uno con funzione d'onda \(\psi_B\) (e qualche stato di spin). 
 La funzione d'onda spaziale totale sarà:
-    \[
-        \Psi_{\substack{S=0 \\ S=1}} (\vec{x}_1, \vec{x}_2) = \frac{1}{\sqrt{2}} \left( \psi_A(\vec{x}_1) \psi_B(\vec{x}_2) \pm \psi_A(\vec{x}_2) \psi_B(\vec{x}_1) \right)
-    \]
+\begin{equation}
+    \Psi_{\substack{S=0 \\ S=1}} (\vec{x}_1, \vec{x}_2) = \frac{1}{\sqrt{2}} \left( \psi_A(\vec{x}_1) \psi_B(\vec{x}_2) \pm \psi_A(\vec{x}_2) \psi_B(\vec{x}_1) \right)
+\end{equation}
 Il più per le funzioni d'onda simmetriche e il meno per le funzioni d'onda antisimmetriche. Entrambe le funzioni sono normalizzate:
 \[
     \int \abs{\Psi(\vec{x}_1, \vec{x}_2)}^2 \dd[3]{x_1} \dd[3]{x_2} = 1
 \]
 
 Calcoliamo la probabilità di trovare entrambe le particelle nella stessa posizione \(\vec{x}_1 = \vec{x} = \vec{x}_2\):
-\[
+\begin{equation}
     \rho(\vec{x}, \vec{x}) = \abs{\Psi(\vec{x}, \vec{x})}^2
-\]
+\end{equation}
 
 Analizziamo i tre casi possibili:
 
 \begin{enumerate}
     \item \textbf{\(\Psi\) simmetrica}:
-    \[
+    \begin{equation}
         \rho_S(\vec{x}, \vec{x}) = \abs{\frac{1}{\sqrt{2}} \left( 2\psi_A(\vec{x})\psi_B(\vec{x}) \right)}^2 = \frac{1}{2} \cdot 4 \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x})}^2 = 2 \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x})}^2
-    \]
+    \end{equation}
     La probabilità è doppia rispetto al caso di particelle distinguibili (attrazione efficace).
 
     \item \textbf{\(\Psi\) antisimmetrica}:
-    \[
+    \begin{equation}
         \rho_A(\vec{x}, \vec{x}) = \abs{\frac{1}{\sqrt{2}} \left( \psi_A(\vec{x})\psi_B(\vec{x}) - \psi_A(\vec{x})\psi_B(\vec{x}) \right)}^2 = 0
-    \]
+    \end{equation}
     La probabilità è nulla: principio di esclusione di Pauli (repulsione efficace).
 
     \item \textbf{Particelle distinguibili}:
-    \[
+    \begin{equation}
         \Psi_D(\vec{x}_1, \vec{x}_2) = \psi_A(\vec{x}_1)\psi_B(\vec{x}_2)\implies 
-        \rho_D(\vec{x}, \vec{x}) = \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x})}^2
-    \]
+            \rho_D(\vec{x}, \vec{x}) = \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x})}^2
+    \end{equation}
 \end{enumerate}
 
 Calcoliamo ora invece la probabilità che le particelle si trovino in posizioni differenti \(\vec{x}\neq \vec{x}'\):
@@ -2591,9 +2613,9 @@ Calcoliamo ora invece la probabilità che le particelle si trovino in posizioni 
 \begin{enumerate}
     \item \textbf{\(\Psi\) Simmetrica o Antisimmetrica (Indistinguibili)}:
     Poiché \(\Psi\) è (anti)simmetrica, il modulo quadro è invariante per lo scambio delle coordinate:
-    \[
+    \begin{equation}
         \abs{\Psi(\vec{x}, \vec{x}')}^2 = \abs{\Psi(\vec{x}', \vec{x})}^2
-    \]
+    \end{equation}
     Quindi la densità totale diventa:
     \[
         \rho_{S,A}^{tot}(\vec{x}, \vec{x}') = 2 \cdot \abs{\Psi(\vec{x}, \vec{x}')}^2 = 2 \cdot \frac{1}{2} \abs{\psi_A(\vec{x})\psi_B(\vec{x}') \pm \psi_A(\vec{x}')\psi_B(\vec{x})}^2
@@ -2610,9 +2632,9 @@ Calcoliamo ora invece la probabilità che le particelle si trovino in posizioni 
 
     \item \textbf{Particelle Distinguibili}:
     Per particelle classiche o distinguibili, non c'è simmetrizzazione:
-    \[
+    \begin{equation}
         \rho_D^{tot}(\vec{x}, \vec{x}') = \abs{\psi_A(\vec{x})}^2 \abs{\psi_B(\vec{x}')}^2 + \abs{\psi_A(\vec{x}')}^2 \abs{\psi_B(\vec{x})}^2
-    \]
+    \end{equation}
 \end{enumerate}
 
 \begin{example}
@@ -2697,7 +2719,7 @@ Il momento angolare è definito come \( \vec{l} = \vec{x} \times \vec{p} \). Poi
 \]
 Possiamo quindi scrivere il quadrato del momento come somma dei quadrati delle componenti:
 \[
-\vec{p}^2 = p_r^2 + p_\perp^2 = p_r^2 + \frac{\vec{l}^2}{r^2}
+\vec{p}^2 = p_r^2 + p_\perp^2 = p_r^2 + \frac{\abs{\vec{l}}^2}{r^2}
 \]
 
 \paragraph{In Meccanica Quantistica}
@@ -2714,9 +2736,9 @@ Dove \( P_r^2 \) è l'operatore associato alla parte radiale dell'energia cineti
 \end{attention}
 
 Sostituendo questa espressione nell'operatore momento (che, a meno di costanti, corrisponde al Laplaciano), otteniamo la scomposizione in coordinate sferiche:
-\[
-\vec{P}^2 = -\hbar^2 \nabla^2 = \underbrace{-\hbar^2 \frac{1}{r} \frac{\partial^2 (r \cdot)}{\partial r^2}}_{P_r^2} + \frac{\vec{L}^2}{r^2}
-\]
+\begin{equation}
+    \vec{P}^2 = -\hbar^2 \nabla^2 = \underbrace{-\hbar^2 \frac{1}{r} \frac{\partial^2 (r \cdot)}{\partial r^2}}_{P_r^2} + \frac{\vec{L}^2}{r^2}
+\end{equation}
 Dove \( \vec{L}^2 \) racchiude la parte angolare del Laplaciano (l'espressione complicata che appare nello studio delle armoniche sferiche).
 
 Bisogna prestare attenzione al dominio per garantire l'autoaggiuntezza della coordinata radiale.
@@ -2735,20 +2757,25 @@ Questo dominio coincide con il dominio dell'Hamiltoniana \( D_H \) per i potenzi
 % 25 Lezione del 24/11/2025
 
 \subsection{Autofunzioni radiali}
+\lezione{25}{24/11/2025}
+
 Possiamo ora risolvere il sistema agli autovalori \ref{eq: potCentrali} cercando le autofunzioni : \[\braket{r,\vartheta, \varphi}{E, \ell, m}= \Psi_{E, \ell, m}(r, \vartheta, \varphi)\]
-Sappiamo già dalla trattazione in \ref{sec: particella3d} che le soluzioni hanno la forma \[\Psi_{E, \ell, m}(r, \vartheta, \varphi)= f_{E,\ell,m}(r)Y^m_\ell(\vartheta,\varphi)\]
+Sappiamo già dalla trattazione in \ref{sec: particella3d} che le soluzioni hanno la forma:
+\begin{equation}
+    \Psi_{E, \ell, m}(r, \vartheta, \varphi)= f_{E,\ell,m}(r)Y^m_\ell(\vartheta,\varphi)
+\end{equation}
 Si tratta di risolvere dunque solo la prima equazione:
-\[
-\frac{\hbar^2}{2m} \left( -\frac{1}{r} \partial_r^2 r + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) f_{E,\ell,m}(r) Y_\ell^m(\theta, \varphi) = 0
-\]
+\begin{equation}
+    \frac{\hbar^2}{2m} \left( -\frac{1}{r} \partial_r^2 r + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) f_{E,\ell,m}(r) Y_\ell^m(\theta, \varphi) = 0
+\end{equation}
 Essendo l'equazione solo nella variabile \(r\), posso rimuovere l'armonica sferica. Per comodità moltiplico tutto per \(r\) e definisco:
-\[
-u_{E,\ell,m}(r) := r f_{E,\ell,m}(r)
-\]
+\begin{equation}
+    u_{E,\ell,m}(r) := r f_{E,\ell,m}(r)
+\end{equation}
 Ottenendo così:
-\[
-\left( -\partial_r^2 + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) u_{E,\ell,m}(r) = 0
-\]
+\begin{equation}
+    \left( -\partial_r^2 + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) u_{E,\ell,m}(r) = 0
+\end{equation}
 Abbiamo quindi un'equazione differenziale di secondo ordine nella sola variabile \(r\), e avrò in generale due soluzioni linearmente indipendenti. 
 Controlliamo però che le soluzioni \(u(r)\) siano accettabili fisicamente.
 
@@ -2786,24 +2813,24 @@ Consideriamo il caso di potenziali a \textit{corto raggio}, ovvero tali che tend
 Senza perdita di generalità, possiamo shiftare il potenziale in modo che $V(r) \to 0$ per $r \to \infty$.
 
 In questa approssimazione, per $r \gg 0$, possiamo trascurare sia $V(r)$ (che tende a zero) sia il termine centrifugo $\frac{\ell(\ell+1)}{r^2}$ (che decade come $1/r^2$). L'equazione radiale ridotta diventa:
-\[
-\left( \partial_r^2 + \frac{2mE}{\hbar^2} \right) u_{E,\ell}(r) = 0
-\]
+\begin{equation}
+    \left( \partial_r^2 + \frac{2mE}{\hbar^2} \right) u_{E,\ell}(r) = 0
+\end{equation}
 La natura delle soluzioni dipende dal segno dell'energia $E$ (rispetto al valore asintotico del potenziale).
 
 \paragraph{Caso $E > 0$: Stati di Scattering}
 Definiamo il vettore d'onda $k = \sqrt{\frac{2mE}{\hbar^2}}$. La soluzione asintotica è una combinazione lineare di onde piane oscillanti:
-\[
-u(r) \sim A e^{ikr} + B e^{-ikr} \quad \implies \quad f(r) \sim A \frac{e^{ikr}}{r} + B \frac{e^{-ikr}}{r} \quad \text{per } r \to \infty
-\]
+\begin{equation}
+    u(r) \sim A e^{ikr} + B e^{-ikr} \quad \implies \quad f(r) \sim A \frac{e^{ikr}}{r} + B \frac{e^{-ikr}}{r} \quad \text{per } r \to \infty
+\end{equation}
 Queste soluzioni rappresentano \textit{stati di scattering} (spettro continuo). Sono funzioni non normalizzabili in senso stretto ($L_2$), ma accettabili nel senso delle distribuzioni (come onde piane).
 Le costanti $A$ e $B$ vengono fissate (a meno di un fattore di normalizzazione) dalle condizioni al contorno per $r \to 0$.
 
 \paragraph{Caso $E < 0$: Stati Legati}
 Definiamo il parametro reale $\rho = \sqrt{\frac{-2mE}{\hbar^2}}$. La soluzione generale è data da esponenziali reali:
-\[
-u(r) \sim A e^{\rho r} + B e^{-\rho r} \quad \implies \quad f(r) \sim A \frac{e^{\rho r}}{r} + B \frac{e^{-\rho r}}{r} \quad \text{per } r \to \infty
-\]
+\begin{equation}
+    u(r) \sim A e^{\rho r} + B e^{-\rho r} \quad \implies \quad f(r) \sim A \frac{e^{\rho r}}{r} + B \frac{e^{-\rho r}}{r} \quad \text{per } r \to \infty
+\end{equation}
 Perché la funzione d'onda rappresenti uno stato fisico (normalizzabile, ovvero $\Psi \in L_2$), non può divergere all'infinito.
 Dobbiamo quindi imporre la condizione asintotica: \(A = 0\)\\
 Rimangono solo i termini esponenzialmente decrescenti, che identificano gli \textit{stati legati}.
@@ -2819,9 +2846,9 @@ Consideriamo un sistema composto da due particelle distinguibili senza spin. Lo 
 Le osservabili per le due particelle sono rispettivamente $\vec{X}_a, \vec{P}_a$ (massa $m_a$) e $\vec{X}_b, \vec{P}_b$ (massa $m_b$).
 
 L'Hamiltoniana del sistema è data da:
-\[
-H = \frac{\vec{P}_a^2}{2m_a} + \frac{\vec{P}_b^2}{2m_b} + V(|\vec{X}_a - \vec{X}_b|)
-\]
+\begin{equation}
+    H = \frac{\vec{P}_a^2}{2m_a} + \frac{\vec{P}_b^2}{2m_b} + V(|\vec{X}_a - \vec{X}_b|)
+\end{equation}
 La forma del potenziale $V(|\vec{X}_a - \vec{X}_b|)$, che dipende solo dalla distanza relativa, implica che ci troviamo in uno spazio \textbf{omogeneo ed isotropo}. 
 Questo significa che il sistema è invariante per traslazioni e rotazioni
 
@@ -2829,19 +2856,19 @@ Per semplificare il problema, passiamo al sistema di riferimento del Centro di M
 Definiamo la massa totale $M = m_a + m_b$.
 
 Coordinate del Centro di Massa:
-\[
-\vec{X}_{CM} = \frac{m_a \vec{X}_a + m_b \vec{X}_b}{M} \quad (\text{media pesata delle posizioni})
-\]
-\[
-\vec{P}_{CM} = \vec{P}_a + \vec{P}_b
-\]
+\begin{equation}
+    \vec{X}_{CM} = \frac{m_a \vec{X}_a + m_b \vec{X}_b}{M} \quad (\text{media pesata delle posizioni})
+\end{equation}
+\begin{equation}
+    \vec{P}_{CM} = \vec{P}_a + \vec{P}_b
+\end{equation}
 Coordinate Relative:
-\[
-\vec{X}_r = \vec{X}_a - \vec{X}_b
-\]
-\[
-\vec{P}_r = \frac{m_b \vec{P}_a - m_a \vec{P}_b}{M}
-\]
+\begin{equation}
+    \vec{X}_r = \vec{X}_a - \vec{X}_b
+\end{equation}
+\begin{equation}
+    \vec{P}_r = \frac{m_b \vec{P}_a - m_a \vec{P}_b}{M}
+\end{equation}
 Nota: $\vec{P}_r$ è costruito in modo da essere coniugato a $\vec{X}_r$ e ortogonale al moto del CM.
 
 Le nuove coordinate sono canoniche. La normalizzazione nelle definizioni è fissata proprio per preservare le regole di commutazione:
@@ -2859,13 +2886,13 @@ Dato che le variabili del CM e quelle relative sono indipendenti (i commutatori 
 
 
 Esprimendo l'Hamiltoniana nelle nuove coordinate, otteniamo la somma di due termini disaccoppiati:
-\[
-H = \underbrace{\frac{\vec{P}_{CM}^2}{2M}}_{H_{CM}} + \underbrace{\frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)}_{H_{rel}} \quad \text{ con } \; \mu = \frac{m_a+m_b}{M}
-\]
+\begin{equation}
+    H = \underbrace{\frac{\vec{P}_{CM}^2}{2M}}_{H_{CM}} + \underbrace{\frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)}_{H_{rel}} \quad \text{ con } \; \mu = \frac{m_a+m_b}{M}
+\end{equation}
 Questo ci permette di fattorizzare lo spazio di Hilbert e le soluzioni:
-\[
-\mathcal{H} = L_2(\mathbb{R}^3, d^3x_{CM}) \otimes L_2(\mathbb{R}^3, d^3x_r) = \mathcal{H}_{CM} \otimes \mathcal{H}_{rel}
-\]
+\begin{equation}
+    \mathcal{H} = L_2(\mathbb{R}^3, d^3x_{CM}) \otimes L_2(\mathbb{R}^3, d^3x_r) = \mathcal{H}_{CM} \otimes \mathcal{H}_{rel}
+\end{equation}
 
 \subsection{Simmetrie Dinamiche}
 
@@ -2882,9 +2909,9 @@ Consideriamo il seguente I.C.O.C.:
 \]
 Notiamo che \( \vec{P}_{CM} \) agisce sullo spazio del centro di massa (CM), mentre \( H_{rel}, \vec{L}_r^2, L_{rz} \) agiscono sullo spazio relativo.
 Di conseguenza, le autofunzioni fattorizzano:
-\[
-\Phi_{\vec{P}_{CM}}(\vec{X}_{CM}) \, \Psi_{E,\ell,m}(\vec{X}_r)
-\]
+\begin{equation}
+    \Phi_{\vec{P}_{CM}}(\vec{X}_{CM}) \, \Psi_{E,\ell,m}(\vec{X}_r)
+\end{equation}
 Esplicitando l'autofunzione del momento in 3D per il centro di massa, otteniamo:
 \[
 \frac{e^{\frac{i}{\hbar}\vec{P}_{CM}\cdot \vec{X}_{CM}}}{(2\pi\hbar)^{3/2}} \, {\Psi_{E,\ell,m}(\vec{X}_r)}
@@ -2921,21 +2948,21 @@ H = H_{CM} + H_r
 \]
 Ci focalizziamo esclusivamente sulla parte relativa \( H_r \) e sul momento angolare relativo \( \vec{L}_r \).
 L'Hamiltoniana relativa è:
-\[
-H_r = \frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)
-\]
-\begin{remark}
+\begin{equation}
+    H_r = \frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)
+\end{equation}
+\begin{attention}
     D'ora in poi ometteremo il pedice \( r \) per semplicità, dato che tratteremo solo questa Hamiltoniana. Poniamo quindi \( r = |\vec{X}| \) (distanza).
-\end{remark}
+\end{attention}
 
 L'Hamiltoniana diventa:
 \[
 H = \frac{\vec{P}^2}{2\mu} + V(r)
 \]
 Il potenziale è quello Coulombiano:
-\[
-V(r) = - \frac{q_e^2}{4\pi\varepsilon_0 r} = - \frac{e^2}{r}
-\]
+\begin{equation}
+    V(r) = - \frac{q_e^2}{4\pi\varepsilon_0 r} = - \frac{e^2}{r}
+\end{equation}
 Nell'ultimo passaggio abbiamo usato la notazione CGS (Gauss), spesso utilizzata nei testi di riferimento.
 Riportiamo alcune costanti utili:
 \[
@@ -2953,35 +2980,34 @@ Avremo due tipi di spettro:
 Ci concentriamo sulla ricerca degli stati legati (\( E < 0 \)). Per avere una base completa di \( \mathcal{H} \) dovremmo includere anche gli stati non legati, ma per ora li tralasciamo.
 
 Cerchiamo autofunzioni \( \Psi_{E,\ell,m} \) dell'insieme \( \{ H, \vec{L}^2, L_z \} \) nella forma fattorizzata:
-\[
-\Psi_{E,\ell,m}(r, \theta, \varphi) = f_{E,\ell}(r) Y_\ell^m(\theta, \varphi)
-\]
+\begin{equation}
+    \Psi_{E,\ell,m}(r, \theta, \varphi) = f_{E,\ell}(r) Y_\ell^m(\theta, \varphi)
+\end{equation}
 Definiamo la funzione radiale ridotta \( u_{E,\ell}(r) = r f_{E,\ell}(r) \).
 
-Anche se \( V(r) \) non è limitato nell'origine, grazie al \textbf{Teorema di Kato-Rellich} possiamo affermare che il dominio dell'Hamiltoniana coincide con quello dell'energia cinetica:
+Anche se \( V(r) \) non è limitato nell'origine, grazie al \textbf{Teorema di Kato-Rellich} (\ref{theo: Kato-Rellich}) possiamo affermare che il dominio dell'Hamiltoniana coincide con quello dell'energia cinetica:
 \[
 D(H) = D(\vec{P}^2)
 \]
 Questo impone delle condizioni al contorno per \( r \to 0^+ \):
-\[
-\lim_{r \to 0^+} r f_{E,l}(r) \equiv \lim_{r \to 0^+} u_{E,l}(r) = 0
-\]
-
+\begin{equation}
+    \lim_{r \to 0^+} r f_{E,l}(r) \equiv \lim_{r \to 0^+} u_{E,l}(r) = 0
+\end{equation}
 Eq. diff. parte radiale:
-\[
-\left( -\partial_r^2 + \underbrace{\frac{\ell(\ell+1)}{r^2}}_{\text{en. cinetica rotazionale}} + \frac{2\mu}{\hbar^2} \left( -\frac{e^2}{r} - E \right) \right) \underbrace{r F_{E,\ell}(r)}_{u_{E,\ell}(r)} = 0
-\]
+\begin{equation}
+    \left( -\partial_r^2 + \underbrace{\frac{\ell(\ell+1)}{r^2}}_{\text{en. cinetica rotazionale}} + \frac{2\mu}{\hbar^2} \left( -\frac{e^2}{r} - E \right) \right) \underbrace{r f_{E,\ell}(r)}_{u_{E,\ell}(r)} = 0
+\end{equation}
 
 Rendiamo l'equazione adimensionale, sfruttando le seguenti quantità:
 \begin{itemize}
     \item Raggio di Bohr:
-    \[
+    \begin{equation}
         a_0 = \frac{\hbar^2}{\mu e^2} \simeq 0.529 \cdot 10^{-10} \text{ m}
-    \]
+    \end{equation}
     \item Energia di ionizzazione:
-    \[
+    \begin{equation}
         E_I = \frac{e^2}{2a_0} = \frac{\hbar^2}{2\mu a_0^2} \simeq 13.6 \text{ eV} \equiv 1 \text{ Ry (Rydberg)}
-    \]
+    \end{equation}
 \end{itemize}
 
 Definiamo le variabili adimensionali: 
@@ -3009,11 +3035,12 @@ Dobbiamo risolvere dunque:
 \end{equation}
 
 % 26 Lezione del 28/11/2025
+\lezione{26}{28/12/2025}
 
 Cerchiamo soluzioni in forma di serie di potenze:
-\[
+\begin{equation}
     y_{E, \ell}(\rho)=  \sum_{k = 0}^{+\infty}c_k \rho^{k+k_0+1}
-\]
+\end{equation}
 dove richediamo che \(c_0 \neq 0\) e quindi \(k_0+1\) è il grado più basso della serie.
 Calcoliamo i termini che compaiono nell'equazione:
 \begin{align*}
@@ -3023,9 +3050,9 @@ Calcoliamo i termini che compaiono nell'equazione:
 \end{align*}
 
 Sostituendo quindi all'interno dell'equazione (aggiungendo i termini per \(k' = 0\) per cui vale \(c_{-1}\equiv0\)):
-\[
-\sum_{k=0}^{+\infty} \rho^{k+\ell+1} \big( -(k+k_0)(k+k_0+1)c_k + 2\lambda c_{k-1}(k+k_0) + \ell(\ell+1)c_k - 2c_{k-1} \big) = 0
-\]
+\begin{equation}
+    \sum_{k=0}^{+\infty} \rho^{k+\ell+1} \big( -(k+k_0)(k+k_0+1)c_k + 2\lambda c_{k-1}(k+k_0) + \ell(\ell+1)c_k - 2c_{k-1} \big) = 0
+\end{equation}
 
 Questa equazione deve valere per ogni possibile valore di \(\rho\) e quindi la parentesi deve essere essere identicamente nulla per ogni valore di \(k\).\\
 Per \(k=0\) abbiamo:
@@ -3080,40 +3107,39 @@ Se questa condizione è verificata, allora \( c_m = 0 \) e poiché ogni coeffici
 c_k = 0 \quad \forall k \ge m
 \]
 In questo modo la serie diventa finita:
-\[
-y_{E,\ell}(\rho) = \sum_{k=0}^{m-1} c_k \rho^{k+\ell+1}
-\]
+\begin{equation}
+    y_{E,\ell}(\rho) = \sum_{k=0}^{m-1} c_k \rho^{k+\ell+1}
+\end{equation}
 che è un polinomio di grado massimo legato a \( m+\ell \). Questa condizione di troncamento determina gli autovalori dell'energia permessi.
 
 Definiamo ora il \textit{numero quantico principale} \( n \) come:
-\[
-n := m + \ell
-\]
+\begin{equation}
+    n := m + \ell
+\end{equation}
 Da questa definizione e dalla condizione di troncamento, otteniamo il valore quantizzato di \( \lambda \):
-\[
-\lambda = \frac{1}{n}
-\]
+\begin{equation}
+    \lambda = \frac{1}{n}
+\end{equation}
 Poiché \( m \ge 1 \) e \( \ell \ge 0 \), i valori possibili per \( n \) sono gli interi positivi:
-\[
-n = 1, 2, 3, 4, \dots
-\]
-
+\begin{equation}
+    n = 1, 2, 3, 4, \dots
+\end{equation}
 Inoltre, dato che \( m = n - \ell \ge 1 \), per un fissato valore di \( n \), il momento angolare \( \ell \) è vincolato dalla condizione:
-\[
-\boxed{ 0 \le \ell < n }
-\]
+\begin{equation}
+    0 \le \ell < n 
+\end{equation}
 ovvero \( \ell \) può assumere i valori \( 0, 1, \dots, n-1 \).
 
 Sostituendo \( \lambda = 1/n \) nell'espressione dell'energia \( E = -\lambda^2 E_I \) (dove \( E_I \) è l'energia di ionizzazione), otteniamo i livelli energetici permessi:
-\[
-\boxed{ E_n = -\frac{1}{n^2} E_I }
-\]
+\begin{equation}
+    E_n = -\frac{1}{n^2} E_I
+\end{equation}
 L'energia dipende solo dal numero quantico principale \( n \). In questo modo abbiamo ricavato lo spettro discreto dell'atomo di idrogeno.
 
 La differenza di energia tra due livelli \( n_1 \) e \( n_2 \) è data dalla \textbf{formula di Rydberg}:
-\[
-E_{n_1} - E_{n_2} = \left( \frac{1}{n_2^2} - \frac{1}{n_1^2} \right) E_I
-\]
+\begin{equation}
+    E_{n_1}-E_{n_2} = \left(\frac{1}{n_2^2} -\frac{1}{n_1^2} \right) -\frac{1}{n^2} E_I
+\end{equation}
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[
@@ -3201,9 +3227,9 @@ Questo suggerisce che il sistema possiede \textbf{simmetrie ulteriori} (più gra
 La "nuova" simmetria è legata a una quantità conservata specifica per il potenziale \( 1/r \) (potenziale Coulombiano/Kepleriano): il \textbf{Vettore di Runge-Lenz} \( \vec{M} \).
 
 Esso è definito (a meno di costanti moltiplicative) come:
-\[
-\vec{M} = \frac{\vec{P} \times \vec{L} - \vec{L} \times \vec{P}}{2\mu} - e^2 \frac{\vec{X}}{R}
-\]
+\begin{equation}
+    \vec{M} = \frac{\vec{P} \times \vec{L} - \vec{L} \times \vec{P}}{2\mu} - e^2 \frac{\vec{X}}{R}
+\end{equation}
 dove \( \mu \) è la massa ridotta e \( R = |\vec{X}| \).
 
 Vale la relazione di commutazione con l'Hamiltoniana:
@@ -3215,26 +3241,26 @@ Questo implica che \( \vec{M} \) è una costante del moto (simmetria dinamica). 
 \subsubsection{Struttura delle autofunzioni dell'Atomo di Idrogeno}
 
 Analizziamo come sono fatte le autofunzioni. La parte radiale $u_{n,\ell}(\rho)$ ha la forma:
-\[
+\begin{equation}
     u_{n,\ell}(\rho)= e^{-\frac{\rho}{n}} \left( c_0 \rho^{\ell+1} + \dots + c_{n-\ell-1}\rho^n \right)
-\]
+\end{equation}
 Consideriamo lo stato fondamentale ($n=1, \ell=0$):
 \[
     f_{n=1, \ell=0}(r) = \frac{2}{\sqrt{a_0^3}} e^{-\frac{r}{a_0}} \quad \text{e} \quad Y_0^0 = \frac{1}{\sqrt{4\pi}}
 \]
 Da cui otteniamo la funzione d'onda completa per lo stato fondamentale:
-\[
+\begin{equation}
     \Psi_{1,0,0} = \frac{1}{\sqrt{\pi a_0^3}} e^{-\frac{r}{a_0}}
-\]
+\end{equation}
 
 La funzione d'onda generale si scrive separando la parte radiale da quella angolare:
-\[
+\begin{equation}
     \Psi_{n,\ell,m} = \frac{1}{r} u_{n,\ell}(r) Y_{\ell}^m(\vartheta, \varphi)
-\]
+\end{equation}
 Le funzioni dipenderanno da $r$ (dato che $\rho$ è scalato su $a_0$). Esplicitando la struttura:
-\[
+\begin{equation}
     \Psi_{n,\ell,m} = \frac{N_{n,\ell}}{\sqrt{a_0^3}} e^{-\frac{r}{n a_0}} \left( \frac{2r}{n a_0} \right)^\ell L\left( \frac{2r}{n a_0} \right) Y_\ell^m(\vartheta, \varphi)
-\]
+\end{equation}
 dove il termine $L$ rappresenta un \textit{polinomio di Laguerre} di grado $n-\ell-1$.
 
 Analizziamo il comportamento vicino al nucleo ($r \to 0$):
