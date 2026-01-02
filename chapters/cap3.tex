@@ -449,3 +449,660 @@ e i relativi stati perturbati al primo ordine sono:
     \ket{\lambda^{\pm}} = \ket{\pm} + o(\lambda)
 \end{equation}
 
+
+
+\section{Particella in campo elettromagnetico}
+
+Consideriamo una particella classica di massa \( m \) e carica \( q \) immersa in un campo elettromagnetico descritto dai campi \( \vec{E}(\vec{x},t) \) e \( \vec{B}(\vec{x},t) \).
+
+L'equazione del moto è data dalla forza di Lorentz (in unità CGS di Gauss):
+\begin{equation}
+    m \dv{\vec{v}}{t} = q \left( \vec{E} + \frac{\vec{v}}{c} \times \vec{B} \right)
+\end{equation}
+In questo contesto non è possibile definire una semplice energia potenziale scalare indipendente dalla velocità. È necessario introdurre i potenziali elettromagnetici.
+
+I campi \( \vec{E} \) e \( \vec{B} \) possono essere espressi in termini di un potenziale scalare \( \varphi(\vec{x},t) \) e un potenziale vettore \( \vec{A}(\vec{x},t) \):
+\begin{equation}
+    \begin{cases}
+            \vec{E} = - \vec{\nabla}\varphi - \frac{1}{c} \pdv{\vec{A}}{t} \\
+            \vec{B} = \vec{\nabla} \times \vec{A}
+        \end{cases}
+\end{equation}
+
+La Lagrangiana che descrive la dinamica della particella è data da:
+\begin{equation}
+    \mathcal{L}(\vec{x}, \vec{v}, t) = \frac{1}{2}m\vec{v}^2 + \frac{q}{c} \vec{v} \cdot \vec{A}(\vec{x},t) - q\varphi(\vec{x},t)
+\end{equation}
+dove il termine \( \frac{q}{c} \vec{v} \cdot \vec{A} - q\varphi \) rappresenta l'interazione generalizzata (o potenziale generalizzato dipendente dalla velocità).
+
+
+I potenziali elettromagnetici $\varphi$ e $\vec{A}$ non sono univocamente determinati dai campi fisici $\vec{E}$ e $\vec{B}$. 
+È possibile effettuare delle \textit{trasformazioni di gauge} parametrizzate da una funzione scalare arbitraria $\Lambda(\vec{x},t)$:
+\begin{equation}
+    \begin{cases}
+            \varphi \longrightarrow \varphi' = \varphi - \frac{1}{c} \pdv{\Lambda}{t} \\
+            \vec{A} \longrightarrow \vec{A}' = \vec{A} + \vec{\nabla}\Lambda
+        \end{cases}
+\end{equation}
+con la condizione al contorno che $\Lambda(\vec{x},t) \to 0$ per $|\vec{x}| \to \infty$.
+
+Sotto questa trasformazione, la Lagrangiana si trasforma come:
+\[
+    \mathcal{L} \longrightarrow \mathcal{L}' = \mathcal{L} + \frac{q}{c} \dv{\Lambda}{t}
+\]
+Poiché la Lagrangiana cambia solo per la derivata totale totale rispetto al tempo di una funzione delle coordinate e del tempo, le equazioni del moto (equazioni di Eulero-Lagrange) rimangono invarianti.
+
+\begin{attention}
+    Le quantità fisicamente misurabili (osservabili) sono invarianti per trasformazioni di gauge.
+\end{attention}
+
+Nella visuale hamiltoniana, definiamo il \textit{momento canonico} coniugato alla coordinata $x_i$:
+\[
+    p_i = \pdv{\mathcal{L}}{v_i} = m v_i + \frac{q}{c} A_i
+\]
+È fondamentale distinguere tra due tipi di momento:
+\begin{itemize}
+    \item \textbf{Momento meccanico} $\vec{\pi} = m\vec{v} = \vec{p} - \frac{q}{c}\vec{A}$: questo è legato alla velocità cinematica, è una quantità misurabile e quindi \textit{gauge-invariante}.
+    \item \textbf{Momento canonico} $\vec{p}$: dipende esplicitamente dal potenziale vettore $\vec{A}$ e quindi varia con la scelta di gauge. Non è una quantità direttamente osservabile.
+\end{itemize}
+
+Costruiamo l'Hamiltoniana tramite la trasformata di Legendre:
+\begin{equation}
+    H = \vec{p} \cdot \vec{v} - \mathcal{L} = \frac{1}{2m} \left( \vec{p} - \frac{q}{c}\vec{A}(\vec{x},t) \right)^2 + q\varphi(\vec{x},t)
+\end{equation}
+
+\subsection{Particella quantistica senza spin in campo E.M.}
+
+Seguendo il formalismo della quantizzazione canonica, si definiscono le corrispondenze per le variabili dinamiche e il relativo commutatore fondamentale:
+\[
+\vec{x} \longrightarrow \vec{X} \qquad \vec{p} \longrightarrow \vec{P} = -i\hbar \vec{\nabla} \qquad [X_j, P_k] = i\hbar \delta_{jk}
+\]
+L'operatore hamiltoniano per una particella in un campo elettromagnetico è dato da:
+\begin{equation}
+    H = \frac{1}{2m} \left( \vec{P} - \frac{q}{c} \vec{A}(\vec{X}, t) \right)^2 + q \varphi(\vec{X}, t)
+\end{equation}
+In generale, tale operatore è dipendente dal tempo. Se i campi risultano stazionari (\(\nabla_t\vec{E}= 0\) e \(\nabla_t\vec{B} = 0\)), 
+è possibile scegliere tramite trasformazione di Gauge un potenziale vettore \(\vec{A}\) e un potenziale scalare \(\varphi\) indipendenti dal tempo, rendendo il sistema conservativo. 
+Resta comunque possibile effettuare cambiamenti di Gauge tramite una funzione \(\Lambda\) purché sia soddisfatta la condizione \(\pdv{\Lambda}{t} = 0\).
+
+L'equazione di Schrödinger in un campo elettromagnetico è governata dall'Hamiltoniano \( H_{\vec{A}, \varphi} \):
+\[
+i\hbar \pdv{t} \psi(\vec{x},t) = \left[ \frac{1}{2m} \left( -i\hbar \vec{\nabla} - \frac{q}{c} \vec{A}(\vec{x},t) \right)^2 + q \varphi(\vec{x},t) \right] \psi(\vec{x},t)
+\]
+Considerando le trasformazioni di gauge per i potenziali:
+\[
+\varphi \longrightarrow \varphi' = \varphi - \frac{1}{c} \pdv{\Lambda}{t}, \qquad \vec{A} \longrightarrow \vec{A}' = \vec{A} + \vec{\nabla} \Lambda
+\]
+anche la funzione d'onda deve trasformarsi tramite l'operatore unitario \( U_\Lambda \) affinché l'equazione rimanga covariante:
+\[
+\psi(\vec{x},t) \longrightarrow \psi'(\vec{x},t) := e^{i \frac{q}{\hbar c} \Lambda(\vec{x},t)} \psi(\vec{x},t) = U_\Lambda \psi(\vec{x},t)
+\]
+Le motivazioni fisiche per tale trasformazione sono:
+\begin{enumerate}
+    \item Le quantità misurate (osservabili) devono essere gauge-invarianti.
+    \item L'equazione di Schrödinger deve mantenere la sua forma (covarianza).
+\end{enumerate}
+Verifichiamo queste due condizioni.
+
+
+\subsubsection{Osservabili fisici}
+
+Mentre lo stato fisico \(\Sigma \to \psi\) e la posizione \(\vec{X}\) sono ben definiti, altri osservabili dipendono dalla scelta di gauge. Ad esempio, l'operatore velocità:
+\[
+\vec{V} = \frac{1}{m} \left( \vec{P} - \frac{q}{c} \vec{A}(\vec{X}, t) \right)
+\]
+non è invariante. Tuttavia, la fisica deve essere invariante per trasformazioni di gauge, il che impone che i valori medi degli osservabili siano identici:
+\[
+\langle f_{(\vec{A}, \varphi)} \rangle_\psi = \langle f_{(\vec{A}', \varphi')} \rangle_{\psi'}
+\]
+In accordo con il teorema di Wigner, ciò implica che gli operatori debbano trasformarsi in modo gauge-covariante:
+\begin{equation}
+    f_{(\vec{A}', \varphi')} = U_\Lambda f_{(\vec{A}, \varphi)} U_\Lambda^\dagger
+\end{equation}
+
+\begin{example}Operatore posizione:
+        \[ U_{\Lambda} \vec{X} U_{\Lambda}^{\dagger} = U_{\Lambda} U_{\Lambda}^{\dagger} \vec{X} = \vec{X} \quad \text{(ovvio!)} \]
+\end{example}
+\begin{example}Operatore velocità \( \vec{V} \):
+        \[ U_{\Lambda} \vec{V} U_{\Lambda}^{\dagger} = \frac{1}{m} U_{\Lambda} \left( \vec{P} - \frac{q}{c} \vec{A} \right) U_{\Lambda}^{\dagger} = \vec{P} - \frac{q}{c} \vec{A}' \]
+\end{example}
+
+\begin{proof}
+    Applichiamo l'operatore a una funzione di test \( f(\vec{x}) \):
+    \[ e^{i\frac{q}{\hbar c} \Lambda} \left( -i\hbar\vec{\nabla} - \frac{q}{c} \vec{A}(\vec{x},t) \right) \left( e^{-i\frac{q}{\hbar c} \Lambda(\vec{x},t)} f(\vec{x}) \right) = \]
+    \[ = e^{i\frac{q}{\hbar c} \Lambda} e^{-i\frac{q}{\hbar c} \Lambda} \left( -i\hbar\vec{\nabla} - i\hbar \left( -\frac{i}{\hbar} \frac{q}{c} \vec{\nabla}\Lambda \right) - \frac{q}{c} \vec{A}(\vec{x},t) \right) f(\vec{x}) = \]
+    \[ = \left[ -i\hbar\vec{\nabla} - \frac{q}{c} \left( \vec{A} + \vec{\nabla}\Lambda \right) \right] f(\vec{x}) = \]
+    \[ = \left( \vec{P} - \frac{q}{c} \vec{A}' \right) f(\vec{x}) \]
+    Quindi l'uguaglianza è verificata.
+\end{proof}
+
+\subsubsection{Covarianza eq. di Schrödinger}
+Se \( \Psi(\vec{x},t) \) risolve l'equazione di Schrödinger per i potenziali \( \vec{A}, \varphi \), ovvero:
+\[
+i\hbar \pdv{t} \Psi(\vec{x},t) = \left[ \frac{1}{2m} \left( -i\hbar\vec{\nabla} - \frac{q}{c}\vec{A}(\vec{x},t) \right)^2 + q\varphi(\vec{x},t) \right] \Psi(\vec{x},t) = H_{\vec{A},\varphi} \Psi
+\]
+allora la funzione d'onda trasformata:
+\[
+\Psi'(\vec{x},t) := e^{i\frac{q}{\hbar c}\Lambda(\vec{x},t)} \Psi(\vec{x},t) \equiv U_{\Lambda} \Psi(\vec{x},t)
+\]
+risolve l'equazione di Schrödinger per i potenziali trasformati:
+\[
+\vec{A}' = \vec{A} + \vec{\nabla}\Lambda \,,\quad \varphi' = \varphi - \frac{1}{c}\pdv{\Lambda}{t}
+\]
+
+\begin{proof}
+    Calcoliamo separatamente il termine a sinistra e a destra dell'equazione di Schrödinger per \( \Psi' \).
+
+    \textbf{Termine a sinistra:}
+    \[
+    i\hbar \pdv{t} \Psi'(\vec{x},t) = i\hbar \pdv{t} \left( e^{i\frac{q}{\hbar c}\Lambda} \Psi \right)
+    = e^{i\frac{q}{\hbar c}\Lambda} \left( i\hbar \pdv{\Psi}{t} - \hbar \frac{q}{\hbar c} \left(\pdv{\Lambda}{t}\right) \Psi \right)
+    \]
+    \[
+    = U_{\Lambda} \left( i\hbar \pdv{\Psi}{t} - \frac{q}{c} \left(\pdv{\Lambda}{t}\right) \Psi \right)
+    \]
+
+    \textbf{Termine a destra:}
+    Valutiamo l'azione dell'Hamiltoniano trasformato su \( \Psi' \):
+    \[
+    \left[ \frac{1}{2m} \left( -i\hbar\vec{\nabla} - \frac{q}{c}\vec{A}' \right)^2 + q\varphi' \right] \Psi'(\vec{x},t)
+    \]
+    Sfruttando la proprietà di trasformazione unitaria dell'operatore cinetico (nota: \( (\vec{P}-\frac{q}{c}\vec{A}')^2 = U_{\Lambda} (\vec{P}-\frac{q}{c}\vec{A})^2 U_{\Lambda}^{\dagger} \)):
+    \[
+    = \frac{1}{2m} \left[ U_{\Lambda} \left( -i\hbar\vec{\nabla} - \frac{q}{c}\vec{A} \right) U_{\Lambda}^{\dagger} \right]^2 U_{\Lambda} \Psi + \left( q\varphi - \frac{q}{c}\pdv{\Lambda}{t} \right) U_{\Lambda} \Psi
+    \]
+    Poiché \( U_{\Lambda}^{\dagger} U_{\Lambda} = \mathbb{I} \), possiamo semplificare il termine cinetico:
+    \[
+    = U_{\Lambda} \left[ \frac{1}{2m} \left( -i\hbar\vec{\nabla} - \frac{q}{c}\vec{A} \right)^2 + q\varphi \right] \Psi - U_{\Lambda} \frac{q}{c} \left(\pdv{\Lambda}{t}\right) \Psi
+    \]
+    Il termine tra parentesi quadre è esattamente \( H_{\vec{A},\varphi} \Psi \), che per ipotesi è uguale a \( i\hbar \pdv{\Psi}{t} \). Sostituendo:
+    \[
+    = U_{\Lambda} \left( i\hbar \pdv{\Psi}{t} - \frac{q}{c} \left(\pdv{\Lambda}{t}\right) \Psi \right)
+    \]
+    Confrontando i risultati, il termine a sinistra e il termine a destra sono identici.
+\end{proof}
+
+\subsection{Particella in campo magnetico uniforme costante}
+
+Consideriamo il caso di una particella soggetta a un campo magnetico uniforme e costante, con campo elettrico nullo:
+\begin{equation}
+    \vec{B} = - B_0 \vec{u}_z = (0, 0, -B_0) \qquad \vec{E} = 0
+\end{equation}
+Scegliamo di definire i potenziali nella \textbf{Gauge di Landau}, ponendo il potenziale scalare \(\varphi=0\):
+\begin{equation}
+    \vec{A} = B_0 y \vec{u}_x \equiv (B_0 y, 0, 0)
+\end{equation}
+Verifichiamo le componenti del campo magnetico calcolando il rotore del potenziale vettore (ricordando la definizione \(B_i = \sum_{j,k} \epsilon_{ijk} \partial_j A_k\)):
+\[
+    B_z = \underbrace{\partial_x A_y}_{0} - \partial_y A_x = - B_0 \qquad
+    B_x = B_y = 0
+\]
+
+In meccanica quantistica, l'Hamiltoniana per una particella carica in un campo magnetico costante (utilizzando la Gauge di Landau) è data da:
+\[
+    H = \frac{1}{2m} \left( P_x - \frac{q}{c} B_0 Y \right)^2 + \frac{P_y^2}{2m} + \frac{P_z^2}{2m}
+\]
+L'operatore \(P_z^2/2m\) descrive il moto di una particella libera lungo l'asse \(z\). Lo spazio di Hilbert si decompone quindi come \(\mathcal{H} \simeq L_2(\mathbb{R}^2, dx dy) \otimes L_2(\mathbb{R}, dz)\).
+
+Dall'osservazione che \([P_x, H] = 0\), segue che è possibile diagonalizzare simultaneamente \(P_x\) e \(H\):
+\[
+    \begin{cases}
+        P_x \Psi_{E, p_x} = p_x \Psi_{E, p_x} & \text{(1)} \\
+        H \Psi_{E, p_x} = E \Psi_{E, p_x} & \text{(2)}
+    \end{cases}
+\]
+
+Dall'equazione (1), la dipendenza dalla coordinata \(x\) è data da un'onda piana:
+\[
+    \Psi_{E, p_x}(x, y) = e^{\frac{i p_x x}{\hbar}} f_{E, p_x}(y)
+\]
+
+Sostituendo tale forma nell'equazione di Schrödinger (2) e semplificando il fattore di fase comune, si ottiene l'equazione efficace per la funzione \(f(y)\):
+\[
+    \left[ \frac{P_y^2}{2m} + \frac{1}{2m} \left( p_x - \frac{q}{c} B_0 y \right)^2 \right] f_{E, p_x}(y) = E f_{E, p_x}(y)
+\]
+
+% 29 Lezione del 09/12/2025
+
+\lezione{29}{09/12/2025}
+
+Riconosciamo un oscillatore armonico di potenziale \( \frac{1}{2} m \omega^2 (Y - y_0)^2 = \frac{1}{2m} \left( \frac{q B_0}{c} Y - p_x \right)^2 \), da cui ricaviamo:
+\begin{equation}
+    \omega = \frac{q B_0}{m c} \qquad y_0 = \frac{p_x c}{q B_0}
+\end{equation}
+dove \( \omega \) è la \textbf{frequenza di ciclotrone}. Gli autovalori dell'energia, detti \textbf{livelli di Landau}, sono:
+\begin{equation}
+    E_n = \hbar \omega \left( n + \frac{1}{2} \right) = \frac{\hbar q B_0}{m c} \left( n + \frac{1}{2} \right) \qquad n = 0, 1, 2, \dots
+\end{equation}
+Le corrispondenti funzioni d'onda sono:
+\begin{equation}
+    \Psi_{n, p}(x, y) = e^{i \frac{p_x x}{\hbar}} u_n \left( y - \frac{p_x c}{q B_0} \right)
+\end{equation} 
+Dove \(u_n(y) \) sono le funzioni d'onda degli autostati dell'oscillatore armonico.
+Tali livelli risultano \textbf{infinitamente degeneri} poiché l'energia non dipende dal momento \( p_x \).
+
+La forma dei livelli di Landau (ottenuta in gauge di Landau) implica una simmetria per traslazioni lungo \( x \). Tuttavia, dato che \( \vec{B} \) è costante e uniforme, noi ci aspetteremmo una simmetria per traslazioni qualsiasi, oltre che per rotazioni intorno all'asse \( \hat{z} \).
+
+La scelta di gauge ha \textit{rotto} alcune di queste simmetrie; o meglio, esse sono presenti in forma più complicata, mescolate alla simmetria di gauge. Si parla in questo caso di \textit{simmetrie non manifeste}.
+
+\begin{example}
+    \textbf{Gauge Simmetrica}\\
+    Per rendere manifeste le proprietà per le rotazioni, scegliamo la gauge simmetrica:
+    \begin{equation}
+        \vec{A} = \frac{B_0}{2} (y, -x, 0)
+    \end{equation}
+    L'Hamiltoniana diventa (trascurando il termine cinetico lungo \( z \), \( P_z^2 \)):
+    \[
+        H = \frac{1}{2m} \left[ \left( P_x - \frac{q}{2c} B_0 Y \right)^2 + \left( P_y + \frac{q}{2c} B_0 X \right)^2 \right]
+    \]
+    Svolgendo i quadrati otteniamo:
+    \[
+        H = \frac{1}{2m} (P_x^2 + P_y^2) + \underbrace{\frac{q}{2mc} }_{\mu}+ \underbrace{B_0 (X P_y - Y P_x)}{B_0L_z= -\vec{B}\cdot\vec{L}} + \underbrace{\frac{q^2}{8mc^2} B_0^2 (X^2 + Y^2)}_{\text{scalare } \mathcal{O}(B_0^2)}
+    \]
+\end{example}
+
+\begin{remark}
+    In gauge simmetrica vale \( [L_z, H] = 0 \), rendendo manifesta la simmetria rotazionale (mentre \( [L_x, H] \neq 0 \) e \( [L_y, H] \neq 0 \)).
+\end{remark}
+
+\begin{attention}
+    Le autofunzioni in gauge di Landau risultano localizzate in direzione \( y \) attorno a \( y_0 = \frac{pc}{qB_0} \) e delocalizzate in direzione \( x \).
+    Queste sono molto diverse dalle traiettorie classiche (circonferenze); questa discrepanza è dovuta alla scelta specifica di diagonalizzare l'operatore \( P_x \).
+\end{attention}
+
+
+
+
+
+\subsection{Effetto Aharonov-Bohm}
+
+I nostri misurabili devono essere invarianti per trasformazioni di gauge.
+Tuttavia, mentre classicamente \( \vec{E} \) e \( \vec{B} \) sono i portatori di tutta l'informazione rilevante 
+e i potenziali \( \vec{A} \) e \( \varphi \) hanno una parte arbitraria che va scelta, in Meccanica Quantistica non è così: 
+sono proprio i potenziali \( \varphi, \vec{A} \) (e non \( \vec{E}, \vec{B} \)) i campi fisici rilevanti.
+
+\begin{figure}[htbp]
+    \centering
+    % --- Sottofigura (a): Vista 3D ---
+    \begin{subfigure}[c]{0.48\textwidth}
+        \centering
+        \resizebox{\linewidth}{!}{%
+            \begin{tikzpicture}[
+    scale=1.3,
+    % Definizione prospettiva 3D: x esce a sinistra, y a destra, z verticale
+    x={(-0.6cm,-0.4cm)}, y={(1cm,0cm)}, z={(0cm,1cm)},
+    >=stealth
+]
+
+    % --- Parametri geometrici ---
+    \def\Rsol{0.35}  % Raggio del solenoide
+    \def\Rcyl{0.8}   % Raggio della barriera cilindrica
+    \def\Hcyl{4}     % Altezza del sistema
+    \def\Nspire{8}   % Numero di spire approssimativo
+
+    % --- 1. Assi Cartesiani (Disegnati parzialmente per profondità) ---
+    \draw[->, thick] (0,0,0) -- (2,0,0) node[below left] {$x$};
+    \draw[->, thick] (0,0,0) -- (0,2,0) node[right] {$y$};
+    \draw[->, thick] (0,0,0) -- (0,0,\Hcyl+0.5) node[above] {$z$};
+
+    % --- 2. Solenoide (Arancione) ---
+    % Disegno della spirale utilizzando un plot parametrico
+    % x = R cos(t), y = R sin(t), z = t scalato
+    \draw[orange!90!black, thick, smooth, samples=200, variable=\t, domain=0:\Hcyl*6]
+        plot ({\Rsol*cos(\t r * 4)}, {\Rsol*sin(\t r * 4)}, {\t/6});
+
+    % Vettore Campo Magnetico B (lungo l'asse z, interno)
+    \draw[->, blue, very thick] (0,0,1) -- (0,0,\Hcyl-1) node[midway, left] {$\vec{B}$};
+
+    % Etichetta Solenoide
+    \node[orange!90!black, font=\small, anchor=north] at (0,+\Rsol,-0.2) {Solenoide};
+
+    % --- 3. Barriera Cilindrica (Blu) ---
+
+
+    % Pareti verticali (tangenti esterne visibili prospetticamente)
+    % Calcolate approssimativamente in base ai vettori x e y definiti
+    \draw[blue!70!black, thick] (\Rcyl,0,-0) -- (\Rcyl,0,\Hcyl+0.5);   % Linea laterale destra
+    \draw[blue!70!black, thick] (-\Rcyl,0,-0.5) -- (-\Rcyl,0,\Hcyl); % Linea laterale sinistra
+
+    % Etichetta Barriera
+    \draw[<-, blue!70!black] (-\Rcyl, 0, \Hcyl/2) -- ++(-0.5, 0.5, 0) 
+        node[right, align=center, font=\small] {Barriera\\cilindrica};
+
+    % --- 4. Particella Carica q ---
+    % Posizionata fuori dalla barriera
+    \coordinate (Q) at (1.5, 2.3, \Hcyl/3);
+    \fill[red!80!black] (Q) circle (2.5pt) node[above right] {$q$};
+
+            \end{tikzpicture}%
+        }
+        \caption{Vista prospettica 3D}
+        \label{fig:vista_3d}
+    \end{subfigure}
+    \hfill % Spazio flessibile
+    % --- Sottofigura (b): Sezione Trasversale ---
+    \begin{subfigure}[c]{0.48\textwidth}
+        \centering
+        \resizebox{\linewidth}{!}{%
+        \begin{tikzpicture}[scale=1.5, >=stealth]
+
+    % --- Definizioni Parametri ---
+    \def\Ra{0.7}   % Raggio del solenoide (a)
+    \def\Rbar{0.85} % Raggio della barriera
+    \def\Rpath{1.8} % Raggio del percorso (R)
+
+    % --- 1. Regione Solenoide (B != 0) ---
+    \fill[orange!10] (0,0) circle (\Ra);
+    \draw[orange, thick] (0,0) circle (\Ra);
+    \node[black, font=\small] at (0.3,0.2) {$B \neq 0$};
+
+    % Raggio 'a'
+    \draw[->, orange!90!black] (0,0) -- (-45:\Ra) node[midway, below] {$a$};
+
+    % --- 2. Barriera (Anello Blu) ---
+    \draw[blue!70!black, line width=2pt] (0,0) circle (\Rbar);
+
+    % --- 3. Assi Cartesiani ---
+    \draw[->] (-2,0) -- (2.2,0) node[right] {$x$};
+    \draw[->] (0,-2) -- (0,2.2) node[above] {$y$};
+
+    % --- 4. Percorso di Integrazione Gamma (Viola) ---
+    \draw[purple, thick] (0,0) circle (\Rpath);
+    
+    % Etichette del percorso
+    \node[purple, anchor=south east] at (135:\Rpath) {$\gamma = \partial \Sigma$};
+    \node[purple] at (-1.2, 0.8) {$\Sigma$};
+
+    % Raggio 'R'
+    \draw[->, purple] (0,0) -- (-20:\Rpath) node[ right,] {$R$};
+
+    % --- 5. Elemento differenziale dl ---
+    % Posizionato a un angolo di circa 60 gradi
+    \coordinate (P) at (60:\Rpath);
+    % Vettore tangente (angolo 60+90 = 150)
+    \draw[->, thick, green!40!black] (P) -- ++(150:1.0) 
+        node[midway, above right, text=black] {$d\vec{l} = R d\theta \vec{u}_\theta$};
+
+    % --- 6. Annotazioni Esterne ---
+    \node[align=left] at (1, 1) {$B = 0$};
+
+        \end{tikzpicture}%
+        }
+        \caption{Sezione trasversale}
+        \label{fig:sezione_trasversale}
+    \end{subfigure}
+
+    \caption{Rappresentazione del sistema: (a) il solenoide avvolto circondato dalla barriera di potenziale cilindrica; (b) la sezione nel piano $xy$ che mostra il percorso di integrazione $\gamma$ nella regione a campo nullo.}
+    \label{fig:solenoide_completo}
+\end{figure}
+
+Consideriamo un solenoide ideale infinito posto lungo l'asse \( z \). Adottiamo coordinate cilindriche:
+\[
+    x = r \cos \vartheta, \quad y = r \sin \vartheta, \quad z=z, \quad r = \sqrt{x^2+y^2}
+\]
+Supponiamo che non vi sia campo elettrico:
+\[
+    \vec{E}(\vec{x}) = 0 \quad \forall \vec{x} \implies \text{scelgo } \varphi = 0
+\]
+Il campo magnetico \( \vec{B} \) è confinato all'interno del solenoide di raggio \( a \):
+\[
+    \begin{cases}
+        \vec{B} \neq 0 & r < a \\
+        \vec{B} = 0 & r > a
+    \end{cases}
+\]
+Una particella di carica \( q \) è vincolata a muoversi nella regione \( \mathcal{R} = \{ (r, \vartheta, z) \mid r > a \} \) dove, pur essendo il campo nullo, 
+il potenziale vettore non lo è necessariamente (\( \vec{\nabla} \times \vec{A} = \vec{B} = 0 \)).
+
+Considerando una vista dall'alto, definiamo \( \Sigma \) come un disco nel piano \( xy \) centrato nell'origine di raggio \( R > a \).
+Calcoliamo \( \Phi \) il flusso di \( \vec{B} \) attraverso la superficie \( \Sigma \) delimitata dalla curva \( \gamma = \partial \Sigma \):
+\[
+    0 \neq \Phi = \int_{\Sigma} \vec{B} \cdot \hat{n} \dd{\Sigma} = \int_{\Sigma} (\vec{\nabla} \times \vec{A}) \cdot \hat{n} \dd{\Sigma} = \oint_{\gamma} \vec{A} \cdot \dd{\vec{\ell}}
+\]
+Scegliendo un percorso circolare, abbiamo \( \dd{\vec{\ell}} = R \dd{\vartheta} \vec{u}_\vartheta \):
+\[
+    = \int_0^{2\pi} \vec{A} \cdot \vec{u}_\vartheta R \dd{\vartheta}
+\]
+Questo implica che \( \vec{A} \) non può essere nullo nella regione \( \mathcal{R} = \{ r > a \} \), anche se \( \vec{B} = 0 \), perché l'integrale di linea \( \oint_\gamma \vec{A} \cdot \dd{\vec{\ell}} \neq 0 \).
+
+Nella regione \( \mathcal{R} \) dove \( \vec{\nabla} \times \vec{A} = 0 \) e \( \oint_\gamma \vec{A} \cdot \dd{\vec{\ell}} = \Phi \neq 0 \), cerchiamo una soluzione della forma:
+\[
+    \vec{A}(r, \vartheta, z) = \frac{\Phi}{2\pi r} \vec{u}_\vartheta = \frac{\Phi}{2\pi r} (-\sin\vartheta, \cos\vartheta, 0)
+\]
+
+Questa scelta di \( \vec{A} \) ha effetti misurabili.
+\begin{example}
+    Consideriamo una particella di carica \( q \) vincolata a muoversi su un cerchio di raggio \( R > a \).
+    Usiamo la coordinata curvilinea \( s = R\vartheta \). Lo spazio di Hilbert è \( L_2([0, 2\pi R], \dd{s}) \).
+    L'operatore momento è:
+    \[
+        P_s = -i\hbar \dv{s} = -i\hbar \frac{1}{R} \dv{\vartheta}
+    \]
+    Il dominio dell'Hamiltoniana è definito dalle funzioni sufficientemente regolari tali che \( \psi(2\pi R) = \psi(0) \).
+    L'Hamiltoniana, con l'accoppiamento minimale, è data da:
+    \[
+        H = \frac{1}{2m} \left( P_s - \frac{q}{c} A_\vartheta \right)^2 = \frac{1}{2m} \left( P_s - \frac{q}{c} \frac{\Phi}{2\pi R} \right)^2
+    \]
+    Le autofunzioni sono onde piane periodiche:
+    \[
+        \psi(s) = e^{i \frac{n s}{R}}, \quad n \in \mathbb{Z}
+    \]
+    Applicando l'Hamiltoniana alle autofunzioni troviamo gli autovalori dell'energia \( E_n \):
+    \[
+        E_n = \frac{1}{2m} \left( \frac{\hbar n}{R} - \frac{q}{c} \frac{\Phi}{2\pi R} \right)^2
+    \]
+    Ricordiamo che \( \oint_\gamma \vec{A} \cdot \dd{\vec{\ell}} \) è invariante per trasformazioni di gauge; la parte misurabile che cambia lo spettro dipende dalla circuitazione.
+
+\end{example} 
+\begin{remark}
+    La particella "sente" non localmente \( \vec{B} \)? Questa è un'interpretazione problematica.
+    È più saldo pensare che la particella interagisca con \( \vec{A} \), o meglio, con la "classe di equivalenza" degli \( \vec{A} \) compatibili con gli invarianti di gauge.
+\end{remark}
+
+
+
+\section{Scattering}
+
+Consideriamo un tipico esperimento di scattering (urti), in cui un fascio di particelle incidenti interagisce con un bersaglio.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    % Fascio incidente (1)
+    \draw[->, thick] (-3, 0.2) -- (-1, 0.2) node[midway, above] {(1)};
+    \draw[->, thick] (-3, 0) -- (-1, 0) ;
+    \draw[->, thick] (-3, -0.2) -- (-1, -0.2);
+    
+    % Bersaglio (2)
+    \draw[thick] (-0.5, -0.5) rectangle (0, 0.5) node[midway] {(2)};
+    
+    % Asse z
+    \draw[->, gray, dashed] (-3.5, 0) -- (3, 0) node[right] {\( \hat{z} \)};
+    
+    % Scattering e Rilevatore
+    \draw[->, thick] (0.2, 0.1) -- (2, 0.8);
+    \draw[fill=white, thick] (2, 0.7) rectangle (2.3, 1) node[right, scale=0.8] {Rilevatore};
+    
+    % Altro rilevatore
+    \draw[fill=white, thick] (2, -0.8) rectangle (2.3, -0.5);
+\end{tikzpicture}
+\end{center}
+
+Definiamo gli elementi del sistema:
+\begin{itemize}
+    \item \textbf{Particelle (1)}: proiettili.
+    \item \textbf{Particelle (2)}: bersaglio.
+\end{itemize}
+
+I processi fisici possibili sono:
+\begin{itemize}
+    \item \textbf{Urti}: \( 1 + 2 \longrightarrow 1 + 2 \) (Scattering elastico).
+    \item \textbf{Reazioni}: \( 1 + 2 \longrightarrow 3 + 4 + 5 + \dots \) (possono essere prodotte particelle di tipo diverso).
+\end{itemize}
+
+\subsection{Ipotesi semplificative}
+Enumeriamo le semplificazioni che adotteremo nella trattazione del problema:
+
+\begin{enumerate}
+    \item \textbf{Senza spin}: assumiamo \( S_1 = 0 \) e \( S_2 = 0 \).
+    \item \textbf{Urti elastici}: consideriamo solo il processo \( 1 + 2 \longrightarrow 1 + 2 \). Trascuriamo la struttura interna (nessuna vibrazione o rotazione) e assumiamo che non ci siano reazioni. Le particelle (1) e (2) sono considerate di tipo diverso.
+    \item \textbf{Sorgente debole}: non vi è interazione tra le particelle del fascio (1); non è necessaria la simmetrizzazione. Questo implica che possiamo considerare \textbf{una particella alla volta} (del fascio incidente).
+    \item \textbf{Bersaglio sottile}: trascuriamo la possibilità che una particella (1) compia urti multipli in successione.
+    \item \textbf{Larghezza del pacchetto d'onda}:
+    \[
+        \text{Larghezza pacchetto (1)} \ll \text{Distanza tra particelle in (2)}
+    \]
+    \begin{remark}
+        Le ipotesi (3), (4) e (5) sono collegate alla scelta di un \textbf{modello di ripetizione}: lo studio si riduce a un singolo evento semplice (una sola particella di (2) colpita da una particella di (1)) ripetuto molte volte. Se il bersaglio ha \( N \) particelle, il flusso di particelle urtate sarà \( N \times \) il flusso per una singola particella bersaglio (si assume assenza di interferenza tra onde urtate da diversi centri diffusori).
+    \end{remark}
+    
+    \item \textbf{Dimensione bersaglio} \( \ll \) \textbf{Distanza bersaglio-rilevatore}.
+    \item \textbf{Potenziale centrale ridotto}: l'interazione tra le particelle 1 e 2 dipende solo dalla coordinata relativa \( \vec{x}_r = \vec{x}_1 - \vec{x}_2 \):
+    \[
+        V(\vec{x}_1, \vec{x}_2) = V(\vec{x}_1 - \vec{x}_2)
+    \]
+    Assumendo lo spazio omogeneo e isotropo, il problema si riduce allo scattering di una particella di massa ridotta \( \mu \) da un potenziale \( V(\vec{x}_r) \), trascurando il moto del centro di massa \( \vec{X}_{CM} \):
+    \[
+        \mu = \frac{m_1 m_2}{m_1 + m_2}
+    \]
+    \item \textbf{Potenziale a corto raggio}: il potenziale deve annullarsi velocemente a grandi distanze (escludiamo per ora il potenziale Coulombiano). Tecnicamente richiediamo:
+    \[
+        \lim_{|\vec{x}| \to \infty} |\vec{x}| V(\vec{x}) = 0
+    \]
+    \item \textbf{Dimensione trasversa del fascio incidente} \( \gg \) \textbf{Regione con \( V(\vec{x}) \neq 0 \)}.
+\end{enumerate}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[>=stealth]
+        % Asse z
+        \draw[->] (-6,0) -- (6,0) node[right] {\( z \)};
+
+        % Fascio incidente (frecce rosse)
+        \foreach \y in {0.2, 0.5, 0.8} {
+            \draw[->, red!80!black, thick] (-6, \y) -- (-2.5, \y);
+            \draw[->, red!80!black, thick] (-6, -\y) -- (-2.5, -\y);
+        }
+
+        % Superficie Sigma (rettangolo in prospettiva)
+        % Coordinate: basso-sx, alto-sx, alto-dx, basso-dx
+        \draw[thick, fill=white, fill opacity=0.7] (-2.5,-1.5) -- (-2.5,1.5) -- (-1.5,2.2) -- (-1.5,-0.8) -- cycle;
+        \node[below] at (-2.5,-1.5) {\( \Sigma \)};
+        \node[above] at (-1.5,2.2) {\( z \ll 0 \)};
+
+        % Supporto di V / Target (Blob verde)
+        \draw[thick, green!50!black, fill=green!5, fill opacity=0.5, decorate, decoration={random steps,segment length=3pt,amplitude=1pt}] (0,0) circle (0.6);
+        \fill (0,0) circle (2pt);
+        \node[below right, align=center, yshift=-0.8cm] at (0,0) {\( O \sim \text{TARGET} \)};
+
+        % Etichetta Supporto di V con freccia
+        \node[above , text=green!50!black]  at (0.4, 0.8) {SUPPORTO DI \( V \)};
+
+        % Scattering (linea blu verso il rilevatore)
+        % Angolo theta approssimativo 15-20 gradi
+        \draw[->, thick, blue!80!black] (0,0) -- (20:5) coordinate (detector);
+
+        % Angolo theta
+        \draw (1.2,0) arc (0:20:1.2);
+        \node at (1.4, 0.25) {\( \theta \)};
+
+        % Rilevatore (box al termine della linea)
+        \begin{scope}[shift={(detector)}, rotate=20]
+            \draw[thick, fill=white] (0,-0.25) rectangle (0.8,0.25);
+            % Opzionale: label 'rilevatore' se vogliamo unire info dalla seconda immagine
+            \node[right] at (0.8,0) {Rilevatore}; 
+        \end{scope}
+
+    \end{tikzpicture}
+    \caption{Rappresentazione schematica del setup di scattering.}
+\end{figure}
+
+Consideriamo un rilevatore posto a grande distanza dal centro di scattering, 
+orientato secondo una direzione definita dagli angoli \( (\theta, \varphi) \) in 3D rispetto all'asse del fascio incidente. 
+Tale rilevatore sottende un angolo solido infinitesimo:
+\[
+    d\Omega = \sin\theta \dd{\theta} \dd{\varphi}
+\]
+
+Definiamo le grandezze fisiche fondamentali del processo:
+
+\begin{itemize}
+    \item \textbf{Fascio incidente} \( F_i \): rappresenta il \textit{flusso}, ovvero il numero di particelle del fascio (1) che attraversano una superficie unitaria \( \Sigma \) perpendicolare all'asse \( z \) per unità di tempo.
+    Si considera il flusso a \( z \ll 0 \), dove il potenziale di interazione è trascurabile (\( V \approx 0 \)). Abbiamo assunto inoltre che la sorgente sia debole, in modo da non avere interazioni tra le particelle del fascio stesso.
+    \[
+        [F_i] = L^{-2} T^{-1}
+    \]
+    
+    \item \textbf{Tasso di diffusione} \( dn \): numero di particelle diffuse nell'angolo solido \( d\Omega \) per unità di tempo.
+    \[
+        [dn] = T^{-1}
+    \]
+\end{itemize}
+
+La relazione tra il numero di particelle diffuse e il flusso incidente definisce la \textit{sezione d'urto differenziale}:
+
+\begin{equation}
+    dn = F_i \, d\Omega \, \frac{d\sigma(\theta, \varphi)}{d\Omega} \implies \frac{d\sigma}{d\Omega} = \frac{1}{F_i} \frac{dn}{d\Omega}
+\end{equation}
+
+Dall'analisi dimensionale risulta che la sezione d'urto ha le dimensioni di un'area:
+\[
+    \left[ \frac{d\sigma}{d\Omega} \right] = \frac{[dn]}{[F_i] [d\Omega]} = \frac{T^{-1}}{L^{-2} T^{-1}} = L^2
+\]
+
+L'unità di misura convenzionale in fisica nucleare e subnucleare è il \textit{barn}:
+\[
+    1 \text{ barn} = 10^{-28} \, \text{m}^2
+\]
+A titolo di esempio, agli acceleratori come LHC le sezioni d'urto misurate sono dell'ordine dei picobarn (\( 10^{-12} \) b) o femtobarn (\( 10^{-15} \) b).
+
+Integrando la sezione d'urto differenziale su tutto l'angolo solido, si ottiene la \textit{sezione d'urto totale} \( \sigma_T \):
+
+\begin{equation}
+    \sigma_T = \int \frac{d\sigma}{d\Omega} \dd{\Omega} = \int_0^{2\pi} \dd{\varphi} \int_0^\pi \sin\theta \dd{\theta} \frac{d\sigma(\theta, \varphi)}{d\Omega}
+\end{equation}
+
+\begin{remark}
+    La sezione d'urto totale rappresenta l'area efficace di interazione. In essa sono incluse solo le particelle che hanno effettivamente subito un urto (scattering), escludendo quelle del fascio incidente che passano imperturbate.
+\end{remark}
+
+
+\subsection{Stati stazionari}
+
+Decomponiamo i pacchetti d'onda in onde stazionarie, ovvero nelle autofunzioni dell'Hamiltoniana:
+\[
+    H = \frac{\vec{P}^2}{2\mu} + V(\vec{x})
+\]
+Consideriamo un pacchetto d'onda con \( \Delta E \) piccola (abbastanza puntiforme in energia), che si comporta approssimativamente come un autostato di \( H \) con energia \( E \):
+\begin{equation}
+    \Psi(\vec{x},t) \simeq e^{-\frac{i}{\hbar}Et} \psi_E(\vec{x}) \qquad \left( -\frac{\hbar^2}{2\mu}\nabla^2 + V(\vec{x}) \right)\psi_E(\vec{x}) = E \psi_E(\vec{x})
+\end{equation}
+
+Consideriamo il caso \( E > 0 \) (stati non legati). È utile definire le quantità ridotte:
+\[
+    E \equiv \frac{\hbar^2 k^2}{2\mu} \qquad V(\vec{x}) = \frac{\hbar^2}{2\mu}U(\vec{x}) \quad (\text{potenziale ridotto})
+\]
+Sostituendo nell'equazione di Schrödinger stazionaria, otteniamo un'equazione del tipo Helmholtz con sorgente di potenziale:
+\begin{equation}
+    \left[ \nabla^2 + k^2 - U(\vec{x}) \right] \psi_k(\vec{x}) = 0
+\end{equation}
+
+\begin{remark}
+    Ci troviamo di fronte a una degenerazione infinita (\( \infty \)): quali onde stazionarie considerare?
+    In un analogo problema in 1D con \( V(x) \simeq 0 \) per \( \abs{x} \gg 0 \), per \( E > 0 \) si ha degenerazione pari a 2 (onda progressiva e regressiva).
+\end{remark}
+
+\begin{remark}
+    Quando il sistema possiede simmetria per rotazioni (ad esempio \( [H, \vec{L}] = 0 \)), per ragioni di completezza avremo un'alta degenerazione.
+    In questo caso, la degenerazione corrisponde approssimativamente al numero di possibili direzioni di incidenza.
+\end{remark}
+
+Per risolvere l'ambiguità, imponiamo una condizione al contorno fisica: l'arrivo della particella dal semiasse negativo di \( \hat{z} \). Definiamo così gli \textit{stati di scattering stazionario}.
+
+% 30 Lezione del 12/12/2025
+
+
+
+La soluzione asintotica all'infinito sarà del tipo:
+\[
+    \psi(\vec{x}) \sim e^{ikz} + f(\theta, \phi) \frac{e^{ikr}}{r}
+\]
