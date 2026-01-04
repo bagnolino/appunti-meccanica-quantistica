@@ -27,11 +27,29 @@
 % LAYOUT DELLA PAGINA (KOMA-Script)
 % -------------------------------------------------------------------
 \usepackage[automark,headsepline]{scrlayer-scrpage} % Intestazioni e pi di pagina avanzati
-\KOMAoptions{headinclude=false,footinclude=true}    % Bilanciamento margini KOMA
+\KOMAoptions{headinclude=false,footinclude=false}    % Bilanciamento margini KOMA
 \clearpairofpagestyles
 \ihead{\headmark}  % Titolo del capitolo a sinistra
 \ohead{\pagemark}   % Numero di pagina a destra
 \pagestyle{scrheadings}
+
+% Margini
+\usepackage[
+    a4paper,
+    top=2.5cm,    % Margine superiore
+    bottom=2.5cm, % Margine inferiore (riducilo se vuoi, es. 2cm)
+    left=2.5cm,   % Margine sinistro
+    right=2.5cm,  % Margine destro
+    bindingoffset=0mm, % Se vuoi rilegare, metti es. 5mm
+    heightrounded % Arrotonda l'altezza del testo per evitare righe "mozze"
+]{geometry}
+
+\raggedbottom
+
+
+
+
+
 
 % Formattazione dei titoli di sezione
 \setkomafont{chapter}{\Huge\bfseries} % Stile per i capitoli
@@ -57,13 +75,10 @@
 \usepackage[most]{tcolorbox}     % Per creare box colorati
 
 % -------------------------------------------------------------------
-% RIFERIMENTI E BIBLIOGRAFIA
+% RIFERIMENTI 
 % -------------------------------------------------------------------
-\usepackage{csquotes}            % Necessario per biblatex
-\usepackage[backend=biber,style=alphabetic,maxbibnames=9]{biblatex} % Gestione bibliografia
-\addbibresource{biblio/references.bib} % File della bibliografia
 
-\usepackage[hidelinks]{hyperref} % Link interni ed esterni (deve essere quasi l ultimo)
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=black, citecolor=black]{hyperref} % Link interni ed esterni (deve essere quasi l ultimo)
 \usepackage[nameinlink,noabbrev]{cleveref} % Riferimenti "intelligenti"
 
 % -------------------------------------------------------------------
@@ -81,6 +96,7 @@
 % -------------------------------------------------------------------
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
 \newtheorem{definition}{Definizione}[section]
 \newtheorem{example}{Esempio}[section]
 
@@ -152,3 +168,16 @@
 % MarkFormat per capitoli (rimuove "Capitolo X:")
 \automark{chapter}
 \renewcommand*{\chaptermarkformat}{}
+
+
+% --- Soluzione per i titoli a fine pagina ---
+\usepackage{needspace}
+\usepackage{etoolbox}
+
+% Prima di ogni \section, controlla se ci sono almeno 6 righe di spazio (~3cm).
+% Se non ci sono, manda tutto alla pagina successiva.
+\preto\section{\needspace{6\baselineskip}}
+
+% Fa la stessa cosa per le \subsection (richiede un po' meno spazio, es. 4 righe)
+\preto\subsection{\needspace{4\baselineskip}}
+\preto\subsubsection{\needspace{4\baselineskip}}
