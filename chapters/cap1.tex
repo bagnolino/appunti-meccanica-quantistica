@@ -157,12 +157,12 @@ che equivale al prodotto scalare tra i vettori \(\ket{\psi}\) e \(\ket{\chi}\) .
 \end{theorem}
 Inoltre per \(\forall \ket{\psi} \in \mathcal{H}\) è possibile la scomposizione:
 \(\ket{\psi}= \sum_{n=1}^{\infty}c_n\ket{n}\) con \(c_n = \braket{n}{\psi}\) .
-Da cui notiamo \(\ket{\psi}= \sum_{n=1}^{\infty}\ket{n}\braket{n}{\psi} \implies \mathbb{I}_n= \sum_{n=1}^{\infty} \dyad{n}{n}\)
+Da cui notiamo \(\ket{\psi}= \sum_{n=1}^{\infty}\ket{n}\braket{n}{\psi} \implies I_n= \sum_{n=1}^{\infty} \dyad{n}{n}\)
 detta \textbf{relazione di completezza}.
 
 \begin{example}
     \[
-    \braket{\psi}{\chi}= \matrixel{\psi}{\mathbb{I}}{\chi}=
+    \braket{\psi}{\chi}= \matrixel{\psi}{I}{\chi}=
     \sum_{n=1}^{\infty} \braket{\psi}{n}\braket{n}{\chi}  = \sum_{n=1}^{\infty} a^*_n b_n
     \]
     dove si è considerato \(\ket{\psi}= \sum_{n=1}^{\infty}a_n \ket{n} \,, 
@@ -490,7 +490,7 @@ Similmente, la si può rappresentare come :
 \begin{example}
     \textbf{Operatore identità}
     \begin{equation}
-        \mathbb{I}= \sum_{n,m} \ket{n}\bra{n} \mathbb{I} \ket{m}\bra{m}= \sum_{n,m} \ket{n}\delta_{nm}\bra{m}= \sum_n \ket{n}\bra{n}
+        I= \sum_{n,m} \ket{n}\bra{n} I \ket{m}\bra{m}= \sum_{n,m} \ket{n}\delta_{nm}\bra{m}= \sum_n \ket{n}\bra{n}
     \end{equation}
 \end{example}
 
@@ -581,7 +581,7 @@ Come facciamo a essere certi che questa \(f(\mathcal{A})\) a cui è associata \(
 \begin{remark}
     Dato uno stato \(\Sigma\to [\Psi]\) e un'osservabile \(\mathcal{A} \to A \):
    \begin{equation}
-     (\Delta A )_{\hat{a}, \Sigma} = \sqrt{\expval{(\mathcal{A}-\hat{a})^2}_\Sigma}   = \sqrt{\expval{(A-\hat{a}\mathbb{I})^2}_{\Psi}}
+     (\Delta A )_{\hat{a}, \Sigma} = \sqrt{\expval{(\mathcal{A}-\hat{a})^2}_\Sigma}   = \sqrt{\expval{(A-\hat{a}I)^2}_{\Psi}}
    \end{equation}
 \end{remark}
 
@@ -633,11 +633,11 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
 \end{theorem}
 \begin{proof}
     \[
-        (\Delta \mathcal{A})^2_{\hat{a},\Sigma}= \frac{\expval{(A-\hat{a}\mathbb{I})^2}{\Psi}}{\norm{\Psi}^2}= 
-        \frac{\braket{(A-\hat{a}\mathbb{I})\Psi}{(A-\hat{a}\mathbb{I})\Psi}}{\norm{\Psi}^2} = \frac{\norm{(A-\hat{a}\mathbb{I})\Psi}^2}{\norm{\Psi}^2}
+        (\Delta \mathcal{A})^2_{\hat{a},\Sigma}= \frac{\expval{(A-\hat{a}I)^2}{\Psi}}{\norm{\Psi}^2}= 
+        \frac{\braket{(A-\hat{a}I)\Psi}{(A-\hat{a}I)\Psi}}{\norm{\Psi}^2} = \frac{\norm{(A-\hat{a}I)\Psi}^2}{\norm{\Psi}^2}
     \]
     \[
-        (\Delta\mathcal{A})_{\hat{a},\Sigma} = 0 \iff (A-\hat{a}\mathbb{I})\Psi=0 
+        (\Delta\mathcal{A})_{\hat{a},\Sigma} = 0 \iff (A-\hat{a}I)\Psi=0 
     \]    
 \end{proof}
 
@@ -781,7 +781,7 @@ Stessa cosa vale per il momento:
 \begin{remark}
     La normalizzazione di \(\ket{x}\) e \(\ket{p}\) è fissata dalla condizione:
     \begin{equation}
-        \int \dd{x} \ket{x}\bra{x} = \mathbb{I} = \int \dd{p} \ket{p}\bra{p}
+        \int \dd{x} \ket{x}\bra{x} = I = \int \dd{p} \ket{p}\bra{p}
     \end{equation}
 
 \end{remark}
@@ -958,9 +958,9 @@ e quindi \((P,D_P)\) è autoaggiunto.
 \end{theorem}
 
 \begin{proof}
-    Definiamo per comodità : \(\hat{A} = A- a \mathbb{I}\) e \(\hat{B} = B - b\mathbb{I}\) autoaggiunti.
+    Definiamo per comodità : \(\hat{A} = A- a I\) e \(\hat{B} = B - bI\) autoaggiunti.
     \[
-        (\Delta A)_{a,\Psi}^2 = \frac{\expval{(A-a\mathbb{I})^2}{\Psi}}{\norm{\Psi}^2} = \frac{\expval{\hat{A}^2}{\Psi}}{\norm{\Psi}^2} = \frac{\braket*{\hat{A}\Psi}{\hat{A}\Psi}}{\norm{\Psi}} = \frac{\norm{\hat{A}\Psi}^2}{\norm{\Psi}^2}
+        (\Delta A)_{a,\Psi}^2 = \frac{\expval{(A-aI)^2}{\Psi}}{\norm{\Psi}^2} = \frac{\expval{\hat{A}^2}{\Psi}}{\norm{\Psi}^2} = \frac{\braket*{\hat{A}\Psi}{\hat{A}\Psi}}{\norm{\Psi}} = \frac{\norm{\hat{A}\Psi}^2}{\norm{\Psi}^2}
     \]
     \[
         (\Delta B)_{b,\Psi}^2 =\frac{\norm{\hat{B}\Psi}^2}{\norm{\Psi}^2} \implies  (\Delta A)_{a,\Psi}^2(\Delta B)_{b,\Psi}^2 = \frac{\norm{\hat{A}\Psi}^2}{\norm{\Psi}^2}\frac{\norm{\hat{B}\Psi}^2}{\norm{\Psi}^2} 
@@ -990,12 +990,12 @@ e quindi \((P,D_P)\) è autoaggiunto.
     \]
     per cui
     \[
-        [X,P]\,\Psi(x)= (XP-PX)\Psi(x)= i\hbar\,\Psi(x) \quad \Rightarrow \quad [X,P]= i\hbar\,\mathbb{I}
+        [X,P]\,\Psi(x)= (XP-PX)\Psi(x)= i\hbar\,\Psi(x) \quad \Rightarrow \quad [X,P]= i\hbar\,I
     \]
-    Il commutatore non è hermitiano, mentre \(-i[X,P]= \hbar\,\mathbb{I}\) è autoaggiunto. Applicando il teorema otteniamo
+    Il commutatore non è hermitiano, mentre \(-i[X,P]= \hbar\,I\) è autoaggiunto. Applicando il teorema otteniamo
     \[
         (\Delta X)_{x_0,\Psi}\,(\Delta P)_{p_0,\Psi} \geq \frac{1}{2}\abs{\expval{[X,P]}_\Psi}
-        = \frac{\hbar}{2} \abs{\expval{\mathbb{I}}_\Psi}= \frac{\hbar}{2}
+        = \frac{\hbar}{2} \abs{\expval{I}_\Psi}= \frac{\hbar}{2}
     \]
 \end{example}
 
@@ -1074,7 +1074,7 @@ Allora questi sono autovettori del proiettore \(\mathcal{P}_{\tilde{\mathcal{H}}
 quindi lo spettro è \(\sigma(\mathcal{P}_{\tilde{\mathcal{H}}})= \{0,1\}\), in generale degenere.
 
 \begin{remark}
-    Se \(\mathcal{P}_{\tilde{\mathcal{H}}} \) è un proiettore, lo è anche \(\mathbb{I}- \mathcal{P}_{\tilde{\mathcal{H}}}\).
+    Se \(\mathcal{P}_{\tilde{\mathcal{H}}} \) è un proiettore, lo è anche \(I- \mathcal{P}_{\tilde{\mathcal{H}}}\).
 \end{remark}
 \begin{remark}
     In notazione matriciale \(\mathcal{P}_{\tilde{\mathcal{H}}}= \sum \ket{n_\parallel}\bra{n_\parallel}\) .
@@ -1090,13 +1090,13 @@ Fissata una base ON \(\{\ket{a,r}\}_{r=1}^{d(a)}\) di \(\mathcal{H}_a\), il proi
 
 Se lo spettro è puramente discreto (\(\sigma(A)= \sigma_d(A)\)) ed esiste una base ON di autovettori di \(A\), allora valgono:
 \begin{equation}
-    \mathbb{I}= \sum_{a\in \sigma(A)} \mathcal{P}_a\,,\qquad
+    I= \sum_{a\in \sigma(A)} \mathcal{P}_a\,,\qquad
         A= \sum_{a\in \sigma(A)} a\,\mathcal{P}_a.
 \end{equation}
 
 Se \(\dim \mathcal{H} < \infty\), per ogni \(a\in \sigma(A)\) il proiettore si può esprimere come:
 \[
-    \mathcal{P}_a= \prod_{\substack{a'\in \sigma(A)\\ a'\neq a}} \frac{a'\,\mathbb{I}- A}{a'-a}.
+    \mathcal{P}_a= \prod_{\substack{a'\in \sigma(A)\\ a'\neq a}} \frac{a'\,I- A}{a'-a}.
 \]
 
 
@@ -1326,7 +1326,7 @@ ovvero:
 \[
 \{ q_j, p_k \} = \delta_{jk}
 \;\;\longrightarrow\;\;
-\frac{1}{i\hbar}[Q_j, P_k] = \delta_{jk}\,\mathbb{I}
+\frac{1}{i\hbar}[Q_j, P_k] = \delta_{jk}\,I
 \]
 
 \[
@@ -1429,7 +1429,7 @@ Valgono le seguenti proprietà:
     Un operatore \((U, D_U)\) si dice \textit{unitario} se è isometrico, \(D_U = \mathcal{H}\) e \(U(\mathcal{H})= \mathcal{H}\).
     Equivalentemente, questo vale se e solo se:
     \begin{equation}
-        U^\dagger U = \mathbb{I} = UU^\dagger \iff U^\dagger = U^{-1}
+        U^\dagger U = I = UU^\dagger \iff U^\dagger = U^{-1}
     \end{equation}
 \end{definition}
 
@@ -1451,8 +1451,8 @@ con le seguenti proprietà:
     \item Eq. di Schrödinger \(\implies U(t, t_0)\) lineare.
     \item \(\norm{\Psi(t_0)}= \norm{\Psi(t)} \ \forall\,t \implies U(t,t_0)\) è isometrico.
     \item Essendo isometrico è limitato e \(\overline{D_U}= \mathcal{H}\).
-    \item \(U(t,t) = \mathbb{I} \ \forall\,t\) .
-    \item \(U(t_2,t_1)U(t_1,t_0)\ket{\Psi(t_0)}= U(t_2,t_0)\ket{\Psi(t_0)} \implies  U (t_0,t)U(t,t_0)= \mathbb{I}\) .
+    \item \(U(t,t) = I \ \forall\,t\) .
+    \item \(U(t_2,t_1)U(t_1,t_0)\ket{\Psi(t_0)}= U(t_2,t_0)\ket{\Psi(t_0)} \implies  U (t_0,t)U(t,t_0)= I\) .
     \item Quindi \(U\) è suriettivo \(\implies \ U \) è unitario.
     \item \( U(t,t_0)^\dagger= U(t,t_0)^{-1}= U(t_0,t)\) .
 \end{itemize}
@@ -1470,7 +1470,7 @@ Integrando tra \(t_0\) e \(t\):
 \int_{t_0}^{t} \dv{t'} U(t',t_0)\dd{t'} = -\frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
 \]
 \[
-\Rightarrow \quad U(t,t_0) = \mathbb{I} - \frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
+\Rightarrow \quad U(t,t_0) = I - \frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
 \]
 
 \begin{attention}
@@ -1628,7 +1628,7 @@ Usando la legge per l'operatore evoluzione temporale e la sua coniugata:
 \[
     i\hbar \dv{t} U(t,t_0)= H_s(t)U(t, t_0) \qquad i\hbar \dv{t} U (t, t_0)^\dagger = - U(t, t_0)^\dagger H_s(t)
 \]
-e inserendo dei \(UU^\dagger = \mathbb{I}\) otteniamo:
+e inserendo dei \(UU^\dagger = I\) otteniamo:
 \[
     = - U ^\dagger H_s UU^\dagger A_s U +U^\dagger A_s U U^\dagger H_s U + i\hbar U^\dagger \left( \pdv{A_s}{t} \right)U =
 \]
@@ -1747,6 +1747,7 @@ come il tempo necessario affinché un qualche osservabile \(A\) vari in maniera 
 % 12 Lezione del 27/10/2025
 
 \section{Stati misti}
+\label{sec: mat_dens}
 \lezione{12}{27/10/2025}
 
 Passiamo ora all'analisi degli stati caratterizzati da un'informazione incompleta, definiti dalla sola distribuzione di probabilità su un insieme di stati puri.
@@ -1899,7 +1900,7 @@ Nella visione di Heisenberg l'operatore densità non varia nel tempo \(\rho_h(t)
         \]
     \item Stato massimamente misto, se $\dim \mathcal{H} = d < \infty$:
     \[
-    \rho = \frac{1}{d} \mathbb{I}
+    \rho = \frac{1}{d} I
     \qquad 
     \Tr(\rho^2) = \frac{1}{d} 
     \qquad \text{(purezza minima)}

@@ -21,9 +21,9 @@ Dal teorema di Wigner \ref{theo: Wigner} sappiamo che queste trasformazioni \(\t
        U^\dagger U A U^\dagger U'= U^\dagger U'A A'^\dagger U'  \implies AU^\dagger U'= U^\dagger U ' A
        \implies \left[ U^\dagger U', A \right]=0
     \] 
-    Sfruttiamo il lemma: \(B\) t.c. \(\left[ B,A \right]= 0 , \ A \) a.a. \(\implies B = \lambda\mathbb{I}\).
+    Sfruttiamo il lemma: \(B\) t.c. \(\left[ B,A \right]= 0 , \ A \) a.a. \(\implies B = \lambda I\).
     \[
-        \implies U^\dagger U' = \lambda\mathbb{I} , \ \abs{\lambda} = 1 \implies U ' = e^{i\theta}U
+        \implies U^\dagger U' = \lambda I , \ \abs{\lambda} = 1 \implies U ' = e^{i\theta}U
     \]
 \end{proof}
 Perciò ogni trasformazione di simmetria \(\tau\) è indotta da un \textit{raggio operatore} (anti)unitario:
@@ -32,7 +32,7 @@ Perciò ogni trasformazione di simmetria \(\tau\) è indotta da un \textit{raggi
 \end{equation}
 
 \begin{remark}
-    \(\mathbb{I}\) è simmetria, composizione di simmetrie \(\tau_1 \circ \tau_2\) è simmetria e \(\tau^{-1}\) è simmetria.
+    \(I\) è simmetria, composizione di simmetrie \(\tau_1 \circ \tau_2\) è simmetria e \(\tau^{-1}\) è simmetria.
 \end{remark}
 
 
@@ -65,7 +65,7 @@ Se vale anche la proprietà commutativa \(gh = hg \ \forall\, g,h \in G\) allora
 
 Le simmetrie della fisica \(\tau\) sono un gruppo \(G\) rispetto all'operazione di composizione:
 \[
-    \tau \leftrightarrow \left[ U_\tau \right]; \quad id \leftrightarrow \left[ \mathbb{I} \right]  ;\quad \tau_1\circ \tau_2 \leftrightarrow \left[ U_{\tau_1} U_{\tau_2} \right]; \quad
+    \tau \leftrightarrow \left[ U_\tau \right]; \quad id \leftrightarrow \left[ I \right]  ;\quad \tau_1\circ \tau_2 \leftrightarrow \left[ U_{\tau_1} U_{\tau_2} \right]; \quad
     \tau^{-1}\leftrightarrow \left[ U^{-1}_\tau \right] = \left[ U^\dagger _\tau \right]
 \]
 Sto rappresentando il gruppo delle simmetrie della fisica attraverso gli operatori unitari.
@@ -77,7 +77,7 @@ Sto rappresentando il gruppo delle simmetrie della fisica attraverso gli operato
     \end{equation}
     tale che:
     \begin{itemize}
-        \item \(\rho(1)= \mathbb{I}\)
+        \item \(\rho(1)= I\)
         \item \(\rho(gh)= \rho(g)\rho(h)\)
         \item \(\rho(g^{-1}) = \rho(g)^{-1}\)
     \end{itemize}
@@ -112,14 +112,14 @@ Se \(V\) è spazio di Hilbert e \(\rho(g)\) è unitario \(\forall \, g \in G\), 
 \subsection{Rappresentazioni proiettive}
 
 Chiediamoci ora \(\rho: \tau\to \rho(\tau)= U_\tau\), dove scelgo \(U_\tau \) come rappresentante di \(\left[ U_\tau \right]\), è rappresentazione?\\
-Possiamo sempre scegliere per \(\tau = id\) tra i \(\left[ \mathbb{I} \right] \) l'operatore \(\mathbb{I}\). Scelti \(U_{\tau_1}\) e \(U_{\tau_2}\),
+Possiamo sempre scegliere per \(\tau = id\) tra i \(\left[ I \right] \) l'operatore \(I\). Scelti \(U_{\tau_1}\) e \(U_{\tau_2}\),
 si sceglie per \(\tau_3 =\tau_1 \circ \tau_2 \) il raggio operatore \(\left[ U_{\tau_3} \right]\) rappresentato da \(U_{\tau_3}= e^{i\theta_{12}}U_{\tau_1}U_{\tau_2}\)
 non sempre esiste però \(U_{\tau_3}\) t.c. \(e^{i\theta_{12}}=1\) condizione necessaria per essere rappresentazione.
 
 \begin{definition}
     Definiamo una \textit{rappresentazione proiettiva}, come una mappa \(\rho: G \to GL(V)\) tale che:
     \[
-        \rho(1) = e^{i\alpha}\mathbb{I} \qquad \rho(gh)= e^{i\theta(g,h)} \rho(g)\rho(h)
+        \rho(1) = e^{i\alpha}I \qquad \rho(gh)= e^{i\theta(g,h)} \rho(g)\rho(h)
     \]
 \end{definition}
 
@@ -172,10 +172,10 @@ ma non si potrà sempre trovare una scelta con \(e^{i\theta(g,h)}=1 \ \forall\, 
     \]
 
     \[
-        U_1U_2 = iU_3, \qquad U_2U_1 = -iU_3, \qquad U_k^2 = \mathbb{I}
+        U_1U_2 = iU_3, \qquad U_2U_1 = -iU_3, \qquad U_k^2 = I
     \]
 
-    Nessuna scelta di \(U_1, U_2, U_3\) soddisfa \(U_1U_2=U_3\) e \(U_k^2=\mathbb{I}\).
+    Nessuna scelta di \(U_1, U_2, U_3\) soddisfa \(U_1U_2=U_3\) e \(U_k^2=I\).
 \end{example}
 
 \begin{definition}
@@ -191,11 +191,11 @@ Gli \(U(s)\) che rappresetano \(\tau(s )\) sono sempre unitari: \(\forall \, s \
 \begin{theorem}
     Un gruppo a un parametro non ammette rappresentazione genuinamente proiettive.
 \end{theorem}
-E' sempre possibile, dunque, secgliere una rappresentazione tale che \(U(0)= \mathbb{I}, \  U(s)U(s')= U(s+s')\) .
+E' sempre possibile, dunque, secgliere una rappresentazione tale che \(U(0)= I, \  U(s)U(s')= U(s+s')\) .
 
 Se considero \(s \) infinitesimo, posso sviluppare in Taylor:
 \[
-    U(s )\ket{\Psi}= U(0)\ket{\Psi}+ s \dv{U}{s} \eval_{s = 0} + \dots = \mathbb{I} - \frac{i}{\hbar}s Q    + \dots
+    U(s )\ket{\Psi}= U(0)\ket{\Psi}+ s \dv{U}{s} \eval_{s = 0} + \dots = I - \frac{i}{\hbar}s Q    + \dots
 \]
 Dove è stato definito il \textit{generatore infinitesimo di trasformazioni} \(Q = i\hbar \dv{U}{s}\eval_{s =0}\).
 \begin{remark}
@@ -204,7 +204,7 @@ Dove è stato definito il \textit{generatore infinitesimo di trasformazioni} \(Q
 
 
 \begin{theorem}\label{theo: Stone}
-    {\normalfont\textbf{di Stone}} Dato un gruppo a un parametro \(\left\{ U(s) \text{ unitari } , \ s \in \mathbb{R}\right\}\) tale che \(U(0)= \mathbb{I}\), \(U(s )U (s') = U(s+s')\) e sia continuo in \(s \), allora:
+    {\normalfont\textbf{di Stone}} Dato un gruppo a un parametro \(\left\{ U(s) \text{ unitari } , \ s \in \mathbb{R}\right\}\) tale che \(U(0)= I\), \(U(s )U (s') = U(s+s')\) e sia continuo in \(s \), allora:
     \[
         Q\ket{\Psi} \equiv i\hbar \dv{s}U(s )\eval_{s=0}\ket{\Psi}    := i\hbar\lim_{s \to 0} \frac{U(s)\ket{\Psi}-\ket{\Psi}}{s}
     \]
@@ -215,9 +215,9 @@ Dove è stato definito il \textit{generatore infinitesimo di trasformazioni} \(Q
 Consideriamo una simmetria a un parametro \(\tau(s ): A \to A(s )= U(s )A U(s )^\dagger \):
 \[
     A(s) = 
-    \left( \mathbb{I} - \frac{i}{\hbar}sQ + \dots \right)
+    \left( I - \frac{i}{\hbar}sQ + \dots \right)
     A
-    \left( \mathbb{I} + \frac{i}{\hbar}sQ + \dots \right)
+    \left( I + \frac{i}{\hbar}sQ + \dots \right)
     = A - \frac{i}{\hbar}\left[ Q, A \right]s + \dots
 \]
 
@@ -230,7 +230,7 @@ Se \(Q\) commuta con \(A\) allora \(A\) è invariante per la simmetria \(\tau(s 
 \subsection{Traslazioni spaziali 1D}
 Dall'omogeneità dello spazio, vogliamo studiare una simmetria \(\tau(a) \leftrightarrow \left[ U(a) \right]\rightsquigarrow U(a)\) che agisca nella seguente maniera:
 \[
-    U(a)\ket{\Psi}= \ket{\Psi'} \quad \Psi'(x)= \Psi(x-a) \quad X' = U(a)XU(a)^\dagger = X- a\mathbb{I} \quad U(a)P U(a)^\dagger = P
+    U(a)\ket{\Psi}= \ket{\Psi'} \quad \Psi'(x)= \Psi(x-a) \quad X' = U(a)XU(a)^\dagger = X- aI \quad U(a)P U(a)^\dagger = P
 \]
 
 
@@ -342,7 +342,7 @@ U(\vec a)=e^{-\frac{i}{\hbar}P_x a_x}\,e^{-\frac{i}{\hbar}P_y a_y}\,e^{-\frac{i}
 \subsection{Rotazioni 3D}
 \lezione{16}{03/11/2025}
 
-Consideriamo la trasformazione di un vettore \(\vec{x} \in \mathbb{R}^3 \to \vec{x'}= R\vec{x}\), in cui consideriamo le matrici \(3\times3\) di rotazione \(R \) tali che \(R^\intercal R = \mathbb{I}_3\) detto \textit{gruppo ortogonale} \(O(3)\).\\
+Consideriamo la trasformazione di un vettore \(\vec{x} \in \mathbb{R}^3 \to \vec{x'}= R\vec{x}\), in cui consideriamo le matrici \(3\times3\) di rotazione \(R \) tali che \(R^\intercal R = I_3\) detto \textit{gruppo ortogonale} \(O(3)\).\\
 Vale che \(\forall R \in O(3), \ \det R = \pm 1 \), tra queste consideriamo il \textit{gruppo speciale ortogonale}:
 \begin{equation}
     SO(3)= \left\{ R \in O(3): \det R = +1 \right\}
@@ -354,14 +354,14 @@ Vale che \(\forall R \in O(3), \ \det R = \pm 1 \), tra queste consideriamo il \
 \end{definition}
 
 \begin{example}
-    \(U(n)=\left\{ U \in \text{Mat}_{n\times n } : U^\dagger U = \mathbb{I} \right\}\) detto \textit{gruppo unitario}.\\
+    \(U(n)=\left\{ U \in \text{Mat}_{n\times n } : U^\dagger U = I \right\}\) detto \textit{gruppo unitario}.\\
     \(SU(n) = \left\{ U \in U(n ) : \det U = +1 \right\}\) detto \textit{gruppo unitario speciale}.
 \end{example}
 
 
-Consideriamo ora rotazioni infinitesime della forma \(R = \mathbb{I} + s \delta R + O(s^2)\). Per la condizione \(R^\intercal R =\mathbb{I}\) otteniamo:
+Consideriamo ora rotazioni infinitesime della forma \(R = I + s \delta R + O(s^2)\). Per la condizione \(R^\intercal R =I\) otteniamo:
 \[
-    \mathbb{I}= (\mathbb{I}+s \delta R^\intercal + \dots )(\mathbb{I}+s \delta R+ \dots )= \mathbb{I} + s(\delta R^\intercal+\delta R )
+    I= (I+s \delta R^\intercal + \dots )(I+s \delta R+ \dots )= I + s(\delta R^\intercal+\delta R )
     \implies \delta R^\intercal=-\delta R 
 \]
 Cioè deve essere una matrice antisimmetrica. Una base per lo spazio delle matrici antisimmetriche, detto \textit{algebra di Lie} di \(SO(3)\) e indicata con \(so(3)\), è data da:
@@ -428,12 +428,12 @@ I \(J_k\) corrispondono alle componenti del momento angolare.
 
 Se invece \(U(\vec{\omega})\) è rappresentazione genuinamente proiettiva, ottengo:
 \[
-    \left[ J_i , J_k\right] = i\hbar\sum_k \epsilon_{ijk} J_k + c_{ij} \mathbb{I} 
+    \left[ J_i , J_k\right] = i\hbar\sum_k \epsilon_{ijk} J_k + c_{ij} I 
 \]
 ma nel caso di \(so(3)\) si può sempre porre \(c_{ij}= 0 \ \forall\,i,j\) .\\
 Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
 \[
-    R(\vec{\omega })R(\vec{\omega}) = \mathbb{I}  \quad  \text{ ma }\quad  U_{R(\vec{\omega}) }U_{R(\vec{\omega}) }= \pm \mathbb{I} 
+    R(\vec{\omega })R(\vec{\omega}) = I  \quad  \text{ ma }\quad  U_{R(\vec{\omega}) }U_{R(\vec{\omega}) }= \pm I 
 \]
 
 
@@ -459,7 +459,7 @@ Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
     = i\hbar\sum_{j=1}^{3}(\pdv{x_j}\Psi)\,\pdv{}{\omega_k}\!\left[(R(-\vec{\omega})\vec{x})_j\right]\eval_{\vec{\omega}=0}
     \]
 
-    Sviluppando \(R(-\vec{\omega})=\mathbb{I}-\sum_m\omega_mT_m+\dots\) con 
+    Sviluppando \(R(-\vec{\omega})=I-\sum_m\omega_mT_m+\dots\) con 
     \((T_m)_{j\ell}=-\epsilon_{m j \ell}\), si ha:
     \[
     (R(-\vec{\omega})\vec{x})_j = x_j - \sum_{k,\ell}\omega_k(T_k)_{j\ell}x_\ell+ \dots
@@ -512,16 +512,16 @@ Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
 
 Una rototraslazione è una trasformazione descritta da:
 \begin{equation}
-    g = (R, \vec{a})= (\mathbb{I}, \vec{a})(R,0) \qquad \vec{x}'= (R, \vec{a})\vec{x}= R\vec{x}+ \vec{a}
+    g = (R, \vec{a})= (I, \vec{a})(R,0) \qquad \vec{x}'= (R, \vec{a})\vec{x}= R\vec{x}+ \vec{a}
 \end{equation}
 definita in modo che prima avvenga la rotazione e successivamente la traslazione.\\
-Le rototraslazioni formano ovviamente un gruppo, la cui identità: \(id = (\mathbb{I},0)\), l'inversa è \((R,\vec{a})^{-1}= (R^{-1}, -R^{-1}\vec{a})\) e la composizione vale:
+Le rototraslazioni formano ovviamente un gruppo, la cui identità: \(id = (I,0)\), l'inversa è \((R,\vec{a})^{-1}= (R^{-1}, -R^{-1}\vec{a})\) e la composizione vale:
 \[
 (R_1,\vec{a_1})(R_2, \vec{a_2})\vec{x}= (R _1, \vec{a})(R_2\vec{x}+\vec{a_2})= R_1R_2\vec{x}+ R_1\vec{a}+ \vec{a_1}= (R_1R_2, R_1\vec{a_2}+\vec{a_1})
 \]
 Che verifica la definizione di inversa:
 \[
-    (R, \vec{a})(R^{-1}, R^{-1}\vec{a}) = (\mathbb{I}, - RR^{-1}\vec{a}+\vec{a})= (\mathbb{I},0)
+    (R, \vec{a})(R^{-1}, R^{-1}\vec{a}) = (I, - RR^{-1}\vec{a}+\vec{a})= (I,0)
 \]
 Essendo una composizione di rotazioni e traslazioni la rappresentazione unitaria è data da:
 \[
@@ -651,7 +651,7 @@ Dalla definizione di \(\mathbb{P}\) otteniamo:
 \]
 Confrontando i due risultati segue che \(\mathbb{P}\) è unitario.
 
-Dato che \(\mathbb{P}^2 = \mathbb{I}\) segue che \(\mathbb{P}= \mathbb{P}^{-1}= \mathbb{P}^\dagger\) cioé è sia unitario che autoaggiunto.\\
+Dato che \(\mathbb{P}^2 = I\) segue che \(\mathbb{P}= \mathbb{P}^{-1}= \mathbb{P}^\dagger\) cioé è sia unitario che autoaggiunto.\\
 Lo spettro \(\sigma(\mathbb{P})= \left\{ \pm 1   \right\}\), dunque per autovalore \(n_p \in \sigma(\mathbb{P})\) vale:
 \[
     \bra{\vec{x}}\mathbb{P}\ket{\Psi}= n_p\braket{\vec{x}}{\Psi} \iff \Psi(-\vec{x}) = n_p \Psi(\vec{x})
@@ -1266,8 +1266,8 @@ Un operatore generico \(G: \mathcal{H} \to \mathcal{H}\) (dove \(\mathcal{H} = \
 
 Dati \(A_1\) su \(\mathcal{H}_1\) e \(B_2\) su \(\mathcal{H}_2\), si definiscono le loro estensioni allo spazio totale:
 \begin{align}
-    \tilde{A}_1 &= A_1 \otimes \mathbb{I}_{\mathcal{H}_2} \\
-    \tilde{B}_2 &= \mathbb{I}_{\mathcal{H}_1} \otimes B_2
+    \tilde{A}_1 &= A_1 \otimes I_{\mathcal{H}_2} \\
+    \tilde{B}_2 &= I_{\mathcal{H}_1} \otimes B_2
 \end{align}
 Questi operatori (che spesso vengono indicati senza tilde per abuso di notazione) rappresentano fisicamente operatori che agiscono solo su uno spazio (il proprio sottosistema), lasciando inalterato l'altro (agendo come l'identità).
 
@@ -1355,7 +1355,7 @@ U(\vec{\omega})\vec{X}U(\vec{\omega})^\dagger = R(\vec{\omega})^{-1}\vec{X}
 \]
 Per rotazioni infinitesime, possiamo sviluppare l'espressione usando la rappresentazione matriciale della rotazione:
 \[
-R(\vec{\omega})^{-1}\vec{X} \approx \left( \mathbb{I}_3 - \sum_j \omega_j T_j \right)\vec{X}
+R(\vec{\omega})^{-1}\vec{X} \approx \left( I_3 - \sum_j \omega_j T_j \right)\vec{X}
 \]
 Dalla relazione tra trasformazioni infinitesime e commutatori, otteniamo:
 \[
@@ -1406,7 +1406,7 @@ Consideriamo una singola particella quantistica. Introduciamo un nuovo operatore
 \begin{postulato8}
     Per una singola particella quantistica, l'operatore \(\vec{S}^2\) ha un singolo autovalore dato da:
     \begin{equation}
-        \vec{S}^2 = \hbar^2 s(s+1) \mathbb{I}
+        \vec{S}^2 = \hbar^2 s(s+1) I
     \end{equation}
     dove \(s \in \frac{1}{2}\mathbb{N}\) è un numero quantico caratteristico: ogni singola particella quantistica ha un singolo valore di \(s\) fissato.
 \end{postulato8}
@@ -1425,19 +1425,19 @@ Rispetto al caso senza spin, abbiamo nuovi gradi di libertà. Lo spazio totale a
 
 Gli operatori posizione \(\vec{X}\) e momento \(\vec{P}\) agiscono solo su \(\mathcal{H}_{\vec{x}}\). Nello spazio totale si scrivono come:
 \[
-    \vec{X} = \vec{X}_{\vec{x}} \otimes \mathbb{I}_{\mathcal{H}_s}
+    \vec{X} = \vec{X}_{\vec{x}} \otimes I_{\mathcal{H}_s}
 \]
 \[
-    \vec{P} = \vec{P}_{\vec{x}} \otimes \mathbb{I}_{\mathcal{H}_s}
+    \vec{P} = \vec{P}_{\vec{x}} \otimes I_{\mathcal{H}_s}
 \]
-dove \(\mathbb{I}_{\mathcal{H}_s}\) è l'identità nello spazio dello spin (questi operatori "non fanno nulla" nello spazio \(\mathcal{H}_s\)).
+dove \(I_{\mathcal{H}_s}\) è l'identità nello spazio dello spin (questi operatori "non fanno nulla" nello spazio \(\mathcal{H}_s\)).
 
 Analogamente, i 3 operatori di spin agiscono solo su \(\mathcal{H}_s\):
 \[
-    \vec{S} = \mathbb{I}_{\mathcal{H}_{\vec{x}}} \otimes \vec{S}_s
+    \vec{S} = I_{\mathcal{H}_{\vec{x}}} \otimes \vec{S}_s
 \]
 
-Poiché \(\vec{S}^2 \propto \mathbb{I}\), è necessario utilizzare \(S_z\) come osservabile per completare l'I.C.O.C. nel sottospazio dello spin. Lo spettro di \(S_z\) è dato da:
+Poiché \(\vec{S}^2 \propto I\), è necessario utilizzare \(S_z\) come osservabile per completare l'I.C.O.C. nel sottospazio dello spin. Lo spettro di \(S_z\) è dato da:
 \begin{equation}
     \sigma(S_z) = \left\{ m\hbar \right\}_{m \in \{-s, \dots, s\}}
 \end{equation}
@@ -1460,7 +1460,7 @@ Essendo \(m\) il numero quantico magnetico che varia a passi interi da \(-s\) a 
 
 \lezione{21}{14/11/2025}
 
-Concentriamoci ora su particelle da spin \(s = \frac{1}{2}\), avremo dunque \(\vec{S}^2= \frac{3}{4}\hbar^2 \mathbb{I}\) , \(m = \left\{ -\frac{1}{2},\frac{1}{2} \right\}\) e lo spazio di Hilbert dello spin \(\mathcal{H}_s \cong\mathbb{C}^2\).\\
+Concentriamoci ora su particelle da spin \(s = \frac{1}{2}\), avremo dunque \(\vec{S}^2= \frac{3}{4}\hbar^2 I\) , \(m = \left\{ -\frac{1}{2},\frac{1}{2} \right\}\) e lo spazio di Hilbert dello spin \(\mathcal{H}_s \cong\mathbb{C}^2\).\\
 Gli autostati di \(S_z\) sono:
 \[
     S_z\ket{+}=+ \frac{\hbar}{2} \ket{+} \qquad S_z\ket{-}=-\frac{\hbar}{2} \ket{-}
@@ -1527,11 +1527,11 @@ Le matrici di Pauli hanno le seguenti proprietà:
 \begin{multicols}{2}
 \begin{itemize}
     \item \(\sigma_k^\dagger = \sigma_k\)
-    \item \(\sigma_k^2= \mathbb{I}\)
+    \item \(\sigma_k^2= I\)
     \item \(\sigma_k^\dagger = \sigma_k^{-1}\)
     \item se \(i \neq j, \quad \sigma_i\sigma_j=i \sum_{k}\epsilon_{ijk}\sigma_k\)
     \item \(\left[ \sigma_i, \sigma_j \right]=2i\sum_k\epsilon_{ijk}\sigma_k\)
-    \item \(\left\{ \sigma_i,\sigma_j \right\}= 2\delta_{ij}\mathbb{I}\)
+    \item \(\left\{ \sigma_i,\sigma_j \right\}= 2\delta_{ij}I\)
     \item \(\Tr(\sigma_k)=0\)
     \item \(\det\sigma_k= -1\)
 \end{itemize}    
@@ -1543,7 +1543,7 @@ Ogni matrice 2x2 hermitiana si scrive:
         a & b-ic \\
         b+ic & d
     \end{pmatrix}
-    = \frac{a+d}{2} \mathbb{I} + b \sigma_1 + c \sigma_2 + \frac{a-d}{2} \sigma_3, \quad a,b,c,d \in \mathbb{R}
+    = \frac{a+d}{2} I + b \sigma_1 + c \sigma_2 + \frac{a-d}{2} \sigma_3, \quad a,b,c,d \in \mathbb{R}
 \]
 
 
@@ -1561,15 +1561,15 @@ Definiamo la combinazione lineare delle matrici di Pauli $\sigma_k$ lungo la dir
 \end{equation}
 Calcoliamo il quadrato dell'operatore $(\hat{n} \cdot \vec{\sigma})$:
 \[
-(\hat{n} \cdot \vec{\sigma})^2 = \sum_{k} n_k^2 \sigma_k^2+ \sum_{i < j} n_i n_j \{\sigma_i, \sigma_j\}=\mathbb{I}
+(\hat{n} \cdot \vec{\sigma})^2 = \sum_{k} n_k^2 \sigma_k^2+ \sum_{i < j} n_i n_j \{\sigma_i, \sigma_j\}=I
 \]
 Dati due vettori generici $\vec{u}, \vec{v} \in \mathbb{R}^3$, vogliamo calcolare il prodotto delle loro contrazioni con le matrici di Pauli:
 \[
-(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = \sum_{i,j} v_i u_j \sigma_i \sigma_j = \sum_{i,j} v_i u_j \left(\delta_{ij}\mathbb{I} + i \sum_k \epsilon_{ijk}\sigma_k\right)
+(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = \sum_{i,j} v_i u_j \sigma_i \sigma_j = \sum_{i,j} v_i u_j \left(\delta_{ij}I + i \sum_k \epsilon_{ijk}\sigma_k\right)
 \]
 Il primo termine restituisce il prodotto scalare, il secondo (antisimmetrico) restituisce il prodotto vettoriale:
 \begin{equation}
-(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = (\vec{v} \cdot \vec{u}) \mathbb{I} + i (\vec{v} \times \vec{u}) \cdot \vec{\sigma}
+(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = (\vec{v} \cdot \vec{u}) I + i (\vec{v} \times \vec{u}) \cdot \vec{\sigma}
 \end{equation}
 
 
@@ -1586,15 +1586,15 @@ L'espressione diventa quindi:
 \[
     U(\theta \hat{n}) = e^{-\frac{i}{2}\theta (\hat{n}\cdot\vec{\sigma})}.
 \]
-Per calcolare l'esponenziale, sfruttiamo la proprietà \((\hat{n}\cdot\vec{\sigma})^2 = \mathbb{I}\),
+Per calcolare l'esponenziale, sfruttiamo la proprietà \((\hat{n}\cdot\vec{\sigma})^2 = I\),
 espandiamo l'esponenziale in serie di Taylor e separiamo i termini pari e dispari:
 \begin{align*}
     U(\theta\hat{n}) &= \sum_{k=0}^{\infty} \frac{1}{(2k)!} \left(-\frac{i\theta}{2}\right)^{2k} (\hat{n}\cdot\vec{\sigma})^{2k} + \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \left(-\frac{i\theta}{2}\right)^{2k+1} (\hat{n}\cdot\vec{\sigma})^{2k+1} \\
-    &= \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k)!} \left(\frac{\theta}{2}\right)^{2k} \mathbb{I} - i \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k+1)!} \left(\frac{\theta}{2}\right)^{2k+1} (\hat{n}\cdot\vec{\sigma}).
+    &= \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k)!} \left(\frac{\theta}{2}\right)^{2k} I - i \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k+1)!} \left(\frac{\theta}{2}\right)^{2k+1} (\hat{n}\cdot\vec{\sigma}).
 \end{align*}
 Riconoscendo le serie di Taylor per il coseno e il seno, otteniamo la formula fondamentale per la rotazione dello spin:
 \begin{equation}
-    U(\theta \hat{n}) = \cos(\frac{\theta}{2})\mathbb{I} - i \sin(\frac{\theta}{2}) (\hat{n}\cdot\vec{\sigma}).
+    U(\theta \hat{n}) = \cos(\frac{\theta}{2})I - i \sin(\frac{\theta}{2}) (\hat{n}\cdot\vec{\sigma}).
 \end{equation}
 La sua rappresentazione matriciale è:
 \[
@@ -1606,9 +1606,9 @@ La sua rappresentazione matriciale è:
 \]
 Se effettuiamo una rotazione completa di un angolo \(\theta = 2\pi\) attorno a un asse qualsiasi:
 \[
-    U(2\pi \hat{n}) = \cos(\pi)\mathbb{I} - i \sin(\pi)(\hat{n}\cdot\vec{\sigma}) = -\mathbb{I}.
+    U(2\pi \hat{n}) = \cos(\pi)I - i \sin(\pi)(\hat{n}\cdot\vec{\sigma}) = -I.
 \]
-Non otteniamo l'identità \(\mathbb{I}\), ma \(-\mathbb{I}\). Lo stato ruotato differisce da quello iniziale per una fase globale:
+Non otteniamo l'identità \(I\), ma \(-I\). Lo stato ruotato differisce da quello iniziale per una fase globale:
 \[
     \ket{\Psi'} = U(2\pi\hat{n})\ket{\Psi} = -\ket{\Psi}.
 \]
@@ -1706,7 +1706,7 @@ Affinché lo stato sia fisico e normalizzabile, entrambe le funzioni d'onda comp
 \)
 
 Tra gli operatori agiscono sullo spinore di Pauli $[\Psi](\vec{x})$, possiamo distinguere tra operatori che agiscono sulla parte spaziale \( \mathcal{H}_{\vec{x}} \) e operatori che agiscono sulla parte di spin \( \mathcal{H}_s \).\\
-I primi agiscono sulle componenti della funzione d'onda ma "banalmente" sullo spazio degli spin (sono proporzionali all'identità \( \mathbb{I}_{2\times 2} \) nello spazio dello spin).
+I primi agiscono sulle componenti della funzione d'onda ma "banalmente" sullo spazio degli spin (sono proporzionali all'identità \( I_{2\times 2} \) nello spazio dello spin).
 
 Per l'operatore posizione \( \vec{X} \) (o la sua componente \( k \)-esima \( X_k \)):
 \[
@@ -1756,18 +1756,18 @@ Sostituendo \( P_k = -i\hbar \partial_k \), otteniamo la forma finale dell'azion
 
 Definiamo l'operatore generatore delle rotazioni infinitesime per uno spinore come l'operatore momento angolare totale \( \vec{J} \), dato dalla somma del momento angolare orbitale e di spin:
 \[
-    \vec{J} = \vec{L} \otimes \mathbb{I}_s + \mathbb{I}_{\vec{x}} \otimes \vec{S}
+    \vec{J} = \vec{L} \otimes I_s + I_{\vec{x}} \otimes \vec{S}
 \]
 dove il primo termine agisce solo sullo spazio delle posizioni \( \mathcal{H}_{\vec{x}} \) e il secondo solo sullo spazio dello spin \( \mathcal{H}_s \).
 
 L'operatore unitario di rotazione finita di un angolo \( \abs{\vec{\omega}} \) attorno all'asse definito da \( \vec{\omega} \) è:
 \[
-    U(\vec{\omega}) = e^{-\frac{i}{\hbar} \vec{J} \cdot \vec{\omega}} = e^{-\frac{i}{\hbar} (\vec{L} \cdot \vec{\omega} \otimes \mathbb{I}_s + \mathbb{I}_{\vec{x}} \otimes \vec{S} \cdot \vec{\omega})}
+    U(\vec{\omega}) = e^{-\frac{i}{\hbar} \vec{J} \cdot \vec{\omega}} = e^{-\frac{i}{\hbar} (\vec{L} \cdot \vec{\omega} \otimes I_s + I_{\vec{x}} \otimes \vec{S} \cdot \vec{\omega})}
 \]
 
-Poiché gli operatori agiscono su spazi disgiunti, essi commutano: \( [\vec{L} \otimes \mathbb{I}_s, \mathbb{I}_{\vec{x}} \otimes \vec{S}] = 0 \). Possiamo quindi utilizzare la proprietà \( e^{A+B} = e^A e^B \) per fattorizzare l'operatore:
+Poiché gli operatori agiscono su spazi disgiunti, essi commutano: \( [\vec{L} \otimes I_s, I_{\vec{x}} \otimes \vec{S}] = 0 \). Possiamo quindi utilizzare la proprietà \( e^{A+B} = e^A e^B \) per fattorizzare l'operatore:
 \[
-    U(\vec{\omega}) = \left( e^{-\frac{i}{\hbar} \vec{L} \cdot \vec{\omega}} \otimes \mathbb{I}_s \right) \left( \mathbb{I}_{\vec{x}} \otimes e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}} \right)
+    U(\vec{\omega}) = \left( e^{-\frac{i}{\hbar} \vec{L} \cdot \vec{\omega}} \otimes I_s \right) \left( I_{\vec{x}} \otimes e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}} \right)
     = e^{-\frac{i}{\hbar} \vec{L} \cdot \vec{\omega}} \otimes e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}}
 \]
 
@@ -1798,7 +1798,7 @@ Entrambi obbediscono alla consueta algebra dei momenti angolari. Il momento ango
 \begin{equation}
     \vec{J} = \vec{J}_1 + \vec{J}_2
 \end{equation}
-dove la somma è intesa come somma diretta di operatori estesi ai prodotti tensoriali (\( \vec{J}_1 \otimes \mathbb{I} + \mathbb{I} \otimes \vec{J}_2 \)).
+dove la somma è intesa come somma diretta di operatori estesi ai prodotti tensoriali (\( \vec{J}_1 \otimes I + I \otimes \vec{J}_2 \)).
 
 \begin{example}
     \textbf{Particella con Spin} \\
@@ -2155,7 +2155,7 @@ Definiamo un operatore unitario su \(\mathcal{H}\) detto \textit{operatore di sc
     \item Conserva la norma: \( \norm{\hat{P}_{12}\ket{\Psi}}^2 = \norm{\ket{\Psi}}^2 \).
     \item 
     \(
-    \hat{P}_{12}^2 = \mathbb{I} \implies \hat{P}_{12} = \hat{P}_{12}^{-1} = \hat{P}_{12}^\dagger \implies \hat{P}_{12} \text{ è a.a.}
+    \hat{P}_{12}^2 = I \implies \hat{P}_{12} = \hat{P}_{12}^{-1} = \hat{P}_{12}^\dagger \implies \hat{P}_{12} \text{ è a.a.}
     \)
     \item Lo spettro è discreto: \( \sigma(\hat{P}_{12}) = \{ \pm 1 \} \).
 \end{itemize}
