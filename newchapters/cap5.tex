@@ -1,0 +1,620 @@
+\chapter{Atomo di idrogeno}
+
+
+\section{Potenziali Centrali}
+
+Ignoriamo lo spin (\( \vec{S}=0 \implies \vec{J}=\vec{L} \)), tutte le osservabili sono funzioni di posizione e momento. Consideriamo un potenziale dipendente solo dalla distanza centro-punto (raggio):
+\[
+H = \frac{\vec{P}^2}{2m} + V(R) \qquad R = \sqrt{\vec{X}^2}
+\]
+L'operatore \( R \) agisce come moltiplicazione per la distanza:
+\[
+R\ket{\vec{x}} = \abs{\vec{x}}\ket{\vec{x}}
+\]
+Calcoliamo i commutatori con il momento angolare \( \vec{L} \):
+\[
+[\vec{L}, \vec{P}^2] = 0 = [\vec{L}, \vec{X}^2] = [\vec{L}, V(R)]
+\]
+Questo implica che l'hamiltoniana è invariante per rotazioni (\( SO(3) \to \) simmetria dinamica) e commuta con tutte e tre le componenti di \( \vec{L} \):
+\[
+[\vec{L}, H] = 0
+\]
+
+\begin{remark}
+    Se \([P_i, V(\vec{x})] = 0 \implies V(\vec{x})\) non dipende da \( X_i \implies \) si riduce ad un problema in \(\dim < 3\).
+\end{remark}
+
+Poiché \( H \) commuta con \( \vec{L} \), possiamo diagonalizzare simultaneamente \( \{H, \vec{L}^2, L_z\} \). Questi formano un insieme di osservabili compatibili.
+Possiamo dunque risolvere l'equazione agli autovalori simultaneamente per \( H \) , \( \vec{L}^2 \) e \(L_z\). Cerchiamo gli autovettori simultanei \( \ket{E, \ell, m} \):
+\begin{equation}
+    \label{eq: potCentrali}
+    \begin{cases}
+        H\ket{E,\ell,m} = E\ket{E,\ell,m} \\
+        \vec{L}^2\ket{E,\ell,m} = \hbar^2 \ell(\ell+1)\ket{E,\ell,m} \\
+        L_z\ket{E,\ell,m} = \hbar m\ket{E,\ell,m}
+    \end{cases}
+\end{equation}
+
+Dobbiamo esprimere \( H \) in coordinate polari. Analizziamo la scomposizione del momento, partendo dal caso classico per arrivare a quello quantistico.
+\paragraph{In Meccanica Classica}
+Consideriamo una particella individuata dal vettore posizione \( \vec{x} \). Possiamo scomporre il vettore momento \( \vec{p} \) nelle componenti radiale (parallela a \( \vec{x} \)) e perpendicolare:
+\[
+\vec{p} = \vec{p}_r + \vec{p}_\perp
+\]
+Indicando con \( r = |\vec{x}| \) la distanza dall'origine e con \( \vec{u}_r = \frac{\vec{x}}{r} \) il versore radiale, la componente radiale scalare è:
+\[
+p_r = \vec{p} \cdot \frac{\vec{x}}{r} = \vec{p} \cdot \vec{u}_r
+\]
+Il momento angolare è definito come \( \vec{l} = \vec{x} \times \vec{p} \). Poiché \( \vec{x} \) è perpendicolare a \( \vec{p}_\perp \), il suo modulo vale:
+\[
+|\vec{l}| = |\vec{x}| |\vec{p}_\perp| = r p_\perp \implies p_\perp = \frac{|\vec{l}|}{r}
+\]
+Possiamo quindi scrivere il quadrato del momento come somma dei quadrati delle componenti:
+\[
+\vec{p}^2 = p_r^2 + p_\perp^2 = p_r^2 + \frac{\abs{\vec{l}}^2}{r^2}
+\]
+
+\paragraph{In Meccanica Quantistica}
+Esiste una relazione analoga per gli operatori:
+\begin{equation}
+    \vec{P}^2 = P_r^2 + \frac{\vec{L}^2}{R^2}
+\end{equation}
+Dove \( P_r^2 \) è l'operatore associato alla parte radiale dell'energia cinetica. La sua espressione esplicita è data da:
+\begin{equation*}
+    P_r^2 = -\hbar^2 \frac{1}{r} \pdv[2]{r} r
+\end{equation*}
+\begin{attention}
+    La dimostrazione di questa formula è stata saltata.
+\end{attention}
+
+Sostituendo questa espressione nell'operatore momento (che, a meno di costanti, corrisponde al Laplaciano), otteniamo la scomposizione in coordinate sferiche:
+\begin{equation}
+    \vec{P}^2 = -\hbar^2 \nabla^2 = \underbrace{-\hbar^2 \frac{1}{r} \frac{\partial^2 (r \cdot)}{\partial r^2}}_{P_r^2} + \frac{\vec{L}^2}{r^2}
+\end{equation}
+Dove \( \vec{L}^2 \) racchiude la parte angolare del Laplaciano (l'espressione complicata che appare nello studio delle armoniche sferiche).
+
+Bisogna prestare attenzione al dominio per garantire l'autoaggiuntezza della coordinata radiale.
+Consideriamo lo spazio \( L_2(\mathbb{R}^3, r^2 \dd{r} \sin\vartheta \dd{\vartheta} \dd{\varphi}) \). Dobbiamo imporre condizioni affinché l'operatore sia ben definito:
+\begin{equation}
+    D_{P_r^2} = \left\{ \psi(r, \vartheta, \varphi) \in L^2 \text{ suff. regolari} : \lim_{r \to 0^+} r\psi(r, \vartheta, \varphi) = 0 \right\}
+\end{equation}
+Questa condizione al bordo (comportamento nell'origine) è fondamentale.
+Si richiede inoltre che \( \psi, \psi', \psi'' \in L_2(\mathbb{R}^3) \) e che siano sufficientemente regolari.
+Questo dominio coincide con il dominio dell'Hamiltoniana \( D_H \) per i potenziali fisici che ci interessano (es. Coulomb).
+
+\begin{remark}
+    Se si provasse a definire l'operatore momento radiale lineare come \( P_r = -i\hbar \frac{1}{r} \partial_r r \) con un dominio analogo, si scoprirebbe che tale operatore è hermitiano ma \textbf{non autoaggiunto}.
+\end{remark}
+
+% 25 Lezione del 24/11/2025
+
+\subsection{Autofunzioni radiali}
+\lezione{25}{24/11/2025}
+
+Possiamo ora risolvere il sistema agli autovalori \ref{eq: potCentrali} cercando le autofunzioni : \[\braket{r,\vartheta, \varphi}{E, \ell, m}= \Psi_{E, \ell, m}(r, \vartheta, \varphi)\]
+Sappiamo già dalla trattazione in \ref{sec: particella3d} che le soluzioni hanno la forma:
+\begin{equation}
+    \Psi_{E, \ell, m}(r, \vartheta, \varphi)= f_{E,\ell,m}(r)Y^m_\ell(\vartheta,\varphi)
+\end{equation}
+Si tratta di risolvere dunque solo la prima equazione:
+\begin{equation}
+    \frac{\hbar^2}{2m} \left( -\frac{1}{r} \partial_r^2 r + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) f_{E,\ell,m}(r) Y_\ell^m(\theta, \varphi) = 0
+\end{equation}
+Essendo l'equazione solo nella variabile \(r\), posso rimuovere l'armonica sferica. Per comodità moltiplico tutto per \(r\) e definisco:
+\begin{equation}
+    u_{E,\ell,m}(r) := r f_{E,\ell,m}(r)
+\end{equation}
+Ottenendo così:
+\begin{equation}
+    \left( -\partial_r^2 + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) u_{E,\ell,m}(r) = 0
+\end{equation}
+Abbiamo quindi un'equazione differenziale di secondo ordine nella sola variabile \(r\), e avrò in generale due soluzioni linearmente indipendenti. 
+Controlliamo però che le soluzioni \(u(r)\) siano accettabili fisicamente.
+
+\subsubsection{Comportamento a \(r\to 0\)}
+
+Per i potenziali \( V(r) \) che consideriamo, il dominio dell'hamiltoniana è definito come:
+\[
+D(H) = D(P_r^2) = \left\{ f \text{ suff. reg.}, \lim_{r\to 0} r f(r) = 0 \right\}
+\]
+
+Bisogna distinguere i due casi dello spettro:
+\begin{itemize}
+    \item \textbf{Spettro discreto:} \( \Psi \in D(H) \implies \lim_{r\to 0} u(r) = 0 \). Questa condizione è necessaria affinché \( \Psi \in D_H \).
+    \item \textbf{Spettro continuo:} devo imporre comunque \( \lim_{r\to 0} r f(r) = 0 \).
+\end{itemize}
+
+Lo spazio \( S^*(\mathbb{R}^3) \) contiene funzioni che si comportano come \( f(r) \sim \frac{1}{r} \) per \( r \to 0 \).
+Tuttavia, se \( f(r) \) è una soluzione dell'equazione radiale per \( r > 0 \) e \( \lim_{r\to 0} r f(r) \neq 0 \), allora nel senso delle distribuzioni emerge una singolarità nell'origine.
+
+Se la funzione d'onda \( \Psi \) si comportasse come \( \frac{1}{r} \), l'applicazione dell'operatore cinetico genererebbe un termine proporzionale a \( \delta^3(\vec{x}) \) nell'origine:
+\[
+\left( -\partial_r^2 + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) r f(r) \propto \delta^3(\vec{x}) \neq 0
+\]
+Questo termine non viene cancellato da nient'altro (a meno che il potenziale stesso non abbia una delta), quindi non sarebbe possibile risolvere l'equazione agli autovalori.
+
+Dobbiamo dunque imporre che:
+\begin{equation}
+\lim_{r\to 0^+} r f(r) = 0
+\end{equation}
+La funzione può avere singolarità, ma deve essere almeno più debole (es. \( 1/\sqrt{r} \)). 
+Con questa condizione su \( f(r) \) si passa da uno spazio delle soluzioni 2D a uno spazio 1D nelle soluzioni.
+
+\subsubsection{Comportamento a \(r\to \infty\)}
+Consideriamo il caso di potenziali a \textit{corto raggio}, ovvero tali che tendono a una costante per $r \gg 0$.
+Senza perdita di generalità, possiamo shiftare il potenziale in modo che $V(r) \to 0$ per $r \to \infty$.
+
+In questa approssimazione, per $r \gg 0$, possiamo trascurare sia $V(r)$ (che tende a zero) sia il termine centrifugo $\frac{\ell(\ell+1)}{r^2}$ (che decade come $1/r^2$). L'equazione radiale ridotta diventa:
+\begin{equation}
+    \left( \partial_r^2 + \frac{2mE}{\hbar^2} \right) u_{E,\ell}(r) = 0
+\end{equation}
+La natura delle soluzioni dipende dal segno dell'energia $E$ (rispetto al valore asintotico del potenziale).
+
+\paragraph{Caso $E > 0$: Stati di Scattering}
+Definiamo il vettore d'onda $k = \sqrt{\frac{2mE}{\hbar^2}}$. La soluzione asintotica è una combinazione lineare di onde piane oscillanti:
+\begin{equation}
+    u(r) \sim A e^{ikr} + B e^{-ikr} \quad \implies \quad f(r) \sim A \frac{e^{ikr}}{r} + B \frac{e^{-ikr}}{r} \quad \text{per } r \to \infty
+\end{equation}
+Queste soluzioni rappresentano \textit{stati di scattering} (spettro continuo). Sono funzioni non normalizzabili in senso stretto ($L_2$), ma accettabili nel senso delle distribuzioni (come onde piane).
+Le costanti $A$ e $B$ vengono fissate (a meno di un fattore di normalizzazione) dalle condizioni al contorno per $r \to 0$.
+
+\paragraph{Caso $E < 0$: Stati Legati}
+Definiamo il parametro reale $\rho = \sqrt{\frac{-2mE}{\hbar^2}}$. La soluzione generale è data da esponenziali reali:
+\begin{equation}
+    u(r) \sim A e^{\rho r} + B e^{-\rho r} \quad \implies \quad f(r) \sim A \frac{e^{\rho r}}{r} + B \frac{e^{-\rho r}}{r} \quad \text{per } r \to \infty
+\end{equation}
+Perché la funzione d'onda rappresenti uno stato fisico (normalizzabile, ovvero $\Psi \in L_2$), non può divergere all'infinito.
+Dobbiamo quindi imporre la condizione asintotica: \(A = 0\)\\
+Rimangono solo i termini esponenzialmente decrescenti, che identificano gli \textit{stati legati}.
+
+
+
+\section{Sistema di due particelle senza spin}
+
+Consideriamo un sistema composto da due particelle distinguibili senza spin. Lo spazio di Hilbert associato è:
+\[
+\mathcal{H} = L_2(\mathbb{R}^3 \times \mathbb{R}^3, d^3x_a d^3x_b)
+\]
+Le osservabili per le due particelle sono rispettivamente $\vec{X}_a, \vec{P}_a$ (massa $m_a$) e $\vec{X}_b, \vec{P}_b$ (massa $m_b$).
+
+L'Hamiltoniana del sistema è data da:
+\begin{equation}
+    H = \frac{\vec{P}_a^2}{2m_a} + \frac{\vec{P}_b^2}{2m_b} + V(|\vec{X}_a - \vec{X}_b|)
+\end{equation}
+La forma del potenziale $V(|\vec{X}_a - \vec{X}_b|)$, che dipende solo dalla distanza relativa, implica che ci troviamo in uno spazio \textbf{omogeneo ed isotropo}. 
+Questo significa che il sistema è invariante per traslazioni e rotazioni
+
+Per semplificare il problema, passiamo al sistema di riferimento del Centro di Massa (CM) effettuando un cambio di variabili.
+Definiamo la massa totale $M = m_a + m_b$.
+
+Coordinate del Centro di Massa:
+\begin{equation}
+    \vec{X}_{CM} = \frac{m_a \vec{X}_a + m_b \vec{X}_b}{M} \quad (\text{media pesata delle posizioni})
+\end{equation}
+\begin{equation}
+    \vec{P}_{CM} = \vec{P}_a + \vec{P}_b
+\end{equation}
+Coordinate Relative:
+\begin{equation}
+    \vec{X}_r = \vec{X}_a - \vec{X}_b
+\end{equation}
+\begin{equation}
+    \vec{P}_r = \frac{m_b \vec{P}_a - m_a \vec{P}_b}{M}
+\end{equation}
+Nota: $\vec{P}_r$ è costruito in modo da essere coniugato a $\vec{X}_r$ e ortogonale al moto del CM.
+
+Le nuove coordinate sono canoniche. La normalizzazione nelle definizioni è fissata proprio per preservare le regole di commutazione:
+\[
+[X_{CM, i}, P_{CM, j}] = i\hbar \delta_{ij}
+\]
+\[
+[X_{r, i}, P_{r, j}] = i\hbar \delta_{ij}
+\]
+Inoltre, le coordinate del CM e quelle relative commutano tra loro:
+\[
+[\vec{P}_{CM}, \vec{X}_r] = 0, \quad [\vec{X}_{CM}, \vec{P}_r] = 0, \quad \text{etc.}
+\]
+Dato che le variabili del CM e quelle relative sono indipendenti (i commutatori misti sono nulli), potremo trattare la parte del centro di massa e la parte relativa separatamente.
+
+
+Esprimendo l'Hamiltoniana nelle nuove coordinate, otteniamo la somma di due termini disaccoppiati:
+\begin{equation}
+    H = \underbrace{\frac{\vec{P}_{CM}^2}{2M}}_{H_{CM}} + \underbrace{\frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)}_{H_{rel}} \quad \text{ con } \; \mu = \frac{m_a+m_b}{M}
+\end{equation}
+Questo ci permette di fattorizzare lo spazio di Hilbert e le soluzioni:
+\begin{equation}
+    \mathcal{H} = L_2(\mathbb{R}^3, d^3x_{CM}) \otimes L_2(\mathbb{R}^3, d^3x_r) = \mathcal{H}_{CM} \otimes \mathcal{H}_{rel}
+\end{equation}
+
+\subsection{Simmetrie Dinamiche}
+
+L'Hamiltoniana \( H \) è invariante per traslazioni (perché lo spazio è omogeneo) e anche per rotazioni (perché isotropo).
+Definiamo i momenti:
+\[
+\vec{P}_{CM}, \quad \vec{L}_{CM} = \vec{X}_{CM} \times \vec{P}_{CM}, \quad \vec{L}_r = \vec{X}_r \times \vec{P}_r
+\]
+dove \( \vec{P}_{CM} \) è associato all'invarianza per traslazioni e \( \vec{L}_{CM} \) all'invarianza per rotazioni.
+
+Consideriamo il seguente I.C.O.C.:
+\[
+\left\{ \vec{P}_{CM}, H_{rel}, \vec{L}_r^2, L_{rz} \right\}
+\]
+Notiamo che \( \vec{P}_{CM} \) agisce sullo spazio del centro di massa (CM), mentre \( H_{rel}, \vec{L}_r^2, L_{rz} \) agiscono sullo spazio relativo.
+Di conseguenza, le autofunzioni fattorizzano:
+\begin{equation}
+    \Phi_{\vec{P}_{CM}}(\vec{X}_{CM}) \, \Psi_{E,\ell,m}(\vec{X}_r)
+\end{equation}
+Esplicitando l'autofunzione del momento in 3D per il centro di massa, otteniamo:
+\[
+\frac{e^{\frac{i}{\hbar}\vec{P}_{CM}\cdot \vec{X}_{CM}}}{(2\pi\hbar)^{3/2}} \, {\Psi_{E,\ell,m}(\vec{X}_r)}
+\]
+Quindi, risolvere la parte radiale relativa equivale a risolvere un problema con potenziale centrale.
+
+\section{Atomo di idrogeno}
+
+Consideriamo l'atomo di idrogeno (la trattazione è valida anche per atomi idrogenoidi ionizzati), composto da un elettrone \( e^- \) e un protone \( p^+ \) come nucleo.
+
+Iniziamo effettuando le seguenti approssimazioni:
+\begin{itemize}
+    \item Trascuriamo gli effetti relativistici (assumiamo l'energia cinetica \( K \ll m_p c^2, m_e c^2 \)).
+    \item Trascuriamo la radiazione elettromagnetica: considereremo solo il potenziale elettrostatico tra le cariche, senza includere l'interazione E.M. completa.
+    \item Trascuriamo lo SPIN: trattiamo le particelle come se avessero \( \text{SPIN}=0 \) (anche se non lo sono), coerentemente con l'aver trascurato l'interazione elettromagnetica.
+\end{itemize}
+
+Consideriamo i valori delle masse:
+\[
+m_e \simeq 0.511 \, \frac{\text{MeV}}{c^2} \simeq 0.91 \cdot 10^{-30} \, \text{kg}
+\]
+\[
+m_p \simeq 938 \, \frac{\text{MeV}}{c^2} \simeq 1.7 \cdot 10^{-27} \, \text{kg} \simeq 1800 \, m_e
+\]
+Poiché \( m_e \ll m_p \implies M_{tot} \simeq m_p \).
+Calcoliamo la massa ridotta del sistema:
+\[
+\mu = \frac{m_e m_p}{M_{tot}} = 0.995 \, m_e \sim m_e
+\]
+
+L'Hamiltoniana totale del sistema si decompone in:
+\[
+H = H_{CM} + H_r
+\]
+Ci focalizziamo esclusivamente sulla parte relativa \( H_r \) e sul momento angolare relativo \( \vec{L}_r \).
+L'Hamiltoniana relativa è:
+\begin{equation}
+    H_r = \frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)
+\end{equation}
+\begin{attention}
+    D'ora in poi ometteremo il pedice \( r \) per semplicità, dato che tratteremo solo questa Hamiltoniana. Poniamo quindi \( r = |\vec{X}| \) (distanza).
+\end{attention}
+
+L'Hamiltoniana diventa:
+\[
+H = \frac{\vec{P}^2}{2\mu} + V(r)
+\]
+Il potenziale è quello Coulombiano:
+\begin{equation}
+    V(r) = - \frac{q_e^2}{4\pi\varepsilon_0 r} = - \frac{e^2}{r}
+\end{equation}
+Nell'ultimo passaggio abbiamo usato la notazione CGS (Gauss), spesso utilizzata nei testi di riferimento.
+Riportiamo alcune costanti utili:
+\[
+q_e = 1.6 \cdot 10^{-19} \, \text{C}, \quad e^2 = 2.3 \cdot 10^{-28} \, \text{J}\cdot\text{m}, \quad \frac{e^2}{\hbar c} \simeq \frac{1}{137}
+\]
+
+\subsubsection{Ricerca degli stati legati}
+Vogliamo risolvere il sistema con potenziale centrale \( V(r) = -\frac{e^2}{r} \).
+Osserviamo che \( V(r) \xrightarrow{r \to \infty} 0 \) (va a zero lentamente, ma è accettabile).
+Avremo due tipi di spettro:
+\begin{itemize}
+    \item \textbf{Spettro continuo} (\( \sigma_c \)) per \( E > 0 \): corrisponde agli stati di scattering.
+    \item \textbf{Spettro discreto} (\( \sigma_d \)) per \( E < 0 \): corrisponde agli \textbf{stati legati}.
+\end{itemize}
+Ci concentriamo sulla ricerca degli stati legati (\( E < 0 \)). Per avere una base completa di \( \mathcal{H} \) dovremmo includere anche gli stati non legati, ma per ora li tralasciamo.
+
+Cerchiamo autofunzioni \( \Psi_{E,\ell,m} \) dell'insieme \( \{ H, \vec{L}^2, L_z \} \) nella forma fattorizzata:
+\begin{equation}
+    \Psi_{E,\ell,m}(r, \theta, \varphi) = f_{E,\ell}(r) Y_\ell^m(\theta, \varphi)
+\end{equation}
+Definiamo la funzione radiale ridotta \( u_{E,\ell}(r) = r f_{E,\ell}(r) \).
+
+Anche se \( V(r) \) non è limitato nell'origine, grazie al \textbf{Teorema di Kato-Rellich} (\ref{theo: Kato-Rellich}) possiamo affermare che il dominio dell'Hamiltoniana coincide con quello dell'energia cinetica:
+\[
+D(H) = D(\vec{P}^2)
+\]
+Questo impone delle condizioni al contorno per \( r \to 0^+ \):
+\begin{equation}
+    \lim_{r \to 0^+} r f_{E,l}(r) \equiv \lim_{r \to 0^+} u_{E,l}(r) = 0
+\end{equation}
+Eq. diff. parte radiale:
+\begin{equation}
+    \left( -\partial_r^2 + \underbrace{\frac{\ell(\ell+1)}{r^2}}_{\text{en. cinetica rotazionale}} + \frac{2\mu}{\hbar^2} \left( -\frac{e^2}{r} - E \right) \right) \underbrace{r f_{E,\ell}(r)}_{u_{E,\ell}(r)} = 0
+\end{equation}
+
+Rendiamo l'equazione adimensionale, sfruttando le seguenti quantità:
+\begin{itemize}
+    \item Raggio di Bohr:
+    \begin{equation}
+        a_0 = \frac{\hbar^2}{\mu e^2} \simeq 0.529 \cdot 10^{-10} \text{ m}
+    \end{equation}
+    \item Energia di ionizzazione:
+    \begin{equation}
+        E_I = \frac{e^2}{2a_0} = \frac{\hbar^2}{2\mu a_0^2} \simeq 13.6 \text{ eV} \equiv 1 \text{ Ry (Rydberg)}
+    \end{equation}
+\end{itemize}
+
+Definiamo le variabili adimensionali: 
+\(
+\rho = \frac{r}{a_0}
+\)
+e \( \lambda \) tale che \( E = - \lambda^2 E_I < 0 \).
+Considerando quindi la funzione scalata \( u_{\lambda, \ell}(\rho) \equiv u_{E,\ell}(r) \), l'equazione differenziale diventa:
+\[
+\frac{1}{a_0^2} \left( -\partial_\rho^2 + \frac{l(l+1)}{\rho^2} - \frac{2}{\rho} + \lambda^2 \right) u_{\lambda,\ell}(\rho) = 0
+\]
+
+Per risolvere questa equazione supponiamo che la soluzione abbia forma \(u_{E,\ell}(\rho)= e^{-\lambda\rho}y(\rho) \) ,
+per funzioni \(y(\rho)\) compatibili con la condizioni al limite, cioè con crescita subesponenziale a \(+\infty\) e \(\lim_{\rho\to 0^+}y(\rho)=0\).\\
+Otteniamo dunque:
+\[
+    \frac{1}{a_0^2} \left( - \frac{\partial^2}{\partial \rho^2} + \frac{\ell(\ell+1)}{\rho^2} - \frac{2}{\rho} + \lambda^2 \right) \left( e^{-\lambda \rho} y(\rho) \right) = 0 \\
+\]
+\[
+    e^{-\lambda \rho} \left( -\partial_\rho^2 - \lambda^2 + 2\lambda \partial_\rho + \frac{\ell(\ell+1)}{\rho^2} - \frac{2}{\rho} + \lambda^2 \right) y(\rho) = 0\\
+\]
+Dobbiamo risolvere dunque:
+\begin{equation}
+    \left( -\rho^2 \partial_\rho^2 + 2\lambda \rho^2 \partial_\rho + \ell(\ell+1) - 2\rho \right) y_{E,\ell}(\rho) = 0
+\end{equation}
+
+% 26 Lezione del 28/11/2025
+\lezione{26}{28/12/2025}
+
+Cerchiamo soluzioni in forma di serie di potenze:
+\begin{equation}
+    y_{E, \ell}(\rho)=  \sum_{k = 0}^{+\infty}c_k \rho^{k+k_0+1}
+\end{equation}
+dove richediamo che \(c_0 \neq 0\) e quindi \(k_0+1\) è il grado più basso della serie.
+Calcoliamo i termini che compaiono nell'equazione:
+\begin{align*}
+\rho^2 \partial_\rho y &= \sum_{k=0}^{\infty} c_k (k+k_0+1) \rho^{k+k_0+2} = \sum_{k'=1}^{\infty} c_{k'-1} (k'+k_0) \rho^{k'+k_0+1} \\
+\rho^2 \partial_\rho^2 y &= \sum_{k=0}^{\infty} c_k (k+k_0+1)(k+k_0) \rho^{k+k_0+1} \\
+\rho y &= \sum_{k'=1}^{\infty} c_{k'-1} \rho^{k'+k_0+1}
+\end{align*}
+
+Sostituendo quindi all'interno dell'equazione (aggiungendo i termini per \(k' = 0\) per cui vale \(c_{-1}\equiv0\)):
+\begin{equation}
+    \sum_{k=0}^{+\infty} \rho^{k+\ell+1} \big( -(k+k_0)(k+k_0+1)c_k + 2\lambda c_{k-1}(k+k_0) + \ell(\ell+1)c_k - 2c_{k-1} \big) = 0
+\end{equation}
+
+Questa equazione deve valere per ogni possibile valore di \(\rho\) e quindi la parentesi deve essere essere identicamente nulla per ogni valore di \(k\).\\
+Per \(k=0\) abbiamo:
+\[
+-k_0(k_0+1)c_0 + \ell(\ell+1)c_0 = 0
+\]
+dato che avviamo imposto che \(c_0 \neq 0\), otteniamo \(k_0 = \ell\) .\\
+Per \( k > 0 \):
+\[
+\left[ (k+\ell)(k+\ell+1) - \ell(\ell+1) \right] c_k = 2 \left( \lambda(k+\ell) - 1 \right) c_{k-1}
+\]
+Il termine tra parentesi quadre a sinistra si semplifica in:
+\[
+(k+\ell)(k+\ell+1) - \ell(\ell+1) = k(k+2\ell+1)
+\]
+che è sempre positivo e diverso da 0 per \( k>0 \). Otteniamo quindi la \textbf{relazione ricorsiva}:
+
+\begin{equation}
+    c_k = c_{k-1} \frac{2[\lambda(k+\ell)-1]}{k(k+2\ell+1)} \quad \text{vale } \forall \,k > 0    
+\end{equation}
+
+Questo ci dice che ogni \( c_k \) è legato al precedente \( c_{k-1} \). Quindi, partendo da \( c_0 \), trovo tutti i coefficienti. \( c_0 \) non è fissato dalla relazione, ma sarà determinato dalla costante di normalizzazione.
+
+Vediamo se la serie converge usando il \textit{criterio del rapporto}:
+\[
+\frac{c_k}{c_{k-1}} = \frac{2[\lambda(k+\ell)-1]}{k(k+2\ell+1)} \sim \frac{2\lambda k}{k^2} = \frac{2\lambda}{k} \xrightarrow{k \to \infty} 0
+\]
+Il limite è \( 0 \), il che implica che il raggio di convergenza è \( \infty \). Di conseguenza la serie \( y(\rho) \) converge \( \forall \rho > 0 \).
+
+\subsubsection{Comportamento asintotico}
+Come appena visto, se \( \lambda(k+\ell)-1 \neq 0 \quad \forall k > 0 \), allora il rapporto tra i coefficienti per \( k \to \infty \) è:
+\[
+\frac{c_k}{c_{k-1}} \sim \frac{2\lambda}{k}
+\]
+Pertanto, per \( \rho \to \infty \), la funzione radiale si comporta come
+\(
+y(\rho) \sim e^{2\lambda\rho}
+\)
+e di conseguenza la funzione d'onda completa \( u(\rho) \):
+\[
+u(\rho) = e^{-\lambda\rho}y(\rho) \sim e^{-\lambda\rho} e^{2\lambda\rho} = e^{\lambda\rho}
+\]
+Questa soluzione \textbf{diverge} per \( \rho \to \infty \) e non è accettabile fisicamente (non appartiene a \( L_2(\mathbb{R}, dx) \)).
+
+Per ottenere una soluzione fisicamente accettabile, è necessario che la serie si tronchi, diventando un polinomio.
+Deve esistere un intero \( m \in \mathbb{N} \) (con \( m > 0 \)) tale che il numeratore della relazione ricorsiva si annulli per \( k=m \):
+\[
+\lambda(m+\ell) - 1 = 0
+\]
+Se questa condizione è verificata, allora \( c_m = 0 \) e poiché ogni coefficiente dipende dal precedente, avremo:
+\[
+c_k = 0 \quad \forall k \ge m
+\]
+In questo modo la serie diventa finita:
+\begin{equation}
+    y_{E,\ell}(\rho) = \sum_{k=0}^{m-1} c_k \rho^{k+\ell+1}
+\end{equation}
+che è un polinomio di grado massimo legato a \( m+\ell \). Questa condizione di troncamento determina gli autovalori dell'energia permessi.
+
+Definiamo ora il \textit{numero quantico principale} \( n \) come:
+\begin{equation}
+    n := m + \ell
+\end{equation}
+Da questa definizione e dalla condizione di troncamento, otteniamo il valore quantizzato di \( \lambda \):
+\begin{equation}
+    \lambda = \frac{1}{n}
+\end{equation}
+Poiché \( m \ge 1 \) e \( \ell \ge 0 \), i valori possibili per \( n \) sono gli interi positivi:
+\begin{equation}
+    n = 1, 2, 3, 4, \dots
+\end{equation}
+Inoltre, dato che \( m = n - \ell \ge 1 \), per un fissato valore di \( n \), il momento angolare \( \ell \) è vincolato dalla condizione:
+\begin{equation}
+    0 \le \ell < n 
+\end{equation}
+ovvero \( \ell \) può assumere i valori \( 0, 1, \dots, n-1 \).
+
+Sostituendo \( \lambda = 1/n \) nell'espressione dell'energia \( E = -\lambda^2 E_I \) (dove \( E_I \) è l'energia di ionizzazione), otteniamo i livelli energetici permessi:
+\begin{equation}
+    E_n = -\frac{1}{n^2} E_I
+\end{equation}
+L'energia dipende solo dal numero quantico principale \( n \). In questo modo abbiamo ricavato lo spettro discreto dell'atomo di idrogeno.
+
+La differenza di energia tra due livelli \( n_1 \) e \( n_2 \) è data dalla \textbf{formula di Rydberg}:
+\begin{equation}
+    E_{n_1}-E_{n_2} = \left(\frac{1}{n_2^2} -\frac{1}{n_1^2} \right) -\frac{1}{n^2} E_I
+\end{equation}
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+        scale=0.75,   % Ridotto la scala generale (default era 1.0)
+        >=latex,
+        level/.style={thick, line cap=round},
+        s-orb/.style={green!60!black},
+        p-orb/.style={blue!70!black},
+        d-orb/.style={violet},
+        f-orb/.style={orange}
+    ]
+
+    % Asse delle Energie
+    \draw[->, thick] (0, 0.5) -- (0, 9) node[above] {\small $E/E_I$};
+    \node[red, left, font=\footnotesize] at (0, 8.5) {0};
+    \draw[red, thick] (-0.1, 8.5) -- (0.1, 8.5);
+
+    % Ticks e label asse Y
+    \foreach \y/\n/\val in {1/1/-1, 3.5/2/{-\dfrac{1}{4}}, 5.5/3/{-\dfrac{1}{9}}, 7/4/{-\dfrac{1}{16}}} {
+        \draw[thick] (-0.1, \y) -- (0.1, \y);
+        \node[left, font=\scriptsize] at (-0.2, \y) {$n=\n \;\; \val$};
+    }
+
+    % Intestazioni l (momento angolare)
+    \node[font=\large] at (2, 9.5) {$\ell=0$};
+    \node[font=\large] at (5, 9.5) {$\ell=1$};
+    \node[font=\large] at (8, 9.5) {$\ell=2$};
+    \node[font=\large] at (11, 9.5) {$\ell=3$};
+
+    % --- Livelli Energetici ---
+
+    % n=1
+    \draw[level, s-orb] (1, 1) -- (3, 1) node[midway, above, font=\small] {$1s$};
+    \node[right, font=\footnotesize] at (12, 1) {1 stato};
+
+    % n=2
+    \draw[level, s-orb] (1, 3.5) -- (3, 3.5) node[midway, above, font=\small] {$2s$};
+    \draw[level, p-orb] (4, 3.5) -- (6, 3.5) node[midway, above, font=\small] {$2p$};
+    \node[right, font=\footnotesize] at (12, 3.5) {$1+3=4$ stati};
+
+    % n=3
+    \draw[level, s-orb] (1, 5.5) -- (3, 5.5) node[midway, above, font=\small] {$3s$};
+    \draw[level, p-orb] (4, 5.5) -- (6, 5.5) node[midway, above, font=\small] {$3p$};
+    \draw[level, d-orb] (7, 5.5) -- (9, 5.5) node[midway, above, font=\small] {$3d$};
+    \node[right, font=\footnotesize] at (12, 5.5) {$1+3+5=9$ stati};
+
+    % n=4
+    \draw[level, s-orb] (1, 7) -- (3, 7) node[midway, above, font=\small] {$4s$};
+    \draw[level, p-orb] (4, 7) -- (6, 7) node[midway, above, font=\small] {$4p$};
+    \draw[level, d-orb] (7, 7) -- (9, 7) node[midway, above, font=\small] {$4d$};
+    \draw[level, f-orb] (10, 7) -- (12, 7) node[midway, above, font=\small] {$4f$};
+    \node[right, font=\footnotesize] at (12.2, 7) {16 stati};
+
+    % Linea tratteggiata per lo zero
+    \draw[dashed, gray] (0, 8.5) -- (12, 8.5);
+
+    \end{tikzpicture}
+    \caption{Schema dei livelli energetici dell'atomo di idrogeno.}
+    \label{fig:spettro_H}
+\end{figure}
+
+\subsubsection{Degenerazione degli stati}
+Il grado di degenerazione del livello energetico \( E_n \) si ottiene sommando le degenerazioni dovute al momento angolare orbitale \( \ell \) per tutti i valori permessi (da \( 0 \) a \( n-1 \)):
+\[
+\text{deg}(E_n) = \sum_{\ell=0}^{n-1} (2\ell+1) = 2\frac{n(n-1)}{2} + n = n^2
+\]
+Ad esempio:
+\begin{itemize}
+    \item Per \( n=1 \): 1 stato (\( 1s \)).
+    \item Per \( n=2 \): 4 stati (\( 2s, 2p \)).
+\end{itemize}
+\begin{remark}
+    In questo calcolo non abbiamo tenuto conto dello \textit{spin}. Includendolo successivamente, la degenerazione aumenta (raddoppia).
+\end{remark}
+
+Se un sistema presenta degenerazione, ciò implica l'esistenza di una simmetria dinamica. Dato che abbiamo stati diversi con la stessa energia, deve esistere un operatore unitario che li lega (o "mescola").
+
+\begin{itemize}
+    \item Il sistema ha \textbf{simmetria per rotazioni} (\( SO(3) \)): questo spiega la degenerazione nel numero quantico magnetico \( m \), mescolando stati con lo stesso \( \ell \).
+    \item Tuttavia, nell'atomo di idrogeno osserviamo che stati con \( \ell \) diversi (es. \( 2s \) e \( 2p \)) hanno la stessa energia. Le rotazioni non possono trasformare uno stato \( s \) in uno stato \( p \).
+\end{itemize}
+
+Questo suggerisce che il sistema possiede \textbf{simmetrie ulteriori} (più grandi di \( SO(3) \)) che mescolano stati con \( \ell \) diversi.
+
+La "nuova" simmetria è legata a una quantità conservata specifica per il potenziale \( 1/r \) (potenziale Coulombiano/Kepleriano): il \textbf{Vettore di Runge-Lenz} \( \vec{M} \).
+
+Esso è definito (a meno di costanti moltiplicative) come:
+\begin{equation}
+    \vec{M} = \frac{\vec{P} \times \vec{L} - \vec{L} \times \vec{P}}{2\mu} - e^2 \frac{\vec{X}}{R}
+\end{equation}
+dove \( \mu \) è la massa ridotta e \( R = |\vec{X}| \).
+
+Vale la relazione di commutazione con l'Hamiltoniana:
+\[
+[\vec{M}, H] = 0
+\]
+Questo implica che \( \vec{M} \) è una costante del moto (simmetria dinamica). L'esistenza di questo vettore conservato è specifica della forma del potenziale \( \propto 1/r \) dell'atomo di idrogeno e fornisce le informazioni aggiuntive che spiegano la degenerazione "accidentale" in \( \ell \).
+
+\subsubsection{Struttura delle autofunzioni dell'Atomo di Idrogeno}
+
+Analizziamo come sono fatte le autofunzioni. La parte radiale $u_{n,\ell}(\rho)$ ha la forma:
+\begin{equation}
+    u_{n,\ell}(\rho)= e^{-\frac{\rho}{n}} \left( c_0 \rho^{\ell+1} + \dots + c_{n-\ell-1}\rho^n \right)
+\end{equation}
+Consideriamo lo stato fondamentale ($n=1, \ell=0$):
+\[
+    f_{n=1, \ell=0}(r) = \frac{2}{\sqrt{a_0^3}} e^{-\frac{r}{a_0}} \quad \text{e} \quad Y_0^0 = \frac{1}{\sqrt{4\pi}}
+\]
+Da cui otteniamo la funzione d'onda completa per lo stato fondamentale:
+\begin{equation}
+    \Psi_{1,0,0} = \frac{1}{\sqrt{\pi a_0^3}} e^{-\frac{r}{a_0}}
+\end{equation}
+
+La funzione d'onda generale si scrive separando la parte radiale da quella angolare:
+\begin{equation}
+    \Psi_{n,\ell,m} = \frac{1}{r} u_{n,\ell}(r) Y_{\ell}^m(\vartheta, \varphi)
+\end{equation}
+Le funzioni dipenderanno da $r$ (dato che $\rho$ è scalato su $a_0$). Esplicitando la struttura:
+\begin{equation}
+    \Psi_{n,\ell,m} = \frac{N_{n,\ell}}{\sqrt{a_0^3}} e^{-\frac{r}{n a_0}} \left( \frac{2r}{n a_0} \right)^\ell L\left( \frac{2r}{n a_0} \right) Y_\ell^m(\vartheta, \varphi)
+\end{equation}
+dove il termine $L$ rappresenta un \textit{polinomio di Laguerre} di grado $n-\ell-1$.
+
+Analizziamo il comportamento vicino al nucleo ($r \to 0$):
+\[
+    \Psi \sim r^\ell
+\]
+Quando $\ell > 0$ la funzione radiale tende a 0 (poiché $\Psi \sim r^\ell$). Quindi, solo per $\ell=0$ si ha una probabilità non trascurabile di trovare l'elettrone vicino al nucleo. La probabilità è piccata su distanze dell'ordine di $a_0$ dal nucleo.
+
+In tutti i casi valgono le seguenti relazioni per i valori medi (Teorema del Viriale):
+\[
+    \expval{\frac{\vec{P}^2}{2m}}_{\Psi_{n,\ell,m}} = + \frac{E_I}{n^2}
+\]
+Cioè il valore medio dell'energia cinetica è uguale al modulo dell'energia totale (o energia di ionizzazione $E_I$ scalata), ed è opposto all'energia totale.
+\[
+    \expval{V(r)} = - \frac{2 E_I}{n^2}
+\]
+Così che l'energia totale risulta:
+\[
+    \expval{H} = - \frac{E_I}{n^2}
+\]
+
+Infine, verifichiamo la validità dell'approssimazione non relativistica confrontando l'energia cinetica media con l'energia a riposo:
+\[
+    \expval{\frac{\vec{P}^2}{2m}} \ll mc^2 \implies \text{OK approssimazione relativistica}
+\]

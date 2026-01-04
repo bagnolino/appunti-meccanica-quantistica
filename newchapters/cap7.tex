@@ -1,0 +1,595 @@
+\chapter{Entanglement}
+\section{Definizione}
+
+Consideriamo un sistema \( S \) composto dall'unione di due sottosistemi \( S_1 \) e \( S_2 \) (ad esempio due particelle distinte).
+Lo spazio di Hilbert associato al sistema composto è dato dal prodotto tensoriale degli spazi di Hilbert dei singoli sottosistemi:
+\[
+    \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2
+\]
+Date le basi ortonormali \( \{\ket{n}\} \) per \( \mathcal{H}_1 \) e \( \{\ket{m}\} \) per \( \mathcal{H}_2 \), possiamo costruire una base ortonormale per \( \mathcal{H} \) come:
+\[
+    \left\{ \ket{n,m} \equiv \ket{n} \otimes \ket{m} \right\}
+\]
+
+All'interno di questo spazio, possiamo distinguere due categorie di stati:
+
+\begin{itemize}
+    \item \textbf{Stati fattorizzati} (o separabili): sono quegli stati che possono essere scritti come prodotto tensoriale di uno stato di \( S_1 \) e uno di \( S_2 \):
+    \[
+        \ket{\psi} = \ket{\varphi} \otimes \ket{\chi} \qquad \text{con } \ket{\varphi} \in \mathcal{H}_1, \, \ket{\chi} \in \mathcal{H}_2
+    \]
+    Questo rappresenta un caso molto speciale e restrittivo.
+
+    \item \textbf{Stati generici}: secondo il principio di sovrapposizione, lo stato più generale è una combinazione lineare degli elementi della base:
+    \[
+        \ket{\psi} = \sum_{n,m} C_{nm} \ket{n} \otimes \ket{m}
+    \]
+\end{itemize}
+
+\begin{definition}
+    Uno stato si dice \textbf{entangled} (o intrecciato) se è uno stato non fattorizzato, ovvero se non esiste alcuna coppia \( \ket{\varphi}, \ket{\chi} \) tale che \( \ket{\psi} = \ket{\varphi} \otimes \ket{\chi} \).
+\end{definition}
+
+\begin{example}
+    \textbf{Due particelle a spin 1/2}
+
+    Consideriamo due particelle di spin \( 1/2 \) e focalizziamoci sullo spazio di spin.
+    Abbiamo due spazi di Hilbert isomorfi a \( \mathbb{C}^2 \):
+    \[
+        \mathcal{H}_1 \cong \mathbb{C}^2 \qquad \mathcal{H}_2 \cong \mathbb{C}^2
+    \]
+    Le basi sono date dagli autostati di \( S_z \) (spin lungo l'asse z), indicati come \( \{\ket{+}, \ket{-}\} \) oppure \( \{\ket{\uparrow}, \ket{\downarrow}\} \):
+    \[
+        \ket{\uparrow} \equiv \ket{+} \equiv \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \qquad \ket{\downarrow} \equiv \ket{-} \equiv \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+    \]
+
+    Lo spazio totale è \( \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \).
+    Consideriamo lo \textbf{Stato di Singoletto} (spin totale \( S=0 \)) definito come:
+    \[
+        \ket{\psi} = \frac{1}{\sqrt{2}} \left( \ket{+ -} - \ket{- +} \right) \equiv \frac{1}{\sqrt{2}} \left( \ket{+} \otimes \ket{-} - \ket{-} \otimes \ket{+} \right)
+    \]
+    Ci chiediamo se questo stato sia fattorizzabile, ovvero se possa essere scritto come:
+    \[
+        \ket{\psi} \overset{?}{=} \ket{\varphi} \otimes \ket{\chi}
+    \]
+    Prendendo due stati generici per i sottosistemi:
+    \[
+        \ket{\varphi} = \alpha\ket{+} + \beta\ket{-} \qquad \ket{\chi} = \gamma\ket{+} + \delta\ket{-}
+    \]
+    effettuando il prodotto tensoriale si otterrebbero termini misti e termini puri (\( \ket{++}, \ket{--} \)). Confrontando i coefficienti, si osserva che non esiste nessuna scelta di \( \alpha, \beta, \gamma, \delta \) tale che \( \ket{\varphi} \otimes \ket{\chi} = \ket{\psi} \). Dunque \(\ket{\psi}\) è entagled.   
+\end{example}
+
+\subsection{Matrici densità}
+
+Ricordiamo alcune proprietà della matrice densità (vedi \ref{sec: mat_dens}) che ci saranno utili. \\Un operatore $\rho$ definito sullo spazio di Hilbert $\mathcal{H}$ è detto \textbf{operatore densità} se soddisfa le seguenti tre proprietà:
+\begin{enumerate}
+    \item $\rho^\dagger = \rho$ (Hermitiano);
+    \item $\rho \geq 0$ (Semidefinito positivo);
+    \item $\Tr \rho = 1$ (Traccia unitaria).
+\end{enumerate}
+
+A uno stato puro descritto dal vettore $\ket{\psi}$ (con $\norm{\psi}^2=1$) corrisponde l'operatore $\rho = \ket{\psi}\bra{\psi}$.
+In questo caso valgono le relazioni $\rho^2 = \rho$ e $\Tr \rho^2 = 1$.
+
+In generale vale sempre $\Tr \rho^2 \leq 1$. Questa quantità, detta \textit{purezza}, funge da criterio di distinzione:
+\[
+    \Tr \rho^2 = 1 \iff \rho \text{ è uno stato puro}
+\]
+
+Dato un operatore autoaggiunto $A$ (osservabile), il suo valore medio sullo stato $\rho$ si calcola come:
+\begin{equation}
+    \ev{A}_\rho = \Tr(\rho A)
+\end{equation}
+Se introduciamo una base ortonormale $\{\ket{n}\}$ di $\mathcal{H}$, possiamo esplicitare il calcolo tramite gli elementi di matrice:
+\[
+    \ev{A}_\rho = \sum_n \mel{n}{\rho A}{n} = \sum_{n,n'} \braket{n}{\rho|n'} \braket{n'}{A|n}
+\]
+
+
+
+
+\subsubsection{Traccia Parziale}
+
+Consideriamo un sistema composto descritto dallo spazio di Hilbert \( \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \) e una base ortonormale \( \{\ket{n,m} \equiv \ket{n}\otimes\ket{m}\} \). Sia \( \rho_{12} \) un operatore densità generico (puro o misto) su \( \mathcal{H} \).
+
+Supponiamo di poter accedere o misurare solo le osservabili relative al sistema 2, descritte da operatori autoaggiunti \( A_2: \mathcal{H}_2 \to \mathcal{H}_2 \). Sullo spazio totale, queste corrispondono a \( I \otimes A_2 \).
+Ci chiediamo se esista un operatore densità ridotto \( \rho_2 \) su \( \mathcal{H}_2 \) che descriva correttamente tutti i valori medi delle misure effettuate sul secondo sottosistema, ovvero tale che:
+\begin{equation}
+    \ev{I \otimes A_2}_{\rho_{12}} = \ev{A_2}_{\rho_2} \quad \forall A_2
+\end{equation}
+
+Cerchiamolo esplicitando il calcolo della traccia totale:
+\[
+    \ev{I \otimes A_2}_{\rho_{12}} = \Tr_{\mathcal{H}}(\rho_{12} (I \otimes A_2))
+\]
+Inserendo la relazione di completezza per la base \( \ket{n,m} \):
+\[
+    = \sum_{n,m} \sum_{n',m'} \mel{n,m}{\rho_{12}}{n',m'} \mel{n',m'}{I \otimes A_2}{n,m}
+\]
+Notando che \( \mel{n',m'}{I \otimes A_2}{n,m} = \braket{n'}{n}\mel{m'}{A_2}{m} = \delta_{n'n}\mel{m'}{A_2}{m} \), la somma su \( n' \) collassa:
+\[
+    = \sum_{m,m'} \left( \sum_n \mel{n,m}{\rho_{12}}{n,m'} \right) \mel{m'}{A_2}{m}
+\]
+Questa espressione ha la forma di una traccia su \( \mathcal{H}_2 \), \( \sum_{m,m'} \rho_{mm'} (A_2)_{m'm} \), se definiamo gli elementi di matrice di \( \rho_2 \) come:
+\begin{equation}
+    \mel{m}{\rho_2}{m'} := \sum_n \mel{n,m}{\rho_{12}}{n,m'}
+\end{equation}
+
+\begin{definition}
+    L'operatore \( \rho_2 \) così ottenuto è detto \textit{traccia parziale} di \( \rho_{12} \) rispetto al sottosistema 1:
+    \begin{equation}
+        \rho_2 = \Tr_{\mathcal{H}_1}(\rho_{12})
+    \end{equation}
+\end{definition}
+
+Si dimostra che se \( \rho_{12} \) è un operatore densità su \( \mathcal{H} \), allora \( \rho_2 \) è un operatore densità su \( \mathcal{H}_2 \).
+
+\begin{proof} Si verificano le tre proprietà:
+    \begin{enumerate}
+        \item \textbf{Hermiticità} ($\rho_2^\dagger = \rho_2$):
+        Calcoliamo gli elementi di matrice dell'aggiunto:
+        \[
+            \mel{m}{\rho_2^\dagger}{m'} = \braket{m'}{\rho_2|m}^* = \left( \sum_n \mel{n,m'}{\rho_{12}}{n,m} \right)^*
+        \]
+        Poiché $\rho_{12}$ è hermitiano ($\rho_{12}^\dagger = \rho_{12}$), vale $\mel{n,m'}{\rho_{12}}{n,m}^* = \mel{n,m}{\rho_{12}}{n,m'}$. Dunque:
+        \[
+            = \sum_n \mel{n,m}{\rho_{12}}{n,m'} = \mel{m}{\rho_2}{m'} \implies \rho_2^\dagger = \rho_2
+        \]
+
+        \item \textbf{Positività} ($\rho_2 \ge 0$):
+        Per ogni stato $\ket{\psi_2} \in \mathcal{H}_2$, il valore medio deve essere non negativo:
+        \[
+            \ev{\rho_2}_{\psi_2} = \Tr_{\mathcal{H}_2}(\rho_2 P_{\psi_2}) \quad \text{dove } P_{\psi_2} = \ket{\psi_2}\bra{\psi_2}
+        \]
+        Usando la proprietà della traccia parziale per risalire allo spazio totale:
+        \[
+            = \Tr_{\mathcal{H}_1 \otimes \mathcal{H}_2} (\rho_{12} (I \otimes P_{\psi_2})) = \ev{I \otimes P_{\psi_2}}_{\rho_{12}}
+        \]
+        Poiché $\rho_{12} \ge 0$ e $P_{\psi_2} \ge 0$ (proiettore), il valore medio è sicuramente $\ge 0$.
+
+        \item \textbf{Traccia unitaria} ($\Tr \rho_2 = 1$):
+        Calcoliamo la traccia su $\mathcal{H}_2$:
+        \[
+            \Tr_{\mathcal{H}_2}(\rho_2) = \Tr_{\mathcal{H}_2}(\rho_2 I_{\mathcal{H}_2}) = \Tr_{\mathcal{H}_1 \otimes \mathcal{H}_2}(\rho_{12} (I_{\mathcal{H}_1} \otimes I_{\mathcal{H}_2}))
+        \]
+        \[
+            = \Tr_{\mathcal{H}}(\rho_{12}) = 1
+        \]
+    \end{enumerate}
+\end{proof}
+
+Analogamente, si definisce la traccia parziale sul secondo sistema per ottenere lo stato ridotto del primo:
+\[
+    \rho_1 \equiv \Tr_{\mathcal{H}_2}(\rho_{12}) \iff \mel{n}{\rho_1}{n'} = \sum_m \mel{n,m}{\rho_{12}}{n',m}
+\]
+Questo è l'operatore densità su $\mathcal{H}_1$ tale che $\ev{A_1}_{\rho_1} = \ev{A_1 \otimes I}_{\rho_{12}}$ per ogni osservabile $A_1$.
+
+\begin{example}
+    \textbf{Stato di Singoletto e Traccia Parziale}
+
+    Consideriamo lo stato di singoletto (stato puro):
+    \[
+        \ket{\psi} = \frac{1}{\sqrt{2}} (\ket{+-} - \ket{-+})
+    \]
+    L'operatore densità associato è:
+    \[
+        \rho = \dyad{\psi}{\psi} = \frac{1}{2} \left( \dyad{+-}{+-} - \dyad{+-}{-+} - \dyad{-+}{+-} + \dyad{-+}{-+} \right)
+    \]
+    Scegliendo la base ortonormale \( \{ \ket{++}, \ket{+-}, \ket{-+}, \ket{--} \} \), la rappresentazione matriciale è:
+    \[
+        \rho = \frac{1}{2}
+        \begin{pmatrix}
+            0 & 0 & 0 & 0 \\
+            0 & 1 & -1 & 0 \\
+            0 & -1 & 1 & 0 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}
+    \]
+    Si verifica che \( \rho^2 = \rho \), confermando che è uno stato puro.
+
+    Calcoliamo ora lo stato ridotto \( \rho_2 \) effettuando la traccia parziale sul primo sottosistema \( \mathcal{H}_1 \):
+    \[
+        \rho_2 \equiv \Tr_{\mathcal{H}_1} \rho \iff \mel{m}{\rho_2}{m'} = \sum_{n \in \{+,-\}} \mel{n,m}{\rho}{n,m'}
+    \]
+    Svolgendo i calcoli si ottiene:
+    \[
+        \rho_2 = \frac{1}{2} \left( \dyad{-}{-} + \dyad{+}{+} \right) = \frac{1}{2} 
+        \begin{pmatrix} 
+            1 & 0 \\ 
+            0 & 1 
+        \end{pmatrix}
+    \]
+    
+    Verifichiamo se lo stato ridotto è puro:
+    \[
+        \rho_2^2 = \frac{1}{4} 
+        \begin{pmatrix} 
+            1 & 0 \\ 
+            0 & 1 
+        \end{pmatrix} 
+        \neq \rho_2
+    \]
+    Quindi \( \rho_2 \) è uno \textbf{stato misto}.
+    Partendo da uno stato \( \rho_{12} \) \textit{entangled}, otteniamo uno stato ridotto misto \( \rho_2 \).
+\end{example}
+
+\begin{theorem}
+    Sia \(\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2\) e \(\rho_{12} = \dyad{\psi}{\psi}\) uno stato puro su \(\mathcal{H}\).
+    Allora vale la seguente equivalenza:
+    \[
+        \rho_{12} \text{ è entangled} 
+        \iff \rho_2 = \Tr_{\mathcal{H}_1}(\rho_{12}) \text{ è stato misto}
+        \iff \rho_1 = \Tr_{\mathcal{H}_2}(\rho_{12}) \text{ è stato misto}
+    \]
+\end{theorem}
+
+Questo risultato evidenzia una differenza fondamentale rispetto alla fisica classica:
+\begin{itemize}
+    \item \textbf{In Meccanica Classica:} Avere la massima informazione sul sistema totale \(S\) implica avere la massima informazione sui sottosistemi \(S_1\) e \(S_2\).
+    \item \textbf{In Meccanica Quantistica:} Questo non è vero. Possiamo avere la massima informazione su \(S\) (stato puro), ma avere informazione incompleta sui sottosistemi (stati misti).
+\end{itemize}
+
+Dove risiede l'informazione "mancante"?
+L'informazione non è persa, ma risiede nella \textbf{correlazione} tra le misure dei due sottosistemi.
+
+\subsection{Correlazioni}
+
+Consideriamo lo spazio di Hilbert di una singola particella \(\mathcal{H} = \mathbb{C}^2\) con la base standard degli autostati di \(S_z\): \(\{\ket{+}, \ket{-}\}\).
+Vogliamo descrivere lo spin lungo una direzione arbitraria \(\vec{n}\). Parametrizziamo il versore in coordinate sferiche (ponendo per semplicità \(\varphi=0\), ovvero lavorando nel piano \(xz\)):
+\[
+    \vec{n} = (\sin\theta, 0, \cos\theta)
+\]
+L'operatore di spin lungo questa direzione è \(\vec{S} \cdot \vec{n} = S_x n_x + S_z n_z\). In rappresentazione matriciale:
+\[
+    \vec{S} \cdot \vec{n} = \frac{\hbar}{2} 
+    \begin{pmatrix}
+        \cos\theta & \sin\theta \\
+        \sin\theta & -\cos\theta
+    \end{pmatrix}
+\]
+Diagonalizzando questa matrice, otteniamo gli autostati di spin lungo la direzione \(\vec{n}\), che indichiamo con \(\ket{+}_{\vec{n}}\) e \(\ket{-}_{\vec{n}}\):
+\begin{align}
+    \ket{+}_{\vec{n}} &= \cos\frac{\theta}{2}\ket{+} + \sin\frac{\theta}{2}\ket{-} \\
+    \ket{-}_{\vec{n}} &= -\sin\frac{\theta}{2}\ket{+} + \cos\frac{\theta}{2}\ket{-}
+\end{align}
+Notiamo che vale la relazione \(\ket{-}_{\theta} = \ket{+}_{\theta + \pi}\) (a meno di una fase globale), coerente con il fatto che ruotare lo spin di 180 gradi inverte la direzione.
+
+\subsubsection{Misura di spin su stato entagled}
+Consideriamo ora il sistema composto \(\mathcal{H} \otimes \mathcal{H}\) nello \textbf{Stato di Singoletto}:
+\[
+    \ket{\psi} = \frac{1}{\sqrt{2}} (\ket{+-} - \ket{-+})
+\]
+Immaginiamo di misurare lo spin della particella 1 lungo la direzione \(\vec{n}_1\) (angolo \(\theta_1\)) e lo spin della particella 2 lungo la direzione \(\vec{n}_2\) (angolo \(\theta_2\)).
+Le osservabili sono:
+\[
+    A = (\vec{\sigma} \cdot \vec{n}_1) \otimes I \qquad B = I \otimes (\vec{\sigma} \cdot \vec{n}_2)
+\]
+Ci chiediamo quale sia la probabilità congiunta \(P_{++}(\theta_1, \theta_2)\) di trovare entrambe le particelle con spin "up" (stato \(+\)) lungo le rispettive direzioni di misura. Dobbiamo calcolare il modulo quadro dell'ampiezza di probabilità:
+\[
+    P_{++}(\theta_1, \theta_2) = \left| \left( \bra{+}_{\vec{n}_1} \otimes \bra{+}_{\vec{n}_2} \right) \ket{\psi} \right|^2
+\]
+Esplicitiamo il prodotto dei bra proiettando sulla base standard:
+\[
+    \bra{+}_{\vec{n}_1} \otimes \bra{+}_{\vec{n}_2} = \left( \cos\frac{\theta_1}{2}\bra{+} + \sin\frac{\theta_1}{2}\bra{-} \right) \otimes \left( \cos\frac{\theta_2}{2}\bra{+} + \sin\frac{\theta_2}{2}\bra{-} \right)
+\]
+Applicando questo bra allo stato di singoletto \(\ket{\psi}\), sopravvivono solo i termini misti \(\braket{+}{-}\) e \(\braket{-}{+}\) (poiché \(\ket{\psi}\) non ha termini \(\ket{++}\) o \(\ket{--}\)):
+\begin{align*}
+    \braket{+_{\vec{n}_1} +_{\vec{n}_2}}{\psi} &= \frac{1}{\sqrt{2}} \left[ \left( \cos\frac{\theta_1}{2}\bra{+} + \sin\frac{\theta_1}{2}\bra{-} \right)_1 \left( \cos\frac{\theta_2}{2}\bra{+} + \sin\frac{\theta_2}{2}\bra{-} \right)_2 \right] (\ket{+-} - \ket{-+}) \\
+    &= \frac{1}{\sqrt{2}} \left( \cos\frac{\theta_1}{2}\sin\frac{\theta_2}{2} \underbrace{\braket{++}{+-}}_{0} \underbrace{\braket{--}{+-}}_{0} \dots - \sin\frac{\theta_1}{2}\cos\frac{\theta_2}{2} \right) \\
+    &= \frac{1}{\sqrt{2}} \left( \cos\frac{\theta_1}{2}\sin\frac{\theta_2}{2} - \sin\frac{\theta_1}{2}\cos\frac{\theta_2}{2} \right)
+\end{align*}
+Riconoscendo la formula di sottrazione del seno \(\sin(\alpha-\beta)\), otteniamo:
+\[
+    \braket{+_{\vec{n}_1} +_{\vec{n}_2}}{\psi} = -\frac{1}{\sqrt{2}} \sin\left( \frac{\theta_1 - \theta_2}{2} \right)
+\]
+La probabilità è quindi:
+\begin{equation}
+    P_{++}(\theta_1, \theta_2) = \frac{1}{2} \sin^2\left( \frac{\theta_1 - \theta_2}{2} \right)
+\end{equation}
+
+\subsubsection{Risultati e Interpretazione Fisica}
+
+Utilizzando le simmetrie del sistema e la relazione \(\ket{-}_{\theta} \equiv \ket{+}_{\theta+\pi}\), possiamo ricavare immediatamente le altre probabilità:
+\begin{itemize}
+    \item Probabilità di ottenere risultati opposti (\(P_{+-}\) e \(P_{-+}\)):
+    \[
+        P_{+-}(\theta_1, \theta_2) = P_{++}(\theta_1, \theta_2+\pi) = \frac{1}{2} \sin^2\left( \frac{\theta_1 - \theta_2 - \pi}{2} \right) = \frac{1}{2} \cos^2\left( \frac{\theta_1 - \theta_2}{2} \right)
+    \]
+    Per simmetria \(P_{+-} = P_{-+} = \frac{1}{2} \cos^2\left( \frac{\theta_1 - \theta_2}{2} \right)\).
+    \item Probabilità di ottenere risultati concordi (\(P_{--}\)):
+    \[
+        P_{--}(\theta_1, \theta_2) = P_{++}(\theta_1, \theta_2) = \frac{1}{2} \sin^2\left( \frac{\theta_1 - \theta_2}{2} \right)
+    \]
+\end{itemize}
+
+\paragraph{Osservazioni fondamentali}
+\begin{enumerate}
+    \item \textbf{Dipendenza dall'angolo relativo:} Le probabilità dipendono solo dalla differenza \(\theta_1 - \theta_2\). Questo riflette l'invarianza per rotazioni dello stato di singoletto (spin totale nullo).
+    \item \textbf{Anticorrelazione perfetta:} Se misuriamo lungo la stessa direzione (\(\theta_1 = \theta_2\)), abbiamo:
+    \[
+        P_{++} = P_{--} = 0 \qquad P_{+-} = P_{-+} = \frac{1}{2}
+    \]
+    I risultati sono sempre opposti. Se trovo \(+\) su una particella, trovo con certezza \(-\) sull'altra.
+    \item \textbf{Nessuna correlazione:} Se misuriamo lungo direzioni ortogonali (\(\theta_1 - \theta_2 = \pi/2\)), allora \(\cos^2(\pi/4) = \sin^2(\pi/4) = 1/2\), e tutte le probabilità diventano \(1/4\). Il risultato della misura sulla prima particella non da alcuna informazione sulla seconda.
+\end{enumerate}
+
+
+
+% 32 Lezione del 19/12/2025
+
+\section{Paradosso EPR}
+\lezione{32}{19/12/2025}
+
+Il dibattito sollevato dal paradosso EPR porta a distinguere due principali interpretazioni della teoria fisica:
+
+\begin{itemize}
+    \item \textbf{Realismo}: La conoscenza scientifica è oggettiva, rigorosa e descrive entità che esistono realmente.
+    \item \textbf{Strumentalismo}: La scienza è un formalismo atto a predire le osservazioni, che potrebbero non avere relazione con la realtà esistente.
+\end{itemize}
+
+\begin{remark}
+    Nell'ottica strumentalista sorgono domande ontologiche: La massa dell'elettrone "esiste" quando non la misuro? Qual è la natura ontologica delle particelle?
+\end{remark}
+
+Il concetto di Realismo è strettamente legato a quello di Definitezza Controfattuale:
+
+\begin{definition}
+    \textbf{Definitezza Controfattuale (CFD)}
+    
+    La realtà esiste indipendentemente dal fatto che la si osservi. Di conseguenza, ha senso discutere i possibili risultati di \textbf{misure non svolte}.
+
+\end{definition}
+
+\subsubsection{Principi di Realtà e Località}
+
+Per formalizzare il paradosso, Einstein, Podolsky e Rosen introdussero due criteri fondamentali.
+
+\begin{definition}
+    \textbf{Principio di Realtà (R)}
+    
+    Se, senza disturbare in alcun modo un sistema \( S \), è possibile prevedere con certezza (probabilità pari a 1) il valore di una grandezza fisica, allora esiste un elemento di realtà fisica corrispondente a quella grandezza fisica.
+    
+    Questo elemento di realtà (il valore della grandezza) esiste indipendentemente dagli osservatori e sarebbe "reale" anche se la misura non venisse effettuata.
+    \begin{itemize}
+        \item In Meccanica Quantistica: Se \( S \) è in un autostato di un'osservabile \( A \), allora l'autovalore corrispondente è un elemento di realtà (se non degenere).
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    \textbf{Principio di Località (L)}
+    
+    Consideriamo due sistemi \( S_1 \) e \( S_2 \) che, in un intervallo di tempo \( I = \{ t_1 < t < t_2 \} \), sono spazialmente separati o isolati (ad esempio, in Relatività Speciale: \( \text{dist}(S_1, S_2) > c|\Delta t| \)).
+    Allora, l'evoluzione degli elementi di realtà di \( S_1 \) nell'intervallo \( I \) non può essere influenzata da operazioni compiute su \( S_2 \) nello stesso intervallo.
+    
+    Una violazione di questo principio comporterebbe una violazione della causalità relativistica.
+\end{definition}
+
+La combinazione di questi due principi definisce la posizione del \textbf{Realismo Locale}:
+\[
+    \text{Realismo (R)} + \text{Località (L)} \implies \text{Realismo Locale}
+\]
+Secondo questa visione, le proprietà fisiche devono essere predeterminate localmente e non possono essere alterate istantaneamente a distanza.
+
+\subsubsection{Versione di Bohm del Paradosso EPR}
+
+Consideriamo un esempio concreto proposto da Bohm (1951), che semplifica l'argomento originale.
+Immaginiamo il decadimento di una particella neutra (es. pione neutro $\pi_0$) in una coppia elettrone-positrone ($e^-, e^+$).
+Le due particelle si trovano nello \textbf{Stato di Singoletto} (spin totale nullo):
+\[
+    \ket{\psi} = \frac{1}{\sqrt{2}} (\ket{+-} - \ket{-+})
+\]
+Una particella viene inviata ad Alice ($A$) e l'altra a Bob ($B$), che si trovano a grande distanza l'uno dall'altro. Assumiamo che non vi sia evoluzione temporale o interazione durante il volo; lo stato globale rimane $\ket{\psi}$.
+
+Supponiamo che al tempo $t_1$, Alice misuri la componente dello spin $S_{z,1}$ sulla sua particella e ottenga il risultato $+\hbar/2$ (stato $\ket{+}$).
+Secondo il postulato della misura, lo stato totale collassa istantaneamente sul sottospazio compatibile con la misura:
+\[
+    \ket{\psi} \xrightarrow{\text{misura } S_{z,1}=+\hbar/2} \frac{(P_+ \otimes I)\ket{\psi}}{\norm{\dots}} = \ket{+} \otimes \ket{-} = \ket{+-}
+\]
+
+Analizziamo la situazione dal punto di vista di Bob per $t > t_1$:
+\begin{itemize}
+    \item Se Bob misurasse $S_{z,2}$, troverebbe con certezza (probabilità $1$) il valore $-\hbar/2$.
+    \item \textbf{Applicazione del Principio di Realtà (R):} Poiché possiamo prevedere con certezza il valore di $S_{z,2}$ senza disturbare il sistema 2 (Alice è lontana), allora $S_{z,2} = -\hbar/2$ è un \textit{elemento di realtà oggettiva} per il sistema di Bob al tempo $t > t_1$.
+    \item \textbf{Applicazione del Principio di Località (L):} Se l'intervallo temporale $t - t_1$ è molto piccolo (separazione di tipo spaziale), l'elemento di realtà nel sistema 2 non può essere stato creato o influenzato dall'operazione di misura effettuata da Alice sul sistema 1.
+\end{itemize}
+
+Sorgono spontanee due domande fondamentali sulle conseguenze del paradosso:
+\begin{enumerate}
+    \item La Meccanica Quantistica è incompatibile con i principi di Realismo e Località ($R+L$)?
+    \item La Meccanica Quantistica viola il principio di Causalità?
+\end{enumerate}
+
+\paragraph{1. Incompatibilità con R+L}
+Per "salvare" il Realismo Locale di fronte al paradosso, dovremmo supporre che l'elemento di realtà $S_{z,2} = -\hbar/2$ fosse presente e definito nel sistema 2 indipendentemente da cosa fa Alice al tempo $t_1$, e che fosse presente anche prima di $t_1$.
+Questo tentativo di completare la descrizione quantistica (Teoria delle Variabili Nascoste) è ciò che l'argomento EPR suggerisce come necessario.
+
+\paragraph{2. Violazione della Causalità?}
+La causalità sarebbe violata se la scelta di Alice di misurare (o non misurare) al tempo $t_1$ influenzasse \textit{istantaneamente} a distanza i risultati sperimentali osservati da Bob (e non solo gli "elementi di realtà" astratti).
+Equivalentemente, c'è violazione se Bob, facendo misure solo sul suo sistema, riesce a dedurre istantaneamente cosa ha fatto Alice un attimo prima.
+
+Analizziamo la situazione dal punto di vista di Bob per $t \gtrsim t_1$:
+\begin{itemize}
+    \item Il singolo esperimento non dà nessuna informazione a Bob. Se Bob misura $S_{z,2}$ e trova $-\hbar/2$, non può sapere se Alice ha misurato (collassando lo stato) o meno.
+    \item Infatti, $-\hbar/2$ è un risultato possibile che Bob avrebbe potuto osservare (con probabilità $50\%$) anche se Alice non avesse fatto nulla.
+\end{itemize}
+Dunque Bob non può usare questo fenomeno per ricevere un segnale istantaneo da Alice. Per osservare le correlazioni e distinguere i casi, è necessario ripetere l'esperimento molte volte e analizzare le distribuzioni di probabilità.
+
+
+\subsubsection{Teorema di Non Comunicazione (No Communication Theorem)}
+
+Per verificare se vi sia una reale violazione di causalità (trasmissione istantanea di informazione), analizziamo se Bob può accorgersi delle operazioni effettuate da Alice osservando solo il suo sottosistema.
+Supponiamo che Alice ripeta l'esperimento molte volte, decidendo ogni volta di effettuare la stessa operazione al tempo $t_1$.
+
+Analizziamo tre scenari possibili e confrontiamo le osservazioni statistiche di Bob:
+
+\begin{enumerate}
+    \item \textbf{Alice non misura nulla.}
+    Al tempo $t > t_1$, Bob misura lo spin $S_{z,2}$. Poiché il sistema è in uno stato di singoletto (sfericamente simmetrico e non polarizzato), troverà i risultati $+\hbar/2$ e $-\hbar/2$ con uguale probabilità:
+    \[
+        P(S_{z,2} = +) = 50\%, \qquad P(S_{z,2} = -) = 50\%
+    \]
+
+    \item \textbf{Alice misura $S_{z,1}$.}
+    Alice ottiene $+\hbar/2$ oppure $-\hbar/2$ con probabilità $50\%$.
+    \begin{itemize}
+        \item Se Alice trova $+$, lo stato globale collassa su $\ket{+-}$. Bob misurando $S_{z,2}$ troverà sicuramente $-$ (anticorrelazione certa).
+        \item Se Alice trova $-$, lo stato globale collassa su $\ket{-+}$. Bob misurando $S_{z,2}$ troverà sicuramente $+$.
+    \end{itemize}
+    Tuttavia, Bob non ha accesso ai risultati di Alice. La probabilità marginale che Bob osservi $+$ è la somma delle probabilità condizionate pesate per la probabilità che si verifichino:
+    \[
+        P_B(+) = \underbrace{P(A=+ \Rightarrow B=+)}_{0} \cdot \frac{1}{2} + \underbrace{P(A=- \Rightarrow B=+)}_{1} \cdot \frac{1}{2} = 50\%
+    \]
+    La distribuzione statistica osservata da Bob è identica al caso 1.
+
+    \item \textbf{Alice misura lo spin lungo una direzione arbitraria $\vec{n}_A$.}
+    Bob misura lungo una direzione $\vec{n}_B$.
+    La probabilità che Bob ottenga $+$ (lungo $\vec{n}_B$) è data dalla somma delle probabilità congiunte su tutti i possibili risultati di Alice ($+$ e $-$ lungo $\vec{n}_A$):
+    \[
+        P_B(+) = P_{++}(\theta_A, \theta_B) + P_{-+}(\theta_A, \theta_B)
+    \]
+    Sostituendo le formule per le correlazioni angolari ricavate precedentemente ($P_{++} \propto \sin^2$, $P_{-+} \propto \cos^2$):
+    \[
+        P_B(+) = \frac{1}{2} \sin^2\left(\frac{\theta_A - \theta_B}{2}\right) + \frac{1}{2} \cos^2\left(\frac{\theta_A - \theta_B}{2}\right) = \frac{1}{2} \left[ \sin^2(\dots) + \cos^2(\dots) \right] = \frac{1}{2}
+    \]
+    Anche in questo caso, Bob osserva sempre il $50\%$ di probabilità, indipendentemente dall'angolo $\theta_A$ scelto da Alice.
+\end{enumerate}
+
+
+Poiché Bob osserva sempre la stessa distribuzione statistica indipendentemente da cosa fa Alice (misura $S_z$, non misura nulla, o misura in un'altra direzione), non può utilizzare questo fenomeno per ricevere informazioni istantanee.
+Dunque, \textbf{non c'è violazione del principio di causalità}.
+
+Possiamo formalizzare questo risultato osservando l'evoluzione dello stato ridotto di Bob (che contiene tutta l'informazione accessibile localmente).
+Lo stato totale pre-misura è il singoletto puro $\rho_{12} = \dyad{\psi}{\psi}$.
+Lo stato ridotto di Bob è:
+\[
+    \rho_2 = \Tr_1(\rho_{12}) = \frac{1}{2} \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \frac{1}{2} I
+\]
+
+Se Alice effettua una misura (ad esempio di $S_{z,1}$), dal punto di vista dell'insieme statistico (ignorando il risultato specifico), lo stato totale diventa una miscela statistica (stato misto) delle due possibilità post-collasso:
+\[
+    \rho_{12}' = \frac{1}{2} \dyad{+-}{+-} + \frac{1}{2} \dyad{-+}{-+}
+\]
+Calcoliamo il nuovo stato ridotto di Bob $\rho_2'$ tracciando via il sistema 1:
+\[
+    \rho_2' = \Tr_1(\rho_{12}') = \frac{1}{2} \dyad{-}{-} + \frac{1}{2} \dyad{+}{+} = \frac{1}{2} I
+\]
+Notiamo che $\rho_2 = \rho_2'$. Poiché tutti i valori medi delle osservabili di Bob dipendono solo da $\rho_2$ ($\ev{B} = \Tr(\rho_2 B)$), nessuna misura locale su $S_2$ può distinguere i due casi.
+
+Questo risultato è noto come \textbf{No Communication Theorem}: l'evoluzione locale di un sottosistema entangled non può essere influenzata istantaneamente da operazioni locali effettuate sull'altro sottosistema, preservando la causalità relativistica.
+
+\begin{remark}
+    Dal punto di vista dei "principi" ($R+L$), la situazione è cambiata (passiamo da uno stato in cui $S_{z,2}$ non è definito a uno in cui lo è, se condizionato al risultato di Alice). Tuttavia, questa modifica dell'"elemento di realtà" non è osservabile statisticamente senza comunicare il risultato della misura (che viaggia a velocità $v \le c$).
+\end{remark}
+
+
+\begin{example} \textbf{Analogo Classico}
+
+Consideriamo un esempio puramente classico dove si ottiene un fenomeno simile, ma senza paradosso.
+Immaginiamo una macchina \( M \) che produce coppie di palline, una Nera (\(N\)) e una Rossa (\(R\)), e le inserisce in sacchetti opachi.
+Una pallina viene inviata ad Alice (\(A\)) e l'altra a Bob (\(B\)).
+Prima che \(A\) apra il sacchetto, la probabilità per il colore della pallina 2 (di Bob) è:
+\[
+    P(2=R) = 50\%, \qquad P(2=N) = 50\%
+\]
+Supponiamo che al tempo \(t_1\) Alice apra il suo sacchetto e trovi la pallina Rossa (\(R\)). Istantaneamente, la probabilità che la pallina di Bob sia Nera diventa \(100\%\).
+
+\paragraph{Nessun Paradosso}
+L'azione di Alice ha cambiato istantaneamente a distanza la distribuzione di probabilità di Bob, ma non ha influenzato fisicamente il sistema.
+In Meccanica Classica, il colore della pallina era un \textbf{elemento di realtà} preesistente, determinato fin dalla creazione della coppia da parte di \(M\).
+La distribuzione statistica inizialmente assegnata (\(50\%/50\%\)) non era sbagliata, ma rifletteva una \textbf{conoscenza incompleta} del sistema (ignoranza).
+La misura di Alice ha semplicemente aggiornato l'informazione disponibile, svelando un elemento di realtà che "era già là".
+\end{example}
+
+La domanda sollevata da EPR è se la situazione in Meccanica Quantistica sia analoga: potrebbero esserci elementi di realtà (che chiamiamo \textit{Variabili Nascoste}) che determinano i risultati, ma che la teoria non descrive?
+
+\begin{definition}
+    \textbf{Completezza (C)}
+    Una teoria fisica si dice completa se ogni elemento di realtà fisica del sistema ha una controparte nella teoria (ovvero se la teoria può predire tutti gli elementi di realtà).
+\end{definition}
+
+\begin{theorem}
+    \textbf{Teorema EPR}
+    La descrizione della Meccanica Quantistica è incompatibile con l'assunzione congiunta dei principi di Realismo, Località e Completezza (\(R + L + C\)).
+\end{theorem}
+
+Di fronte a questa incompatibilità, si aprono diverse interpretazioni:
+
+\begin{itemize}
+    \item \textbf{Interpretazione di Copenhagen} (\(\cancel{R} + L + C\)):
+    Si rinuncia al Realismo (inteso come esistenza di proprietà prima della misura). Gli elementi di realtà non esistono finché non vengono osservati. Anche se ho degli autostati, finché non faccio la misura l'autovalore non è "reale". La MQ è completa.
+
+    \item \textbf{Teorie a Variabili Nascoste} (\(R + L + \cancel{C}\)):
+    Si mantiene il Realismo Locale, ma si sacrifica la Completezza della MQ.
+    Si assume che la MQ sia probabilistica solo a causa della nostra ignoranza sui veri stati del sistema.
+    I risultati di ogni singolo esperimento sono determinati da proprietà reali e locali (le variabili nascoste) che non conosciamo. In questo modo si recupererebbe il determinismo.
+\end{itemize}
+
+\subsection{Disuguaglianze di Bell (CHSH)}
+
+Analizziamo un esperimento mentale proposto nel 1964 da John Bell (e generalizzato da Clauser, Horne, Shimony, Holt - CHSH) per testare la validità delle ipotesi di Realismo Locale ($R+L$) rispetto alla Meccanica Quantistica.
+
+Consideriamo una sorgente che emette coppie di particelle (sistema $1$ e $2$) che interagiscono inizialmente e poi si separano verso due osservatori, Alice ($A$) e Bob ($B$).
+Alice e Bob possono scegliere arbitrariamente quale osservabile misurare tra due possibili opzioni per ciascuno:
+\begin{itemize}
+    \item Alice sceglie tra l'osservabile $A$ (parametro $a$) e $A'$ (parametro $a'$).
+    \item Bob sceglie tra l'osservabile $B$ (parametro $b$) e $B'$ (parametro $b'$).
+\end{itemize}
+Assumiamo che i risultati delle misure siano dicotomici, ovvero valgano $\pm 1$.
+
+Supponiamo che valgano i principi di:
+\begin{enumerate}
+    \item \textbf{Realismo (R):} I valori delle osservabili sono predeterminati da proprietà intrinseche del sistema, dette \textit{variabili nascoste} $\lambda$. Quindi $A(a, \lambda) \in \{\pm 1\}$ e $B(b, \lambda) \in \{\pm 1\}$ hanno valori ben definiti indipendentemente dalla misura.
+    \item \textbf{Località (L):} Il risultato di Alice $A(a, \lambda)$ non dipende dalla scelta del parametro di Bob ($b$ o $b'$), e viceversa.
+\end{enumerate}
+
+Consideriamo la seguente quantità algebrica (variabile casuale) definita per ogni singolo esperimento (ogni coppia di particelle identificata da $\lambda$):
+\[
+    M = AB + AB' + A'B - A'B'
+\]
+Raccogliendo i termini possiamo riscrivere $M$ come:
+\[
+    M = A(B + B') + A'(B - B')
+\]
+Poiché $B$ e $B'$ assumono solo valori $\pm 1$, analizziamo i due casi possibili:
+\begin{itemize}
+    \item Se $B = B'$, allora $(B-B')=0$ e $(B+B')=\pm 2$. Di conseguenza $M = \pm 2 A = \pm 2$.
+    \item Se $B = -B'$, allora $(B+B')=0$ e $(B-B')=\pm 2$. Di conseguenza $M = \pm 2 A' = \pm 2$.
+\end{itemize}
+In ogni singolo esperimento, se vale il Realismo Locale, la quantità $M$ deve assumere valore $+2$ o $-2$.
+
+Se ripetiamo l'esperimento molte volte e calcoliamo il valore medio $\ev{M}$ (mediando sulle variabili nascoste $\lambda$), il risultato deve necessariamente cadere nell'intervallo delimitato dai valori estremi possibili:
+\begin{equation} \label{eq:bell_inequality}
+    -2 \leq \ev{M} \leq 2 \quad \iff \quad |\ev{AB} + \ev{AB'} + \ev{A'B} - \ev{A'B'}| \leq 2
+\end{equation}
+Questa è la \textbf{disuguaglianza di Bell-CHSH}. Ogni teoria a variabili nascoste locali deve soddisfare questa relazione.
+
+\paragraph{Violazione in Meccanica Quantistica}
+Vediamo ora le predizioni della Meccanica Quantistica per lo stesso setup. Consideriamo lo stato di singoletto $\ket{\psi} = \frac{1}{\sqrt{2}}(\ket{\uparrow\downarrow} - \ket{\downarrow\uparrow})$.
+Le osservabili sono gli spin lungo determinate direzioni: $A = \vec{\sigma}_1 \cdot \vec{n}_a$, $B = \vec{\sigma}_2 \cdot \vec{n}_b$, ecc.
+Ricordiamo che per il singoletto la correlazione quantistica vale:
+\[
+    \ev{AB} = -\cos(\theta_a - \theta_b)
+\]
+Scegliamo una configurazione di angoli complanari specifica per massimizzare la violazione:
+\[
+    \theta_A = 0, \quad \theta_B = \frac{\pi}{4}, \quad \theta_{A'} = \frac{\pi}{2}, \quad \theta_{B'} = -\frac{\pi}{4}
+\]
+Calcoliamo le differenze angolari e i relativi valori medi:
+\begin{itemize}
+    \item $\theta_A - \theta_B = -\frac{\pi}{4} \implies \ev{AB} = -\cos(-\frac{\pi}{4}) = -\frac{\sqrt{2}}{2}$
+    \item $\theta_A - \theta_{B'} = \frac{\pi}{4} \implies \ev{AB'} = -\cos(\frac{\pi}{4}) = -\frac{\sqrt{2}}{2}$
+    \item $\theta_{A'} - \theta_B = \frac{\pi}{4} \implies \ev{A'B} = -\cos(\frac{\pi}{4}) = -\frac{\sqrt{2}}{2}$
+    \item $\theta_{A'} - \theta_{B'} = \frac{3\pi}{4} \implies \ev{A'B'} = -\cos(\frac{3\pi}{4}) = -(-\frac{\sqrt{2}}{2}) = +\frac{\sqrt{2}}{2}$
+\end{itemize}
+Sostituendo questi valori nell'espressione del valore medio di $M$:
+\[
+    \ev{M}_{MQ} = \ev{AB} + \ev{AB'} + \ev{A'B} - \ev{A'B'} 
+    = -\frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2} = -2\sqrt{2}
+\]
+Poiché $|-2\sqrt{2}| \approx 2.82 > 2$, la Meccanica Quantistica \textbf{viola} la disuguaglianza di Bell.
+
+\paragraph{Conclusione}
+Il fatto che la MQ violi la disuguaglianza implica che essa non può essere completata da una teoria a variabili nascoste che soddisfi contemporaneamente il Realismo e la Località ($R+L$). Poiché gli esperimenti hanno confermato le predizioni della MQ, l'ipotesi di Realismo Locale deve essere scartata. In particolare, in MQ le osservabili $A, A', B, B'$ non sono tutte compatibili tra loro (non commutano), quindi non è possibile attribuire loro valori definiti simultaneamente in un singolo esperimento, invalidando la premessa fondamentale del teorema di Bell per le variabili nascoste.
+
+
+

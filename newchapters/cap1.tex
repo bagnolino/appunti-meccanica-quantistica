@@ -1,7 +1,113 @@
+% 1 Lezione del 29/09/2025
+
+\chapter{Fondamenti}
+
+\section{Introduzione}
+\lezione{1}{29/09/2025}
+
+
+Iniziamo trattando alcune caratteristiche della meccanica quantistica, 
+che la differenziano dalla meccanica classica: \textbf{linearità}, presenza di \textbf{numeri complessi} e \textbf{perdita del determinismo}.
+
+
+\subsection*{1 Linearità}
+
+Descriviamo sistemi fisici attraverso variabili dinamiche \(u(t,\dots)\) che soddisfano le equazioni del moto.
+\begin{definition}
+    Abbiamo una \textit{teoria lineare} se le equazioni del moto hanno forma \(L u=0\), con \(L \) \textit{operatore lineare}, 
+    cioè se vale:
+    \begin{itemize}
+        \item \(L(u_1+u_2)= L(u_1)+L(u_2)\)
+        \item \(L(\alpha u)= \alpha L (u)\)
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    La sovrapposizione lineare di soluzioni è ancora soluzione, infatti
+    se \(u_1,u_2\) sono soluzioni, cioè \(L(u_1)=0\) e \(L(u_2)=0\), allora \(\alpha u_1+\beta u_2\) è soluzione dato che vale:
+    \[L(\alpha u_1+\beta u_2)= \alpha L(u_1)+ \beta L(u_2)=0
+    \] 
+\end{remark}
+\begin{remark}
+    Se la teoria è lineare, le soluzioni formano uno spazio vettoriale.
+\end{remark}    
+
+\begin{example}
+    Sono equazioni lineari:
+    \begin{itemize}
+        \item Equazione di Schrödinger: \(i\hbar \dv{t}\Psi= H \Psi\)
+        \item Equazioni di Maxwell.
+        \item Equazioni delle onde.
+    \end{itemize}
+\end{example}
+\begin{example}
+    Non sono equazioni lineari:
+    \begin{itemize}
+        \item Le equazioni di Eisntein in relatività generale.
+        \item Le equazioni della dinamica di Newton.
+    \end{itemize}
+\end{example}
+
+
+\subsection*{2 Numeri complessi}
+
+In meccanica classica, i numeri complessi possono essere utili formalmente, ma non sono indispensabili;
+tutte le variabili dinamiche e le osservabili sono numeri reali.\\
+In meccanica quantistica, le soluzioni \(\Psi(x,t)\) all'equazione di Schrödinger sono necessariamente complesse. 
+Tuttavia, le osservabili devono essere reali e dipenderanno dunque indirettamente dalla funzione d'onda, ad esempio \(\abs{\Psi(x,t)}^2\).
+
+\begin{remark}
+    In linea di principio è possibile formulare la meccanica quantistica senza l'utilizzo di numeri complessi,
+    ma sarebbe tremendamente complicato e alcune proprietà come la linearità non sarebbero più evidenti.
+\end{remark}
+
+
+\subsection*{3 Assenza di determinismo}
+A differenza della meccanica classica, la meccanica quantistica non è deterministica, ma fornisce soltanto una descrizione probabilistica.
+\begin{example}
+    Consideriamo un fascio di luce, polarizzata linearmente a un angolo \(\alpha\) rispetto a un arbitrario asse \(x\),
+    che attraversa un filtro polarizzatore lungo x.
+    \begin{figure}[htbp]
+        \centering
+        % Figura TikZ: filtro polarizzatore lungo x e campo E inclinato di alpha
+        \begin{tikzpicture}[scale=1.05]
+            % parametro: angolo alpha (in gradi)
+            \def\ang{35}
+
+            % Assi
+            \draw[->] (-3.8,0) -- (4.2,0) node[below right] {$x$};
+            \draw[->] (0,-0.6) -- (0,3.2) node[left] {$y$};
+
+            % Filtro polarizzatore orientato lungo l'asse x (capsula simmetrica)
+            \draw[rounded corners=2pt, line width=0.9pt, color = blue]
+                (-3.0,-0.2) rectangle (3.0,0.2);
+
+            % Vettore del campo elettrico incidente a angolo alpha
+            \draw[->, thick]
+                (0,0) -- ({2.8*cos(\ang)},{2.8*sin(\ang)})
+                node[above right] {$\vec{E}_{\mathrm{in}}$};
+
+            % Arco che indica l'angolo alpha rispetto a x
+            \draw[thick,->] (1.0,0) arc (0:\ang:1.0);
+            \node at ({1.15*cos(0.5*\ang)},{1.15*sin(0.5*\ang)}) {$\alpha$};
+        \end{tikzpicture}
+        \caption{Filtro polarizzatore e onda incidente.}
+        \label{fig:polarizzatore}
+    \end{figure}
+
+    Sappiamo che il rapporto tra l'intensità luminosa in uscita dal filtro e quella in ingresso è 
+    data dalla \textbf{Legge di Malus}: 
+    \[
+    \frac{I_{out}}{I_{in}}=\cos[2](\alpha)
+    \]
+    Inoltre, la frequenza del fascio rimane invariata; dunque, sapendo che l'energia di ogni fotone è
+    \(\varepsilon= h \nu\), possiamo interpretare \(\cos[2](\alpha)\) come la probabilità che un singolo fotone
+    attraversi il filtro.
+\end{example}
+
+
 % 2 Lezione del 30/09/2025
 
-
-\chapter{Postulati della Meccanica Quantistica}
 \lezione{2}{30/09/2025}
 
 \section{Stati in MQ}
@@ -450,7 +556,7 @@ Se \(\operatorname{dim}\mathcal{H} < \infty\), tutti gli operatori sono limitati
 \end{itemize}
 
 
-\subsection{Rappresentazione matriciale}
+\subsubsection{Rappresentazione matriciale}
 È possibile e comodo rappresentare gli operatori lineari come matrici:
 data una base ortonormale \(\left\{ \ket{n}_{n \in \mathbb{N}} \right\}\),
 ogni ket è possibile rappresentarlo come:
@@ -1151,7 +1257,7 @@ Il suo valor medio nello stato \(\ket{\Psi}\) è
 \end{remark}
 
     
-\subsection{Teoria della misura in M.Q.}
+\subsubsection{Teoria della misura in M.Q.}
 In meccanica classica, supponiamo che le misure:
 \begin{itemize}
     \item siano istantanee.
@@ -1182,7 +1288,7 @@ Dunque con una misura di prima specie, lo stato iniziale tende all'autostato cor
 \end{postulato5}
 
 
-\subsection{Osservabili compatibili}  
+\subsubsection{Osservabili compatibili}  
 Ci chiediamo ora cosa succede se misuriamo un altro osservabile subito dopo aver effettuato una misura.
 
 Più precisamente, consideriamo gli osservabili \(\mathcal{A}, \mathcal{B}\) di spettro discreto e lo stato \(\ket{\Psi}\).\\
@@ -1343,849 +1449,4 @@ ovvero:
     Funzioni del tipo: \(f(\vec{q}) \;\longrightarrow\; f(\vec{Q}), \ \ g(\vec{p}) \;\longrightarrow\; g(\vec{P})\) 
     non danno problemi, essendo definite per operatori compatibili, ma funzioni come\(f(\vec{q},\vec{p}) \;\longrightarrow\; f(\vec{Q}, \vec{P})\) non possono essere calcolate semplicemente.
 \end{remark}
-
-
-
-\section{Evoluzione temporale}
-Consideriamo ora l'evoluzione temporale di tipo causale, escludendo la trattazione dei processi di misura.
-
-\begin{postulato7}
-    Esiste operatore autoaggiunto \(H(t)\), \(\overline{D(H)}= \mathcal{H}\) tale che \(\forall\, \ket{\Psi(t)}\in D(H)\) vale:
-    \begin{equation}
-        i\hbar \dv{t}\ket{\Psi(t)}= H(t)\ket{\Psi(t)}
-    \end{equation}
-    detta \textit{equazione di Schrödinger}.
-\end{postulato7}
-
-\begin{definition}
-    Tale operatore \(H(t )\) è detto \textit{operatore hamiltoniano}.
-\end{definition}
-
-Valgono le seguenti proprietà:
-\begin{itemize}
-    \item Primo ordine in \(t\): \(\ \forall\, \ket{\Psi(t_0)} \rightsquigarrow \exists! \,\ket{\Psi(t)} \ \forall\, t\) 
-    \item Lineare: \(a\ket{\Psi_1(t_0)}+b\ket{\Psi_2(t_0)}\rightsquigarrow a\ket{\Psi_1(t)}+b\ket{\Psi_2(t)}\)
-    \item \(\norm{\Psi(t)}= \text{ cost } \ \forall \,t\) dato che:
-    \[
-        \dv{t}\braket{\Psi(t)}{\Psi(t)} =
-        \braket*{\dv{t}\Psi(t)}{\Psi(t)} + \braket*{\Psi(t)}{\dv{t}\Psi(t)}
-    \]
-    \[
-        = \braket*{\frac{1}{i\hbar}H\Psi}{\Psi} + \braket*{\Psi}{-\frac{1}{i\hbar}H\Psi}
-        = -\frac{1}{i\hbar}\left( \braket{H\Psi}{\Psi} - \braket{\Psi}{H\Psi} \right)
-        \overset{H \text{ herm}}{=} 0
-    \]
-\end{itemize}
-
-\begin{example}
-    \textbf{Particella senza spin in 3D}\\
-    Una particella senza spin in 3D nello stato \(\ket{\Psi(t)}\) è descritta dalla funzione d'onda \(\Psi(\vec{x},t)=\braket{\vec{x}}{\Psi(t)}\) e dall'operatore:
-    \[
-        H= \frac{\abs{\vec{p}}^2}{2m}+ V(\vec{x})
-    \]
-    dove consideriamo solo stati normalizzati \(\norm{\Psi}= 1\) e \(\rho(\vec{x},t)= \abs{\Psi(\vec{x},t)}^2\).
-    Dall'eq. di Schrödinger otteniamo:
-    \[
-        i\hbar\,\pdv{\Psi}{t}
-        = \left( -\frac{\hbar^2}{2m}\nabla^2 + V(\vec{x}) \right)\Psi
-    \]
-    \[
-        -\,i\hbar\,\pdv{\Psi^*}{t}
-        = \left( -\frac{\hbar^2}{2m}\nabla^2 + V(\vec{x}) \right)\Psi^*
-    \]
-    Moltiplicando la prima equazione per \(\Psi^*\) e la seconda per \(\Psi\) e successivamente sommandole otteniamo:
-    \[
-        \Psi^* \pdv{\Psi}{t} + \Psi \pdv{\Psi^*}{t}
-        = \frac{i\hbar}{2m}\left( \Psi^* \nabla^2 \Psi - \Psi \nabla^2 \Psi^* \right)
-    \]
-    \[
-        \pdv{t} \abs{\Psi(\vec{x},t)}^2
-        = - \vec{\nabla} \cdot \left[ -\frac{i\hbar}{2m}\left( \Psi^* \vec{\nabla} \Psi - \Psi \vec{\nabla} \Psi^* \right) \right]
-    \]
-    Riarraggiando i termini e definendo la \textit{densità di corrente} \(\vec{j}(\vec{x},t)\), otteniamo l'equazione di continuità:
-    \begin{equation}
-        \dv{t}\rho(\vec{x},t) + \vec{\nabla}\cdot  \vec{j}(\vec{x},t)=0
-    \end{equation}
-\end{example}
-
-
-
-% 10 Lezione del 23/10/2025
-\lezione{10}{23/10/2025}
-
-\subsection{Operatori unitari}
-
-\begin{definition}
-    Un operatore \((U, D_U)\) si dice \textit{isometrico} se preserva la norma:
-    \begin{equation}
-        \norm{U\Psi}= \norm{\Psi} \ \ \forall\,\Psi \in D_U \iff \braket{U\Psi}{U\chi}= \braket{\Psi}{\chi} \ \ \forall\, \Psi, \chi \in D_U
-    \end{equation}
-\end{definition}
-\begin{remark}
-    Un operatore isometrico è sempre limitato.
-\end{remark}
-
-\begin{definition}
-    Un operatore \((U, D_U)\) si dice \textit{unitario} se è isometrico, \(D_U = \mathcal{H}\) e \(U(\mathcal{H})= \mathcal{H}\).
-    Equivalentemente, questo vale se e solo se:
-    \begin{equation}
-        U^\dagger U = I = UU^\dagger \iff U^\dagger = U^{-1}
-    \end{equation}
-\end{definition}
-
-\begin{remark}
-    Se \(\dim \mathcal{H}< +\infty\) allora \(U\) unitario \(\iff \ U\) isometrico.
-\end{remark}
-
-\begin{remark}
-    Data una base ON \(\left\{ \ket{n} \right\}\), se \(U\) è unitario, allora \(\left\{ U\ket{n} \right\}\) è ancora una base ON, 
-    se \(U\) è isometrico allora \(\left\{ U\ket{n} \right\}\) è un sistema ON non completo.
-\end{remark}
-
-E' possibile quindi definire l'evoluzione temporale come un operatore
-\begin{equation}
-    \ket{\Psi(t_0)}\mapsto \ket{\Psi(t)}= U(t, t_0)\ket{\Psi(t_0)}
-\end{equation}
-con le seguenti proprietà:
-\begin{itemize}
-    \item Eq. di Schrödinger \(\implies U(t, t_0)\) lineare.
-    \item \(\norm{\Psi(t_0)}= \norm{\Psi(t)} \ \forall\,t \implies U(t,t_0)\) è isometrico.
-    \item Essendo isometrico è limitato e \(\overline{D_U}= \mathcal{H}\).
-    \item \(U(t,t) = I \ \forall\,t\) .
-    \item \(U(t_2,t_1)U(t_1,t_0)\ket{\Psi(t_0)}= U(t_2,t_0)\ket{\Psi(t_0)} \implies  U (t_0,t)U(t,t_0)= I\) .
-    \item Quindi \(U\) è suriettivo \(\implies \ U \) è unitario.
-    \item \( U(t,t_0)^\dagger= U(t,t_0)^{-1}= U(t_0,t)\) .
-\end{itemize}
-
-Dall'equazione di Schrödinger per \(U(t,t_0)\ket{\Psi(t_0)}\) ricaviamo inoltre:
-\[
-i\hbar \dv{t} U(t,t_0)\ket{\Psi(t_0)} = H(t)U(t,t_0)\ket{\Psi(t_0)}
-\]
-Poiché questa relazione vale per ogni \(\ket{\Psi(t_0)}\), possiamo scrivere:
-\[
-i\hbar \dv{t} U(t,t_0) = H(t)U(t,t_0)
-\]
-Integrando tra \(t_0\) e \(t\):
-\[
-\int_{t_0}^{t} \dv{t'} U(t',t_0)\dd{t'} = -\frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
-\]
-\[
-\Rightarrow \quad U(t,t_0) = I - \frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
-\]
-
-\begin{attention}
-    I processi di misura ideali di 1° specie \(\ket{\Psi}\mapsto \mathcal{P}_a\ket{\Psi}\) non sono unitari.
-\end{attention}
-
-
-\subsubsection{Sistemi conservativi}
-
-Consideriamo ora sistemi conservativi, cioè invarianti per traslazioni temporali in cui \(H(t)\equiv H\), per cui vale:
-\[
-    U(t,t_0)= U(t-t_0)\,;\ U(\tau_1)U(\tau_2)= U(\tau_1+\tau_2)\,;\ U(\tau)^{-1}= U(-\tau)
-\]
-Dalle relazioni precedenti otteniamo inoltre:
-\begin{equation}
-    i\hbar \dv{t} U(\tau) = HU(\tau) \implies U(\tau)= \exp{-\frac{i}{\hbar}H \tau}
-\end{equation}
-e quindi:
-\begin{equation}
-    \ket{\Psi(t)}= e^{-\frac{i}{\hbar}H (t-t_0)}\ket{\Psi(t_0)}
-\end{equation}
-
-Come si calcola? Consideriamo la base ON di autostati di \(H\):
-\[
-    \left\{ \ket{E,r} \right\}_{\substack{E \in \sigma(H)\\ r = 1,\dots, d(E)}}  \quad \text{ t.c. }  \ H\ket{E,r}= E\ket{E,r}
-\]
-detta equazione di Schrödinger stazionaria.
-\[
-\ket{\Psi(t_0)} = \int_{\sigma(H)} \sum_r \ket{E,r}\braket{E,r}{\Psi(t_0)}\,\dd{E}
-\qquad
-\text{con} \quad C_{E,r}(t_0) = \braket{E,r}{\Psi(t_0)}
-\]
-\begin{equation}
-    \ket{\Psi(t)} = e^{-\frac{i}{\hbar}H(t-t_0)}\ket{\Psi(t_0)}
-    = \int_{\sigma(H)} \sum_r e^{-\frac{i}{\hbar}E(t-t_0)}\ket{E,r}\braket{E,r}{\Psi(t_0)}\,\dd{E}
-\end{equation}
-\begin{equation}
-    \implies \quad C_{E,r}(t) = e^{-\frac{i}{\hbar}E(t-t_0)}\,C_{E,r}(t_0)
-\end{equation}
-
-\begin{definition}
-    Gli stati \(\ket{\Psi_E}\equiv\ket{E}\), tali che \(H\ket{\Psi_e}= E\Psi_E\), si dicono \textit{stati stazionari}.\\
-    Per questi vale:
-    \[
-        \Psi_E(t) = e^{-\frac{i}{\hbar}E(t-t_0)}\Psi_E(t_0) \implies \left[ \Psi_E(t) \right] = \left[ \Psi_E(t_0) \right] 
-        \implies \dv{t}\expval{A}_{\Psi_E}= 0 \ \forall A  
-    \]
-\end{definition}
-
-\begin{remark}
-    La trattazione svolta segue la descrizione di Schrödinger, ne esiste una alternativa, detta di Heisenberg, con conclusioni analoghe.
-\end{remark}
-
-\subsection{Simmetrie}\label{sec: sim_intro}
-
-\begin{definition}
-    Una \textit{trasformazione di simmetria} è una trasformazione:
-    \begin{equation}
-        [\Psi] \mapsto [\Psi']  \,;\quad A \text{ a.a. } \mapsto A' \text{ a.a. }
-    \end{equation}
-    tale che \(\expval{A'}_{\Psi'}= \expval{A}_{\Psi}\) e preservi le relazioni algebriche:
-    \begin{equation}
-        \alpha A +\beta B \mapsto \alpha A' + \beta B'  \,; \quad AB \mapsto A'B'
-    \end{equation}
-\end{definition}
-Dunque vale anche \(\sigma(A) = \sigma(A')\) e:
-\[
-A\Psi = a\Psi \;\implies\; A'\Psi' = a\Psi' 
-\quad\implies\quad
-P^A_\Psi(a) = P^{A'}_{\Psi'}(a)
-\]
-\[
-\implies \;
-\left\{ A_1, A_2, \dots \right\} 
-\text{ compatibili }
-\iff
-\left\{ A'_1, A'_2, \dots \right\} 
-\text{ compatibili.}
-\]
-
-
-\begin{theorem} \label{theo: Wigner}
-    {\normalfont\textbf{di Wigner}}
-Una trasformazione
-\[
-\ket{\Psi} \;\longmapsto\; \ket{\Psi'} ,
-\qquad
-A \;\longmapsto\; A'
-\]
-è di simmetria se e solo se
-\begin{equation}
-    \ket{\Psi'} = U\ket{\Psi},
-    \qquad
-    A' = U A U^{\dagger},
-\end{equation}
-dove \( U \) è un operatore unitario o antiunitario.
-\end{theorem}
-\begin{proof}
-\[
-\expval{A'}_{\Psi'} 
-= \frac{1}{\norm{\Psi'}^2} 
-\mel{\Psi'}{A'}{\Psi'}
-= \frac{1}{\norm{U\Psi}^2} 
-\mel{U\Psi}{U A U^{\dagger}}{U\Psi}
-= \frac{1}{\norm{\Psi}^2} \mel{\Psi}{A}{\Psi}
-= \expval{A}_{\Psi}.
-\]  
-\end{proof}
-
-\begin{definition}
-    Un operatore \((V, D_V)\) è \textit{antiunitario} se \(V(\mathcal{H})=\mathcal{H}\), \(\overline{D_V}=\mathcal{H}\), \(\norm{V\Psi}= \norm{\Psi}\) e è antilineare, cioè:
-    \begin{equation}
-        V(\alpha \Psi_1 + \beta \Psi_2) = \alpha^* V(\Psi_1)+ \beta^* V(\Psi_2)  \iff \braket{V\Psi}{V\chi} = \overline{\braket{\Psi}{\chi}}
-    \end{equation}
-\end{definition}
-
-% 11 Lezione del 24/10/2025
-\lezione{11}{24/10/2025}
-
-\subsection{Visuali}
-\paragraph{Visuale di Schrödinger}Finora abbiamo sempre considerato la visione di Schrödinger del sistema, in cui lo stato evolve secondo:
-\begin{equation}
-    \ket{\Psi_s(t)} = U(t, t_0) \ket{\Psi_s(t_0)} \qquad i\hbar \dv{t}U(t, t_0)= H _s(t) U (t, t_0)
-\end{equation}
-e le osservabili non dipendenti esplicitamente dal tempo si conservano \(A_s(t)= A_s(t_0)\) .
-
-\paragraph{Visuale di Heisenberg} Nell'istante \(t_0\) le visuali coincidono:
-\[
-    \ket{\Psi_h(t_0)} = \ket{\Psi_s(t_0)}   \qquad A_h(t_0)  = A_s(t_0)
-\]
-mentre al tempo \(t\) vogliamo che \(\ket{\Psi_h(t)}  = \ket{\Psi_h(t_0)}\) non cambi nel tempo, per cui deve essere:
-\begin{equation}
-    \ket{\Psi_h(t)}  = \ket{\Psi_s(t_0)} = U^\dagger \ket{\Psi_s(t)}
-\end{equation}
-
-Per essere equivalenti le due visioni, deve valere il teorema di Wigner (\ref{theo: Wigner}) e quindi abbiamo:
-\begin{equation}
-    A_h(t)= U(t,t_0)^\dagger A_s U (t, t_0)
-\end{equation}
-
-Nella visuale di Schrödinger gli stati variano nel tempo e gli operatori sono costanti, nella visuale di Heisenberg gli stati sono costanti e contengono già tutta l'informazione ma è la misura che cambia nel tempo.
-L'unica cosa che noi possiamo osservare fisicamente sono i valori medi delle misure:
-\begin{equation}
-    \expval{A_s}_{\Psi_s(t)}  = \expval{A_h(t)}_{\Psi_h} = \expval{\mathcal{A}}_\Sigma(t)    
-\end{equation}
-
-Vediamo ora come evolve un operatore esplictamente dipende dal tempo \(A_s(t)\) nella visuale di Heisenberg:
-\[
-    i\hbar \dv{t} A_h(t)= i\hbar \dv{t} \left(U(t,t_0)^\dagger A_s(t)U(t,t_0)\right) =
-\]
-\[
-    = \left(i\hbar\dv{ U^\dagger }{t}\right) A_s U + U^\dagger A_s \left(i\hbar\dv{U}{t}\right) + i\hbar U^\dagger \left( \dv{A_s}{t} \right)U 
-\]
-Usando la legge per l'operatore evoluzione temporale e la sua coniugata:
-\[
-    i\hbar \dv{t} U(t,t_0)= H_s(t)U(t, t_0) \qquad i\hbar \dv{t} U (t, t_0)^\dagger = - U(t, t_0)^\dagger H_s(t)
-\]
-e inserendo dei \(UU^\dagger = I\) otteniamo:
-\[
-    = - U ^\dagger H_s UU^\dagger A_s U +U^\dagger A_s U U^\dagger H_s U + i\hbar U^\dagger \left( \pdv{A_s}{t} \right)U =
-\]
-\[
-    = - H_h(t) A_h(t)+ A_s(t)H_h  (t) + i\hbar \left( \pdv{A_s}{t} \right)_h(t)=
-\]
-\[
-    =\left[ A_h(t), H_h(t) \right] + i\hbar \left( \pdv{A_s}{t} \right)_h(t)
-\]
-
-Otteniamo così l'\textit{equazione di Heisenberg}:
-\begin{equation}
-    \dv{t} A_h(t) = \frac{1}{i\hbar}\left[ A_h(t), H_h(t) \right]   + \left( \pdv{A_s}{t} \right)_h (t)
-\end{equation}
-
-Questo vale in generale per sistemi anche non conservativi. Nel caso specifico di sistemi conservativi \(H_s(t)= H_s(t_0)\) vale:
-\begin{equation}
-    U(t,t_0)= e^{-\frac{i}{\hbar } H_S (t-t_0)} \implies H_h(t)= e^{\frac{i}{\hbar }H_s(t-t_0)}H_s e^{-\frac{i}{\hbar} H_s(t-t_0)} = H_s
-\end{equation}
-Come abbiamo già visto, nella visuale di Schrödinger i valori medi delle osservabili sono costanti per stati stazionari.
-Nella visuale di Heisenberg, i valori medi sono costanti se gli operatori commutano con l'hamiltoniano.
-\begin{equation}
-    \dv{t}\expval{A}_\Psi = \dv{t} \frac{\expval{A_h(t)}{\Psi_h}}{\norm{\Psi_h}^2}= \frac{\expval{\dv{t} A_h(t)}{\Psi_h}}{\norm{\Psi_h}^2} = 0 
-        \iff \left[ A,H \right] =0
-\end{equation}
-
-
-\subsection{Limite classico dei sistemi quantistici}
-A ogni osservabile classico \(f \) posso associare un operatore autoaggiunto \(F\) tali che:
-\[
-    \dv{t} f = \left\{ f, H_{cl} \right\} \to \dv{t} F_h = \frac{1}{i\hbar} \left[ F_h, H\right]   
-\]
-Dove consideriamo l'operatore hamiltoniano \(H\) associato all'hamiltoniana classica \(H_{cl}\) non dipendenti dal tempo.
-
-Consideriamo ora una particella in 1D e le sue osservabili \(Q\) posizione e \(P\) momento con errore trascurabile rispetto a precisione sistemi di misura.\\
-Associamo i valori medi di queste variabili alle corrispettive variabili classiche:
-\[
-    q(t) \approx \expval{Q}_\Psi \qquad p(t) \approx \expval{P}_\Psi    
-\]
-e associamo l'hamiltoniana classica all'operatore hamiltoniano:
-\[
-    H_{cl} (q,p)= \frac{p^2}{2m} + V(q)\  \longleftrightarrow \ H = \frac{P^2}{2m} + V(Q)
-\]
-Classicamente la soluzione è:
-\[
-    \begin{cases}
-        \dot{q}(t) = \pdv{H_{cl}}{p} = \frac{p(t)}{m}\\
-        \dot{p}(t) = - \pdv{H_{cl}}{q} = - V' (q(t))
-    \end{cases}
-\]
-Cerchiamo ora delle equazioni analoghe per i valori medi \(\expval{Q}_\Psi\) e \(\expval{P}_\Psi\) . 
-Rimaniamo nella visuale di Heisenberg e consideriamo per comodità \(\norm{\Psi}=1\).
-
-\[
-\dv{t} \expval{Q}_{\Psi}
-= \dv{t}\expval{Q_h(t)}{\Psi_h}
-= \expval{\dv{t} Q_h}{\Psi_h}
-= \expval{\tfrac{1}{i\hbar}[Q_h, H]}{\Psi_h}
-\]
-\[
-    \left[ Q_h, H \right]  = \left[ Q, \frac{P^2}{2m} \right] + \left[ Q, V(Q) \right] = \frac{1}{2m}\left( P\left[ Q,P \right] + [Q,P]P \right) = i\hbar \frac{P}{m}
-\]
-\[
-    \dv{t} \expval{Q}_{\Psi} = \frac{\expval{P}_\Psi}{m}
-\]
-Mentre per l'operatore \(P\):
-\[
-    \dv{t} \expval{P}_\Psi  = \expval{\tfrac{1}{i\hbar}\left[ P, H \right]}{\Psi_h}
-\]
-\[
-    \left[ P,H  \right]= \left[ P, \frac{P^2}{2m} \right] + \left[ P, V(Q) \right]  = -i\hbar V'(Q)
-\]
-\begin{attention}
-    Si sono usate le proprietà \(\left[ Q, g(P) \right]= i \hbar g'(P)\)  e \(\left[ P, f(Q) \right]= -i\hbar f'(Q)\)
-\end{attention}
-
-Otteniamo così il seguente teorema:
-
-\begin{theorem} \label{theo: Ehrenfest}
-    {\normalfont\textbf{di Ehrenfest}}
-    \begin{equation}
-        \dv{t}\expval{Q}_{\Psi} = \frac{\expval{P}_\Psi}{2m} \qquad \dv{t}\expval{P}_\Psi = - \expval{V'(Q)}_{\Psi}
-    \end{equation}
-\end{theorem}
-
-
-\subsection{Principio indeterminazione tempo-energia}
-
-Sappiamo che vale: 
-\[
-    (\Delta X_i )_{\Psi} (\Delta P_i )_\Psi \geq \frac{\hbar}{2}
-\]
-per \(i = 1,2,3\) le 3 dimensioni spaziali. Per invarianza di Lorentz ci aspetteremo qualcosa come:
-\begin{equation}
-    (\Delta t)_{\Psi}(\Delta E)_\Psi \geq \frac{\hbar}{2}
-\end{equation}
-ma finora abbiamo visto soltanto una teoria non relativistica, \(t\) è un semplice parametro. Cosa significa inoltre l'indeterminazione del tempo?
-
-Consideriamo inanziatutto un operatore a.a. \(A\) e l'operatore hamiltoniano \(H\), senza nessuna dipendenza esplicita dal tempo e otteniamo:
-\[
-    (\Delta A)_{\Psi} (\Delta E)_\Psi = (\Delta A)_{\Psi} (\Delta H)_\Psi = \geq \frac{1}{2} \abs{\expval{\left[ A_h,H \right]}_\Psi}
-\]
-\[
-    (\Delta A)_{\Psi} (\Delta E)_\Psi  \geq \frac{\hbar}{2}\abs{\expval{\dv{t}A_h}} =\frac{\hbar}{2}\abs{\dv{t}\expval{A_h}}
-\]
-\[
-    \frac{ (\Delta A)_{\Psi} }{\abs{\dv{t}\expval{A_h}}}(\Delta E)_\Psi  \geq \frac{\hbar}{2} \qquad    \forall \, A \ a.a.
-\]
-Definiamo quindi:
-\begin{equation}
-    (\Delta t)_{\Psi} =  \inf_{A} \frac{ (\Delta A)_{\Psi} }{\abs{\dv{t}\expval{A_h}}}
-\end{equation}
-come il tempo necessario affinché un qualche osservabile \(A\) vari in maniera significativa.
-
-
-% 12 Lezione del 27/10/2025
-
-\section{Stati misti}
-\label{sec: mat_dens}
-\lezione{12}{27/10/2025}
-
-Passiamo ora all'analisi degli stati caratterizzati da un'informazione incompleta, definiti dalla sola distribuzione di probabilità su un insieme di stati puri.
-
-\begin{definition}
-    Definiamo \textit{stato misto} \(\varepsilon = \left\{ \ket{\Psi_k}, p_k \right\}\) un insieme di stati puri normalizzati \(\ket{\Psi_k}\ : \norm{\Psi_k} = 1\) con le rispettive probabilità \(p_k \geq 0 \ \sum_k p_k = 1\).
-\end{definition}
-
-La misura di un'osservabile su uno stato misto restituisce:
-\begin{equation}
-    \expval{A}_\varepsilon = \sum_k p_k \expval{A}_{\Psi_k}
-\end{equation}
-
-Per trattare gli stati misti è comodo associarli a un certo oggeto matematico chiamato \textit{operatore densità} o \textit{matrice densità} \(\rho\).
-Trattiamo inizialmente l'operatore densità per stati puri \(\ket{\Psi}\), in questo caso è defito come:
-\begin{equation}
-    \rho = \frac{\ket{\Psi}\bra{\Psi}}{\norm{\Psi}^2}
-\end{equation}
-ed è equivalente al proiettore su \(\ket{\Psi}\).\\ Consideriamo per comodità \(\norm{\Psi}= 1\) e otteniamo la forma matriciale \(p_{mn} = \braket{m}{\Psi}\braket{\Psi}{n}\). 
-Il valore medio degli osservabili si può ottenere:
-\begin{equation}
-    \expval{A}_\Psi = \bra{\Psi}A\ket{\Psi}= \sum_{n,m} \braket{\Psi}{n}\bra{n}A\ket{m}\braket{m}{\Psi} = \sum_{n,m} \rho_{mn}A_{nm} = \Tr(\rho A)
-\end{equation}
-La traccia non dipende dalla base scelta, inoltre vale: \(\Tr(\alpha A + \beta B )= \alpha \Tr(A) \beta \Tr(B )\) e \(\Tr(ABC)= \Tr(CAB)\).
-
-\paragraph{Proprietà di \(\rho\)}
-\begin{itemize}
-    \item \(\rho^\dagger = \rho\)
-    \item \(\Tr \rho = \sum_n \braket{n}{\Psi}\braket{\Psi}{n}= \sum_n \abs{\braket{n}{\Psi}}^2 = 1\)
-    \item \(\forall\,\chi ,\ \norm{\chi} = 1\) vale \(\expval{\rho}_\chi = \braket{\chi}{\Psi}\braket{\Psi}{\chi}= \abs{\braket{\Psi}{\chi}}^2 \geq 0\) cioè \(\rho\) è semidefinito positivo.
-    \item \(\rho^2 = \rho \implies \Tr \rho^2 = 1\)
-\end{itemize}
-
-\begin{definition}
-    Un operatore \(\rho : \mathcal{H}\to \mathcal{H}\) è \textit{operatore densità} se e solo se:
-    \begin{equation}
-        \rho^\dagger = \rho \qquad \Tr \rho = 1 \qquad \rho \geq 0
-    \end{equation}
-\end{definition}
-
-\begin{remark}
-    Dato un operatore a.a. \(A\) vale \(\expval{A}_\chi\geq 0 \ \forall \, \chi \iff \sigma(A) \subseteq \mathbb{R}_{\geq0}\) .
-\end{remark}
-\begin{proof} Solo spettri discreti \(\sigma(A)\equiv \sigma_d(A)\)\\
-    \((\implies) \ \forall a \in \sigma_d(A) \quad a = \expval{A}{a}\geq 0\)\\
-    \((\impliedby) \ \expval{A}{\chi} = \sum_{a,r}\bra{\chi}A\ket{a,r}\braket{a,r}{\chi}= \sum_{a,r}a \abs{\braket{a,r}{\chi}}^2\geq 0\)
-\end{proof}
-
-Per gli stati misti \( \varepsilon = \left\{ \ket{\Psi_k}, p_k \right\}\) con \(p_k \geq0  \ \sum_k p_k= 1 \ \norm{\Psi_k}= 1\) abbiamo un operatore densità \(\rho_k = \ket{\Psi_k}\bra{\Psi_k}\) per ogni stato puro.
-Il valore medio di un operatore \(A\) si calcola come:
-\begin{equation}
-    \expval{A}_\varepsilon = \sum_k p_k \expval{A}_{\Psi_k} = \sum_k  p_k \Tr(\rho_k A)= \Tr[(\sum_k p_k\rho_k)A] = \Tr(\rho A)
-\end{equation}
-Dove abbiamo definito l'operatore densità per uno stato misto come:
-\begin{equation}
-    \rho : = \sum_k  p_k\ket{\Psi_k}\bra{\Psi_k}    
-\end{equation}
-
-Valgono ancora \(\rho^\dagger = \rho\), \(\rho\) semidefinito positivo e \(\Tr \rho = 1\).
-
-\begin{theorem}
-    Dato \(\rho\) operatore densità, esiste stato misto \(\varepsilon = \left\{ \ket{\Psi_k}, p_k \right\}\) con \(p_k \geq 0 \) e \(\sum_k p_k =1\) tale che 
-    \(\rho = \sum_k p_k \ket{\psi_k}\bra{\Psi_k}\) .
-\end{theorem}
-\begin{proof}
-    \(\rho\) a.a. \(\implies  \exists\) base o.n \(\left\{\ket{\Psi_k}\right\}\) tale che 
-    \[\rho\ket{\Psi_k}= p_k\ket{\Psi_k} \implies \rho = \sum_k \ket{\Psi_k}\bra{\Psi_k}\]
-    inoltre \(\rho\geq0 \implies p_k \geq 0\),
-    \[
-        1 = \Tr \rho = \sum_k \expval{\rho}{\Psi_k} = \sum_k    p_k
-    \]
-    
-\end{proof}
-
-
-\begin{remark}
-    Mix statistici diversi \( \varepsilon = \left\{ \ket{\Psi_k}, p_k  \right\}\) e \( \varepsilon' = \left\{ \ket{\Psi'_k}, p'_k  \right\}\) possono avere stesso \(\rho\) .
-    I due diversi mix sono indistinguibili perché restituiscono gli stessi valori medi.
-\end{remark}
-Uno stato quantistico puro o misto è descritto interamente dal suo operatore densità.
-
-\begin{theorem}
-    Se \(\rho\) è operatore densità, allora \(\Tr (\rho^2)\leq 1\) ed \(\Tr(\rho^2)= 1 \iff \exists \ket{\Psi} \) tale che \(\rho = \ket{\Psi}\bra{\Psi}\), cioè è uno stato puro, se invece \(\Tr(\rho^2)< 1\) è uno stato misto.
-\end{theorem}
-\begin{proof}
-    \(\rho\) operatore densità \(\implies \exists\) base O.N. \(\left\{ \ket{\Psi_k} \right\}\) tale che:
-    \[
-    \rho = \sum_k p_k \ket{\Psi_k}\bra{\Psi_k}, 
-    \quad p_k \ge 0, 
-    \quad \sum_k p_k = 1
-    \]
-    \[
-     \implies 0 \le p_k \le 1 
-   \implies
-    0 \le p_k^2 \le p_k
-    \]
-
-    \[
-    \Tr(\rho^2)
-    = \sum_k \bra{\Psi_k} \rho^2 \ket{\Psi_k}
-    = \sum_k p_k^2 
-    \le \sum_k p_k = 1
-    \]
-
-    \[
-    \Tr(\rho^2) = 1 
-    \ \Longleftrightarrow\ 
-    p_k^2 = p_k \ \forall k 
-    \ \Longleftrightarrow\ 
-    p_k = 0 \text{ oppure } 1 \ \forall k
-    \]
-
-    \[
-    \text{Siccome } \sum_k p_k = 1 
-    \ \Rightarrow\ 
-    \exists k' \text{ t.c. } 
-    p_k = 
-    \begin{cases}
-    0 & k \neq k' \\
-    1 & k = k'
-    \end{cases}
-    \]
-
-    \[
-    \Rightarrow\ 
-    \rho = \ket{\Psi_{k'}}\bra{\Psi_{k'}}
-    \]
-
-\end{proof}
-
-
-\subsection{Evoluzione temporale}
-L'operatore densità rappresenta lo stato, quindi nella visuale di Schrödinger deve evolvere come:
-\begin{equation}
-    \rho_s(t)= \sum_k p_k \ket{\Psi_k(t)}\bra{\Psi_k(t)}= U(t,t_0)\rho_s(t_0)U (t, t_0)^\dagger
-\end{equation}
-Considerando la legge per l'operatore unitario è possibile trovare un'equazione differenziale:
-\begin{equation}
-    i\hbar \dv{t}\rho_s(t) = \left[ H_s(t, \rho_s(t)) \right]
-\end{equation}
-
-Nella visione di Heisenberg l'operatore densità non varia nel tempo \(\rho_h(t) = \rho_h(t_0)\) .
-\begin{example}
-\begin{itemize}
-    \item Stato termico
-        \[
-        \left\{ \big( \ket{E_n},\ p_n = \frac{e^{-E_n / kT}}{Z} \big) \right\},
-        \qquad 
-        Z = \sum_n e^{-E_n / kT}
-        \]
-    \item Stato massimamente misto, se $\dim \mathcal{H} = d < \infty$:
-    \[
-    \rho = \frac{1}{d} I
-    \qquad 
-    \Tr(\rho^2) = \frac{1}{d} 
-    \qquad \text{(purezza minima)}
-    \]
-\end{itemize}
-\end{example}
-
-
-
-% 13 Lezione del 28/10/2025
-
-
-\section{Applicazioni}
-\lezione{13}{28/10/2025}
-
-\subsection{Oscillatore Armonico 1D} 
-In meccanica classica l'oscillatore armonico è descritto dall'hamiltoniana:
-\[
-    H_{cl} = \frac{P^2}{2m} + \frac{1}{2}m \omega^2 x^2 \qquad \text{ con } \omega = \sqrt{\frac{k}{m}}
-\]
-
-Classicamente ha soluzione:
-\[
-    x(t) = A\cos(\omega t + \delta) \qquad p(t) = - m\omega A \sin(\omega t + \delta) \qquad E = \frac{1}{2} m \omega^2 A^2
-\]
-Il caso dell'oscillatore armonico ha particolare rilevanza, perché molti sistemi fisici sono riconducibili a esso.
-
-In meccanica quanstistica vogliamo risolvere l'equazione \(H\ket{\Psi} = E\ket{\Psi}\) cioè trovare gli autovalori dell'operatore hamiltoniano:
-\begin{equation}
-    H = \frac{P^2}{2m} + \frac{1}{2} m \omega^2 X^2
-\end{equation}
-Effettuiamo le seguenti sostituzioni per avere operatori adimensionali:
-\begin{equation}
-    \hat{X} = \sqrt{\frac{m\omega}{\hbar}}X \quad \hat{P} = \frac{1}{\sqrt{m\omega \hbar}}P  \
-        \implies  \ H = \frac{\hbar \omega}{2} ( \hat{P}^2 + \hat{X}^2)
-\end{equation}
-per cui vale \(\left[ \hat{X}, \hat{P} \right]= i\).\\
-Definiamo inoltre l'operatore di distruzione o abbassamento:
-\begin{equation}
-    a = \frac{\hat{X}+ i\hat{P}}{\sqrt{2}}
-\end{equation}
-e l'operatore di creazione o innalzamento:
-\begin{equation}
-    a^\dagger = \frac{\hat{X}-i \hat{P}}{\sqrt{2}}
-\end{equation}
-Il loro commutatore vale:
-\begin{equation}
-    \left[ a,a^\dagger \right] = \frac{1}{2}\left( i\left[ \hat{P},\hat{X} \right]-i\left[ \hat{X}, \hat{P} \right]\right)    = 1
-\end{equation}
-\(a\) e \(a^\dagger\) non sono hermitiani ma \(N : = a ^+a\) lo è:
-\begin{equation}
-    N = a^\dagger a = \frac{1}{2}\left( \hat{X}^2+\hat{P}^2 + i \hat{X}\hat{P} - i\hat{P}\hat{X}\right) = \frac{1}{2}\left( \hat{X}^2 + \hat{P}^2-1\right)
-\end{equation}
-Dunque per trovare gli autovalori di:
-\[
-    H = \hbar\omega\left(N + \frac{1}{2}\right)
-\]
-è sufficiente trovare gli autovalori di \(N\), tenendo in considerazione le seguenti relazioni:
-\[
-    aa^\dagger - a^\dagger a = 1 \qquad N = a^\dagger a \qquad aa^\dagger = N-1
-\]
-
-Innanzitutto, dimostriamo che \(N \geq 0 \), cioè semidefinita positiva \((\sigma(N)\subseteq \mathbb{R}_{\geq0})\).
-\[
-    \forall \,\Psi , \norm{\Psi} = 1 \quad \expval{N}{\Psi} = \expval{a^\dagger a}{\Psi} = \norm{a\ket{\psi}}^2 \geq0
-\]
-Inoltre \(a\ket{\Psi}= 0 \iff N\ket{\Psi}= 0\), dato che:
-\[
-   (\implies) \ N\ket{\Psi} = a^\dagger a \ket{\Psi} = 0 \qquad (\impliedby)\  \norm{a\ket{\Psi}}^2 = \expval{N}{\Psi} = 0
-\]
-
-Chiamando ora \(N\ket{\nu}= \nu \ket{\nu}\) dove \(\nu, \,\ket{\nu}\) sono autovalori e autovettori di \(N\). 
-Per un \(\nu \neq 0 \) consideriamo \(a\ket{\nu}\):
-\begin{equation}
-    Na\ket{\nu}= a a^\dagger a \ket{\nu}- a\ket{\nu} = (\nu-1)a\ket{\nu}
-\end{equation}
-Se ripeto il procedimento arriverò a un certo \(a^k\ket{\nu}\) il cui autovalore sarà \((\nu-k)=0\).
-Se \(\nu \notin \mathbb{Z}, \ v-k \neq 0 \ \forall \,k \in \mathbb{N}\), ma per \(k\) suff. grande arriverò a un certo \(\nu-k\leq0\) che è assurdo,
-quindi otteniamo che \(\sigma(N)\subseteq \mathbb{Z}_{\geq0}\).\\
-Se invece consideriamo \(a^\dagger\ket{\nu}\), otteniamo:
-
-\[
-\norm{a^\dagger\ket{\nu}}^2 
-= \bra{\nu} a a^\dagger \ket{\nu}
-= \bra{\nu} (N + 1) \ket{\nu}
-= (\nu + 1)\norm{\ket{\nu}}^2 > 0
-\]
-
-\[
-N a^\dagger \ket{\nu}
-= a^\dagger a a^\dagger \ket{\nu}
-= a^\dagger (N + 1)\ket{\nu}
-= (\nu + 1)\, a^\dagger \ket{\nu}
-\]
-
-Cerhiamo il primo autovettore \(\ket{0}\), tale che \(N\ket{0}=0 \iff a \ket{0}=0\), in rappresentazione \(x\) è uguale a \(U_0(x)= \braket{x}{0}\), dunque:
-\[
-    a= \frac{1}{\sqrt{2}}\left( \hat{X}+ i\hat{P} \right)   = \frac{1}{\sqrt{2}}\left( \hat{x}+ \dv{\hat{x}} \right) \implies \left( \hat{x}+ \dv{\hat{x}} \right)U_0(\hat{x})= 0 \implies U_0(\hat{x})= C e^{\frac{-\hat{x}^2}{2}}
-\]
-
-Normalizzando otteniamo:
-\[
-    U_0(x)= \left(  \frac{m\omega}{\hbar\pi }\right)^{\frac{1}{4}}e ^{-\frac{m\omega}{\hbar}\frac{x^2}{2}}    
-\]
-Da qui, con l'operatore di innzalzamento \(a^\dagger\) possiamo ottenere tutti gli autovettori:
-\[
-    \ket{1} = a^\dagger \ket{0}  \implies U_1(\hat{x})= \frac{1}{\sqrt{2}}\left( \hat{x}- \dv{\hat{x}} \right) U_0(\hat{x})
-\]
-\begin{equation}
-    \ket{n} = \frac{a^\dagger\ket{n-1}}{\sqrt{n}} = \dots = \frac{(a^\dagger)^n}{\sqrt{n!}}\ket{0}  \implies U_n(x) = c_n H_n\left(\sqrt{\frac{m\omega}{\hbar}x}\right)e^{-\frac{m \omega}{\hbar}\frac{x^2}{2}}
-\end{equation}
-
-Dove \(H_n(\dots)\) è il \textit{polinomio di Hermite} di grado \(n\).\\
-L'insieme degli autovettori \(\left\{ U_n(x) \right\}\) forma una base di \(L_2(\mathbb{R})\), detta di Hermite.
-Lo spettro è dunque puramente discreto:
-\[
-    \sigma(H)= \left\{ \hbar\omega(n + \frac{1}{2}), n = 0,1,2,3,\dots \right\}
-\]
-
-L'evoluzione temporale degli stati diventa immediata se si considera la scomposizione in questa base:
-\[
-    \ket{\Psi(t_0)}  = \sum_{n= 0}^{\infty} c_n(t_0) \ket{n}  \qquad c_n(t_0) = \braket{n}{\Psi(t_0)}  = \int_\mathbb{R} \dd{x} \overline{U_n(x)} \Psi(x, t_0)
-\]
-
-\[
-    \ket{\Psi(t)}  = e ^{-\frac{i}{\hbar}H (t-t_0)}\sum_{n= 0}^{\infty} c_n (t_0)\ket{n} = \sum_{n} e ^{-\frac{i}{\hbar}\hbar\omega(n + \frac{1}{2})(t-t_0)}c_n(t_0)\ket{n}=
-\]
-
-\[
-    = e^{-i\frac{\omega}{2}(t-t_0)}\sum_{n = 0}^{\infty} e ^{-i\omega n(t-t_0)}c_n(t_0)\ket{n} \implies \left[ \Psi\left(t+ \frac{2\pi}{\omega}\right) \right]= \left[ \Psi(t) \right]
-\]
-
-I valori medi di posizione e momento per un generico autovettore \(U_n(x)\) valgono:
-\begin{equation}
-    \expval{X}_{U_n} 
-        = \sqrt{\frac{\hbar}{m\omega}} \expval{\hat{X}}_{U_n} 
-        = \sqrt{\frac{\hbar}{2m\omega}} \mel{n}{(a + a^\dagger)}{n} = 0
-\end{equation}
-
-\begin{equation}
-    \expval{P}_{U_n} = 0
-\end{equation}
-
-\begin{equation}
-    \expval{X^2}_{U_n} 
-        = \frac{\hbar}{2m\omega} \mel{n}{(a + a^\dagger)^2}{n}
-        = \frac{\hbar}{2m\omega} \mel{n}{(a^2 + a a^\dagger + a^\dagger a + (a^\dagger)^2)}{n}
-        = \frac{\hbar}{m\omega} \left( \frac{2n + 1}{2} \right)
-\end{equation}
-
-\begin{equation}
-    \expval{P^2}_{U_n} = \hbar m \omega \left( n + \frac{1}{2} \right)
-        \qquad
-        \expval{\frac{P^2}{2m}}_{U_n} 
-        = \frac{\hbar \omega}{2} \left( n + \frac{1}{2} \right)
-        = \frac{E_n}{2}    
-\end{equation}
-
-In visuale di Heisenberg, vale il teorema di Ehrenfest \ref{theo: Ehrenfest}:
-\begin{equation}
-    \dv{t}\expval{X}_{\Psi}(t) = \frac{\expval{P}_{\Psi}}{m}\qquad 
-        \dv{t}\expval{P}_{\Psi}(t)= - \expval{V'(X)}_{\Psi}= - m\omega\expval{X}_{\Psi}(t)
-\end{equation}
-
-
-\subsection{Potenziali 1D}
-In generale, per spazi di Hilbert \(\mathcal{H}= L_2(\mathbb{R}, \dd{x})\) e opertori hamiltoniani con potenziali 1D \(H = \frac{P^2}{2m}+ V(X)\), si cercano gli autovalori e autovettori di \(H\Psi_E(x)= E\Psi_E(x)\):
-\[
-    ( - \frac{\hbar^2}{2m} \dv[2]{}{x} + V(x))\Psi_E(x) = E\Psi_E(x)\implies \Psi''(x) - \frac{2m}{\hbar^2}(E - V(x))\Psi(x)=0
-\]
-Ci dobbiamo chiedere quale tipo di soluzioni abbia questa equazione: se \(\Psi(x)\in D_H\subseteq \mathcal{H}\) allora \(E \in \sigma_d(H)\), se invece \(\Psi(x \in S^*(\mathbb{R}))\) allora \(E \in \sigma_c(H)\).\\
-Di solito, se \(\Psi \in D_{p^2}\), allora \(\Psi \in D_H\) .
-
-\begin{theorem}
-    \label{theo: Kato-Rellich}
-    {\normalfont\textbf{Kato-Rellich}}\\
-    Considerato uno spazio di Hilbert \(\mathcal{H}= L_2(\mathbb{R}^n , \dd[n]{x})\) con \(n = 1,2,3\), 
-    se il potenziale ha forma \(V(\vec{x})= f_{\infty}(\vec{x})+ g_2(\vec{x})\)  con \(\abs{f_\infty(\vec{x})}\leq M , \ \forall\, \vec{x}\)
-    e \(g_2 \in L_2(\mathbb{R}^2)\) allora \(D_H = D_{\vec{P}^2}\)
-\end{theorem}
-\begin{example}
-    \(V(\vec{x})= \frac{k}{\abs{\vec{x}}} \in L_2(\mathbb{R}^3)\) atomo di idrogeno. 
-\end{example}
-
-% 14 Lezione del 30/10/2025
-\lezione{14}{30/10/2025}
-
-Sia \( D_H \subseteq L_2(\mathbb{R}) \) sufficientemente regolare, e siano \(\Psi, \Psi', \Psi'' \in L_2(\mathbb{R})\).  
-Allora \(H\Psi \in L_2(\mathbb{R})\) se \(V(x)\) è regolare.
-% \begin{center}
-% \begin{tikzpicture}
-%     \begin{axis}[
-%         axis lines=middle,
-%         xlabel={$x$},
-%         ylabel={$V(x)$},
-%         ymin=-1, ymax=5,
-%         xmin=-4, xmax=4,
-%         xtick=\empty, ytick=\empty,
-%         width=8cm, height=5cm
-%     ]
-%     \addplot[domain=-3.5:3.5, samples=200, thick, green!60!black]
-%         {2 + 2*exp(-x^2) - 3*exp(-x^4)};
-%     \draw[dashed] (-3.5,3.8) -- (3.5,3.8) node[right]{$V_{+\infty}$};
-%     \draw[dashed] (-3.5,0.5) -- (3.5,0.5) node[right]{$V_{-\infty}$};
-%     \end{axis}
-% \end{tikzpicture}
-% \end{center}
-
-Per \(x \to \pm\infty\), \(V(x) \approx V_{\pm\infty}\).  
-Studiamo se le soluzioni sono finite o distribuite.
-
-Per \(E > V_{+\infty}, V_{-\infty}\):
-\[
-\Psi'' + \frac{2m}{\hbar^2}(E - V_{\pm\infty})\Psi = 0, \qquad
-k_\pm = \sqrt{\frac{2m}{\hbar^2}(E - V_{\pm\infty})}
-\]
-Le soluzioni asintotiche sono oscillanti:
-\[
-\Psi(x) \simeq 
-\begin{cases}
-A e^{i k_- x} + B e^{-i k_- x}, & x \to -\infty \\
-C e^{i k_+ x} + D e^{-i k_+ x}, & x \to +\infty
-\end{cases}
-\]
-La matrice di trasferimento dipende da \(E\) e dalla forma di \(V(x)\):
-\[
-\begin{pmatrix}
-C \\ D
-\end{pmatrix}
-= M(E)
-\begin{pmatrix}
-A \\ B
-\end{pmatrix}
-\]
-
-Le soluzioni asintotiche di questo tipo non appartengono a \(L_2(\mathbb{R})\), quindi non sono autostati propri e lo spettro
-sarà continuo: \(E \in \sigma_c(H)\) e \(d(E)= 2\).
-
-Per \(V_{-\infty} < E \le V_{+\infty}\) (assumendo \(V_{-\infty}\le V_{+\infty}\)):
-\[
-k_- := \sqrt{\tfrac{2m}{\hbar^2}(E - V_{-\infty})}, 
-\qquad
-\beta_+ := \sqrt{\tfrac{2m}{\hbar^2}(V_{+\infty} - E)}.
-\]
-Asintotica:
-\[
-\Psi(x)\sim 
-\begin{cases}
-A\,e^{ik_- x} + B\,e^{-ik_- x}, & x\to -\infty \\[4pt]
-C\,e^{\beta_+ x} + D\,e^{-\beta_+ x}, & x\to +\infty
-\end{cases}
-\]
-Le soluzioni non sono in \(L_2(\mathbb{R})\). Per \(x\to - \infty\) la situazione è identica a prima, ma per \(x\to + \infty\) la soluzione non appartiene neanche a \(S^*\mathbb{R}\),
-è necessario eliminare il termine esplosivo a \(+\infty\), quindi \(C=0\). 
-Ne resta una sola soluzione accettabile per ogni \(E\): \(E \in \sigma_c(H), \ d(E)=1 \) . 
-
-
-
-\medskip
-Per \(V_{\min} \le E < \min\{V_{-\infty},V_{+\infty}\}\):
-\[
-\beta_- := \sqrt{\tfrac{2m}{\hbar^2}(V_{-\infty}-E)}, \qquad
-\beta_+ := \sqrt{\tfrac{2m}{\hbar^2}(V_{+\infty}-E)}.
-\]
-Asintotica puramente esponenziale:
-\[
-\Psi(x)\sim 
-\begin{cases}
-A\,e^{\beta_- x} + B\,e^{-\beta_- x}, & x\to -\infty \\[4pt]
-C\,e^{\beta_+ x} + D\,e^{-\beta_+ x}, & x\to +\infty
-\end{cases}
-\]
-I termini che esplodono vanno imposti nulli: per \(x\to -\infty\) si pone \(B=0\); per \(x\to +\infty\) si pone \(C=0\).
-Ho due condizioni su uno spazio 2D quindi l'unica soluzione possibile per un generico \(E\) è \(\Psi_e=0\).\\
-Tuttavia è possibile considerare i coefficienti in funzione di \(E\) e si annullerrano per certi valori di \(E\) fornendoci delle soluzioni non banali e uno spettro discreto:
-\(E \in \sigma_d(H)\), tali stati vengono detti \textit{stati legati}.
-
-
-
-
-
-
-
-
-
-
-
 
