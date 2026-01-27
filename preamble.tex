@@ -151,9 +151,26 @@
 % COMANDI UTILI
 % -------------------------------------------------------------------
 \usepackage{marginnote} % Per le note a margine
-\newcommand{\lezione}[2]{
+% --- Gestione Indice delle Lezioni (Versione Forzata) ---
+\DeclareNewTOC[
+    type=lezione,
+    types=lezioni,
+    listname={Indice delle Lezioni},
+    extension=loz,
+]{loz}
+\setuptoc{loz}{totoc}
+% Questo blocco forza la rimozione degli spazi verticali (addvspace) 
+% specificamente per l'indice con estensione .loz
+\makeatletter
+\BeforeStartingTOC[loz]{%
+  \renewcommand*{\addvspace}[1]{}% Annulla il comando che aggiunge spazio tra capitoli
+}
+\makeatother
+
+\newcommand{\lezione}[2]{%
   \marginnote{\footnotesize\sffamily\textcolor{blue!50!gray}{\textbf{Lez. #1}\\#2}}%
   \pdfbookmark[2]{Lezione #1 (#2)}{lez#1}%
+  \addcontentsline{loz}{lezione}{\textbf{Lezione #1} (#2)}%
 }
 
 % Prodotto interno. Nota: il pacchetto 'physics' offre \expval{} e \bra\ket.
