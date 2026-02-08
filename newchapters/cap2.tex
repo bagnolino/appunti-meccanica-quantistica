@@ -26,7 +26,7 @@ Valgono le seguenti proprietà:
         \braket*{\dv{t}\Psi(t)}{\Psi(t)} + \braket*{\Psi(t)}{\dv{t}\Psi(t)}
     \]
     \[
-        = \braket*{\frac{1}{i\hbar}H\Psi}{\Psi} + \braket*{\Psi}{-\frac{1}{i\hbar}H\Psi}
+        = \braket*{\frac{1}{i\hbar}H\Psi}{\Psi} + \braket*{\Psi}{\frac{1}{i\hbar}H\Psi}
         = -\frac{1}{i\hbar}\left( \braket{H\Psi}{\Psi} - \braket{\Psi}{H\Psi} \right)
         \overset{H \text{ herm}}{=} 0
     \]
@@ -85,7 +85,7 @@ Valgono le seguenti proprietà:
     Un operatore \((U, D_U)\) si dice \textit{unitario} se è isometrico, \(D_U = \mathcal{H}\) e \(U(\mathcal{H})= \mathcal{H}\).
     Equivalentemente, questo vale se e solo se:
     \begin{equation}
-        U^\dagger U = I = UU^\dagger \iff U^\dagger = U^{-1}
+        U^\dagger U = \id = UU^\dagger \iff U^\dagger = U^{-1}
     \end{equation}
 \end{definition}
 
@@ -107,8 +107,8 @@ con le seguenti proprietà:
     \item Eq. di Schrödinger \(\implies U(t, t_0)\) lineare.
     \item \(\norm{\Psi(t_0)}= \norm{\Psi(t)} \ \forall\,t \implies U(t,t_0)\) è isometrico.
     \item Essendo isometrico è limitato e \(\overline{D_U}= \mathcal{H}\).
-    \item \(U(t,t) = I \ \forall\,t\) .
-    \item \(U(t_2,t_1)U(t_1,t_0)\ket{\Psi(t_0)}= U(t_2,t_0)\ket{\Psi(t_0)} \implies  U (t_0,t)U(t,t_0)= I\) .
+    \item \(U(t,t) = \id \ \forall\,t\) .
+    \item \(U(t_2,t_1)U(t_1,t_0)\ket{\Psi(t_0)}= U(t_2,t_0)\ket{\Psi(t_0)} \implies  U (t_0,t)U(t,t_0)= \id\) .
     \item Quindi \(U\) è suriettivo \(\implies \ U \) è unitario.
     \item \( U(t,t_0)^\dagger= U(t,t_0)^{-1}= U(t_0,t)\) .
 \end{itemize}
@@ -126,7 +126,7 @@ Integrando tra \(t_0\) e \(t\):
 \int_{t_0}^{t} \dv{t'} U(t',t_0)\dd{t'} = -\frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
 \]
 \[
-\Rightarrow \quad U(t,t_0) = I - \frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
+\Rightarrow \quad U(t,t_0) = \id - \frac{i}{\hbar}\int_{t_0}^{t} H(t')U(t',t_0)\dd{t'}
 \]
 
 \begin{attention}
@@ -168,10 +168,10 @@ detta equazione di Schrödinger stazionaria.
 \end{equation}
 
 \begin{definition}
-    Gli stati \(\ket{\Psi_E}\equiv\ket{E}\), tali che \(H\ket{\Psi_e}= E\Psi_E\), si dicono \textit{stati stazionari}.\\
+    Gli stati \(\ket{\Psi_E}\equiv\ket{E}\), tali che \(H\ket{\Psi_e}= E\ket{\Psi_E}\), si dicono \textit{stati stazionari}.\\
     Per questi vale:
     \[
-        \Psi_E(t) = e^{-\frac{i}{\hbar}E(t-t_0)}\Psi_E(t_0) \implies \left[ \Psi_E(t) \right] = \left[ \Psi_E(t_0) \right] 
+        \ket{\Psi_E}(t) = e^{-\frac{i}{\hbar}E(t-t_0)}\ket{\Psi_E}(t_0) \implies \left[ \Psi_E(t) \right] = \left[ \Psi_E(t_0) \right] 
         \implies \dv{t}\expval{A}_{\Psi_E}= 0 \ \forall A  
     \]
 \end{definition}
@@ -274,7 +274,7 @@ L'unica cosa che noi possiamo osservare fisicamente sono i valori medi delle mis
     \expval{A_s}_{\Psi_s(t)}  = \expval{A_h(t)}_{\Psi_h} = \expval{\mathcal{A}}_\Sigma(t)    
 \end{equation}
 
-Vediamo ora come evolve un operatore esplictamente dipende dal tempo \(A_s(t)\) nella visuale di Heisenberg:
+Vediamo ora come evolve un operatore esplicitamente dipendente dal tempo \(A_s(t)\) nella visuale di Heisenberg:
 \[
     i\hbar \dv{t} A_h(t)= i\hbar \dv{t} \left(U(t,t_0)^\dagger A_s(t)U(t,t_0)\right) =
 \]
@@ -285,7 +285,7 @@ Usando la legge per l'operatore evoluzione temporale e la sua coniugata:
 \[
     i\hbar \dv{t} U(t,t_0)= H_s(t)U(t, t_0) \qquad i\hbar \dv{t} U (t, t_0)^\dagger = - U(t, t_0)^\dagger H_s(t)
 \]
-e inserendo dei \(UU^\dagger = I\) otteniamo:
+e inserendo dei \(UU^\dagger = \id\) otteniamo:
 \[
     = - U ^\dagger H_s UU^\dagger A_s U +U^\dagger A_s U U^\dagger H_s U + i\hbar U^\dagger \left( \pdv{A_s}{t} \right)U =
 \]
@@ -471,7 +471,7 @@ Valgono ancora \(\rho^\dagger = \rho\), \(\rho\) semidefinito positivo e \(\Tr \
 \end{theorem}
 \begin{proof}
     \(\rho\) a.a. \(\implies  \exists\) base o.n \(\left\{\ket{\Psi_k}\right\}\) tale che 
-    \[\rho\ket{\Psi_k}= p_k\ket{\Psi_k} \implies \rho = \sum_k \ket{\Psi_k}\bra{\Psi_k}\]
+    \[\rho\ket{\Psi_k}= p_k\ket{\Psi_k} \implies \rho = \sum_k p_k \ket{\Psi_k}\bra{\Psi_k}\]
     inoltre \(\rho\geq0 \implies p_k \geq 0\),
     \[
         1 = \Tr \rho = \sum_k \expval{\rho}{\Psi_k} = \sum_k    p_k
@@ -543,7 +543,7 @@ L'operatore densità rappresenta lo stato, quindi nella visuale di Schrödinger 
 \end{equation}
 Considerando la legge per l'operatore unitario è possibile trovare un'equazione differenziale:
 \begin{equation}
-    i\hbar \dv{t}\rho_s(t) = \left[ H_s(t, \rho_s(t)) \right]
+    i\hbar \dv{t}\rho_s(t) = \left[ H_s(t), \rho_s(t) \right]
 \end{equation}
 
 Nella visione di Heisenberg l'operatore densità non varia nel tempo \(\rho_h(t) = \rho_h(t_0)\) .
@@ -557,7 +557,7 @@ Nella visione di Heisenberg l'operatore densità non varia nel tempo \(\rho_h(t)
         \]
     \item Stato massimamente misto, se $\dim \mathcal{H} = d < \infty$:
     \[
-    \rho = \frac{1}{d} I
+    \rho = \frac{1}{d} \id
     \qquad 
     \Tr(\rho^2) = \frac{1}{d} 
     \qquad \text{(purezza minima)}
@@ -607,7 +607,7 @@ Il loro commutatore vale:
 \begin{equation}
     \left[ a,a^\dagger \right] = \frac{1}{2}\left( i\left[ \hat{P},\hat{X} \right]-i\left[ \hat{X}, \hat{P} \right]\right)    = 1
 \end{equation}
-\(a\) e \(a^\dagger\) non sono hermitiani ma \(N : = a ^+a\) lo è:
+\(a\) e \(a^\dagger\) non sono hermitiani ma \(N : = a ^\dagger a\) lo è:
 \begin{equation}
     N = a^\dagger a = \frac{1}{2}\left( \hat{X}^2+\hat{P}^2 + i \hat{X}\hat{P} - i\hat{P}\hat{X}\right) = \frac{1}{2}\left( \hat{X}^2 + \hat{P}^2-1\right)
 \end{equation}
@@ -617,7 +617,7 @@ Dunque per trovare gli autovalori di:
 \]
 è sufficiente trovare gli autovalori di \(N\), tenendo in considerazione le seguenti relazioni:
 \[
-    aa^\dagger - a^\dagger a = 1 \qquad N = a^\dagger a \qquad aa^\dagger = N-1
+    aa^\dagger - a^\dagger a = 1 \qquad N = a^\dagger a \qquad aa^\dagger = N+1
 \]
 
 Innanzitutto, dimostriamo che \(N \geq 0 \), cioè semidefinita positiva \((\sigma(N)\subseteq \mathbb{R}_{\geq0})\).
@@ -728,7 +728,7 @@ In generale, per spazi di Hilbert \(\mathcal{H}= L_2(\mathbb{R}, \dd{x})\) e ope
 \[
     ( - \frac{\hbar^2}{2m} \dv[2]{}{x} + V(x))\Psi_E(x) = E\Psi_E(x)\implies \Psi''(x) - \frac{2m}{\hbar^2}(E - V(x))\Psi(x)=0
 \]
-Ci dobbiamo chiedere quale tipo di soluzioni abbia questa equazione: se \(\Psi(x)\in D_H\subseteq \mathcal{H}\) allora \(E \in \sigma_d(H)\), se invece \(\Psi(x \in S^*(\mathbb{R}))\) allora \(E \in \sigma_c(H)\).\\
+Ci dobbiamo chiedere quale tipo di soluzioni abbia questa equazione: se \(\Psi(x)\in D_H\subseteq \mathcal{H}\) allora \(E \in \sigma_d(H)\), se invece \(\Psi(x) \in S^*(\mathbb{R})\) allora \(E \in \sigma_c(H)\).\\
 Di solito, se \(\Psi \in D_{p^2}\), allora \(\Psi \in D_H\) .
 
 \begin{theorem}

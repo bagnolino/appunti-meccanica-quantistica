@@ -92,21 +92,21 @@ Se introduciamo una base ortonormale $\{\ket{n}\}$ di $\mathcal{H}$, possiamo es
 
 Consideriamo un sistema composto descritto dallo spazio di Hilbert \( \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2 \) e una base ortonormale \( \{\ket{n,m} \equiv \ket{n}\otimes\ket{m}\} \). Sia \( \rho_{12} \) un operatore densità generico (puro o misto) su \( \mathcal{H} \).
 
-Supponiamo di poter accedere o misurare solo le osservabili relative al sistema 2, descritte da operatori autoaggiunti \( A_2: \mathcal{H}_2 \to \mathcal{H}_2 \). Sullo spazio totale, queste corrispondono a \( I \otimes A_2 \).
+Supponiamo di poter accedere o misurare solo le osservabili relative al sistema 2, descritte da operatori autoaggiunti \( A_2: \mathcal{H}_2 \to \mathcal{H}_2 \). Sullo spazio totale, queste corrispondono a \( \id \otimes A_2 \).
 Ci chiediamo se esista un operatore densità ridotto \( \rho_2 \) su \( \mathcal{H}_2 \) che descriva correttamente tutti i valori medi delle misure effettuate sul secondo sottosistema, ovvero tale che:
 \begin{equation}
-    \ev{I \otimes A_2}_{\rho_{12}} = \ev{A_2}_{\rho_2} \quad \forall A_2
+    \ev{\id \otimes A_2}_{\rho_{12}} = \ev{A_2}_{\rho_2} \quad \forall A_2
 \end{equation}
 
 Cerchiamolo esplicitando il calcolo della traccia totale:
 \[
-    \ev{I \otimes A_2}_{\rho_{12}} = \Tr_{\mathcal{H}}(\rho_{12} (I \otimes A_2))
+    \ev{\id \otimes A_2}_{\rho_{12}} = \Tr_{\mathcal{H}}(\rho_{12} (\id \otimes A_2))
 \]
 Inserendo la relazione di completezza per la base \( \ket{n,m} \):
 \[
-    = \sum_{n,m} \sum_{n',m'} \mel{n,m}{\rho_{12}}{n',m'} \mel{n',m'}{I \otimes A_2}{n,m}
+    = \sum_{n,m} \sum_{n',m'} \mel{n,m}{\rho_{12}}{n',m'} \mel{n',m'}{\id \otimes A_2}{n,m}
 \]
-Notando che \( \mel{n',m'}{I \otimes A_2}{n,m} = \braket{n'}{n}\mel{m'}{A_2}{m} = \delta_{n'n}\mel{m'}{A_2}{m} \), la somma su \( n' \) collassa:
+Notando che \( \mel{n',m'}{\id \otimes A_2}{n,m} = \braket{n'}{n}\mel{m'}{A_2}{m} = \delta_{n'n}\mel{m'}{A_2}{m} \), la somma su \( n' \) collassa:
 \[
     = \sum_{m,m'} \left( \sum_n \mel{n,m}{\rho_{12}}{n,m'} \right) \mel{m'}{A_2}{m}
 \]
@@ -143,14 +143,14 @@ Si dimostra che se \( \rho_{12} \) è un operatore densità su \( \mathcal{H} \)
         \]
         Usando la proprietà della traccia parziale per risalire allo spazio totale:
         \[
-            = \Tr_{\mathcal{H}_1 \otimes \mathcal{H}_2} (\rho_{12} (I \otimes P_{\psi_2})) = \ev{I \otimes P_{\psi_2}}_{\rho_{12}}
+            = \Tr_{\mathcal{H}_1 \otimes \mathcal{H}_2} (\rho_{12} (\id \otimes P_{\psi_2})) = \ev{\id \otimes P_{\psi_2}}_{\rho_{12}}
         \]
         Poiché $\rho_{12} \ge 0$ e $P_{\psi_2} \ge 0$ (proiettore), il valore medio è sicuramente $\ge 0$.
 
         \item \textbf{Traccia unitaria} ($\Tr \rho_2 = 1$):
         Calcoliamo la traccia su $\mathcal{H}_2$:
         \[
-            \Tr_{\mathcal{H}_2}(\rho_2) = \Tr_{\mathcal{H}_2}(\rho_2 I_{\mathcal{H}_2}) = \Tr_{\mathcal{H}_1 \otimes \mathcal{H}_2}(\rho_{12} (I_{\mathcal{H}_1} \otimes I_{\mathcal{H}_2}))
+            \Tr_{\mathcal{H}_2}(\rho_2) = \Tr_{\mathcal{H}_2}(\rho_2 \id_{\mathcal{H}_2}) = \Tr_{\mathcal{H}_1 \otimes \mathcal{H}_2}(\rho_{12} (\id_{\mathcal{H}_1} \otimes \id_{\mathcal{H}_2}))
         \]
         \[
             = \Tr_{\mathcal{H}}(\rho_{12}) = 1
@@ -162,7 +162,7 @@ Analogamente, si definisce la traccia parziale sul secondo sistema per ottenere 
 \[
     \rho_1 \equiv \Tr_{\mathcal{H}_2}(\rho_{12}) \iff \mel{n}{\rho_1}{n'} = \sum_m \mel{n,m}{\rho_{12}}{n',m}
 \]
-Questo è l'operatore densità su $\mathcal{H}_1$ tale che $\ev{A_1}_{\rho_1} = \ev{A_1 \otimes I}_{\rho_{12}}$ per ogni osservabile $A_1$.
+Questo è l'operatore densità su $\mathcal{H}_1$ tale che $\ev{A_1}_{\rho_1} = \ev{A_1 \otimes \id}_{\rho_{12}}$ per ogni osservabile $A_1$.
 
 \begin{example}
     \textbf{Stato di Singoletto e Traccia Parziale}
@@ -262,7 +262,7 @@ Consideriamo ora il sistema composto \(\mathcal{H} \otimes \mathcal{H}\) nello \
 Immaginiamo di misurare lo spin della particella 1 lungo la direzione \(\vec{n}_1\) (angolo \(\theta_1\)) e lo spin della particella 2 lungo la direzione \(\vec{n}_2\) (angolo \(\theta_2\)).
 Le osservabili sono:
 \[
-    A = (\vec{\sigma} \cdot \vec{n}_1) \otimes I \qquad B = I \otimes (\vec{\sigma} \cdot \vec{n}_2)
+    A = (\vec{\sigma} \cdot \vec{n}_1) \otimes \id \qquad B = \id \otimes (\vec{\sigma} \cdot \vec{n}_2)
 \]
 Ci chiediamo quale sia la probabilità congiunta \(P_{++}(\theta_1, \theta_2)\) di trovare entrambe le particelle con spin "up" (stato \(+\)) lungo le rispettive direzioni di misura. Dobbiamo calcolare il modulo quadro dell'ampiezza di probabilità:
 \[
@@ -340,8 +340,6 @@ Il concetto di Realismo è strettamente legato a quello di Definitezza Controfat
 
 \end{definition}
 
-\subsubsection{Principi di Realtà e Località}
-
 Per formalizzare il paradosso, Einstein, Podolsky e Rosen introdussero due criteri fondamentali.
 
 \begin{definition}
@@ -370,7 +368,7 @@ La combinazione di questi due principi definisce la posizione del \textbf{Realis
 \]
 Secondo questa visione, le proprietà fisiche devono essere predeterminate localmente e non possono essere alterate istantaneamente a distanza.
 
-\subsubsection{Versione di Bohm del Paradosso EPR}
+\subsection{Versione di Bohm del Paradosso EPR}
 
 Consideriamo un esempio concreto proposto da Bohm (1951), che semplifica l'argomento originale.
 Immaginiamo il decadimento di una particella neutra (es. pione neutro $\pi_0$) in una coppia elettrone-positrone ($e^-, e^+$).
@@ -383,7 +381,7 @@ Una particella viene inviata ad Alice ($A$) e l'altra a Bob ($B$), che si trovan
 Supponiamo che al tempo $t_1$, Alice misuri la componente dello spin $S_{z,1}$ sulla sua particella e ottenga il risultato $+\hbar/2$ (stato $\ket{+}$).
 Secondo il postulato della misura, lo stato totale collassa istantaneamente sul sottospazio compatibile con la misura:
 \[
-    \ket{\psi} \xrightarrow{\text{misura } S_{z,1}=+\hbar/2} \frac{(P_+ \otimes I)\ket{\psi}}{\norm{\dots}} = \ket{+} \otimes \ket{-} = \ket{+-}
+    \ket{\psi} \xrightarrow{\text{misura } S_{z,1}=+\hbar/2} \frac{(P_+ \otimes \id)\ket{\psi}}{\norm{\dots}} = \ket{+} \otimes \ket{-} = \ket{+-}
 \]
 
 Analizziamo la situazione dal punto di vista di Bob per $t > t_1$:
@@ -415,7 +413,7 @@ Analizziamo la situazione dal punto di vista di Bob per $t \gtrsim t_1$:
 Dunque Bob non può usare questo fenomeno per ricevere un segnale istantaneo da Alice. Per osservare le correlazioni e distinguere i casi, è necessario ripetere l'esperimento molte volte e analizzare le distribuzioni di probabilità.
 
 
-\subsubsection{Teorema di Non Comunicazione (No Communication Theorem)}
+\subsection{Teorema di Non Comunicazione (No Communication Theorem)}
 
 Per verificare se vi sia una reale violazione di causalità (trasmissione istantanea di informazione), analizziamo se Bob può accorgersi delle operazioni effettuate da Alice osservando solo il suo sottosistema.
 Supponiamo che Alice ripeta l'esperimento molte volte, decidendo ogni volta di effettuare la stessa operazione al tempo $t_1$.
@@ -462,7 +460,7 @@ Possiamo formalizzare questo risultato osservando l'evoluzione dello stato ridot
 Lo stato totale pre-misura è il singoletto puro $\rho_{12} = \dyad{\psi}{\psi}$.
 Lo stato ridotto di Bob è:
 \[
-    \rho_2 = \Tr_1(\rho_{12}) = \frac{1}{2} \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \frac{1}{2} I
+    \rho_2 = \Tr_1(\rho_{12}) = \frac{1}{2} \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \frac{1}{2} \id
 \]
 
 Se Alice effettua una misura (ad esempio di $S_{z,1}$), dal punto di vista dell'insieme statistico (ignorando il risultato specifico), lo stato totale diventa una miscela statistica (stato misto) delle due possibilità post-collasso:
@@ -471,7 +469,7 @@ Se Alice effettua una misura (ad esempio di $S_{z,1}$), dal punto di vista dell'
 \]
 Calcoliamo il nuovo stato ridotto di Bob $\rho_2'$ tracciando via il sistema 1:
 \[
-    \rho_2' = \Tr_1(\rho_{12}') = \frac{1}{2} \dyad{-}{-} + \frac{1}{2} \dyad{+}{+} = \frac{1}{2} I
+    \rho_2' = \Tr_1(\rho_{12}') = \frac{1}{2} \dyad{-}{-} + \frac{1}{2} \dyad{+}{+} = \frac{1}{2} \id
 \]
 Notiamo che $\rho_2 = \rho_2'$. Poiché tutti i valori medi delle osservabili di Bob dipendono solo da $\rho_2$ ($\ev{B} = \Tr(\rho_2 B)$), nessuna misura locale su $S_2$ può distinguere i due casi.
 

@@ -14,16 +14,16 @@ Dal teorema di Wigner \ref{theo: Wigner} sappiamo che queste trasformazioni \(\t
 \begin{proof}
     \((\impliedby) \) 
     \[
-        \left[ \Psi \right]\to \left[ e^{i\theta}U \Psi\right]= \left[ \Psi \right] \quad A \to e^{i\theta}UAU^\dagger e ^{-i\theta}= UAU^\dagger
+        \left[ \Psi \right]\to \left[ e^{i\theta}U \Psi\right]= \left[ U\Psi \right] \quad A \to e^{i\theta}UAU^\dagger e ^{-i\theta}= UAU^\dagger
     \]
     \((\implies) \) supposto che \(\tau_U = \tau_{U'}: \ \ UAU^\dagger = U'AU'^\dagger\) abbiamo che:
     \[
-       U^\dagger U A U^\dagger U'= U^\dagger U'A A'^\dagger U'  \implies AU^\dagger U'= U^\dagger U ' A
+       U^\dagger U A U^\dagger U'= U^\dagger U'A U'^\dagger U'  \implies AU^\dagger U'= U^\dagger U ' A
        \implies \left[ U^\dagger U', A \right]=0
     \] 
-    Sfruttiamo il lemma: \(B\) t.c. \(\left[ B,A \right]= 0 , \ A \) a.a. \(\implies B = \lambda I\).
+    Sfruttiamo il lemma: \(B\) t.c. \(\left[ B,A \right]= 0 , \ A \) a.a. \(\implies B = \lambda \id\).
     \[
-        \implies U^\dagger U' = \lambda I , \ \abs{\lambda} = 1 \implies U ' = e^{i\theta}U
+        \implies U^\dagger U' = \lambda \id , \ \abs{\lambda} = 1 \implies U ' = e^{i\theta}U
     \]
 \end{proof}
 Perciò ogni trasformazione di simmetria \(\tau\) è indotta da un \textit{raggio operatore} (anti)unitario:
@@ -32,7 +32,7 @@ Perciò ogni trasformazione di simmetria \(\tau\) è indotta da un \textit{raggi
 \end{equation}
 
 \begin{remark}
-    \(I\) è simmetria, composizione di simmetrie \(\tau_1 \circ \tau_2\) è simmetria e \(\tau^{-1}\) è simmetria.
+    \(\id\) è simmetria, composizione di simmetrie \(\tau_1 \circ \tau_2\) è simmetria e \(\tau^{-1}\) è simmetria.
 \end{remark}
 
 
@@ -46,7 +46,7 @@ Perciò ogni trasformazione di simmetria \(\tau\) è indotta da un \textit{raggi
     \begin{itemize}
         \item Associativa: \((gh)k= g(hk) \quad \forall\, g,h,k \in G\) .
         \item Esiste neutro: \(\exists 1 \in G :\ 1g = g1 = g \quad \forall \, g \in G\) .
-        \item Esiste inverso: \(\forall \, g \in G , \ \exists\, g^{-1}\in G : \ gg^{-1}= 1 = g^{1}g\)
+        \item Esiste inverso: \(\forall \, g \in G , \ \exists\, g^{-1}\in G : \ gg^{-1}= 1 = g^{-1}g\)
     \end{itemize}
 \end{definition}
 Se vale anche la proprietà commutativa \(gh = hg \ \forall\, g,h \in G\) allora il gruppo si dice \textit{abeliano}.
@@ -65,7 +65,7 @@ Se vale anche la proprietà commutativa \(gh = hg \ \forall\, g,h \in G\) allora
 
 Le simmetrie della fisica \(\tau\) sono un gruppo \(G\) rispetto all'operazione di composizione:
 \[
-    \tau \leftrightarrow \left[ U_\tau \right]; \quad id \leftrightarrow \left[ I \right]  ;\quad \tau_1\circ \tau_2 \leftrightarrow \left[ U_{\tau_1} U_{\tau_2} \right]; \quad
+    \tau \leftrightarrow \left[ U_\tau \right]; \quad id \leftrightarrow \left[ \id \right]  ;\quad \tau_1\circ \tau_2 \leftrightarrow \left[ U_{\tau_1} U_{\tau_2} \right]; \quad
     \tau^{-1}\leftrightarrow \left[ U^{-1}_\tau \right] = \left[ U^\dagger _\tau \right]
 \]
 Sto rappresentando il gruppo delle simmetrie della fisica attraverso gli operatori unitari.
@@ -73,11 +73,11 @@ Sto rappresentando il gruppo delle simmetrie della fisica attraverso gli operato
 \begin{definition}
     Dato un "gruppo astratto" \(G\) e uno spazio vettoriale \(V\) si dice \textit{rappresentazione} di \(G\) su \(V\) la mappa:
     \begin{equation}
-        \rho: G \to GL(V) \quad g \to \rho(g)
+        \rho: G \to GL(V) \quad g \mapsto \rho(g)
     \end{equation}
     tale che:
     \begin{itemize}
-        \item \(\rho(1)= I\)
+        \item \(\rho(1)= \id\)
         \item \(\rho(gh)= \rho(g)\rho(h)\)
         \item \(\rho(g^{-1}) = \rho(g)^{-1}\)
     \end{itemize}
@@ -111,14 +111,14 @@ Se \(V\) è spazio di Hilbert e \(\rho(g)\) è unitario \(\forall \, g \in G\), 
 \lezione{15}{31/10/2025}
 
 Chiediamoci ora \(\rho: \tau\to \rho(\tau)= U_\tau\), dove scelgo \(U_\tau \) come rappresentante di \(\left[ U_\tau \right]\), è rappresentazione?\\
-Possiamo sempre scegliere per \(\tau = id\) tra i \(\left[ I \right] \) l'operatore \(I\). Scelti \(U_{\tau_1}\) e \(U_{\tau_2}\),
+Possiamo sempre scegliere per \(\tau = id\) tra i \(\left[ \id \right] \) l'operatore \(\id\). Scelti \(U_{\tau_1}\) e \(U_{\tau_2}\),
 si sceglie per \(\tau_3 =\tau_1 \circ \tau_2 \) il raggio operatore \(\left[ U_{\tau_3} \right]\) rappresentato da \(U_{\tau_3}= e^{i\theta_{12}}U_{\tau_1}U_{\tau_2}\)
 non sempre esiste però \(U_{\tau_3}\) t.c. \(e^{i\theta_{12}}=1\) condizione necessaria per essere rappresentazione.
 
 \begin{definition}
     Definiamo una \textit{rappresentazione proiettiva}, come una mappa \(\rho: G \to GL(V)\) tale che:
     \[
-        \rho(1) = e^{i\alpha}I \qquad \rho(gh)= e^{i\theta(g,h)} \rho(g)\rho(h)
+        \rho(1) = e^{i\alpha}\id \qquad \rho(gh)= e^{i\theta(g,h)} \rho(g)\rho(h)
     \]
 \end{definition}
 
@@ -171,10 +171,10 @@ ma non si potrà sempre trovare una scelta con \(e^{i\theta(g,h)}=1 \ \forall\, 
     \]
 
     \[
-        U_1U_2 = iU_3, \qquad U_2U_1 = -iU_3, \qquad U_k^2 = I
+        U_1U_2 = iU_3, \qquad U_2U_1 = -iU_3, \qquad U_k^2 = \id
     \]
 
-    Nessuna scelta di \(U_1, U_2, U_3\) soddisfa \(U_1U_2=U_3\) e \(U_k^2=I\).
+    Nessuna scelta di \(U_1, U_2, U_3\) soddisfa \(U_1U_2=U_3\) e \(U_k^2=\id\).
 \end{example}
 
 \begin{definition}
@@ -190,12 +190,12 @@ Gli \(U(s)\) che rappresetano \(\tau(s )\) sono sempre unitari: \(\forall \, s \
 \begin{theorem}
     Un gruppo a un parametro non ammette rappresentazione genuinamente proiettive.
 \end{theorem}
-E' sempre possibile, dunque, secgliere una rappresentazione tale che \(U(0)= I, \  U(s)U(s')= U(s+s')\) .
+E' sempre possibile, dunque, secgliere una rappresentazione tale che \(U(0)= \id, \  U(s)U(s')= U(s+s')\) .
 
 Se considero \(s \) infinitesimo, posso sviluppare in Taylor:
-\[
-    U(s )\ket{\Psi}= U(0)\ket{\Psi}+ s \dv{U}{s} \eval_{s = 0} + \dots = I - \frac{i}{\hbar}s Q    + \dots
-\]
+\begin{equation}
+    U(s )\ket{\Psi}= U(0)\ket{\Psi}+ s \dv{U}{s} \eval_{s = 0} + \dots = \id - \frac{i}{\hbar}s Q    + \dots
+\end{equation}
 Dove è stato definito il \textit{generatore infinitesimo di trasformazioni} \(Q = i\hbar \dv{U}{s}\eval_{s =0}\).
 \begin{remark}
     \(Q\) è hermitiano dato che deve valere \(U^\dagger(s)= U(-s)\).
@@ -203,7 +203,7 @@ Dove è stato definito il \textit{generatore infinitesimo di trasformazioni} \(Q
 
 
 \begin{theorem}\label{theo: Stone}
-    {\normalfont\textbf{di Stone}} Dato un gruppo a un parametro \(\left\{ U(s) \text{ unitari } , \ s \in \mathbb{R}\right\}\) tale che \(U(0)= I\), \(U(s )U (s') = U(s+s')\) e sia continuo in \(s \), allora:
+    {\normalfont\textbf{di Stone}} Dato un gruppo a un parametro \(\left\{ U(s) \text{ unitari } , \ s \in \mathbb{R}\right\}\) tale che \(U(0)= \id\), \(U(s )U (s') = U(s+s')\) e sia continuo in \(s \), allora:
     \[
         Q\ket{\Psi} \equiv i\hbar \dv{s}U(s )\eval_{s=0}\ket{\Psi}    := i\hbar\lim_{s \to 0} \frac{U(s)\ket{\Psi}-\ket{\Psi}}{s}
     \]
@@ -214,22 +214,22 @@ Dove è stato definito il \textit{generatore infinitesimo di trasformazioni} \(Q
 Consideriamo una simmetria a un parametro \(\tau(s ): A \to A(s )= U(s )A U(s )^\dagger \):
 \[
     A(s) = 
-    \left( I - \frac{i}{\hbar}sQ + \dots \right)
+    \left( \id - \frac{i}{\hbar}sQ + \dots \right)
     A
-    \left( I + \frac{i}{\hbar}sQ + \dots \right)
+    \left( \id + \frac{i}{\hbar}sQ + \dots \right)
     = A - \frac{i}{\hbar}\left[ Q, A \right]s + \dots
 \]
 
-\[
-   \implies  i\hbar \dv{}{s}\left( U(s)AU(s)^\dagger \right)\eval_{s=0} = \left[ Q, A \right]
-\]
+\begin{equation}\label{eq: simmetria}
+    \implies  i\hbar \dv{}{s}\left( U(s)AU(s)^\dagger \right)\eval_{s=0} = \left[ Q, A \right]
+\end{equation}
 Se \(Q\) commuta con \(A\) allora \(A\) è invariante per la simmetria \(\tau(s )\).
 
 
 \subsection{Traslazioni spaziali 1D}
 Dall'omogeneità dello spazio, vogliamo studiare una simmetria \(\tau(a) \leftrightarrow \left[ U(a) \right]\rightsquigarrow U(a)\) che agisca nella seguente maniera:
 \[
-    U(a)\ket{\Psi}= \ket{\Psi'} \quad \Psi'(x)= \Psi(x-a) \quad X' = U(a)XU(a)^\dagger = X- aI \quad U(a)P U(a)^\dagger = P
+    U(a)\ket{\Psi}= \ket{\Psi'} \quad \Psi'(x)= \Psi(x-a) \quad X' = U(a)XU(a)^\dagger = X- a\id \quad U(a)P U(a)^\dagger = P
 \]
 
 
@@ -296,8 +296,7 @@ Poiché \(a\in\mathbb{R}\) è arbitrario, segue che lo spettro di \(Q\) è trasl
 \]
 
 
-Gli operatori \(U(a)=e^{-\frac{i}{\hbar}aP}\) realizzano le traslazioni di \(Q\);
-equivalentemente, \(P\) è il generatore infinitesimo delle traslazioni della variabile coniugata a \(Q\).
+Gli operatori \(U(a)=e^{-\frac{i}{\hbar}aP}\) realizzano le traslazioni di \(Q\).
 
 
 \subsection{Traslazioni spaziali in 3D}
@@ -341,7 +340,7 @@ U(\vec a)=e^{-\frac{i}{\hbar}P_x a_x}\,e^{-\frac{i}{\hbar}P_y a_y}\,e^{-\frac{i}
 \subsection{Rotazioni 3D}
 \lezione{16}{03/11/2025}
 
-Consideriamo la trasformazione di un vettore \(\vec{x} \in \mathbb{R}^3 \to \vec{x'}= R\vec{x}\), in cui consideriamo le matrici \(3\times3\) di rotazione \(R \) tali che \(R^\intercal R = I_3\) detto \textit{gruppo ortogonale} \(O(3)\).\\
+Consideriamo la trasformazione di un vettore \(\vec{x} \in \mathbb{R}^3 \to \vec{x'}= R\vec{x}\), in cui consideriamo le matrici \(3\times3\) di rotazione \(R \) tali che \(R^\intercal R = \id_3\) detto \textit{gruppo ortogonale} \(O(3)\).\\
 Vale che \(\forall R \in O(3), \ \det R = \pm 1 \), tra queste consideriamo il \textit{gruppo speciale ortogonale}:
 \begin{equation}
     SO(3)= \left\{ R \in O(3): \det R = +1 \right\}
@@ -353,14 +352,14 @@ Vale che \(\forall R \in O(3), \ \det R = \pm 1 \), tra queste consideriamo il \
 \end{definition}
 
 \begin{example}
-    \(U(n)=\left\{ U \in \text{Mat}_{n\times n } : U^\dagger U = I \right\}\) detto \textit{gruppo unitario}.\\
+    \(U(n)=\left\{ U \in \text{Mat}_{n\times n } : U^\dagger U = \id \right\}\) detto \textit{gruppo unitario}.\\
     \(SU(n) = \left\{ U \in U(n ) : \det U = +1 \right\}\) detto \textit{gruppo unitario speciale}.
 \end{example}
 
 
-Consideriamo ora rotazioni infinitesime della forma \(R = I + s \delta R + O(s^2)\). Per la condizione \(R^\intercal R =I\) otteniamo:
+Consideriamo ora rotazioni infinitesime della forma \(R = \id + s \delta R + O(s^2)\). Per la condizione \(R^\intercal R =\id\) otteniamo:
 \[
-    I= (I+s \delta R^\intercal + \dots )(I+s \delta R+ \dots )= I + s(\delta R^\intercal+\delta R )
+    \id= (\id+s \delta R^\intercal + \dots )(\id+s \delta R+ \dots )= \id + s(\delta R^\intercal+\delta R )
     \implies \delta R^\intercal=-\delta R 
 \]
 Cioè deve essere una matrice antisimmetrica. Una base per lo spazio delle matrici antisimmetriche, detto \textit{algebra di Lie} di \(SO(3)\) e indicata con \(so(3)\), è data da:
@@ -421,25 +420,25 @@ Nella stessa maniera in cui \(SO(3)\) induce un algebra di Lie \(so(3)\), \(U_{R
 
 Dunque se \(U(\vec{\omega})\) è rappresentazione unitaria non proiettiva di \(SO(3)\) e \(\frac{1}{i\hbar}J_k\) sono rappresentazione autoaggiunta di \(so(3)\) e dovranno avere le stesse relazioni di commutazione:
 \begin{equation}
-    \left[ J_i , J_k\right] = i\hbar\sum_k \epsilon_{ijk} J_k
+    \left[ J_i , J_j\right] = i\hbar\sum_k \epsilon_{ijk} J_k
 \end{equation}
 I \(J_k\) corrispondono alle componenti del momento angolare.
 
 Se invece \(U(\vec{\omega})\) è rappresentazione genuinamente proiettiva, ottengo:
 \[
-    \left[ J_i , J_k\right] = i\hbar\sum_k \epsilon_{ijk} J_k + c_{ij} I 
+    \left[ J_i , J_j\right] = i\hbar\sum_k \epsilon_{ijk} J_k + c_{ij} \id 
 \]
 ma nel caso di \(so(3)\) si può sempre porre \(c_{ij}= 0 \ \forall\,i,j\) .\\
 Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
 \[
-    R(\vec{\omega })R(\vec{\omega}) = I  \quad  \text{ ma }\quad  U_{R(\vec{\omega}) }U_{R(\vec{\omega}) }= \pm I 
+    R(\vec{\omega })R(\vec{\omega}) = \id  \quad  \text{ ma }\quad  U_{R(\vec{\omega}) }U_{R(\vec{\omega}) }= \pm \id 
 \]
 
 
 \begin{example}
     \textbf{Particella in 3D senza spin}
     \[
-        \mathcal{H} = L_2(\mathbb{R}) \quad R \in SO(3)\qquad
+        \mathcal{H} = L_2(\mathbb{R}^3) \quad R \in SO(3)\qquad
         \ket{\Psi' }= U(R)\ket{\Psi} \qquad \Psi'(\vec{x})= \Psi(R^{-1}\vec{x}) 
     \]
     \[
@@ -458,8 +457,8 @@ Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
     = i\hbar\sum_{j=1}^{3}(\pdv{x_j}\Psi)\,\pdv{}{\omega_k}\!\left[(R(-\vec{\omega})\vec{x})_j\right]\eval_{\vec{\omega}=0}
     \]
 
-    Sviluppando \(R(-\vec{\omega})=I-\sum_m\omega_mT_m+\dots\) con 
-    \((T_m)_{j\ell}=-\epsilon_{m j \ell}\), si ha:
+    Sviluppando \(R(-\vec{\omega})=\id-\sum_k\omega_k T_k+\dots\) con 
+    \((T_k)_{j\ell}=-\epsilon_{k j \ell}\), si ha:
     \[
     (R(-\vec{\omega})\vec{x})_j = x_j - \sum_{k,\ell}\omega_k(T_k)_{j\ell}x_\ell+ \dots
     = x_j - \sum_{k,\ell}\omega_k\epsilon_{k \ell j}x_\ell + \dots
@@ -511,20 +510,20 @@ Inoltre, si ha il problema che per \(\vec{\omega}= (0 \ 0 \ \pi)\) avrò:
 
 Una rototraslazione è una trasformazione descritta da:
 \begin{equation}
-    g = (R, \vec{a})= (I, \vec{a})(R,0) \qquad \vec{x}'= (R, \vec{a})\vec{x}= R\vec{x}+ \vec{a}
+    g = (R, \vec{a})= (\id, \vec{a})(R,0) \qquad \vec{x}'= (R, \vec{a})\vec{x}= R\vec{x}+ \vec{a}
 \end{equation}
 definita in modo che prima avvenga la rotazione e successivamente la traslazione.\\
-Le rototraslazioni formano ovviamente un gruppo, la cui identità: \(id = (I,0)\), l'inversa è \((R,\vec{a})^{-1}= (R^{-1}, -R^{-1}\vec{a})\) e la composizione vale:
+Le rototraslazioni formano ovviamente un gruppo, la cui identità: \(id = (\id,0)\), l'inversa è \((R,\vec{a})^{-1}= (R^{-1}, -R^{-1}\vec{a})\) e la composizione vale:
 \[
 (R_1,\vec{a_1})(R_2, \vec{a_2})\vec{x}= (R _1, \vec{a})(R_2\vec{x}+\vec{a_2})= R_1R_2\vec{x}+ R_1\vec{a}+ \vec{a_1}= (R_1R_2, R_1\vec{a_2}+\vec{a_1})
 \]
 Che verifica la definizione di inversa:
 \[
-    (R, \vec{a})(R^{-1}, R^{-1}\vec{a}) = (I, - RR^{-1}\vec{a}+\vec{a})= (I,0)
+    (R, \vec{a})(R^{-1}, R^{-1}\vec{a}) = (\id, - RR^{-1}\vec{a}+\vec{a})= (\id,0)
 \]
 Essendo una composizione di rotazioni e traslazioni la rappresentazione unitaria è data da:
 \[
-    U_{(R, \vec{a})}= U_{\vec{a}}U_{R(\vec{\omega})}= e^{-\frac{i}{\hbar}\vec{P}\cdot\vec{a}}e^{-\frac{i}{\hbar}\vec{\omega}\cdot\vec{j}}
+    U_{(R, \vec{a})}= U_{\vec{a}}U_{R(\vec{\omega})}= e^{-\frac{i}{\hbar}\vec{P}\cdot\vec{a}}e^{-\frac{i}{\hbar}\vec{\omega}\cdot\vec{J}}
 \]
 Abbiamo quindi un gruppo a 6 parametri generato da le \(J_i e P_i\), la cui algebra è data da:
 \[
@@ -650,7 +649,7 @@ Dalla definizione di \(\mathbb{P}\) otteniamo:
 \]
 Confrontando i due risultati segue che \(\mathbb{P}\) è unitario.
 
-Dato che \(\mathbb{P}^2 = I\) segue che \(\mathbb{P}= \mathbb{P}^{-1}= \mathbb{P}^\dagger\) cioé è sia unitario che autoaggiunto.\\
+Dato che \(\mathbb{P}^2 = \id\) segue che \(\mathbb{P}= \mathbb{P}^{-1}= \mathbb{P}^\dagger\) cioé è sia unitario che autoaggiunto.\\
 Lo spettro \(\sigma(\mathbb{P})= \left\{ \pm 1   \right\}\), dunque per autovalore \(n_p \in \sigma(\mathbb{P})\) vale:
 \[
     \bra{\vec{x}}\mathbb{P}\ket{\Psi}= n_p\braket{\vec{x}}{\Psi} \iff \Psi(-\vec{x}) = n_p \Psi(\vec{x})

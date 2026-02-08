@@ -218,7 +218,7 @@ Inoltre definiamo:
 \begin{example}
     Fissato \(\psi\in \mathcal{H}\) esiste un \(\phi_\psi \in \mathcal{H}^*\) dato da:
     \begin{equation}
-        \xi\mapsto \phi_\psi(\chi):= \ip{\psi}{\chi}
+        \chi\mapsto \phi_\psi(\chi):= \ip{\psi}{\chi}
     \end{equation}
     Si dimostra per il \textbf{teorema di rappresentazione di Riesz} che tutti i \(\phi \in \mathcal{H}^*\) si ottengono in questo modo.
 
@@ -232,8 +232,8 @@ Inoltre definiamo:
 
 
 \subsubsection{Notazione di Dirac}
-Rappresentiamo i vettori \(\psi \in \mathcal{H}\) come \textit{ket} \(\ket{\psi}\) , 
-invece i funzionali \(\phi\in \mathcal{H}^*\) come \textit{bra} \(\bra{\phi}\) .
+Rappresentiamo i vettori \(\psi \in \mathcal{H}\) come \textit{ket} \(\ket{\psi}\), 
+invece i funzionali \(\phi\in \mathcal{H}^*\) come \textit{bra} \(\bra{\phi}\).
 C'è una corrispondenza biunivoca di dualità tra il ket \(\ket{\psi}\in \mathcal{H}\) e il bra \(\bra{\psi} \in \mathcal{H}^*\).
 Con \(\braket{\psi}{\chi}\) indichiamo il funzionale \(\bra{\psi}\) appliicato al vettore \(\ket{\chi}\)
 che equivale al prodotto scalare tra i vettori \(\ket{\psi}\) e \(\ket{\chi}\) .
@@ -262,13 +262,13 @@ che equivale al prodotto scalare tra i vettori \(\ket{\psi}\) e \(\ket{\chi}\) .
     \(\left\{ \ket{n} \right\}_{n \in \mathbb{N}}\)
 \end{theorem}
 Inoltre per \(\forall \ket{\psi} \in \mathcal{H}\) è possibile la scomposizione:
-\(\ket{\psi}= \sum_{n=1}^{\infty}c_n\ket{n}\) con \(c_n = \braket{n}{\psi}\) .
-Da cui notiamo \(\ket{\psi}= \sum_{n=1}^{\infty}\ket{n}\braket{n}{\psi} \implies I_n= \sum_{n=1}^{\infty} \dyad{n}{n}\)
+\(\ket{\psi}= \sum_{n=1}^{\infty}c_n\ket{n}\) con \(c_n = \braket{n}{\psi}\).
+Da cui notiamo \(\ket{\psi}= \sum_{n=1}^{\infty}\ket{n}\braket{n}{\psi} \implies \id_n= \sum_{n=1}^{\infty} \dyad{n}{n}\)
 detta \textbf{relazione di completezza}.
 
 \begin{example}
     \[
-    \braket{\psi}{\chi}= \matrixel{\psi}{I}{\chi}=
+    \braket{\psi}{\chi}= \matrixel{\psi}{\id}{\chi}=
     \sum_{n=1}^{\infty} \braket{\psi}{n}\braket{n}{\chi}  = \sum_{n=1}^{\infty} a^*_n b_n
     \]
     dove si è considerato \(\ket{\psi}= \sum_{n=1}^{\infty}a_n \ket{n} \,, 
@@ -386,7 +386,7 @@ Se invece di basi a momento fissato, scelgo una base a posizione fissa del tipo
 
 Vale, inoltre, la \textit{relazione di completezza generalizzata}: 
 \begin{equation}
-    \int \dd{x_0} \dyad{x_0}{x_0}= \mathbf{1}_\mathcal{H} = \int \dd{p} \dyad{p}{p}
+    \int \dd{x_0} \dyad{x_0}{x_0}= \id_\mathcal{H} = \int \dd{p} \dyad{p}{p}
 \end{equation}
 
 Le funzioni d'onda sono i coefficienti di \(\ket{\Psi}\) rispetto a una particolare base:
@@ -461,7 +461,7 @@ che si generalizza nel caso di uno spettro misto come:
     Vogliamo misurare l'osservabile posizione \(\mathcal{X}\), il cui spettro \(\sigma(\mathcal{X}) = \mathbb{R}\) :
     \[
         \expval{\mathcal{X}}_{\Sigma= [\Psi]} = \int_{\sigma(\mathcal{X})= \mathbb{R}} x\rho_\Sigma(x) \dd{x} = \int_{\mathbb{R}} x \frac{\abs{\Psi(x)}^2}{\norm{\Psi}^2} \dd{x}= 
-        \frac{1}{\norm{\Psi}^2}= \int_{\mathbb{R}} \Psi^*(x) x \Psi(x) \dd{x}
+        \frac{1}{\norm{\Psi}^2} \int_{\mathbb{R}} \Psi^*(x) x \Psi(x) \dd{x}
     \]
     Possiamo definire l'operatore posizione \(X: (X\Psi)(x)= x\Psi(x)\) e ottenere:
     \begin{equation}
@@ -552,7 +552,7 @@ Se \(\operatorname{dim}\mathcal{H} < \infty\), tutti gli operatori sono limitati
 \begin{itemize}
     \item \((aA+ bB)^\dagger= a^*A^\dagger + b^*B^\dagger \)
     \item \((AB)^\dagger= B^\dagger A^\dagger\)
-    \item \((A^\dagger)^\dagger\)
+    \item \((A^\dagger)^\dagger= A\) 
 \end{itemize}
 
 
@@ -596,7 +596,7 @@ Similmente, la si può rappresentare come :
 \begin{example}
     \textbf{Operatore identità}
     \begin{equation}
-        I= \sum_{n,m} \ket{n}\bra{n} I \ket{m}\bra{m}= \sum_{n,m} \ket{n}\delta_{nm}\bra{m}= \sum_n \ket{n}\bra{n}
+        \id= \sum_{n,m} \ket{n}\bra{n} \id \ket{m}\bra{m}= \sum_{n,m} \ket{n}\delta_{nm}\bra{m}= \sum_n \ket{n}\bra{n}
     \end{equation}
 \end{example}
 
@@ -605,7 +605,7 @@ Similmente, la si può rappresentare come :
     \begin{equation}
         (A^\dagger)_{nm}= \braket{n}{A^\dagger m}= \overline{\braket{A^\dagger m}{n}}= \overline{\braket{m}{A n}}= A_{mn}^*
     \end{equation}
-    L'aggiunto di un operatore euqivale a trasporre la matrice e cogniugare i suoi elementi.
+    L'aggiunto di un operatore equivale a trasporre la matrice e cogniugare i suoi elementi.
 \end{example}
 
 \begin{definition}
@@ -687,7 +687,7 @@ Come facciamo a essere certi che questa \(f(\mathcal{A})\) a cui è associata \(
 \begin{remark}
     Dato uno stato \(\Sigma\to [\Psi]\) e un'osservabile \(\mathcal{A} \to A \):
    \begin{equation}
-     (\Delta A )_{\hat{a}, \Sigma} = \sqrt{\expval{(\mathcal{A}-\hat{a})^2}_\Sigma}   = \sqrt{\expval{(A-\hat{a}I)^2}_{\Psi}}
+     (\Delta A )_{\hat{a}, \Sigma} = \sqrt{\expval{(\mathcal{A}-\hat{a})^2}_\Sigma}   = \sqrt{\expval{(A-\hat{a}\id)^2}_{\Psi}}
    \end{equation}
 \end{remark}
 
@@ -707,7 +707,7 @@ ad esempio, le informazioni sullo spettro di un'osservabile devono essere conten
     \(\Sigma\) è autostato di \(\mathcal{A}\) relativo ad \(\hat{a} \in \mathbb{R}\)   \(\iff (\Delta \mathcal{A})_{\hat{a},\Sigma}=0\)
 \end{theorem}
 \begin{proof}
-    \((\Delta \mathcal{A})_{\hat{a}, \Sigma} = \sum_{a \in \Sigma(\mathcal{A})}(a-\hat{a})^2 P_{\Sigma}(a)\) è una somma di numeri non negativi.
+    \((\Delta \mathcal{A})^2_{\hat{a}, \Sigma} = \sum_{a \in \sigma(\mathcal{A})}(a-\hat{a})^2 P_{\Sigma}(a)\) è una somma di numeri non negativi.
     \[
         (\Delta\mathcal{A}) = 0 \iff (a- \hat{a})^2 P_\Sigma(a)= 0 \quad \forall \, a \in \sigma(\mathcal{A})
     \] 
@@ -726,7 +726,7 @@ ad esempio, le informazioni sullo spettro di un'osservabile devono essere conten
 
 Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \([\Psi]\):
 \begin{definition}
-    \(\hat{a} \in \mathbb{R}\) è \textit{autovalore} di \(A\) autoaggiunto sse \(\exists \,\Psi \neq 0 \in D_A\) tale che \((A-\hat{a})\Psi=0\). \\
+    \(\hat{a} \in \mathbb{R}\) è \textit{autovalore} di \(A\) autoaggiunto se e solo se \(\exists \,\Psi \neq 0 \in D_A\) tale che \((A-\hat{a})\Psi=0\). \\
     In tal caso si dice che \(\Psi\) è autovettore di \(A\) relativo ad \(\hat{a}\) .
     Lo spettro discreto si definisce come:
     \[
@@ -739,11 +739,11 @@ Consideriamo ora l'operatore autoaggiunto associato \(A\) e lo stato associato \
 \end{theorem}
 \begin{proof}
     \[
-        (\Delta \mathcal{A})^2_{\hat{a},\Sigma}= \frac{\expval{(A-\hat{a}I)^2}{\Psi}}{\norm{\Psi}^2}= 
-        \frac{\braket{(A-\hat{a}I)\Psi}{(A-\hat{a}I)\Psi}}{\norm{\Psi}^2} = \frac{\norm{(A-\hat{a}I)\Psi}^2}{\norm{\Psi}^2}
+        (\Delta \mathcal{A})^2_{\hat{a},\Sigma}= \frac{\expval{(A-\hat{a}\id)^2}{\Psi}}{\norm{\Psi}^2}= 
+        \frac{\braket{(A-\hat{a}\id)\Psi}{(A-\hat{a}\id)\Psi}}{\norm{\Psi}^2} = \frac{\norm{(A-\hat{a}\id)\Psi}^2}{\norm{\Psi}^2}
     \]
     \[
-        (\Delta\mathcal{A})_{\hat{a},\Sigma} = 0 \iff (A-\hat{a}I)\Psi=0 
+        (\Delta\mathcal{A})_{\hat{a},\Sigma} = 0 \iff (A-\hat{a}\id)\Psi=0 
     \]    
 \end{proof}
 
@@ -887,7 +887,7 @@ Stessa cosa vale per il momento:
 \begin{remark}
     La normalizzazione di \(\ket{x}\) e \(\ket{p}\) è fissata dalla condizione:
     \begin{equation}
-        \int \dd{x} \ket{x}\bra{x} = I = \int \dd{p} \ket{p}\bra{p}
+        \int \dd{x} \ket{x}\bra{x} = \id = \int \dd{p} \ket{p}\bra{p}
     \end{equation}
 
 \end{remark}
@@ -913,7 +913,7 @@ si estende a:
     In tal caso, \(\Psi\) è \textit{autovettore generalizzato}.
 \end{definition}
 
-Si dimostra che \(\sigma(A) = \left\{ \text{ autovalori generalizzati } \right\}\) .
+Si dimostra che \(\sigma_c(A) = \left\{ \text{ autovalori generalizzati } \right\}\) .
 \begin{definition}
     \(a \in \sigma(a)\) è \textit{autovalore proprio} se il suo autovettore \(\Psi \in D_a\subseteq L_2(\mathbb{R}^n)\)
 \end{definition}
@@ -1066,7 +1066,7 @@ e quindi \((P,D_P)\) è autoaggiunto.
 \end{theorem}
 
 \begin{proof}
-    Definiamo per comodità : \(\hat{A} = A- a I\) e \(\hat{B} = B - bI\) autoaggiunti.
+    Definiamo per comodità : \(\hat{A} = A- a \id\) e \(\hat{B} = B - b\id\) autoaggiunti.
     \[
         (\Delta A)_{a,\Psi}^2 = \frac{\expval{(A-aI)^2}{\Psi}}{\norm{\Psi}^2} = \frac{\expval{\hat{A}^2}{\Psi}}{\norm{\Psi}^2} = \frac{\braket*{\hat{A}\Psi}{\hat{A}\Psi}}{\norm{\Psi}} = \frac{\norm{\hat{A}\Psi}^2}{\norm{\Psi}^2}
     \]
@@ -1098,12 +1098,12 @@ e quindi \((P,D_P)\) è autoaggiunto.
     \]
     per cui
     \[
-        [X,P]\,\Psi(x)= (XP-PX)\Psi(x)= i\hbar\,\Psi(x) \quad \Rightarrow \quad [X,P]= i\hbar\,I
+        [X,P]\,\Psi(x)= (XP-PX)\Psi(x)= i\hbar\,\Psi(x) \quad \Rightarrow \quad [X,P]= i\hbar\,\id
     \]
-    Il commutatore non è hermitiano, mentre \(-i[X,P]= \hbar\,I\) è autoaggiunto. Applicando il teorema otteniamo
+    Il commutatore non è hermitiano, mentre \(-i[X,P]= \hbar\,\id\) è autoaggiunto. Applicando il teorema otteniamo
     \[
         (\Delta X)_{x_0,\Psi}\,(\Delta P)_{p_0,\Psi} \geq \frac{1}{2}\abs{\expval{[X,P]}_\Psi}
-        = \frac{\hbar}{2} \abs{\expval{I}_\Psi}= \frac{\hbar}{2}
+        = \frac{\hbar}{2} \abs{\expval{\id}_\Psi}= \frac{\hbar}{2}
     \]
 \end{example}
 
@@ -1182,7 +1182,7 @@ Allora questi sono autovettori del proiettore \(\mathcal{P}_{\tilde{\mathcal{H}}
 quindi lo spettro è \(\sigma(\mathcal{P}_{\tilde{\mathcal{H}}})= \{0,1\}\), in generale degenere.
 
 \begin{remark}
-    Se \(\mathcal{P}_{\tilde{\mathcal{H}}} \) è un proiettore, lo è anche \(I- \mathcal{P}_{\tilde{\mathcal{H}}}\).
+    Se \(\mathcal{P}_{\tilde{\mathcal{H}}} \) è un proiettore, lo è anche \(\id- \mathcal{P}_{\tilde{\mathcal{H}}}\).
 \end{remark}
 \begin{remark}
     In notazione matriciale \(\mathcal{P}_{\tilde{\mathcal{H}}}= \sum \ket{n_\parallel}\bra{n_\parallel}\) .
@@ -1198,13 +1198,13 @@ Fissata una base ON \(\{\ket{a,r}\}_{r=1}^{d(a)}\) di \(\mathcal{H}_a\), il proi
 
 Se lo spettro è puramente discreto (\(\sigma(A)= \sigma_d(A)\)) ed esiste una base ON di autovettori di \(A\), allora valgono:
 \begin{equation}
-    I= \sum_{a\in \sigma(A)} \mathcal{P}_a\,,\qquad
+    \id= \sum_{a\in \sigma(A)} \mathcal{P}_a\,,\qquad
         A= \sum_{a\in \sigma(A)} a\,\mathcal{P}_a.
 \end{equation}
 
 Se \(\dim \mathcal{H} < \infty\), per ogni \(a\in \sigma(A)\) il proiettore si può esprimere come:
 \[
-    \mathcal{P}_a= \prod_{\substack{a'\in \sigma(A)\\ a'\neq a}} \frac{a'\,I- A}{a'-a}.
+    \mathcal{P}_a= \prod_{\substack{a'\in \sigma(A)\\ a'\neq a}} \frac{a'\,\id- A}{a'-a}.
 \]
 
 
@@ -1434,7 +1434,7 @@ ovvero:
 \[
 \{ q_j, p_k \} = \delta_{jk}
 \;\;\longrightarrow\;\;
-\frac{1}{i\hbar}[Q_j, P_k] = \delta_{jk}\,I
+\frac{1}{i\hbar}[Q_j, P_k] = \delta_{jk}\,\id
 \]
 
 \[

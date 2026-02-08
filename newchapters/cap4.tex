@@ -90,8 +90,8 @@ Un operatore generico \(G: \mathcal{H} \to \mathcal{H}\) (dove \(\mathcal{H} = \
 
 Dati \(A_1\) su \(\mathcal{H}_1\) e \(B_2\) su \(\mathcal{H}_2\), si definiscono le loro estensioni allo spazio totale:
 \begin{align}
-    \tilde{A}_1 &= A_1 \otimes I_{\mathcal{H}_2} \\
-    \tilde{B}_2 &= I_{\mathcal{H}_1} \otimes B_2
+    \tilde{A}_1 &= A_1 \otimes \id_{\mathcal{H}_2} \\
+    \tilde{B}_2 &= \id_{\mathcal{H}_1} \otimes B_2
 \end{align}
 Questi operatori (che spesso vengono indicati senza tilde per abuso di notazione) rappresentano fisicamente operatori che agiscono solo su uno spazio (il proprio sottosistema), lasciando inalterato l'altro (agendo come l'identità).
 
@@ -178,9 +178,9 @@ U(\vec{\omega})\vec{X}U(\vec{\omega})^\dagger = R(\vec{\omega})^{-1}\vec{X}
 \]
 Per rotazioni infinitesime, possiamo sviluppare l'espressione usando la rappresentazione matriciale della rotazione:
 \[
-R(\vec{\omega})^{-1}\vec{X} \approx \left( I_3 - \sum_j \omega_j T_j \right)\vec{X}
+R(\vec{\omega})^{-1}\vec{X} \approx \left( \id_3 - \sum_j \omega_j T_j \right)\vec{X}
 \]
-Dalla relazione tra trasformazioni infinitesime e commutatori, otteniamo:
+Dalla relazione tra trasformazioni infinitesime e commutatori (vedi equazione \ref{eq: simmetria}), otteniamo:
 \[
 [J_j, X_k] = i\hbar \pdv{}{\omega_j} \left( R(\vec{\omega})^{-1}\vec{X} \right)_k \bigg|_{\vec{\omega}=0} = i\hbar \sum_l \epsilon_{jkl} X_l
 \]
@@ -229,7 +229,7 @@ Consideriamo una singola particella quantistica. Introduciamo un nuovo operatore
 \begin{postulato8}
     Per una singola particella quantistica, l'operatore \(\vec{S}^2\) ha un singolo autovalore dato da:
     \begin{equation}
-        \vec{S}^2 = \hbar^2 s(s+1) I
+        \vec{S}^2 = \hbar^2 s(s+1) \id
     \end{equation}
     dove \(s \in \frac{1}{2}\mathbb{N}\) è un numero quantico caratteristico: ogni singola particella quantistica ha un singolo valore di \(s\) fissato.
 \end{postulato8}
@@ -248,19 +248,19 @@ Rispetto al caso senza spin, abbiamo nuovi gradi di libertà. Lo spazio totale a
 
 Gli operatori posizione \(\vec{X}\) e momento \(\vec{P}\) agiscono solo su \(\mathcal{H}_{\vec{x}}\). Nello spazio totale si scrivono come:
 \[
-    \vec{X} = \vec{X}_{\vec{x}} \otimes I_{\mathcal{H}_s}
+    \vec{X} = \vec{X}_{\vec{x}} \otimes \id_{\mathcal{H}_s}
 \]
 \[
-    \vec{P} = \vec{P}_{\vec{x}} \otimes I_{\mathcal{H}_s}
+    \vec{P} = \vec{P}_{\vec{x}} \otimes \id_{\mathcal{H}_s}
 \]
-dove \(I_{\mathcal{H}_s}\) è l'identità nello spazio dello spin (questi operatori "non fanno nulla" nello spazio \(\mathcal{H}_s\)).
+dove \(\id_{\mathcal{H}_s}\) è l'identità nello spazio dello spin (questi operatori "non fanno nulla" nello spazio \(\mathcal{H}_s\)).
 
 Analogamente, i 3 operatori di spin agiscono solo su \(\mathcal{H}_s\):
 \[
-    \vec{S} = I_{\mathcal{H}_{\vec{x}}} \otimes \vec{S}_s
+    \vec{S} = \id_{\mathcal{H}_{\vec{x}}} \otimes \vec{S}_s
 \]
 
-Poiché \(\vec{S}^2 \propto I\), è necessario utilizzare \(S_z\) come osservabile per completare l'I.C.O.C. nel sottospazio dello spin. Lo spettro di \(S_z\) è dato da:
+Poiché \(\vec{S}^2 \propto \id\), è necessario utilizzare \(S_z\) come osservabile per completare l'I.C.O.C. nel sottospazio dello spin. Lo spettro di \(S_z\) è dato da:
 \begin{equation}
     \sigma(S_z) = \left\{ m\hbar \right\}_{m \in \{-s, \dots, s\}}
 \end{equation}
@@ -284,7 +284,7 @@ Essendo \(m\) il numero quantico magnetico che varia a passi interi da \(-s\) a 
 \subsection{Spin 1/2 e matrici di Pauli}
 \lezione{21}{14/11/2025}
 
-Concentriamoci ora su particelle da spin \(s = \frac{1}{2}\), avremo dunque \(\vec{S}^2= \frac{3}{4}\hbar^2 I\) , \(m = \left\{ -\frac{1}{2},\frac{1}{2} \right\}\) e lo spazio di Hilbert dello spin \(\mathcal{H}_s \cong\mathbb{C}^2\).\\
+Concentriamoci ora su particelle da spin \(s = \frac{1}{2}\), avremo dunque \(\vec{S}^2= \frac{3}{4}\hbar^2 \id\) , \(m \in \left\{ -\frac{1}{2},\frac{1}{2} \right\}\) e lo spazio di Hilbert dello spin \(\mathcal{H}_s \cong\mathbb{C}^2\).\\
 Gli autostati di \(S_z\) sono:
 \[
     S_z\ket{+}=+ \frac{\hbar}{2} \ket{+} \qquad S_z\ket{-}=-\frac{\hbar}{2} \ket{-}
@@ -351,11 +351,11 @@ Le matrici di Pauli hanno le seguenti proprietà:
 \begin{multicols}{2}
 \begin{itemize}
     \item \(\sigma_k^\dagger = \sigma_k\)
-    \item \(\sigma_k^2= I\)
+    \item \(\sigma_k^2= \id\)
     \item \(\sigma_k^\dagger = \sigma_k^{-1}\)
     \item se \(i \neq j, \quad \sigma_i\sigma_j=i \sum_{k}\epsilon_{ijk}\sigma_k\)
     \item \(\left[ \sigma_i, \sigma_j \right]=2i\sum_k\epsilon_{ijk}\sigma_k\)
-    \item \(\left\{ \sigma_i,\sigma_j \right\}= 2\delta_{ij}I\)
+    \item \(\left\{ \sigma_i,\sigma_j \right\}= 2\delta_{ij}\id\)
     \item \(\Tr(\sigma_k)=0\)
     \item \(\det\sigma_k= -1\)
 \end{itemize}    
@@ -367,7 +367,7 @@ Ogni matrice 2x2 hermitiana si scrive:
         a & b-ic \\
         b+ic & d
     \end{pmatrix}
-    = \frac{a+d}{2} I + b \sigma_1 + c \sigma_2 + \frac{a-d}{2} \sigma_3, \quad a,b,c,d \in \mathbb{R}
+    = \frac{a+d}{2} \id + b \sigma_1 + c \sigma_2 + \frac{a-d}{2} \sigma_3, \quad a,b,c,d \in \mathbb{R}
 \]
 
 
@@ -385,15 +385,15 @@ Definiamo la combinazione lineare delle matrici di Pauli $\sigma_k$ lungo la dir
 \end{equation}
 Calcoliamo il quadrato dell'operatore $(\hat{n} \cdot \vec{\sigma})$:
 \[
-(\hat{n} \cdot \vec{\sigma})^2 = \sum_{k} n_k^2 \sigma_k^2+ \sum_{i < j} n_i n_j \{\sigma_i, \sigma_j\}=I
+(\hat{n} \cdot \vec{\sigma})^2 = \sum_{k} n_k^2 \sigma_k^2+ \sum_{i < j} n_i n_j \{\sigma_i, \sigma_j\}=\id
 \]
 Dati due vettori generici $\vec{u}, \vec{v} \in \mathbb{R}^3$, vogliamo calcolare il prodotto delle loro contrazioni con le matrici di Pauli:
 \[
-(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = \sum_{i,j} v_i u_j \sigma_i \sigma_j = \sum_{i,j} v_i u_j \left(\delta_{ij}I + i \sum_k \epsilon_{ijk}\sigma_k\right)
+(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = \sum_{i,j} v_i u_j \sigma_i \sigma_j = \sum_{i,j} v_i u_j \left(\delta_{ij}\id + i \sum_k \epsilon_{ijk}\sigma_k\right)
 \]
 Il primo termine restituisce il prodotto scalare, il secondo (antisimmetrico) restituisce il prodotto vettoriale:
 \begin{equation}
-(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = (\vec{v} \cdot \vec{u}) I + i (\vec{v} \times \vec{u}) \cdot \vec{\sigma}
+(\vec{v} \cdot \vec{\sigma})(\vec{u} \cdot \vec{\sigma}) = (\vec{v} \cdot \vec{u}) \id + i (\vec{v} \times \vec{u}) \cdot \vec{\sigma}
 \end{equation}
 
 
@@ -410,15 +410,15 @@ L'espressione diventa quindi:
 \[
     U(\theta \hat{n}) = e^{-\frac{i}{2}\theta (\hat{n}\cdot\vec{\sigma})}.
 \]
-Per calcolare l'esponenziale, sfruttiamo la proprietà \((\hat{n}\cdot\vec{\sigma})^2 = I\),
+Per calcolare l'esponenziale, sfruttiamo la proprietà \((\hat{n}\cdot\vec{\sigma})^2 = \id\),
 espandiamo l'esponenziale in serie di Taylor e separiamo i termini pari e dispari:
 \begin{align*}
     U(\theta\hat{n}) &= \sum_{k=0}^{\infty} \frac{1}{(2k)!} \left(-\frac{i\theta}{2}\right)^{2k} (\hat{n}\cdot\vec{\sigma})^{2k} + \sum_{k=0}^{\infty} \frac{1}{(2k+1)!} \left(-\frac{i\theta}{2}\right)^{2k+1} (\hat{n}\cdot\vec{\sigma})^{2k+1} \\
-    &= \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k)!} \left(\frac{\theta}{2}\right)^{2k} I - i \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k+1)!} \left(\frac{\theta}{2}\right)^{2k+1} (\hat{n}\cdot\vec{\sigma}).
+    &= \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k)!} \left(\frac{\theta}{2}\right)^{2k} \id - i \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k+1)!} \left(\frac{\theta}{2}\right)^{2k+1} (\hat{n}\cdot\vec{\sigma}).
 \end{align*}
 Riconoscendo le serie di Taylor per il coseno e il seno, otteniamo la formula fondamentale per la rotazione dello spin:
 \begin{equation}
-    U(\theta \hat{n}) = \cos(\frac{\theta}{2})I - i \sin(\frac{\theta}{2}) (\hat{n}\cdot\vec{\sigma}).
+    U(\theta \hat{n}) = \cos(\frac{\theta}{2})\id - i \sin(\frac{\theta}{2}) (\hat{n}\cdot\vec{\sigma}).
 \end{equation}
 La sua rappresentazione matriciale è:
 \[
@@ -430,9 +430,9 @@ La sua rappresentazione matriciale è:
 \]
 Se effettuiamo una rotazione completa di un angolo \(\theta = 2\pi\) attorno a un asse qualsiasi:
 \[
-    U(2\pi \hat{n}) = \cos(\pi)I - i \sin(\pi)(\hat{n}\cdot\vec{\sigma}) = -I.
+    U(2\pi \hat{n}) = \cos(\pi)\id - i \sin(\pi)(\hat{n}\cdot\vec{\sigma}) = -\id.
 \]
-Non otteniamo l'identità \(I\), ma \(-I\). Lo stato ruotato differisce da quello iniziale per una fase globale:
+Non otteniamo l'identità \(\id\), ma \(-\id\). Lo stato ruotato differisce da quello iniziale per una fase globale:
 \[
     \ket{\Psi'} = U(2\pi\hat{n})\ket{\Psi} = -\ket{\Psi}.
 \]
@@ -530,7 +530,7 @@ Affinché lo stato sia fisico e normalizzabile, entrambe le funzioni d'onda comp
 \)
 
 Tra gli operatori agiscono sullo spinore di Pauli $[\Psi](\vec{x})$, possiamo distinguere tra operatori che agiscono sulla parte spaziale \( \mathcal{H}_{\vec{x}} \) e operatori che agiscono sulla parte di spin \( \mathcal{H}_s \).\\
-I primi agiscono sulle componenti della funzione d'onda ma "banalmente" sullo spazio degli spin (sono proporzionali all'identità \( I_{2\times 2} \) nello spazio dello spin).
+I primi agiscono sulle componenti della funzione d'onda ma "banalmente" sullo spazio degli spin (sono proporzionali all'identità \( \id_{2\times 2} \) nello spazio dello spin).
 
 Per l'operatore posizione \( \vec{X} \) (o la sua componente \( k \)-esima \( X_k \)):
 \[
@@ -580,18 +580,18 @@ Sostituendo \( P_k = -i\hbar \partial_k \), otteniamo la forma finale dell'azion
 
 Definiamo l'operatore generatore delle rotazioni infinitesime per uno spinore come l'operatore momento angolare totale \( \vec{J} \), dato dalla somma del momento angolare orbitale e di spin:
 \[
-    \vec{J} = \vec{L} \otimes I_s + I_{\vec{x}} \otimes \vec{S}
+    \vec{J} = \vec{L} \otimes \id_s + \id_{\vec{x}} \otimes \vec{S}
 \]
 dove il primo termine agisce solo sullo spazio delle posizioni \( \mathcal{H}_{\vec{x}} \) e il secondo solo sullo spazio dello spin \( \mathcal{H}_s \).
 
 L'operatore unitario di rotazione finita di un angolo \( \abs{\vec{\omega}} \) attorno all'asse definito da \( \vec{\omega} \) è:
 \[
-    U(\vec{\omega}) = e^{-\frac{i}{\hbar} \vec{J} \cdot \vec{\omega}} = e^{-\frac{i}{\hbar} (\vec{L} \cdot \vec{\omega} \otimes I_s + I_{\vec{x}} \otimes \vec{S} \cdot \vec{\omega})}
+    U(\vec{\omega}) = e^{-\frac{i}{\hbar} \vec{J} \cdot \vec{\omega}} = e^{-\frac{i}{\hbar} (\vec{L} \cdot \vec{\omega} \otimes \id_s + \id_{\vec{x}} \otimes \vec{S} \cdot \vec{\omega})}
 \]
 
-Poiché gli operatori agiscono su spazi disgiunti, essi commutano: \( [\vec{L} \otimes I_s, I_{\vec{x}} \otimes \vec{S}] = 0 \). Possiamo quindi utilizzare la proprietà \( e^{A+B} = e^A e^B \) per fattorizzare l'operatore:
+Poiché gli operatori agiscono su spazi disgiunti, essi commutano: \( [\vec{L} \otimes \id_s, \id_{\vec{x}} \otimes \vec{S}] = 0 \). Possiamo quindi utilizzare la proprietà \( e^{A+B} = e^A e^B \) per fattorizzare l'operatore:
 \[
-    U(\vec{\omega}) = \left( e^{-\frac{i}{\hbar} \vec{L} \cdot \vec{\omega}} \otimes I_s \right) \left( I_{\vec{x}} \otimes e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}} \right)
+    U(\vec{\omega}) = \left( e^{-\frac{i}{\hbar} \vec{L} \cdot \vec{\omega}} \otimes \id_s \right) \left( \id_{\vec{x}} \otimes e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}} \right)
     = e^{-\frac{i}{\hbar} \vec{L} \cdot \vec{\omega}} \otimes e^{-\frac{i}{\hbar} \vec{S} \cdot \vec{\omega}}
 \]
 
@@ -622,7 +622,7 @@ Entrambi obbediscono alla consueta algebra dei momenti angolari. Il momento ango
 \begin{equation}
     \vec{J} = \vec{J}_1 + \vec{J}_2
 \end{equation}
-dove la somma è intesa come somma diretta di operatori estesi ai prodotti tensoriali (\( \vec{J}_1 \otimes I + I \otimes \vec{J}_2 \)).
+dove la somma è intesa come somma diretta di operatori estesi ai prodotti tensoriali (\( \vec{J}_1 \otimes \id + \id \otimes \vec{J}_2 \)).
 
 \begin{example}
     \textbf{Particella con Spin} \\
@@ -692,14 +692,14 @@ Poiché i commutatori non sono nulli, non esiste una base comune di autovettori 
 
 Vogliamo dunque trovare un modo per cambiare da una base all'altra.
 
-\subsection{Addizione di Momenti Angolari e Coefficienti di Clebsch-Gordan (DA FARE)}
+\subsection{Coefficienti di Clebsch-Gordan}
 \lezione{22}{17/11/2025}
 
 Fissiamo \(j_1, j_2, r, s\), con \(m_1 \in \{-j_1, \dots, j_1\} \) e \( m_2 \in \{-j_2, \dots, j_2\}\) 
 consideriamo lo spazio di Hilbert \(\mathcal{H}_{j_1, j_2, r, s} \) con \(\dim(\mathcal{H}) = (2j_1+1)(2j_2+1)\) e le due basi:
-\[
-    \left\{ \ket{j_1, m_1; j_2, m_2; r, s} \equiv \ket{m_1, m_2}\right\} \qquad\left\{ \ket{j, m, j_1, j_2, k}\equiv \ket{j, m}\right\}
-\]
+\begin{equation}
+    \left\{ \ket{j_1, m_1; j_2, m_2; r, s} \equiv \ket{m_1; m_2}\right\} \qquad\left\{ \ket{j, m, j_1, j_2, k}\equiv \ket{j, m}\right\}
+\end{equation}
 Ci chiediamo quali siano i possibili valori di $j, m$ in questo spazio. Per passare da una base all'altra, utilizziamo la relazione di completezza della base prodotto:
 \[
     \ket{j, m} = \sum_{m_1, m_2} \ket{m_1; m_2} \braket{m_1; m_2}{j, m}
@@ -713,18 +713,12 @@ Analizziamo l'azione dell'operatore $J_z = J_{1z} + J_{2z}$ sulle due basi:
     J_z \ket{m_1; m_2} = (J_{1z} + J_{2z})\ket{m_1; m_2} = \hbar(m_1 + m_2)\ket{m_1; m_2}
 \]
 Proiettando l'equazione agli autovalori, otteniamo una condizione sui coefficienti di Clebsch-Gordan:
-\[
-    \braket{m_1; m_2}{j, m} \neq 0 \implies m = m_1 + m_2
-\]
+\begin{equation}
+    \braket{m_1; m_2}{j, m} \neq 0 \iff m = m_1 + m_2
+\end{equation}
 Quindi la somma su $m_1, m_2$ nell'espansione è vincolata a quei termini che soddisfano la conservazione della componente $z$ del momento angolare.
 
-\begin{example}
-    Consideriamo come esempio il caso in cui \(\)
-\end{example}
-
-
-
-Consideriamo l'addizione di due momenti angolari con numeri quantici $j_1 = \frac{3}{2}$ e $j_2 = 1$.
+Consideriamo, ad esempio, l'addizione di due momenti angolari con numeri quantici $j_1 = \frac{3}{2}$ e $j_2 = 1$.
 I possibili valori per i numeri quantici magnetici sono:
 \[
     m_1 \in \left\{ -\frac{3}{2}, -\frac{1}{2}, \frac{1}{2}, \frac{3}{2} \right\} \qquad 
@@ -750,28 +744,106 @@ Costruiamo la tabella degli stati della base disaccoppiata $\ket{m_1; m_2}$ ordi
 \end{tabular}
 \end{center}
 
-Partiamo dal valore massimo possibile di $m$, che è $m_{\text{max}} = j_1 + j_2 = \frac{3}{2} + 1 = \frac{5}{2}$.
-Esiste un solo stato con questo valore:
+Ricordiamo che gli operatori di innalzamento e abbassamento totali sono definiti come la somma degli operatori sui singoli spazi:
+\begin{equation}
+    J_{\pm} = J_{1\pm} + J_{2\pm}
+\end{equation}
+L'azione di questi operatori sugli autostati è governata dai coefficienti \( \mathcal{N}_{\pm}(j,m) \):
+\begin{equation}
+    J_{\pm}\ket{j,m} = \mathcal{N}_{\pm}(j,m)\ket{j, m\pm 1} = \hbar\sqrt{j(j+1) - m(m\pm 1)}\ket{j, m\pm 1}
+\end{equation}
+
+Partiamo dallo stato con la somma dei numeri quantici magnetici massima possibile. In questo caso \( m_{max} = m_{1,max} + m_{2,max} = \frac{3}{2} + 1 = \frac{5}{2} \).
+Osserviamo l'azione di \( J_+ \) su tale stato:
 \[
-    \ket{\frac{3}{2}; 1}
+    J_+ \ket{\frac{3}{2}; 1} = (J_{1+} + J_{2+}) \ket{\frac{3}{2}; 1} = 0
 \]
-Poiché $m=j$ per lo stato di massimo peso, e dato che l'operatore di innalzamento totale $J_+ = J_{1+} + J_{2+}$ applicato a questo stato dà zero ($J_+ \ket{\frac{3}{2}; 1} = 0$), identifichiamo questo stato con il primo vettore della base accoppiata:
+È nullo perché le proiezioni \( m_1 \) e \( m_2 \) sono già ai loro valori massimi e non possono essere alzate ulteriormente.
+Sappiamo che \( J_+ \) annichilisce un autostato di \( J_z \) se e solo se esso è un autostato di \( \vec{J}^2 \) con \( m=j \).
+\begin{equation}
+    J_+ \ket{j,m} = 0 \implies m=j
+\end{equation}
+Quindi identifichiamo questo stato come il primo vettore della nuova base accoppiata, quello con spin totale massimo:
+\begin{equation}
+    \ket{m_1=\frac{3}{2}; m_2=1} \equiv \ket{J=\frac{5}{2}, m=\frac{5}{2}}
+\end{equation}
+
+Dato che abbiamo fissato \( J=\frac{5}{2} \), il multipletto deve contenere tutti gli stati con \( m \in \{-\frac{5}{2}, \dots, \frac{5}{2}\} \).
+Per trovare gli altri stati del multipletto, applichiamo l'operatore di abbassamento \( J_- = J_{1-} + J_{2-} \).
+
+Calcoliamo il primo stato discendente \( \ket{J=\frac{5}{2}, m=\frac{3}{2}} \):
 \[
-    \ket{j=\frac{5}{2}, m=\frac{5}{2}} \equiv \ket{m_1=\frac{3}{2}; m_2=1}
+    \ket{\frac{5}{2}, \frac{3}{2}} = \frac{J_-}{\mathcal{N}_-(\frac{5}{2}, \frac{5}{2})} \ket{\frac{5}{2}, \frac{5}{2}}
 \]
-Da questo stato, possiamo generare tutti gli altri stati con $j=\frac{5}{2}$ (che sono $2j+1 = 6$ stati) applicando ripetutamente l'operatore di abbassamento $J_- = J_{1-} + J_{2-}$. Ricordiamo che l'azione sui ket è data da:
+Sostituendo l'espressione in termini delle singole particelle:
 \[
-    J_{\pm}\ket{j,m} = \hbar\sqrt{j(j+1) - m(m\pm 1)}\ket{j, m\pm 1}
+    = \frac{1}{\mathcal{N}_-(\frac{5}{2}, \frac{5}{2})} \left( J_{1-}\ket{\frac{3}{2}; 1} + J_{2-}\ket{\frac{3}{2}; 1} \right)
 \]
-Applicando $J_-$ otteniamo lo stato con $m=\frac{3}{2}$ appartenente al multipletto $j=\frac{5}{2}$.
-Tuttavia, notiamo dalla tabella che per $m=\frac{3}{2}$ ci sono \textbf{due} stati linearmente indipendenti. Uno appartiene al multipletto $j=\frac{5}{2}$, l'altro deve necessariamente essere lo stato di massimo peso (highest weight) del multipletto successivo, ovvero $j=\frac{3}{2}$.
-Questa procedura si ripete "scremando" gli stati fino a completare la base accoppiata.
+Calcoliamo separatamente i coefficienti di normalizzazione:
+\begin{itemize}
+    \item Per lo spin totale: \( \mathcal{N}_-(\frac{5}{2}, \frac{5}{2}) = \hbar\sqrt{\frac{5}{2}(\frac{7}{2}) - \frac{5}{2}(\frac{3}{2})} = \hbar\sqrt{\frac{35-15}{4}} = \hbar\sqrt{5} \)
+    \item Per la particella 1: \( \mathcal{N}_-(\frac{3}{2}, \frac{3}{2}) = \hbar\sqrt{\frac{3}{2}(\frac{5}{2}) - \frac{3}{2}(\frac{1}{2})} = \hbar\sqrt{3} \)
+    \item Per la particella 2: \( \mathcal{N}_-(1, 1) = \hbar\sqrt{1(2) - 1(0)} = \hbar\sqrt{2} \)
+\end{itemize}
 
+Sostituendo i valori ottenuti:
+\[
+    \ket{\frac{5}{2}, \frac{3}{2}} = \frac{1}{\hbar\sqrt{5}} \left( \hbar\sqrt{3}\ket{\frac{1}{2}; 1} + \hbar\sqrt{2}\ket{\frac{3}{2}; 0} \right)
+\]
+Semplificando \( \hbar \), otteniamo l'espressione dello stato normalizzato nella base disaccoppiata:
+\begin{equation}
+    \ket{J=\frac{5}{2}, m=\frac{3}{2}} = \sqrt{\frac{3}{5}} \ket{\frac{1}{2}; 1} + \sqrt{\frac{2}{5}} \ket{\frac{3}{2}; 0}
+\end{equation}
 
-\textbf{BUCOOOOOOOO DA FINIREEE}
+\noindent
+L'operatore $J_+$ mappa un sottospazio di dimensione 2 (quello con $m_{tot} = 3/2$) in uno di dimensione 1 (quello con $m_{tot} = 5/2$). Di conseguenza, $J_+$ deve avere un \textit{kernel} non banale in questo sottospazio: deve esistere cioè una combinazione lineare di vettori che viene annichilita da $J_+$.
 
+Cerchiamo i coefficienti $\alpha, \beta$ tali per cui la combinazione:
+\[
+    \ket{\psi} = \alpha \ket{\frac{1}{2}; 1} + \beta \ket{\frac{3}{2}; 0}
+\]
+soddisfi la condizione $J_+ \ket{\psi} = 0$ (condizione di \textit{highest weight} per il multipletto con $j=3/2$) e la normalizzazione $|\alpha|^2 + |\beta|^2 = 1$.
+Scrivendo $J_+ = J_{1+} + J_{2+}$, l'azione sullo stato è:
+\[
+    0 = \alpha J_{1+} \ket{\frac{1}{2}; 1} + \underbrace{\alpha J_{2+} \ket{\frac{1}{2}; 1}}_{=0 \, (m_2=1 \text{ max})} + \underbrace{\beta J_{1+} \ket{\frac{3}{2}; 0}}_{=0 \, (m_1=3/2 \text{ max})} + \beta J_{2+} \ket{\frac{3}{2}; 0}
+\]
+Utilizzando l'azione degli operatori a scala $J_{\pm}\ket{j,m} = \hbar\sqrt{j(j+1) - m(m\pm 1)}\ket{j, m\pm 1}$:
+\begin{align*}
+    J_{1+} \ket{\frac{1}{2}} &= \hbar\sqrt{3} \ket{\frac{3}{2}} \\
+    J_{2+} \ket{0} &= \hbar\sqrt{2} \ket{1}
+\end{align*}
+L'equazione diventa:
+\[
+    \alpha \sqrt{3} \ket{\frac{3}{2}; 1} + \beta \sqrt{2} \ket{\frac{3}{2}; 1} = 0 \implies \alpha\sqrt{3} + \beta\sqrt{2} = 0
+\]
+Da cui ricaviamo la relazione $\beta = -\alpha\sqrt{\frac{3}{2}}$. Imponendo la normalizzazione:
+\[
+    |\alpha|^2 + \frac{3}{2}|\alpha|^2 = 1 \implies \alpha^2 \frac{5}{2} = 1 \implies \alpha = \sqrt{\frac{2}{5}}
+\]
+Scegliendo la fase in modo coerente (segno reale positivo per il primo coefficiente), otteniamo i coefficienti di Clebsch-Gordan per questo stato:
+\[
+    \alpha = \sqrt{\frac{2}{5}}, \qquad \beta = - \sqrt{\frac{3}{5}}
+\]
+Quindi, questa particolare combinazione lineare viene annichilita da $J_+$, identificando lo stato con spin totale $j=3/2$ e proiezione massima:
+\begin{equation}
+    \ket{j=\frac{3}{2}, m=\frac{3}{2}} = \sqrt{\frac{2}{5}} \ket{\frac{1}{2}; 1} - \sqrt{\frac{3}{5}} \ket{\frac{3}{2}; 0}
+\end{equation}
 
-
+\begin{remark}
+    Si noti che questo stato è ortogonale allo stato del multipletto $j=5/2$ con la stessa proiezione magnetica $m=3/2$, che (tramite applicazione di $J_-$ allo stato $j=5/2, m=5/2$) risulta essere:
+    \[
+        \ket{j=\frac{5}{2}, m=\frac{3}{2}} = \sqrt{\frac{3}{5}} \ket{\frac{1}{2}; 1} + \sqrt{\frac{2}{5}} \ket{\frac{3}{2}; 0}
+    \]
+    Verifichiamo l'ortogonalità:
+    \[
+        \braket{\frac{5}{2}, \frac{3}{2}}{\frac{3}{2}, \frac{3}{2}} = \left(\sqrt{\frac{3}{5}}\right)\left(\sqrt{\frac{2}{5}}\right) + \left(\sqrt{\frac{2}{5}}\right)\left(-\sqrt{\frac{3}{5}}\right) = 0
+    \]
+    Se così non fosse stato, il vettore trovato non sarebbe stato annichilito da $J_+$.
+\end{remark}
+Proseguendo applicando gli operatori \(J_\pm \) è possibile trovare i coefficienti rimanenti.
+\begin{remark}
+    La fase globale non conta fisicamente ($\alpha$ e $\beta$ possono avere una fase comune), ma la fase relativa (il segno meno) è fondamentale per garantire l'ortogonalità. Per convenzione si sceglie un segno per i coefficienti e si rimane coerenti (convenzione di Condon-Shortley: coefficienti reali).
+\end{remark}
 
 \section{Regole di superselezione}
 
@@ -979,7 +1051,7 @@ Definiamo un operatore unitario su \(\mathcal{H}\) detto \textit{operatore di sc
     \item Conserva la norma: \( \norm{\hat{P}_{12}\ket{\Psi}}^2 = \norm{\ket{\Psi}}^2 \).
     \item 
     \(
-    \hat{P}_{12}^2 = I \implies \hat{P}_{12} = \hat{P}_{12}^{-1} = \hat{P}_{12}^\dagger \implies \hat{P}_{12} \text{ è a.a.}
+    \hat{P}_{12}^2 = \id \implies \hat{P}_{12} = \hat{P}_{12}^{-1} = \hat{P}_{12}^\dagger \implies \hat{P}_{12} \text{ è a.a.}
     \)
     \item Lo spettro è discreto: \( \sigma(\hat{P}_{12}) = \{ \pm 1 \} \).
 \end{itemize}
@@ -1071,11 +1143,11 @@ Non tutti gli operatori a.a. su \(\mathcal{H}^{\otimes 2}\) corrispondono a un o
 Grazie al postulato posso risolvere il problema della degenerazione di scambio: se misuro \(A\) su entrambe le particelle e ottengo due risultati \(a_n \neq a_m\), 
 l'unica combinazione lineare ammissibile per i bosoni è quella simmetrica:
 \begin{equation}
-    \frac{1}{\sqrt{2}}\left( \ket{a_n}\otimes\ket{a_m} + \ket{a_n}+ \ket{a_m} \right)  \in \mathcal{H}_S
+    \frac{1}{\sqrt{2}}\left( \ket{a_n}\otimes\ket{a_m} + \ket{a_m}\otimes \ket{a_n} \right)  \in \mathcal{H}_S
 \end{equation}
 Mentre per i fermioni è quella antisimmetrica:
 \begin{equation}
-    \frac{1}{\sqrt{2}}\left( \ket{a_n}\otimes\ket{a_m} - \ket{a_n}+ \ket{a_m} \right)  \in \mathcal{H}_A
+    \frac{1}{\sqrt{2}}\left( \ket{a_n}\otimes\ket{a_m} - \ket{a_m}\otimes \ket{a_n} \right)  \in \mathcal{H}_A
 \end{equation}
 
 \begin{attention}
@@ -1388,7 +1460,7 @@ Invece per lo stato di singoletto (\(s=0\)), la parte di spin è antisimmetrica 
     \implies \Psi_{S=0, 0}(\vec{x}_2, \vec{x}_1) = + \Psi_{S=0, 0}(\vec{x}_1, \vec{x}_2)
 \]
 
-\subsubsection{Effetto fisico di funzioni d'onda simmetirce e antisimmetriche}
+\subsubsection{Effetto fisico di funzioni d'onda simmetriche e antisimmetriche}
 
 Consideriamo due funzioni d'onda di particella singola \(\psi_A(\vec{x}), \psi_B(\vec{x}) \in L_2(\mathbb{R}^3)\), con \(\psi_A \neq \psi_B\):
 \begin{equation}

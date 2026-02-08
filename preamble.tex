@@ -62,6 +62,9 @@
 \usepackage{amsmath, amssymb, amsthm, mathtools} % Pacchetti base per la matematica
 \usepackage{physics}             % Notazione fisica (derivata, bra-ket, etc.)
 \usepackage{cancel}              % Per barrare espressioni matematiche
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+\newcommand{\id}{\scalebox{1.15}{$\mathbbold{1}$}}
 
 % -------------------------------------------------------------------
 % GRAFICA, FIGURE E COLORI
@@ -124,7 +127,7 @@
 \newtheorem*{postulato1}{Postulato degli stati}
 \newtheorem*{postulato2}{Postulato delle osservabili}
 \newtheorem*{postulato3}{Postulato degli spettri}
-\newtheorem*{postulato4}{Postulato della probabilit di una misura}
+\newtheorem*{postulato4}{Postulato della probabilità di una misura}
 \newtheorem*{postulato5}{Postulato della misura}
 \newtheorem*{postulato6}{Postulato di quantizzazione canonica}
 \newtheorem*{postulato7}{Postulato di evoluzione causale}

@@ -109,6 +109,9 @@ Ottenendo così:
     \left( -\partial_r^2 + \frac{\ell(\ell+1)}{r^2} + \frac{2m}{\hbar^2}(V(r)-E) \right) u_{E,\ell,m}(r) = 0
 \end{equation}
 Abbiamo quindi un'equazione differenziale di secondo ordine nella sola variabile \(r\), e avrò in generale due soluzioni linearmente indipendenti. 
+\begin{remark}
+    Osserviamo che l'equazione non dipende dalla variabile \(m\) dunque in generale vale: \(u_{E,\ell,m}\equiv u_{E,\ell}\) .
+\end{remark}
 Controlliamo però che le soluzioni \(u(r)\) siano accettabili fisicamente.
 
 \subsubsection{Comportamento a \(r\to 0\)}
@@ -219,7 +222,7 @@ Dato che le variabili del CM e quelle relative sono indipendenti (i commutatori 
 
 Esprimendo l'Hamiltoniana nelle nuove coordinate, otteniamo la somma di due termini disaccoppiati:
 \begin{equation}
-    H = \underbrace{\frac{\vec{P}_{CM}^2}{2M}}_{H_{CM}} + \underbrace{\frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)}_{H_{rel}} \quad \text{ con } \; \mu = \frac{m_a+m_b}{M}
+    H = \underbrace{\frac{\vec{P}_{CM}^2}{2M}}_{H_{CM}} + \underbrace{\frac{\vec{P}_r^2}{2\mu} + V(|\vec{X}_r|)}_{H_{rel}} \quad \text{ con } \; \mu = \frac{m_a m_b}{M}
 \end{equation}
 Questo ci permette di fattorizzare lo spazio di Hilbert e le soluzioni:
 \begin{equation}
@@ -349,7 +352,7 @@ Definiamo le variabili adimensionali:
 e \( \lambda \) tale che \( E = - \lambda^2 E_I < 0 \).
 Considerando quindi la funzione scalata \( u_{\lambda, \ell}(\rho) \equiv u_{E,\ell}(r) \), l'equazione differenziale diventa:
 \[
-\frac{1}{a_0^2} \left( -\partial_\rho^2 + \frac{l(l+1)}{\rho^2} - \frac{2}{\rho} + \lambda^2 \right) u_{\lambda,\ell}(\rho) = 0
+\frac{1}{a_0^2} \left( -\partial_\rho^2 + \frac{\ell(\ell+1)}{\rho^2} - \frac{2}{\rho} + \lambda^2 \right) u_{\lambda,\ell}(\rho) = 0
 \]
 
 Per risolvere questa equazione supponiamo che la soluzione abbia forma \(u_{E,\ell}(\rho)= e^{-\lambda\rho}y(\rho) \) ,
@@ -383,7 +386,7 @@ Calcoliamo i termini che compaiono nell'equazione:
 
 Sostituendo quindi all'interno dell'equazione (aggiungendo i termini per \(k' = 0\) per cui vale \(c_{-1}\equiv0\)):
 \begin{equation}
-    \sum_{k=0}^{+\infty} \rho^{k+\ell+1} \big( -(k+k_0)(k+k_0+1)c_k + 2\lambda c_{k-1}(k+k_0) + \ell(\ell+1)c_k - 2c_{k-1} \big) = 0
+    \sum_{k=0}^{+\infty} \rho^{k+k_0+1} \big( -(k+k_0)(k+k_0+1)c_k + 2\lambda c_{k-1}(k+k_0) + \ell(\ell+1)c_k - 2c_{k-1} \big) = 0
 \end{equation}
 
 Questa equazione deve valere per ogni possibile valore di \(\rho\) e quindi la parentesi deve essere essere identicamente nulla per ogni valore di \(k\).\\
@@ -470,7 +473,7 @@ L'energia dipende solo dal numero quantico principale \( n \). In questo modo ab
 
 La differenza di energia tra due livelli \( n_1 \) e \( n_2 \) è data dalla \textbf{formula di Rydberg}:
 \begin{equation}
-    E_{n_1}-E_{n_2} = \left(\frac{1}{n_2^2} -\frac{1}{n_1^2} \right) -\frac{1}{n^2} E_I
+    E_{n_1}-E_{n_2} = \left(\frac{1}{n_2^2} -\frac{1}{n_1^2} \right) E_I
 \end{equation}
 \begin{figure}[ht]
     \centering

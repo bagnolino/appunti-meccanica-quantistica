@@ -87,13 +87,13 @@ Valgono i limiti per $\lambda \to 0$:
 Fissiamo un livello \( a \) tale per cui \( \ket{\lambda} \equiv \ket{E_a^\lambda} \) e \( E^\lambda \equiv E_a^\lambda \).
 Consideriamo lo sviluppo in serie di Taylor per studiare come cambiano autovalori e autovettori, abbiamo:
 \begin{equation}
-    E^\lambda = \mathcal{E}_0 + \mathcal{E}_1 \lambda + \mathcal{E}_2 \lambda^2 + \dots + \mathcal{E}_n \lambda^n + O(\lambda^{n+1})
+    E^\lambda = \varepsilon_0 + \varepsilon_1 \lambda + \varepsilon_2 \lambda^2 + \dots + \varepsilon_n \lambda^n + o(\lambda^{n+1})
 \end{equation}
-dove identifichiamo il termine di ordine zero con il livello imperturbato \( \mathcal{E}_0 = E_a^0 \), mentre \( \mathcal{E}_1 \) rappresenta la correzione al primo ordine e così via.
+dove identifichiamo il termine di ordine zero con il livello imperturbato \( \varepsilon_0 = E_a^0 \), mentre \(\varepsilon_1 \) rappresenta la correzione al primo ordine e così via.
 
 Analogamente, fissiamo anche il vettore di stato:
 \begin{equation}
-    \ket{E^\lambda} = \ket{\lambda} = \ket{0} + \lambda \ket{1} + \lambda^2 \ket{2} + \dots + \lambda^n \ket{n} + O(\lambda^{n+1})
+    \ket{E^\lambda} = \ket{\lambda} = \ket{0} + \lambda \ket{1} + \lambda^2 \ket{2} + \dots + \lambda^n \ket{n} + o(\lambda^{n+1})
 \end{equation}
 dove \( \ket{0} = \ket{E_a^0} \) è lo stato imperturbato noto e gli altri termini \( \ket{1}, \ket{2}, \dots \) sono le correzioni incognite.\\
 In questo modo otteniamo delle soluzioni approssimate di autovalori e autovettori trascurando i termini di ordine \( \lambda^{n+1} \).
@@ -113,7 +113,7 @@ In questo modo otteniamo delle soluzioni approssimate di autovalori e autovettor
     Sviluppiamo la condizione di normalizzazione al primo ordine:
     \begin{align*}
         1 = \braket{\lambda}{\lambda} &= \big( \bra{0} + \lambda \bra{1} + \dots \big) \big( \ket{0} + \lambda \ket{1} + \dots \big) \\
-        &= \underbrace{\braket{0}{0}}_{1} + \lambda \underbrace{\big( \braket{1}{0} + \braket{0}{1} \big)}_{2\braket{0}{1}} + O(\lambda^2)
+        &= \underbrace{\braket{0}{0}}_{1} + \lambda \underbrace{\big( \braket{1}{0} + \braket{0}{1} \big)}_{2\braket{0}{1}} + o(\lambda^2)
     \end{align*}
     Da cui si ricava la condizione: \(\braket{0}{1} = 0\) .\\
     Se espando fino a \(\lambda^3\), avrò la condizione \(\braket{2}{0}= \braket{0}{2}= - \frac{1}{2}\braket{1}{1}\) e il vettore rimane unico.
@@ -121,10 +121,10 @@ In questo modo otteniamo delle soluzioni approssimate di autovalori e autovettor
 
 La nostra equazione agli autovalori (\ref{eq: pertubazioni}) diventa:
 \begin{equation}
-    \left(H_0+ \lambda\hat{W}- \sum_{n=0}^{\infty}\epsilon_n\lambda^n\right)\sum_{k=0}^{\infty}\lambda^k\ket{k}=0 \qquad \forall \,\lambda
+    \left(H_0+ \lambda\hat{W}- \sum_{n=0}^{\infty}\varepsilon_n\lambda^n\right)\sum_{k=0}^{\infty}\lambda^k\ket{k}=0 \qquad \forall \,\lambda
 \end{equation}
 
-Otteniamo così le equazioni per le correzioni \(\epsilon_n\) fermandoci all'ordine che ci interessa:
+Otteniamo così le equazioni per le correzioni \(\varepsilon_n\) fermandoci all'ordine che ci interessa:
 \begin{align*}
     \lambda^0 &: \quad (H_0 - \varepsilon_0) \ket{0} = 0 \\
     \lambda^1 &: \quad (H_0 - \varepsilon_0) \ket{1} + (\hat{W} - \varepsilon_1) \ket{0} = 0 \\
@@ -145,11 +145,6 @@ Otteniamo così le equazioni per le correzioni \(\epsilon_n\) fermandoci all'ord
     anche qualora la serie di Taylor completa non fosse convergente (comportamento asintotico).
 \end{remark}
 
-Per l'ordine \(\lambda^0\) identifichiamo l'energia e lo stato imperturbati:
-\[
-    \varepsilon_0 = E_a^0 \qquad \ket{0} = \ket{E_a^0}
-\]
-
 Per l'ordine \(\lambda^1\), proiettando l'equazione correttiva sul bra imperturbato \(\bra{E_a^0}\), otteniamo:
 \[
     \underbrace{\mel{E_a^0}{H_0 - \varepsilon_0}{1}}_{=0} + \mel{E_a^0}{\hat{W} - \varepsilon_1}{0} = 0
@@ -161,15 +156,15 @@ Il primo termine si annulla poiché \(\bra{E_a^0}(H_0 - E_a^0) = 0\). Sviluppand
 Otteniamo dunque la correzione al primo ordine per l'energia \(\varepsilon_1 = \mel{E_a^0}{\hat{W}}{E_a^0}\).
 L'energia totale dello stato perturbato risulta quindi:
 \[
-    E_a^\lambda = E_a^0 + \mel{E_a^0}{\lambda \hat{W}}{E_a^0} + O(\lambda^2)
+    E_a^\lambda = E_a^0 + \mel{E_a^0}{\lambda \hat{W}}{E_a^0} + o(\lambda^2)
 \]
 
-Per ottenere la correzione allo stato \(\ket{1}\), proiettiamo l'equazione perturbativa sul bra \(\bra{E_b^0}\) con \(b \neq a\):
+Per ottenere la correzione \(\ket{1}\) dello stato, proiettiamo l'equazione perturbativa sul bra \(\bra{E_b^0}\) con \(b \neq a\):
 \[
     \mel{E_b^0}{H_0 - \varepsilon_0}{1} + \mel{E_b^0}{\hat{W} - \varepsilon_1}{0} = 0
 \]
 \[
-    (E_b^0 - E_a^0) \braket{E_b^0}{1} + \mel{E_b^0}{\hat{W}}{E_a^0} -\epsilon_1\braket{E_b^0}{E_a^0} = 0
+    (E_b^0 - E_a^0) \braket{E_b^0}{1} + \mel{E_b^0}{\hat{W}}{E_a^0} -\varepsilon_1\braket{E_b^0}{E_a^0} = 0
 \]
 Possiamo ora ricavare i coefficienti dello sviluppo di \(\ket{1}\) lungo la base imperturbata (per \(b \neq a\)):
 \begin{equation}
@@ -181,7 +176,7 @@ Lo stato corretto al primo ordine si scrive espandendo sulla base completa. Prec
 \]
 Dunque, lo stato totale fino all'ordine \(\lambda\) è:
 \begin{equation}
-    \ket{E_a^\lambda} = \ket{E_a^0} + \lambda \sum_{b \neq a} \frac{\mel{E_b^0}{\hat{W}}{E_a^0}}{E_a^0 - E_b^0} \ket{E_b^0} + O(\lambda^2)
+    \ket{E_a^\lambda} = \ket{E_a^0} + \lambda \sum_{b \neq a} \frac{\mel{E_b^0}{\hat{W}}{E_a^0}}{E_a^0 - E_b^0} \ket{E_b^0} + o(\lambda^2)
 \end{equation}
 
 
@@ -201,7 +196,7 @@ Sostituendo l'espressione di \(\ket{1}\) trovata in precedenza:
 \end{equation}
 L'energia totale corretta fino all'ordine \(\lambda^2\) è:
 \begin{equation}
-    E_a^\lambda = E_a^0 + \lambda \mel{E_a^0}{\hat{W}}{E_a^0} + \lambda^2 \sum_{b \neq a} \frac{\abs{\mel{E_b^0}{\hat{W}}{E_a^0}}^2}{E_a^0 - E_b^0} + O(\lambda^3)
+    E_a^\lambda = E_a^0 + \lambda \mel{E_a^0}{\hat{W}}{E_a^0} + \lambda^2 \sum_{b \neq a} \frac{\abs{\mel{E_b^0}{\hat{W}}{E_a^0}}^2}{E_a^0 - E_b^0} + o(\lambda^3)
 \end{equation}
 
 \subsection{Correzione armonica oscillatore armonico}
@@ -269,7 +264,7 @@ Otteniamo così i valori della correzione dell'energia:
 \]
 Dunque l'energia vale:
 \begin{equation}
-    \implies E_n \approx \hbar \omega \left(n + \frac{1}{2}\right) - \lambda^2 \frac{\hbar \omega}{8} ( 30 n^2 + 30 n + 11 ) + O(\lambda^3)
+    \implies E_n \approx \hbar \omega \left(n + \frac{1}{2}\right) - \lambda^2 \frac{\hbar \omega}{8} ( 30 n^2 + 30 n + 11 ) + o(\lambda^3)
 \end{equation}
 
 \subsection{Caso degenere}
@@ -320,7 +315,7 @@ Definendo la matrice della perturbazione nel sottospazio degenere come $\mathcal
     \begin{pmatrix}
         c_1^k \\ \vdots \\ c_d^k
     \end{pmatrix}
-    = \lambda \varepsilon_1^k
+    = \varepsilon_1^k
     \begin{pmatrix}
         c_1^k \\ \vdots \\ c_d^k
     \end{pmatrix}
@@ -433,7 +428,7 @@ Similmente $\mel{0,1}{W}{1,0} = \frac{\lambda \hbar \omega}{2}$. La matrice $\ma
 
 Diagonalizzando $\mathcal{W}$ troviamo gli autovalori (le correzioni all'energia):
 \[
-    \det(\mathcal{W} - \varepsilon I) = 0 \implies \varepsilon^2 - \left(\frac{\lambda\hbar\omega}{2}\right)^2 = 0 \implies \Delta E_{1\pm}^1 = \pm \frac{\lambda \hbar \omega}{2}
+    \det(\mathcal{W} - \varepsilon \id) = 0 \implies \varepsilon^2 - \left(\frac{\lambda\hbar\omega}{2}\right)^2 = 0 \implies \Delta E_{1\pm}^1 = \pm \frac{\lambda \hbar \omega}{2}
 \]
 I corrispondenti autovettori, che costituiscono la "base corretta" per la perturbazione, sono:
 \[
@@ -564,7 +559,7 @@ In accordo con il teorema di Wigner, ciò implica che gli operatori debbano tras
         \[ U_{\Lambda} \vec{X} U_{\Lambda}^{\dagger} = U_{\Lambda} U_{\Lambda}^{\dagger} \vec{X} = \vec{X} \quad \text{(ovvio!)} \]
 \end{example}
 \begin{example}Operatore velocità \( \vec{V} \):
-        \[ U_{\Lambda} \vec{V} U_{\Lambda}^{\dagger} = \frac{1}{m} U_{\Lambda} \left( \vec{P} - \frac{q}{c} \vec{A} \right) U_{\Lambda}^{\dagger} = \vec{P} - \frac{q}{c} \vec{A}' \]
+        \[ U_{\Lambda} \vec{V} U_{\Lambda}^{\dagger} = \frac{1}{m} U_{\Lambda} \left( \vec{P} - \frac{q}{c} \vec{A} \right) U_{\Lambda}^{\dagger} = \frac{1}{m} \left(\vec{P} - \frac{q}{c} \vec{A}' \right)\]
 \end{example}
 
 \begin{proof}
@@ -611,7 +606,7 @@ risolve l'equazione di Schrödinger per i potenziali trasformati:
     \[
     = \frac{1}{2m} \left[ U_{\Lambda} \left( -i\hbar\vec{\nabla} - \frac{q}{c}\vec{A} \right) U_{\Lambda}^{\dagger} \right]^2 U_{\Lambda} \Psi + \left( q\varphi - \frac{q}{c}\pdv{\Lambda}{t} \right) U_{\Lambda} \Psi
     \]
-    Poiché \( U_{\Lambda}^{\dagger} U_{\Lambda} = I \), possiamo semplificare il termine cinetico:
+    Poiché \( U_{\Lambda}^{\dagger} U_{\Lambda} = \id \), possiamo semplificare il termine cinetico:
     \[
     = U_{\Lambda} \left[ \frac{1}{2m} \left( -i\hbar\vec{\nabla} - \frac{q}{c}\vec{A} \right)^2 + q\varphi \right] \Psi - U_{\Lambda} \frac{q}{c} \left(\pdv{\Lambda}{t}\right) \Psi
     \]
@@ -697,7 +692,7 @@ La scelta di gauge ha \textit{rotto} alcune di queste simmetrie; o meglio, esse 
     \]
     Svolgendo i quadrati otteniamo:
     \[
-        H = \frac{1}{2m} (P_x^2 + P_y^2) + \underbrace{\frac{q}{2mc} }_{\mu}+ \underbrace{B_0 (X P_y - Y P_x)}{B_0L_z= -\vec{B}\cdot\vec{L}} + \underbrace{\frac{q^2}{8mc^2} B_0^2 (X^2 + Y^2)}_{\text{scalare } \mathcal{O}(B_0^2)}
+        H = \frac{1}{2m} (P_x^2 + P_y^2) + \underbrace{\frac{q}{2mc} }_{\mu}+ \underbrace{B_0 (X P_y - Y P_x)}{B_0L_z= -\vec{B}\cdot\vec{L}} + \underbrace{\frac{q^2}{8mc^2} B_0^2 (X^2 + Y^2)}_{\text{scalare } o(B_0^2)}
     \]
 \end{example}
 
@@ -1124,11 +1119,11 @@ Le componenti $\nu^{inc}$ e $\nu^{sca}$ devono essere soluzioni asintotiche dell
     \item \textbf{Per l'onda di scattering} $\nu^{sca}$:
     Notiamo che per $r \to \infty$, il Laplaciano può essere approssimato trascurando i termini angolari (che decadono come $1/r^2$):
     \[
-        \nabla^2 \cong \frac{1}{r}\partial_r^2 r + O\left(\frac{1}{r^2}\right)
+        \nabla^2 \cong \frac{1}{r}\partial_r^2 r + o\left(\frac{1}{r^2}\right)
     \]
     Analogamente, considerando l'operatore momento $\vec{p}^2 = p_r^2 + \frac{L^2}{r^2}$:
     \[
-        -\hbar^2 \nabla^2 = -\hbar^2 \left( \frac{1}{r}\partial_r^2 r + O\left(\frac{1}{r^2}\right) \right)
+        -\hbar^2 \nabla^2 = -\hbar^2 \left( \frac{1}{r}\partial_r^2 r + o\left(\frac{1}{r^2}\right) \right)
     \]
     Sostituendo nell'equazione d'onda:
     \[
@@ -1171,11 +1166,11 @@ dove \( C \) rappresenta la densità di particelle emesse dalla sorgente.
 Per l'onda diffusa \( \nu^{sca}(\vec{x}) \cong f_k(\theta, \varphi) \frac{e^{ikr}}{r} \):
 Usiamo l'approssimazione del gradiente in coordinate sferiche per grandi distanze (\( r \to \infty \)):
 \[
-    \vec{\nabla} = \hat{r} \pdv{}{r} + \hat{\theta} \frac{1}{r} \pdv{}{\theta} + \hat{\varphi} \frac{1}{r \sin\theta} \pdv{}{\varphi} \approx \hat{r} \pdv{}{r} + O\left(\frac{1}{r}\right)
+    \vec{\nabla} = \hat{r} \pdv{}{r} + \hat{\theta} \frac{1}{r} \pdv{}{\theta} + \hat{\varphi} \frac{1}{r \sin\theta} \pdv{}{\varphi} \approx \hat{r} \pdv{}{r} + o\left(\frac{1}{r}\right)
 \]
 Applicandolo a \( \nu^{sca} \):
 \[
-    \vec{\nabla} \nu^{sca} \approx \hat{r} f_k(\theta, \varphi) \pdv{}{r} \left( \frac{e^{ikr}}{r} \right) \approx \hat{r} f_k(\theta, \varphi) (ik) \frac{e^{ikr}}{r} + O\left(\frac{1}{r^2}\right)
+    \vec{\nabla} \nu^{sca} \approx \hat{r} f_k(\theta, \varphi) \pdv{}{r} \left( \frac{e^{ikr}}{r} \right) \approx \hat{r} f_k(\theta, \varphi) (ik) \frac{e^{ikr}}{r} + o\left(\frac{1}{r^2}\right)
 \]
 Trascurando i termini di ordine superiore, la corrente diffusa risulta:
 \begin{equation}
@@ -1284,12 +1279,12 @@ Sostituendo questa espressione nella funzione di Green uscente $G_+$, otteniamo 
 \[
     G_+(\vec{x}-\vec{x}') = -\frac{1}{4\pi} \frac{e^{ik|\vec{x}-\vec{x}'|}}{|\vec{x}-\vec{x}'|} 
     \overset{r \to \infty}{\simeq} 
-    -\frac{1}{4\pi} \frac{e^{ikr}}{r} e^{-ik \vec{u} \cdot \vec{x}'} + O\left(\frac{1}{r^2}\right)
+    -\frac{1}{4\pi} \frac{e^{ikr}}{r} e^{-ik \vec{u} \cdot \vec{x}'} + o\left(\frac{1}{r^2}\right)
 \]
 
 Sostituendo nell'equazione integrale generale otteniamo l'espressione asintotica della funzione d'onda:
 \[
-    \nu_k^{\text{diff}}(\vec{x}) \simeq e^{ikz} - \frac{1}{4\pi} \frac{e^{ikr}}{r} \underbrace{\int \dd[3]{x'} e^{-ik \vec{u} \cdot \vec{x}'} U(\vec{x}') \nu_k^{\text{diff}}(\vec{x}')}_{f_k(\theta, \varphi)}
+    \nu_k^{\text{diff}}(\vec{x}) \simeq e^{ikz} - \frac{1}{4\pi} \frac{e^{ikr}}{r} \int \dd[3]{x'} e^{-ik \vec{u} \cdot \vec{x}'} U(\vec{x}') \nu_k^{\text{diff}}(\vec{x}')
 \]
 Confrontando questa espressione con la forma asintotica attesa $\nu_k^{\text{diff}} \simeq e^{ikz} + f_k(\theta, \varphi)\frac{e^{ikr}}{r}$, si ottiene l'equazione \eqref{eq:fk_definition}. 
 Abbiamo tuttavia la dipendenza da \(\nu^{diff}_k\), dobbiamo effettuare ulteriori approssimazioni.
@@ -1306,13 +1301,13 @@ Possiamo riscrivere l'espressione generale per l'ampiezza di scattering come:
     f_k(\theta, \varphi) = -\frac{1}{4\pi} \int \dd[3]{x'} e^{-i \vec{k}_{\text{diff}} \cdot \vec{x}'} U(\vec{x}') \nu_k^{\text{diff}}(\vec{x}')
 \]
 
-Nell'approssimazione perturbativa (Born), assumiamo che il potenziale sia debole (\( U \sim O(\lambda) \)) e approssimiamo la funzione d'onda all'interno dell'integrale con l'onda piana incidente (soluzione di ordine zero):
+Nell'approssimazione perturbativa (Born), assumiamo che il potenziale sia debole (\( U \sim o(\lambda) \)) e approssimiamo la funzione d'onda all'interno dell'integrale con l'onda piana incidente (soluzione di ordine zero):
 \[
-    \nu_k^{\text{diff}}(\vec{x}') \simeq e^{i \vec{k}_{\text{inc}} \cdot \vec{x}'} + O(\lambda)
+    \nu_k^{\text{diff}}(\vec{x}') \simeq e^{i \vec{k}_{\text{inc}} \cdot \vec{x}'} + o(\lambda)
 \]
 Sostituendo questa espressione nell'integrale per \( f_k \):
 \[
-    f_k(\theta, \varphi) \simeq -\frac{1}{4\pi} \int \dd[3]{x'} e^{-i \vec{k}_{\text{diff}} \cdot \vec{x}'} U(\vec{x}') \left( e^{i \vec{k}_{\text{inc}} \cdot \vec{x}'} \right) + O(\lambda^2)
+    f_k(\theta, \varphi) \simeq -\frac{1}{4\pi} \int \dd[3]{x'} e^{-i \vec{k}_{\text{diff}} \cdot \vec{x}'} U(\vec{x}') \left( e^{i \vec{k}_{\text{inc}} \cdot \vec{x}'} \right) + o(\lambda^2)
 \]
 Raccogliendo gli esponenziali, otteniamo l'\textbf{ampiezza di Born} \( f_k^B \):
 \begin{equation}
@@ -1365,7 +1360,9 @@ Sostituendo il risultato nell'espressione completa, otteniamo la formula per l'a
 \begin{equation}
     f_k^B(\theta) = -\frac{2\mu}{\hbar^2 K} \int_0^{+\infty} \dd{r'} r' \sin(Kr') V(r')
 \end{equation}
-Si noti che per potenziali centrali l'ampiezza non dipende dall'angolo azimutale \( \varphi \), ma solo da \( \theta \) (attraverso \( K \)).
+\begin{remark}
+    Per potenziali centrali l'ampiezza non dipende dall'angolo azimutale \( \varphi \), ma solo da \( \theta \) (attraverso \( K \)).
+\end{remark}
 
 \begin{example}
     \textbf{Guscio Sferico}
