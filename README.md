@@ -4,7 +4,7 @@
 [![Licenza: CC BY-NC-SA 4.0](https://img.shields.io/badge/Licenza-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 
-Questa repository contiene gli **appunti in LaTeX** del modulo di meccanica quantisitca del corso universitario di *Istituzioni di Fisica Teorica*.  
+Questa repository contiene gli **appunti in LaTeX** del modulo di meccanica quantistica del corso universitario di *Istituzioni di Fisica Teorica*.  
 L'obiettivo è raccogliere, organizzare e condividere in modo chiaro e strutturato tutte le lezioni, dimostrazioni, formule e concetti fondamentali affrontati durante il corso.
 
 

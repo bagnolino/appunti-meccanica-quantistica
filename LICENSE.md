@@ -1,6 +1,6 @@
 Creative Commons Attribution – NonCommercial – ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 
-Copyright (c) 2025 [Il Tuo Nome]
+Copyright (c) 2025 Davide Bagnoli
 
 Questo lavoro è concesso in licenza secondo i termini della Creative Commons Attribution – NonCommercial – ShareAlike 4.0 International License.
 
